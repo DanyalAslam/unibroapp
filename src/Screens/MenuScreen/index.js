@@ -19,43 +19,43 @@ class MenuScreen extends React.Component {
           onSuccess={() => this.props.navigation.navigate('LoginScreen')}
         /> */}
         <MenuButton
-          onPress={() => this.props.navigation.navigate('ProfileScreen')}
+          // onPress={() => this.props.navigation.navigate('ProfileScreen')}
           title="Employee Email"
           icon={settingIcons.profile}
         />
         <MenuButton
           title="Employee Profile"
-          onPress={() => this.props.navigation.navigate('StreamsScreen')}
+          // onPress={() => this.props.navigation.navigate('StreamsScreen')}
           icon={settingIcons.streams}
         />
         <MenuButton
           title="Stock In Hand"
           icon={settingIcons.subscription}
-          onPress={() => this.props.navigation.navigate('MySubscriptionScreen')}
+          // onPress={() => this.props.navigation.navigate('MySubscriptionScreen')}
         />
         <MenuButton
           title="Gray Fibre"
-          onPress={() => this.props.navigation.navigate('PaymentLogScreen')}
+          // onPress={() => this.props.navigation.navigate('PaymentLogScreen')}
           icon={settingIcons.payment}
         />
         <MenuButton
           title="Garments Purchase Stock"
-          onPress={() => this.props.navigation.navigate('ContactUsScreen')}
+          // onPress={() => this.props.navigation.navigate('ContactUsScreen')}
           icon={settingIcons.contact}
         />
         <MenuButton
           title="Production Stock"
-          onPress={() => this.props.navigation.navigate('AboutUsScreen')}
+          // onPress={() => this.props.navigation.navigate('AboutUsScreen')}
           icon={settingIcons.about}
         />
 
 <MenuButton
           title="Export Stock"
-          onPress={() => this.props.navigation.navigate('AboutUsScreen')}
+          // onPress={() => this.props.navigation.navigate('AboutUsScreen')}
           icon={settingIcons.about}
         />
         <MenuButton
-          onPress={() => this.logout.show()}
+          // onPress={() => this.logout.show()}
           title="Logout"
           icon={settingIcons.logout}
         />
