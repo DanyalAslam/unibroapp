@@ -1,13 +1,13 @@
 const actionTypes = {
-  USER_INFO: 'USER_INFO', //done
-  USER_INFO_Access_token: 'USER_INFO_Access_token', //done
+  USER_INFO: 'USER_INFO', 
+  USER_INFO_Access_token: 'USER_INFO_Access_token', 
 
-  USER_INFO_Access_token_signup: 'USER_INFO_Access_token_signup', //done
-  START_LOADING: 'START_LOADING', //done
-  CLOSE_LOADING: 'CLOSE_LOADING', //done
-  TESTIMONIALS: 'TESTIMONIALS', //done
-  UPDATE_PROFILE: 'UPDATE_PROFILE', //done
-  LOG_OUT: 'LOG_OUT', //done
+  USER_INFO_Access_token_signup: 'USER_INFO_Access_token_signup', 
+  START_LOADING: 'START_LOADING', 
+  CLOSE_LOADING: 'CLOSE_LOADING', 
+  TESTIMONIALS: 'TESTIMONIALS', 
+  UPDATE_PROFILE: 'UPDATE_PROFILE', 
+  LOG_OUT: 'LOG_OUT', 
   MY_SUBSCRIPTION: 'MY_SUBSCRIPTION',
   STREAM_DATA: 'STREAM_DATA',
   ABOUT_US: 'ABOUT_US',

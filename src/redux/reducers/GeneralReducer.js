@@ -5,7 +5,9 @@ const INITIAL_STATE = {
   loading: false, //done
   access_token: null, //done
   access_token_signup: null,
-  StreamData: [], //done
+  // StreamData: [], //done
+  monthly_card_data :[],
+
   AboutUS: {}, //done
   mySubscription: [], //done
   searchedProperties: [], //done
@@ -104,9 +106,12 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
 
     //getting Home data : Streams
     case actionTypes.STREAM_DATA: {
+
+      console.log('action.payload',action.payload)
       return {
         ...state,
-        StreamData: action.payload,
+        // StreamData: action.payload,
+        monthly_card_data :action.payload
       };
     }
 

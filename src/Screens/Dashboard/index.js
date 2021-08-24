@@ -1,13 +1,29 @@
 import React from 'react';
-import {View,Text} from 'react-native';
+import {View,Text,ToastAndroid,Platform} from 'react-native';
 import styles from './styles';
 import {connect} from 'react-redux';
 import actions from './../../redux/actions/index';
+import {LineChart} from 'react-native-chart-kit'
+import { vw } from '../../Utils/Units';
 
 // import PoppinsSemiBold from '../../Components/Text/PoppinsSemiBold';
 // import PoppinsLight from '../../Components/Text/PoppinsLight';
 
-
+const chartConfig = {
+  backgroundGradientFrom: "#fff",
+  backgroundGradientFromOpacity: 0,
+  backgroundGradientTo: "#fff",
+  backgroundGradientToOpacity: 0.5,
+  decimalPlaces: 2,
+  color: (opacity = 1) => `rgba(0, 128, 0, ${opacity})`,
+  labelColor:(opacity = 0)=> `rgba(0, 0, 0, ${opacity})`,
+  style: {
+    borderRadius: 16,
+  },
+  propsForBackgroundLines: {
+    strokeWidth: 0
+  }
+};
 class AboutUsScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -39,13 +55,49 @@ class AboutUsScreen extends React.Component {
   componentDidMount() {
     this.props.navigation.addListener('focus', this._getHomeData);
   }
+
+
   render() {
+
+    console.log('this?.props?.monthly_card_data',this.props.monthly_card_data)
     return (
       <View style={styles.container}>
         {/* <PoppinsSemiBold style={styles.title}>Our History</PoppinsSemiBold>
         <PoppinsLight style={styles.desc}>{about}</PoppinsLight> */}
 
         <Text>Hello from Dahboard</Text>
+
+{this.props.monthly_card_data.length === 0 ? null :    <LineChart
+    
+    onDataPointClick={(value, dataset, getColor) => {  if (Platform.OS === 'android') {
+      // ToastAndroid.show(value.value, ToastAndroid.LONG)
+      ToastAndroid.showWithGravity(
+        value.value,
+        ToastAndroid.LONG,
+        ToastAndroid.TOP,
+      
+      );
+    } else {
+      AlertIOS.alert(msg);
+    }} 
+    
+    }
+    // getDotProps = {(value, index) =>console.log('dotProperties',value)}
+          data={this?.props?.monthly_card_data}
+          width={90*vw}
+          height={300}
+          chartConfig={chartConfig}
+          withVerticalLabels={false}
+          style={{
+                  marginVertical: 8,
+                  borderRadius: 16,
+                  marginHorizontal:4,
+                 }}
+
+                //  onDataPointClick={(params) => {console.log({params});}} 
+    /> }
+    
+
       </View>
     );
   }
@@ -56,8 +108,10 @@ const about = 'Lorem ipsum dolor sit amet, consectetur adipis cingelit, sed do e
 
 
 const mapStateToProps = (state) => {
+
+  console.log('getting sattes in dashboard',state)
   return {
-    // streamData: state.GeneralReducer.StreamData,
+    monthly_card_data: state.GeneralReducer.monthly_card_data,
     // access_token: state.GeneralReducer.access_token,
     // mySubscription: state.GeneralReducer.mySubscription,
     // userInfo: state.GeneralReducer.userInfo,

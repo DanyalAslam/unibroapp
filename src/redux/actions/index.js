@@ -337,7 +337,7 @@ getDahsBoardData: (success, error) => {
 
           dispatch({
             type: actionTypes.STREAM_DATA,
-            payload: apiSuccess.data.data,
+            payload: apiSuccess.mWiseShipment,
           });
           dispatch({type: actionTypes.CLOSE_LOADING});
           return success(true);
