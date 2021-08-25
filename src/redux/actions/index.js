@@ -9,43 +9,47 @@ const actions = {
   login: (credentials, success, error) => {
     console.log('credentials login', credentials);
     return (dispatch) => {
-      dispatch({type: actionTypes.START_LOADING});
-      Api.post(
+      // dispatch({type: actionTypes.START_LOADING});
+      Api.loginPost(
         'loginApi.php',
         credentials,
         (apiSuccess) => {
+
+
           console.log('apiSuccess login', apiSuccess);
+          return success(apiSuccess)
+          
+          
+          // if (apiSuccess.data.subsciption != true) {
+          //   dispatch({type: actionTypes.CLOSE_LOADING});
+          //   return error(apiSuccess);
+          // } else if (apiSuccess.data.block_status == 1) {
+          //   dispatch({type: actionTypes.CLOSE_LOADING});
+          //   return error(2);
+          // } else {
+          //   dispatch({type: actionTypes.CLOSE_LOADING});
+          //   const userInfo = {
+          //     id: apiSuccess.data.id,
+          //     name: apiSuccess.data.name,
+          //     email: apiSuccess.data.email,
+          //     image: apiSuccess.data.image,
+          //     block_status: apiSuccess.data.block_status,
+          //     subsciption: apiSuccess.data.subsciption,
+          //   };
+          //   dispatch({
+          //     type: actionTypes.USER_INFO,
+          //     payload: {
+          //       userInfo,
+          //       access_token: apiSuccess.data.token,
+          //     },
+          //   });
+          
 
-          if (apiSuccess.data.subsciption != true) {
-            dispatch({type: actionTypes.CLOSE_LOADING});
-            return error(apiSuccess);
-          } else if (apiSuccess.data.block_status == 1) {
-            dispatch({type: actionTypes.CLOSE_LOADING});
-            return error(2);
-          } else {
-            dispatch({type: actionTypes.CLOSE_LOADING});
-            const userInfo = {
-              id: apiSuccess.data.id,
-              name: apiSuccess.data.name,
-              email: apiSuccess.data.email,
-              image: apiSuccess.data.image,
-              block_status: apiSuccess.data.block_status,
-              subsciption: apiSuccess.data.subsciption,
-            };
-            dispatch({
-              type: actionTypes.USER_INFO,
-              payload: {
-                userInfo,
-                access_token: apiSuccess.data.token,
-              },
-            });
-          }
-
-          return success(apiSuccess.message);
+         
         },
         (apiError) => {
-          console.log('apiError', apiError);
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          console.log('apiError logiun', apiError);
+          // dispatch({type: actionTypes.CLOSE_LOADING});
           return error(apiError);
         },
       );
@@ -333,19 +337,19 @@ getDahsBoardData: (success, error) => {
       Api.get(
         'myGraphApi.php',
         (apiSuccess) => {
-          console.log('Get Streams success:123231', apiSuccess);
+          console.log('Get Dashboard success:123231', apiSuccess);
 
           dispatch({
             type: actionTypes.STREAM_DATA,
             payload: apiSuccess.mWiseShipment,
           });
           dispatch({type: actionTypes.CLOSE_LOADING});
-          return success(true);
+          // return success(true);
         },
         (apiError) => {
-          console.log('Get Streams apiError:', apiError);
+          console.log('Get Dashboard apiError:', apiError);
           dispatch({type: actionTypes.CLOSE_LOADING});
-          return error(apiError);
+          // return error(apiError);
         },
       );
     };

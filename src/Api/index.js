@@ -2,6 +2,7 @@ import {getStoredState} from 'redux-persist';
 import {persistConfig} from './../redux/index';
 import config from './Config';
 import {store} from '../redux/index';
+import axios from 'axios'
 
 const _getErrorMessage = (data) => {
   console.log('_getErrorMessage ', data);
@@ -33,6 +34,57 @@ const _getErrorMessage = (data) => {
 };
 
 const Api = {
+
+
+
+   loginPost : async  (endPoint, credentials, success, error, formdata = false) =>{
+
+    console.log('endPoint', endPoint);
+    console.log('credentials', credentials);
+
+    axios({
+      "method": "POST", // ye to dkeh saale.. ab chalaa
+      "url": "http://unibro.com.pk/UBI-APP/loginApi.php",
+      "headers": {
+        "content-type": "application/octet-stream",
+        "x-rapidapi-host": "quotes15.p.rapidapi.com",
+        // "x-rapidapi-key": process.env.REACT_APP_API_KEY
+      }, 
+      
+
+        "params" :credentials
+    
+      
+    })
+      .then(async(response) => {
+
+        console.log("login response",response)
+
+        const setItm = {
+          data:response.data.status,
+          mess:response.data.message
+        }
+        console.log('result:', setItm.data)// is me kuch nh ara
+        if(setItm.data === true){
+
+          return success(setItm.mess)
+        }
+  
+        else if(setItm.data === false){
+          return error(setItm.mess)
+        }
+        
+        // setResponseData(response.data)//challa
+        // console.warn(response.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  
+},
+
+
+
 
 //new Post method
   post: (endPoint, credentials, success, error, formdata = false) => {

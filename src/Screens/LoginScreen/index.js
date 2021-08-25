@@ -40,33 +40,33 @@ class LoginScreen extends React.Component {
     if (this.state.user_hcode.length < 6) {
       return showToast('user_hcode length must be at least 6 characters');
     }
-    this.props.navigation.navigate('HomeTabs');
+ 
 
     console.log('passing value', this.state);
 
-    // this.props.login(
-    //   this.state,
-    //   (success) => {
-    //     showToast(success);
-    //     this.setState({ user_name: '', user_hcode: '' });
-    //     this.props.navigation.navigate('HomeTabs');
-    //   },
-    //   (error) => {
-
-    //     // if (error.data) {
-    //     //   if (error?.data?.subsciption != true) {
-    //     //     return this.errorpopupsubscription.show(error);
-    //     //   } else if (error == 2) {
-    //     //     return this.errorpopupblocks.show();
-    //     //   } else {
-    //     //     console.log('error login :', error);
-    //     //     return showToast(error);
-    //     //   }
-    //     // } else {
-    //     //   return showToast(error);
-    //     // }
-    //   },
-    // );
+    this.props.login(
+      this.state,
+      (success) => {
+        showToast(success);
+        this.setState({ user_name: '', user_hcode: '' });
+        this.props.navigation.navigate('HomeTabs');
+      },
+      (error) => {
+        showToast(error);
+        // if (error.data) {
+        //   if (error?.data?.subsciption != true) {
+        //     return this.errorpopupsubscription.show(error);
+        //   } else if (error == 2) {
+        //     return this.errorpopupblocks.show();
+        //   } else {
+        //     console.log('error login :', error);
+        //     return showToast(error);
+        //   }
+        // } else {
+        //   return showToast(error);
+        // }
+      },
+    );
   };
 
   componentDidMount() {

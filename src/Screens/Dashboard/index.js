@@ -4,7 +4,7 @@ import styles from './styles';
 import {connect} from 'react-redux';
 import actions from './../../redux/actions/index';
 import {LineChart} from 'react-native-chart-kit'
-import { vw } from '../../Utils/Units';
+import { vh, vw } from '../../Utils/Units';
 
 // import PoppinsSemiBold from '../../Components/Text/PoppinsSemiBold';
 // import PoppinsLight from '../../Components/Text/PoppinsLight';
@@ -58,8 +58,9 @@ class AboutUsScreen extends React.Component {
 
 
   render() {
-
+    
     console.log('this?.props?.monthly_card_data',this.props.monthly_card_data)
+
     return (
       <View style={styles.container}>
         {/* <PoppinsSemiBold style={styles.title}>Our History</PoppinsSemiBold>
@@ -85,7 +86,7 @@ class AboutUsScreen extends React.Component {
     // getDotProps = {(value, index) =>console.log('dotProperties',value)}
           data={this?.props?.monthly_card_data}
           width={90*vw}
-          height={300}
+          height={40*vh}
           chartConfig={chartConfig}
           withVerticalLabels={false}
           style={{
