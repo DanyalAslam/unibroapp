@@ -9,7 +9,7 @@ const actions = {
   login: (credentials, success, error) => {
     console.log('credentials login', credentials);
     return (dispatch) => {
-      // dispatch({type: actionTypes.START_LOADING});
+      dispatch({type: actionTypes.START_LOADING});
       Api.loginPost(
         'loginApi.php',
         credentials,
@@ -17,7 +17,14 @@ const actions = {
 
 
           console.log('apiSuccess login', apiSuccess);
-          return success(apiSuccess)
+          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({
+            type: actionTypes.USER_INFO,
+            payload: {
+              access_token: apiSuccess.session_id,
+            },
+          });
+          return success(apiSuccess.mess)
           
           
           // if (apiSuccess.data.subsciption != true) {
@@ -49,7 +56,7 @@ const actions = {
         },
         (apiError) => {
           console.log('apiError logiun', apiError);
-          // dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({type: actionTypes.CLOSE_LOADING});
           return error(apiError);
         },
       );

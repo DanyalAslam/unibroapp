@@ -17,7 +17,9 @@ import AuthNavigator from './AuthNavigator'
 // import PaymentDetail from '../Screens/PaymentDetail';
 // import {vh} from '../Utils/Units';
 const MainStack = createStackNavigator();
-const MainStackNavigator = () => {
+const MainStackNavigator = (props) => {
+
+  console.log('MainStackNavigator propsss',props);
   return (
     <MainStack.Navigator
       // initialRouteName='HomeTabs'
@@ -33,11 +35,13 @@ const MainStackNavigator = () => {
       //     }
       // }}
     >
+
+      {props.props.GeneralReducer.access_token == null && (  <MainStack.Screen component={AuthNavigator} name="AuthNavigator" />)}
       {/* <MainStack.Screen component={PaymentDetail} name="PaymentDetail" /> */}
       {/* <MainStack.Screen component={AuthNavigator} name="AuthNavigator" /> */}
       
-      <MainStack.Screen component={AuthNavigator} name="AuthNavigator" />
-      <MainStack.Screen component={HomeTabs} name="HomeTabs" />
+    {props.props.GeneralReducer.access_token && (  <MainStack.Screen component={HomeTabs} name="HomeTabs" />)}
+    
     </MainStack.Navigator>
   );
 };
@@ -47,15 +51,17 @@ class MainNavigator extends React.Component {
     this.state = {};
   }
   renderSelection = () => {
-    return <MainStackNavigator />;
+    return <MainStackNavigator   props={this.props} />;
   };
   render() {
     return <View style={{flex: 1}}>{this.renderSelection()}</View>;
   }
 }
 const mapState = (state) => {
+
+  console.log('main navigatorrrr',state);
   return {
-    ...state,
+    GeneralReducer: state.GeneralReducer,
   };
 };
 const mapProps = (dispatch) => {

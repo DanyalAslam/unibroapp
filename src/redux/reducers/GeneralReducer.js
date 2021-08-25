@@ -1,16 +1,18 @@
 import actionTypes from './../actions/ActionTypes';
 
 const INITIAL_STATE = {
-  userInfo: null, // done
+  userInfo: null, 
   loading: false, //done
   access_token: null, //done
-  access_token_signup: null,
-  // StreamData: [], //done
-  monthly_card_data :[],
 
-  AboutUS: {}, //done
-  mySubscription: [], //done
-  searchedProperties: [], //done
+
+  session_id:null,
+
+  monthly_card_data :[], //done
+
+  AboutUS: {}, 
+  mySubscription: [], 
+  searchedProperties: [], 
   userNotifications: [],
   userStreamsData: [],
   user_id: null,
@@ -48,7 +50,6 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
     case actionTypes.USER_INFO: {
       return {
         ...state,
-        userInfo: action.payload.userInfo,
         ...(action.payload.access_token != undefined
           ? { access_token: action.payload.access_token }
           : undefined),
