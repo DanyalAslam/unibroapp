@@ -9,6 +9,7 @@ const INITIAL_STATE = {
   session_id:null,
 
   monthly_card_data :[], //done
+  table_card_data :[], //done
 
   AboutUS: {}, 
   mySubscription: [], 
@@ -106,7 +107,7 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
     }
 
     //getting Home data : Streams
-    case actionTypes.STREAM_DATA: {
+    case actionTypes.MONTHLY_GRAPH_DATA: {
 
       console.log('action.payload',action.payload)
       return {
@@ -115,6 +116,18 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
         monthly_card_data :action.payload
       };
     }
+
+
+        //getting Home data : Streams
+        case actionTypes.TABLE_GRAPH_DATA: {
+
+          console.log('action.payload',action.payload)
+          return {
+            ...state,
+            // StreamData: action.payload,
+            table_card_data :action.payload
+          };
+        }
 
     //About us
     case actionTypes.ABOUT_US: {

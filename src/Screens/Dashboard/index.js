@@ -1,5 +1,5 @@
 import React from 'react';
-import {View,Text,ToastAndroid,Platform} from 'react-native';
+import {View,Text,ToastAndroid,Platform, ScrollView} from 'react-native';
 import styles from './styles';
 import {connect} from 'react-redux';
 import actions from './../../redux/actions/index';
@@ -8,6 +8,7 @@ import { vh, vw } from '../../Utils/Units';
 
 // import PoppinsSemiBold from '../../Components/Text/PoppinsSemiBold';
 // import PoppinsLight from '../../Components/Text/PoppinsLight';
+import PoppinsBold from '../../Components/Text/PoppinsBold'
 
 const chartConfig = {
   backgroundGradientFrom: "#fff",
@@ -32,12 +33,8 @@ class AboutUsScreen extends React.Component {
     };
   }
 
-
-  _getHomeData = () => {
-    // this.setState({
-    //   edit: true,
-    // });
-    this.props.getDahsBoardData(
+  _getMonthYearGraphData = () =>{
+    this.props.getMonthYearGraphData(
       (success) => {
         if (success) {
           this.setState({
@@ -49,7 +46,27 @@ class AboutUsScreen extends React.Component {
         showToast(error);
       },
     );
-    // this._getSubscriptionData();
+  }
+  _getTableGraphData = () =>{
+    this.props.getTableGraphData(
+      (success) => {
+        if (success) {
+          this.setState({
+            sessions: this.props.streamData,
+          });
+        }
+      },
+      (error) => {
+        showToast(error);
+      },
+    );
+
+  }
+
+
+  _getHomeData = () => {
+   this._getMonthYearGraphData(),
+   this._getTableGraphData()
   };
 
   componentDidMount() {
@@ -57,19 +74,82 @@ class AboutUsScreen extends React.Component {
   }
 
 
+
+   renderRow = (data,index) => {
+    console.log('getttting dataaa',data)
+    console.log('index',index)
+
+    if(index === 0 )
+    {
+      return (  <View style={{backgroundColor:'#fff',flex:1,height:10*vh,alignSelf:'stretch',flexDirection:'row',marginHorizontal:5}}>
+
+<View style={{ flex: 1, alignSelf: 'stretch',justifyContent:'center',alignItems:'center' }} >
+              <Text style={{color:'#012c65',fontWeight:'bold'}}>Quantity</Text>
+              </View>
+              
+             
+            <View style={{ flex: 1, alignSelf: 'stretch',justifyContent:'center',alignItems:'center' }} >
+            <Text style={{color:'#012c65',fontWeight:'bold'}}>Value</Text>
+            </View>
+            <View style={{ flex: 1, alignSelf: 'stretch',justifyContent:'center',alignItems:'center'}} >
+            <Text style={{color:'#012c65',fontWeight:'bold'}}>Amount</Text>
+            </View>
+
+
+
+      </View>  
+    );
+
+    }
+    else
+    {
+      return ( 
+        <View style={{ flex:1, alignSelf: 'stretch', flexDirection: 'row',borderBottomColor:'black',borderBottomWidth:0.3,height:50,backgroundColor:'#fff',marginHorizontal:5 }}>
+            <View style={{ flex: 1,justifyContent:'center',alignItems:'center',paddingLeft:7 }} >
+              <Text>{data[0]}</Text>
+              </View>
+              
+             
+            <View style={{ flex: 1, alignSelf: 'stretch',justifyContent:'center',alignItems:'center' }} >
+            <Text>{data[1]}</Text>
+            </View>
+            <View style={{ flex: 1, alignSelf: 'stretch',justifyContent:'center',alignItems:'center' }} >
+            <Text>{data[2]}</Text>
+            </View>
+           
+      
+        </View>
+    );
+
+    }
+
+
+    
+}
+
+
+
+
+
   render() {
     
     console.log('this?.props?.monthly_card_data',this.props.monthly_card_data)
 
     return (
-      <View style={styles.container}>
+      <ScrollView 
+
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{alignItems:'center',paddingBottom:10*vh}}
+      style={styles.container}
+    
+      >
         {/* <PoppinsSemiBold style={styles.title}>Our History</PoppinsSemiBold>
         <PoppinsLight style={styles.desc}>{about}</PoppinsLight> */}
 
-        <Text>Hello from Dahboard</Text>
-
+   
+        <PoppinsBold style={{fontSize:5*vw}}>Month Year Wise Shipment</PoppinsBold>
+<View style={{backgroundColor:'white',width:92*vw,elevation:3*vw,marginVertical:3*vh}}>
 {this.props.monthly_card_data.length === 0 ? null :    <LineChart
-    
     onDataPointClick={(value, dataset, getColor) => {  if (Platform.OS === 'android') {
       // ToastAndroid.show(value.value, ToastAndroid.LONG)
       ToastAndroid.showWithGravity(
@@ -94,12 +174,26 @@ class AboutUsScreen extends React.Component {
                   borderRadius: 16,
                   marginHorizontal:4,
                  }}
-
                 //  onDataPointClick={(params) => {console.log({params});}} 
     /> }
-    
+</View>
 
-      </View>
+
+
+
+   
+<PoppinsBold style={{fontSize:5*vw}}>Table Graph</PoppinsBold>
+
+<View style={{backgroundColor:'white',width:92*vw,elevation:3*vw,marginVertical:3*vh}}>
+
+
+{ this.props.table_card_data?.length === 0 ? null :   this.props.table_card_data.map((datum,index) => { // This will render a row for each data element.
+            return this.renderRow(datum,index);
+        })
+      
+    }
+</View>
+      </ScrollView>
     );
   }
 }
@@ -113,6 +207,7 @@ const mapStateToProps = (state) => {
   console.log('getting sattes in dashboard',state)
   return {
     monthly_card_data: state.GeneralReducer.monthly_card_data,
+    table_card_data: state.GeneralReducer.table_card_data,
     // access_token: state.GeneralReducer.access_token,
     // mySubscription: state.GeneralReducer.mySubscription,
     // userInfo: state.GeneralReducer.userInfo,
@@ -123,8 +218,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getDahsBoardData: (success, error) =>
-      dispatch(actions.getDahsBoardData(success, error)),
+    getMonthYearGraphData: (success, error) =>
+      dispatch(actions.getMonthYearGraphData(success, error)),
+
+      getTableGraphData: (success, error) =>
+      dispatch(actions.getTableGraphData(success, error)),
 
     // buyTicket: (Data, success, error) =>
     //   dispatch(actions.buyTicket(Data, success, error)),

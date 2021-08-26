@@ -1,15 +1,15 @@
 import actionTypes from './ActionTypes';
 import Api from './../../Api/index';
-import {Platform} from 'react-native';
+import { Platform } from 'react-native';
 // import {showToast} from './../../Utils/index';
-import {getStoredState} from 'redux-persist';
-import {persistConfig} from './../index';
+import { getStoredState } from 'redux-persist';
+import { persistConfig } from './../index';
 
 const actions = {
   login: (credentials, success, error) => {
     console.log('credentials login', credentials);
     return (dispatch) => {
-      dispatch({type: actionTypes.START_LOADING});
+      dispatch({ type: actionTypes.START_LOADING });
       Api.loginPost(
         'loginApi.php',
         credentials,
@@ -17,7 +17,7 @@ const actions = {
 
 
           console.log('apiSuccess login', apiSuccess);
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
           dispatch({
             type: actionTypes.USER_INFO,
             payload: {
@@ -25,8 +25,8 @@ const actions = {
             },
           });
           return success(apiSuccess.mess)
-          
-          
+
+
           // if (apiSuccess.data.subsciption != true) {
           //   dispatch({type: actionTypes.CLOSE_LOADING});
           //   return error(apiSuccess);
@@ -50,13 +50,13 @@ const actions = {
           //       access_token: apiSuccess.data.token,
           //     },
           //   });
-          
 
-         
+
+
         },
         (apiError) => {
           console.log('apiError logiun', apiError);
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
           return error(apiError);
         },
       );
@@ -66,21 +66,21 @@ const actions = {
   //logout
   logOut: (success, error) => {
     return (dispatch) => {
-      dispatch({type: actionTypes.START_LOADING});
+      dispatch({ type: actionTypes.START_LOADING });
 
       Api.post(
         '/admin/logout',
         (apiSuccess) => {
           console.log('logout success :', apiSuccess);
-          dispatch({type: actionTypes.LOG_OUT});
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.LOG_OUT });
+          dispatch({ type: actionTypes.CLOSE_LOADING });
 
           return success(apiSuccess.message);
         },
         (Apierror) => {
           console.log('logout error :', Apierror);
-          dispatch({type: actionTypes.LOG_OUT});
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.LOG_OUT });
+          dispatch({ type: actionTypes.CLOSE_LOADING });
 
           return error(Apierror.message);
 
@@ -94,21 +94,21 @@ const actions = {
   Report: (id, success, error) => {
     const _id = id;
     return (dispatch) => {
-      dispatch({type: actionTypes.START_LOADING});
+      dispatch({ type: actionTypes.START_LOADING });
 
       Api.get(
         `/user/reportStatus/${_id}`,
         (apiSuccess) => {
           console.log('Report success :', apiSuccess);
           // dispatch({type: actionTypes.LOG_OUT});
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
 
           return success(apiSuccess.message);
         },
         (Apierror) => {
           console.log('Report error :', Apierror);
           // dispatch({type: actionTypes.LOG_OUT});
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
 
           return error(Apierror.message);
 
@@ -122,19 +122,19 @@ const actions = {
   sendCode: (email, success, error) => {
     console.log('verification code email :', email);
     return (dispatch) => {
-      dispatch({type: actionTypes.START_LOADING});
+      dispatch({ type: actionTypes.START_LOADING });
 
       Api.post(
         '/user/sendForgotCode',
         email,
         (apiSuccess) => {
           console.log('verification code successs:', apiSuccess);
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
 
           return success(apiSuccess.message);
         },
         (apiError) => {
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
 
           return error(apiError);
         },
@@ -145,19 +145,19 @@ const actions = {
   verifyCode: (code, success, error) => {
     console.log('code ', code);
     return (dispatch) => {
-      dispatch({type: actionTypes.START_LOADING});
+      dispatch({ type: actionTypes.START_LOADING });
 
       Api.post(
         `/user/verify`,
         code,
         (apiSuccess) => {
           console.log('code verified:', apiSuccess);
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
 
           return success(apiSuccess.message);
         },
         (apiError) => {
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
 
           return error(apiError);
         },
@@ -174,7 +174,7 @@ const actions = {
         confirmpassword: credentials.confirmPassword,
       };
 
-      dispatch({type: actionTypes.START_LOADING});
+      dispatch({ type: actionTypes.START_LOADING });
 
       console.log('_data', _data);
 
@@ -183,13 +183,13 @@ const actions = {
         _data,
         (apiSuccess) => {
           console.log('apiSuccess reset', apiSuccess);
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
 
           return success(apiSuccess.message);
         },
         (apiError) => {
           console.log('apiError reset', apiError);
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
 
           return error(apiError);
         },
@@ -201,14 +201,14 @@ const actions = {
   register: (credentials, success, error) => {
     console.log('Signup credentials', credentials);
     return (dispatch) => {
-      dispatch({type: actionTypes.START_LOADING});
+      dispatch({ type: actionTypes.START_LOADING });
 
       Api.post(
         '/user/register',
         credentials,
         (apiSuccess) => {
           console.log('Sign up success : ', apiSuccess);
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
           dispatch({
             type: actionTypes.USER_INFO_Access_token_signup,
             payload: {
@@ -222,7 +222,7 @@ const actions = {
         },
         (apiError) => {
           console.log('Sign up Error : ', apiError);
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
 
           return error(apiError);
         },
@@ -273,20 +273,20 @@ const actions = {
   contactUs: (credentials, success, error) => {
     console.log('contactUs credentials', credentials);
     return (dispatch) => {
-      dispatch({type: actionTypes.START_LOADING});
+      dispatch({ type: actionTypes.START_LOADING });
 
       Api.post(
         '/user/contactus',
         credentials,
         (apiSuccess) => {
           console.log('apiSuccess Contact us:', apiSuccess);
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
 
           return success(apiSuccess.message);
         },
         (apiError) => {
           console.log('apiError Contact us:', apiError);
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
 
           return error(apiError);
         },
@@ -303,12 +303,12 @@ const actions = {
         cardDetails,
         (apiSuccess) => {
           console.log('apiSuccess ticket', apiSuccess);
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
           return success(apiSuccess.message);
         },
         (apiError) => {
           console.log('apiError ticket', apiError);
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
           return error(apiError);
         },
       );
@@ -318,18 +318,18 @@ const actions = {
   //buy Subscription
   buySubscription: (Data, success, error) => {
     return (dispatch) => {
-      dispatch({type: actionTypes.START_LOADING});
+      dispatch({ type: actionTypes.START_LOADING });
       Api.post(
         '/user/subscribe',
         Data,
         (apiSuccess) => {
           console.log('apiSuccess subscreipotion', apiSuccess);
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
           return success(apiSuccess.message);
         },
         (apiError) => {
           console.log('apiError subscreipotion', apiError);
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
           return error(apiError);
         },
       );
@@ -338,29 +338,56 @@ const actions = {
 
 
 
-getDahsBoardData: (success, error) => {
+  getMonthYearGraphData: (success, error) => {
     return (dispatch) => {
-      dispatch({type: actionTypes.START_LOADING});
+      dispatch({ type: actionTypes.START_LOADING });
       Api.get(
         'myGraphApi.php',
         (apiSuccess) => {
           console.log('Get Dashboard success:123231', apiSuccess);
 
           dispatch({
-            type: actionTypes.STREAM_DATA,
+            type: actionTypes.MONTHLY_GRAPH_DATA,
             payload: apiSuccess.mWiseShipment,
           });
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
           // return success(true);
         },
         (apiError) => {
           console.log('Get Dashboard apiError:', apiError);
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
           // return error(apiError);
         },
       );
     };
   },
+
+
+  getTableGraphData: (success, error) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_LOADING });
+      Api.get(
+        'tableChart.php',
+        (apiSuccess) => {
+          console.log('Get getTableGraphData success', apiSuccess);
+
+          dispatch({
+            type: actionTypes.TABLE_GRAPH_DATA,
+            payload: apiSuccess.tableGraph,
+          });
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+          // return success(true);
+        },
+        (apiError) => {
+          console.log('Get getTableGraphData apiError:', apiError);
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+          // return error(apiError);
+        },
+      );
+    };
+  },
+
+
   //About Us Data
   getAboutUsData: (completed, failed) => {
     return (dispatch) => {
@@ -452,7 +479,7 @@ getDahsBoardData: (success, error) => {
   editProfile: (credentials, success, error) => {
     console.log('edit credentials', credentials);
     return (dispatch) => {
-      dispatch({type: actionTypes.START_LOADING});
+      dispatch({ type: actionTypes.START_LOADING });
 
       Api.post(
         '/user/profileUpdate',
@@ -460,7 +487,7 @@ getDahsBoardData: (success, error) => {
         (apiSuccess) => {
           console.log('edit profile apiSuccess', apiSuccess);
           // dispatch({type: actionTypes.CLOSE_LOADING});
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
           dispatch({
             type: actionTypes.UPDATE_PROFILE,
             payload: apiSuccess.data,
@@ -469,7 +496,7 @@ getDahsBoardData: (success, error) => {
         },
         (apiError) => {
           console.log('apiError pictire', apiError);
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
 
           return error(apiError);
         },
@@ -483,7 +510,7 @@ getDahsBoardData: (success, error) => {
     console.log('update pasword credentials', credentials);
 
     return (dispatch) => {
-      dispatch({type: actionTypes.START_LOADING});
+      dispatch({ type: actionTypes.START_LOADING });
 
       Api.post(
         '/user/changePassword',
@@ -491,12 +518,12 @@ getDahsBoardData: (success, error) => {
         (apiSuccess) => {
           console.log('Upate password apiSuccess', apiSuccess);
 
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
           return success(apiSuccess.message);
         },
         (apiError) => {
           console.log('apiError', apiError);
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
           return error(apiError);
         },
       );
@@ -556,7 +583,7 @@ getDahsBoardData: (success, error) => {
   },
 
   ReadNotification: (completed, failed) => {
-    const cardDetails = {notification_id: null};
+    const cardDetails = { notification_id: null };
     return (dispatch) => {
       Api.post(
         '/user/markAsRead',
@@ -628,13 +655,13 @@ getDahsBoardData: (success, error) => {
         (apiSuccess) => {
           console.log('Search result 123:', apiSuccess);
 
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
 
           return success(apiSuccess.data);
         },
         (apiError) => {
           console.log('apiError search', apiError);
-          dispatch({type: actionTypes.CLOSE_LOADING});
+          dispatch({ type: actionTypes.CLOSE_LOADING });
 
           return error(apiError);
         },

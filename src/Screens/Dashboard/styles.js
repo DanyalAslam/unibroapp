@@ -3,10 +3,14 @@ import ThemeColors from '../../Utils/ThemeColors';
 import { vh, vw } from '../../Utils/Units';
 const styles = StyleSheet.create({
     container:{
-        flex:1,
+        // flex:1,
         backgroundColor:ThemeColors.white,
-        alignItems:'center',
-        paddingVertical:3*vh
+        // alignItems:'center',
+        // paddingVertical:3*vh,
+        // paddingBottom:40*vh
+
+        // paddingTop:10*vh,
+        // paddingBottom:20*vh
     },
     title:{ 
         fontSize: 2 * vh, 
