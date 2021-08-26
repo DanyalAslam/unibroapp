@@ -24,7 +24,7 @@ const MainStackNavigator = (props) => {
     <MainStack.Navigator
       // initialRouteName='HomeTabs'
       headerMode="none"
-      screenOptions={getNavigationOptions}
+      // screenOptions={getNavigationOptions}
       // screenOptions={{
       //     headerTitleStyle:{
       //         color:'white',

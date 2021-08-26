@@ -12,7 +12,7 @@ import actions from './../../redux/actions/index';
 
 
 
-class NotificationsScreen extends React.Component {
+class EmployeeProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -89,4 +89,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(NotificationsScreen);
+)(EmployeeProfile);

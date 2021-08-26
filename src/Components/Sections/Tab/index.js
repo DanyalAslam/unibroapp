@@ -6,11 +6,13 @@ import {tabIcons} from '../../../assets/images';
 import IconButton from '../../Buttons/IconButton';
 import {BlurView} from '@react-native-community/blur';
 const getIcon = (routeName, isActive) => {
+
+  console.log('getIconsss',routeName)
   switch (routeName) {
     case 'HomeStack': {
       return isActive ? tabIcons.HomeActive : tabIcons.HomeInactive;
     }
-    case 'NotificationStack': {
+    case 'EmployeeStack': {
       return isActive
         ? tabIcons.NotificationsActive
         : tabIcons.NotificationsInactive;
