@@ -10,6 +10,7 @@ const INITIAL_STATE = {
 
   monthly_card_data :[], //done
   table_card_data :[], //done
+  made_up_graph_data :[], //done
 
   AboutUS: {}, 
   mySubscription: [], 
@@ -138,10 +139,10 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
     }
 
     //Testimonials
-    case actionTypes.MY_SUBSCRIPTION: {
+    case actionTypes.MADE_UP_GRAPH: {
       return {
         ...state,
-        mySubscription: action.payload,
+        made_up_graph_data: action.payload,
       };
     }
 

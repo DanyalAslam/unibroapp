@@ -3,11 +3,12 @@ import {View,Text,ToastAndroid,Platform, ScrollView} from 'react-native';
 import styles from './styles';
 import {connect} from 'react-redux';
 import actions from './../../redux/actions/index';
-import {LineChart} from 'react-native-chart-kit'
+import {LineChart,PieChart} from 'react-native-chart-kit'
 import { vh, vw } from '../../Utils/Units';
 
 // import PoppinsSemiBold from '../../Components/Text/PoppinsSemiBold';
 // import PoppinsLight from '../../Components/Text/PoppinsLight';
+import PoppinsRegular from '../../Components/Text/PoppinsRegular'
 import PoppinsBold from '../../Components/Text/PoppinsBold'
 
 const chartConfig = {
@@ -24,6 +25,17 @@ const chartConfig = {
   propsForBackgroundLines: {
     strokeWidth: 0
   }
+};
+
+const chartConfigMadeUp = {
+  backgroundGradientFrom: "red",
+  backgroundGradientFromOpacity: 0,
+  backgroundGradientTo: "red",
+  backgroundGradientToOpacity: 0.5,
+  color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+  strokeWidth: 2,
+  barPercentage: 0.5,
+  useShadowColorFromDataset: false 
 };
 class AboutUsScreen extends React.Component {
   constructor(props) {
@@ -63,10 +75,43 @@ class AboutUsScreen extends React.Component {
 
   }
 
+  _getMadeUpChart = () =>{
+    this.props.getMadeUpChart(
+      (success) => {
+        if (success) {
+          this.setState({
+            sessions: this.props.streamData,
+          });
+        }
+      },
+      (error) => {
+        showToast(error);
+      },
+    );
+  }
+
+
+  _getGrayFabrics = () =>{
+    this.props.getGrayFabrics(
+      (success) => {
+        if (success) {
+          this.setState({
+            sessions: this.props.streamData,
+          });
+        }
+      },
+      (error) => {
+        showToast(error);
+      },
+    );
+  }
+
 
   _getHomeData = () => {
    this._getMonthYearGraphData(),
-   this._getTableGraphData()
+   this._getTableGraphData(),
+   this._getMadeUpChart(),
+   this._getGrayFabrics()
   };
 
   componentDidMount() {
@@ -94,9 +139,6 @@ class AboutUsScreen extends React.Component {
             <View style={{ flex: 1, alignSelf: 'stretch',justifyContent:'center',alignItems:'center'}} >
             <Text style={{color:'#012c65',fontWeight:'bold'}}>Amount</Text>
             </View>
-
-
-
       </View>  
     );
 
@@ -106,15 +148,13 @@ class AboutUsScreen extends React.Component {
       return ( 
         <View style={{ flex:1, alignSelf: 'stretch', flexDirection: 'row',borderBottomColor:'black',borderBottomWidth:0.3,height:50,backgroundColor:'#fff',marginHorizontal:5 }}>
             <View style={{ flex: 1,justifyContent:'center',alignItems:'center',paddingLeft:7 }} >
-              <Text>{data[0]}</Text>
+              <PoppinsRegular style={{fontSize:2*vw}}>{data[0]}</PoppinsRegular>
               </View>
-              
-             
             <View style={{ flex: 1, alignSelf: 'stretch',justifyContent:'center',alignItems:'center' }} >
-            <Text>{data[1]}</Text>
+            <PoppinsRegular style={{fontSize:2*vw}}>{data[1]}</PoppinsRegular>
             </View>
             <View style={{ flex: 1, alignSelf: 'stretch',justifyContent:'center',alignItems:'center' }} >
-            <Text>{data[2]}</Text>
+            <PoppinsRegular style={{fontSize:2*vw}}>{data[2]}</PoppinsRegular>
             </View>
            
       
@@ -122,13 +162,8 @@ class AboutUsScreen extends React.Component {
     );
 
     }
-
-
-    
+   
 }
-
-
-
 
 
   render() {
@@ -184,7 +219,7 @@ class AboutUsScreen extends React.Component {
    
 <PoppinsBold style={{fontSize:5*vw}}>Table Graph</PoppinsBold>
 
-<View style={{backgroundColor:'white',width:92*vw,elevation:3*vw,marginVertical:3*vh}}>
+<View style={{backgroundColor:'white',paddingBottom:5*vh,width:92*vw,elevation:3*vw,marginVertical:3*vh}}>
 
 
 { this.props.table_card_data?.length === 0 ? null :   this.props.table_card_data.map((datum,index) => { // This will render a row for each data element.
@@ -193,6 +228,30 @@ class AboutUsScreen extends React.Component {
       
     }
 </View>
+
+<PoppinsBold style={{fontSize:5*vw}}>Made up graphs</PoppinsBold>
+
+{this.props.made_up_graph_data.length === 0 ? null :
+  <View style={{backgroundColor:'white',width:92*vw,elevation:3*vw,marginVertical:3*vh}}>
+      
+        <PieChart
+         
+    
+          data={this.props.made_up_graph_data}
+          width={80*vw}
+          height={220}
+          chartConfig={chartConfigMadeUp}
+          accessor={"population"}
+          backgroundColor="transparent"
+          paddingLeft="15"
+        />
+    </View>
+}
+
+
+<PoppinsBold style={{fontSize:5*vw}}>Gray Fabrics</PoppinsBold>
+
+
       </ScrollView>
     );
   }
@@ -208,10 +267,8 @@ const mapStateToProps = (state) => {
   return {
     monthly_card_data: state.GeneralReducer.monthly_card_data,
     table_card_data: state.GeneralReducer.table_card_data,
-    // access_token: state.GeneralReducer.access_token,
-    // mySubscription: state.GeneralReducer.mySubscription,
-    // userInfo: state.GeneralReducer.userInfo,
-    // notification_count: state.GeneralReducer.notification_counts,
+    made_up_graph_data: state.GeneralReducer.made_up_graph_data,
+  
   };
 };
 
@@ -223,6 +280,14 @@ const mapDispatchToProps = (dispatch) => {
 
       getTableGraphData: (success, error) =>
       dispatch(actions.getTableGraphData(success, error)),
+
+
+      getMadeUpChart: (success, error) =>
+      dispatch(actions.getMadeUpChart(success, error)),
+
+
+      getGrayFabrics: (success, error) =>
+      dispatch(actions.getGrayFabrics(success, error)),
 
     // buyTicket: (Data, success, error) =>
     //   dispatch(actions.buyTicket(Data, success, error)),

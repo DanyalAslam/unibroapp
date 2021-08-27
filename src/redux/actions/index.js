@@ -388,6 +388,61 @@ const actions = {
   },
 
 
+
+  getMadeUpChart: (success, error) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_LOADING });
+      Api.get(
+        'mGraphApi.php',
+        (apiSuccess) => {
+          console.log('Get getMadeUpChart success', apiSuccess);
+
+          dispatch({
+            type: actionTypes.MADE_UP_GRAPH,
+            payload: apiSuccess.madeupGraph,
+          });
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+          // return success(true);
+        },
+        (apiError) => {
+          console.log('Get getMadeUpChart apiError:', apiError);
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+          // return error(apiError);
+        },
+      );
+    };
+  },
+
+
+
+  getGrayFabrics: (success, error) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_LOADING });
+      Api.get(
+        'gfGraphApi.php',
+        (apiSuccess) => {
+          console.log('Get getGrayFabrics success', apiSuccess);
+
+          // dispatch({
+          //   type: actionTypes.MADE_UP_GRAPH,
+          //   payload: apiSuccess.madeupGraph,
+          // });
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+          // return success(true);
+        },
+        (apiError) => {
+          console.log('Get getGrayFabrics apiError:', apiError);
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+          // return error(apiError);
+        },
+      );
+    };
+  },
+
+
+
+
+
   //About Us Data
   getAboutUsData: (completed, failed) => {
     return (dispatch) => {
