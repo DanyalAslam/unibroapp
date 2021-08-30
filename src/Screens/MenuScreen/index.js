@@ -23,11 +23,11 @@ class MenuScreen extends React.Component {
           title="Employee Email"
           icon={settingIcons.profile}
         />
-        <MenuButton
+        {/* <MenuButton
           title="Employee Profile"
           // onPress={() => this.props.navigation.navigate('StreamsScreen')}
           icon={settingIcons.streams}
-        />
+        /> */}
         <MenuButton
           title="Stock In Hand"
           icon={settingIcons.subscription}

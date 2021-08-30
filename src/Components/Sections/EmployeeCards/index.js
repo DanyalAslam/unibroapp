@@ -5,44 +5,22 @@ import {vh, vw} from '../../../Utils/Units';
 import TouchableHOC from '../../Buttons/TouchableHOC';
 import CircularBold from '../../Text/CircularBold';
 import PoppinsRegular from '../../Text/PoppinsRegular';
-
+import styles from './styles'
 
 const EmployeeCards = (props) => {
   console.log('gettingggg props',props);
   return (
     <View
-      style={{
-        width: 92 * vw,
-        elevation: 10,
-        // flexDirection: 'row',
-        alignItems: 'center',
-        padding: 3 * vw,
-        backgroundColor: 'white',
-marginHorizontal:4*vw,
-marginTop:2*vh,
-        marginBottom: 2 * vh,
-        borderRadius: 2 * vw,
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 5,
-          height: 3,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 15,
-      }}
+      style={styles.container}
       onPress={() => props.onSuccess()}>
       <Image
       resizeMode='cover'
-        style={{height: 11 * vw, width: 11 * vw, borderRadius: 6 * vw}}
+        style={styles.imgContainer}
         source={{uri: props.employee?.item.image}}
       />
-      <View style={{marginTop:2*vh,marginLeft: 3 * vw, width: 70 * vw,justifyContent:'center',alignItems:'center'}}>
+      <View style={styles.container2}>
         <CircularBold
-          style={{
-            color: ThemeColors.primary,
-            fontSize: 3 * vw,
-            marginBottom: 0.5 * vh,
-          }}
+          style={styles.circularBoardStyle}
           numberOfLines={1}>
           {props.employee.item.name}
         </CircularBold>

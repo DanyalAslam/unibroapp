@@ -12,6 +12,14 @@ const styles = StyleSheet.create({
         // paddingTop:10*vh,
         // paddingBottom:20*vh
     },
+    firstContainer :{
+        backgroundColor: 'white', width: 92 * vw, elevation: 3 * vw, marginVertical: 3 * vh
+
+    },
+    secondContainer :{
+        backgroundColor: 'white', paddingBottom: 5 * vh, width: 92 * vw, elevation: 3 * vw, marginVertical: 3 * vh
+
+    },
     title:{ 
         fontSize: 2 * vh, 
         width:90*vw,
