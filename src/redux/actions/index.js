@@ -390,6 +390,7 @@ const actions = {
 
 
   getMadeUpChart: (success, error) => {
+   
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
       Api.get(
@@ -423,10 +424,10 @@ const actions = {
         (apiSuccess) => {
           console.log('Get getGrayFabrics success', apiSuccess);
 
-          // dispatch({
-          //   type: actionTypes.MADE_UP_GRAPH,
-          //   payload: apiSuccess.madeupGraph,
-          // });
+          dispatch({
+            type: actionTypes.GRAY_FABRICS,
+            payload: apiSuccess.greyFabricGraph,
+          });
           dispatch({ type: actionTypes.CLOSE_LOADING });
           // return success(true);
         },

@@ -11,6 +11,7 @@ const INITIAL_STATE = {
   monthly_card_data :[], //done
   table_card_data :[], //done
   made_up_graph_data :[], //done
+  gray_fabrics_graph_data :[], //done
 
   AboutUS: {}, 
   mySubscription: [], 
@@ -154,10 +155,10 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
         // searchedProperties: action.payload,
       };
     }
-    case actionTypes.WISHLIST: {
+    case actionTypes.GRAY_FABRICS: {
       return {
         ...state,
-        wishList: action.payload,
+        gray_fabrics_graph_data: action.payload,
       };
     }
 

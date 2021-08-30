@@ -27,6 +27,45 @@ const chartConfig = {
   }
 };
 
+const data = [
+  {
+    name: "Seoul",
+    population: 21500000,
+    color: "rgba(131, 167, 234, 1)",
+    legendFontColor: "#7F7F7F",
+    legendFontSize: 15
+  },
+  {
+    name: "Toronto",
+    population: 2800000,
+    color: "#F00",
+    legendFontColor: "#7F7F7F",
+    legendFontSize: 15
+  },
+  {
+    name: "Beijing",
+    population: 527612,
+    color: "red",
+    legendFontColor: "#7F7F7F",
+    legendFontSize: 15
+  },
+  {
+    name: "New York",
+    population: 8538000,
+    color: "#ffffff",
+    legendFontColor: "#7F7F7F",
+    legendFontSize: 15
+  },
+  {
+    name: "Moscow",
+    population: 11920000,
+    color: "rgb(0, 0, 255)",
+    legendFontColor: "#7F7F7F",
+    legendFontSize: 15
+  }
+];
+
+
 const chartConfigMadeUp = {
   backgroundGradientFrom: "red",
   backgroundGradientFromOpacity: 0,
@@ -250,7 +289,23 @@ class AboutUsScreen extends React.Component {
 
 
 <PoppinsBold style={{fontSize:5*vw}}>Gray Fabrics</PoppinsBold>
-
+{this.props.gray_fabrics_graph_data.length === 0 ? null :
+  <View style={{backgroundColor:'white',width:92*vw,elevation:3*vw,marginVertical:3*vh}}>
+      
+        <PieChart
+         
+    
+          data={this.props.gray_fabrics_graph_data}
+          width={80*vw}
+          height={220}
+        
+          chartConfig={chartConfigMadeUp}
+          accessor={"population"}
+          backgroundColor="transparent"
+          paddingLeft="15"
+        />
+    </View>
+}
 
       </ScrollView>
     );
@@ -268,6 +323,7 @@ const mapStateToProps = (state) => {
     monthly_card_data: state.GeneralReducer.monthly_card_data,
     table_card_data: state.GeneralReducer.table_card_data,
     made_up_graph_data: state.GeneralReducer.made_up_graph_data,
+    gray_fabrics_graph_data :state.GeneralReducer. gray_fabrics_graph_data,
   
   };
 };
