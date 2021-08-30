@@ -26,7 +26,7 @@ flexDirection:"row",
 
     },
     imgContainer: {
-        height: 20 * vw, width: 20 * vw, borderRadius: 10 * vw,backgroundColor:'yellow'
+        height: 20 * vw, width: 20 * vw, borderRadius: 10 * vw
     },
     container2: {
         marginTop: 2 * vh, marginLeft: 3 * vw, width: 70 * vw,
@@ -35,11 +35,13 @@ flexDirection:"row",
         color: ThemeColors.primary,
         fontSize: 2 * vw,
         marginBottom: 0.5 * vh,
+        marginLeft:1*vw
     },
     heading: {
         color: ThemeColors.backgroundBlack,
         fontSize: 2 * vw,
         marginBottom: 0.5 * vh,
+        fontWeight:"bold"
     }
 
 })
