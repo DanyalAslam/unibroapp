@@ -4,9 +4,7 @@ import {vh, vw} from '../../Utils/Units';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: ThemeColors.backgroundBlack,
-    // backgroundColor:'red'
-    // backgroundColor:'red'
+  
   },
   title: {
     width: 80 * vw,

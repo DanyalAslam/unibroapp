@@ -19,7 +19,7 @@ class MenuScreen extends React.Component {
           onSuccess={() => this.props.navigation.navigate('LoginScreen')}
         /> */}
         <MenuButton
-          // onPress={() => this.props.navigation.navigate('ProfileScreen')}
+          onPress={() => this.props.navigation.navigate('EmployeeEmails')}
           title="Employee Email"
           icon={settingIcons.profile}
         />

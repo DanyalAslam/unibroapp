@@ -11,6 +11,7 @@ const INITIAL_STATE = {
   made_up_graph_data :[], //done
   gray_fabrics_graph_data :[], //done
   all_employees_profile: [],//done
+  all_employees_emails: [],//done
 
 
 
@@ -171,10 +172,10 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
       };
     }
 
-    case actionTypes.PAYMENT_LOGS: {
+    case actionTypes.GET_EMPLOYEES_EMAILS: {
       return {
         ...state,
-        paymentLogs: action.payload,
+        all_employees_emails: action.payload,
       };
     }
 

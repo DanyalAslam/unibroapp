@@ -35,7 +35,7 @@ export const shouldHeaderBeShown = (activeRouteName) => {
     case 'MenuScreen':
     case 'WatchStreanScreen':
     case 'StreamsScreen':
-    case 'ContactUsScreen':
+    case 'EmployeeEmails':
     case 'PaymentLogScreen':
     case 'MySubscriptionScreen':
     case 'AboutUsScreen':
@@ -72,8 +72,8 @@ export const getTitle = (activeRouteName) => {
       case 'EmployeeProfile':
         return 'Employee Profile';
 
-    case 'AboutUsScreen':
-      return 'About Us';
+    case 'EmployeeEmails':
+      return 'Employee Emails';
     case 'MySubscriptionScreen':
       return 'My Subscriptions';
     case 'ChangePasswordScreen':

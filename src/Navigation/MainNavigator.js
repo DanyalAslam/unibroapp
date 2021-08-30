@@ -40,7 +40,12 @@ const MainStackNavigator = (props) => {
       {/* <MainStack.Screen component={PaymentDetail} name="PaymentDetail" /> */}
       {/* <MainStack.Screen component={AuthNavigator} name="AuthNavigator" /> */}
       
-    {props.props.GeneralReducer.access_token && (  <MainStack.Screen component={HomeTabs} name="HomeTabs" />)}
+    {props.props.GeneralReducer.access_token && (  <MainStack.Screen component={HomeTabs} name="HomeTabs" />
+    
+    )
+    
+    
+    }
     
     </MainStack.Navigator>
   );

@@ -8,7 +8,7 @@ import PoppinsRegular from '../../Text/PoppinsRegular';
 import styles from './styles'
 
 const EmployeeCards = (props) => {
-  console.log('gettingggg props',props);
+  console.log('EmployeeCards1233',props)
   return (
     <View
       style={styles.container}
@@ -19,21 +19,63 @@ const EmployeeCards = (props) => {
         source={{uri: props.employee?.item.image}}
       />
       <View style={styles.container2}>
-        <CircularBold
-          style={styles.circularBoardStyle}
-          numberOfLines={1}>
-          {props.employee.item.name}
-        </CircularBold>
+        <View style={{flexDirection:'row'}}>
         <PoppinsRegular
           numberOfLines={2}
-          style={{color: ThemeColors.fontDarkGrey, fontSize: 2.5 * vw}}>
-          {props.employee.item.depart}
+          style={styles.heading}>
+    User Name :
         </PoppinsRegular>
 
         <PoppinsRegular
-          style={{color: ThemeColors.fontLightGrey, fontSize: 2 * vw}}>
-            {props.employee.item.designation}
+          style={styles.circularBoardStyle}
+          numberOfLines={1}>
+         {props.employee.item.name}
         </PoppinsRegular>
+        </View>
+      
+        <View style={{flexDirection:'row'}}>
+        <PoppinsRegular
+          numberOfLines={2}
+          style={styles.heading}>
+    Department :
+        </PoppinsRegular>
+
+        <PoppinsRegular
+          style={styles.circularBoardStyle}
+          numberOfLines={1}>
+         {props.employee.item.depart}
+        </PoppinsRegular>
+        </View>
+    
+
+        <View style={{flexDirection:'row'}}>
+        <PoppinsRegular
+          numberOfLines={2}
+          style={styles.heading}>
+    Designation :
+        </PoppinsRegular>
+
+        <PoppinsRegular
+          style={styles.circularBoardStyle}
+          numberOfLines={1}>
+         {props.employee.item.designation}
+        </PoppinsRegular>
+        </View>
+
+
+        <View style={{flexDirection:'row'}}>
+        <PoppinsRegular
+          numberOfLines={2}
+          style={styles.heading}>
+    User Email :
+        </PoppinsRegular>
+
+        <PoppinsRegular
+          style={styles.circularBoardStyle}
+          numberOfLines={1}>
+         {props.employee.item.email}
+        </PoppinsRegular>
+        </View>
         {/* 
         <PoppinsRegular
           style={{color: ThemeColors.fontLightGrey, fontSize: 1.3 * vh}}>

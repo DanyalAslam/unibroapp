@@ -4,43 +4,38 @@ import { vh, vw } from "../../../Utils/Units";
 const { StyleSheet } = require("react-native");
 const { default: ThemeColors } = require("../../../Utils/ThemeColors");
 
-const styles = StyleSheet.create({
-    container: {
+const styles = StyleSheet.create({ 
+    container:{ 
         width: 92 * vw,
         elevation: 10,
-flexDirection:"row",
-        // alignItems: 'center',
+   
+        alignItems: 'center',
         padding: 3 * vw,
         backgroundColor: 'white',
-        marginHorizontal: 4 * vw,
-        marginTop: 2 * vh,
+marginHorizontal:4*vw,
+marginTop:2*vh,
         marginBottom: 2 * vh,
         borderRadius: 2 * vw,
         shadowColor: '#000',
         shadowOffset: {
-            width: 5,
-            height: 3,
+          width: 5,
+          height: 3,
         },
         shadowOpacity: 0.25,
         shadowRadius: 15,
 
     },
-    imgContainer: {
-        height: 20 * vw, width: 20 * vw, borderRadius: 10 * vw,backgroundColor:'yellow'
+    imgContainer:{
+        height: 11 * vw, width: 11 * vw, borderRadius: 6 * vw
     },
-    container2: {
-        marginTop: 2 * vh, marginLeft: 3 * vw, width: 70 * vw,
+    container2:{
+        marginTop:2*vh,marginLeft: 3 * vw, width: 70 * vw,justifyContent:'center',alignItems:'center'
     },
-    circularBoardStyle: {
+    circularBoardStyle:{
         color: ThemeColors.primary,
-        fontSize: 2 * vw,
-        marginBottom: 0.5 * vh,
-    },
-    heading: {
-        color: ThemeColors.backgroundBlack,
-        fontSize: 2 * vw,
+        fontSize: 3 * vw,
         marginBottom: 0.5 * vh,
     }
-
+    
 })
 export default styles;

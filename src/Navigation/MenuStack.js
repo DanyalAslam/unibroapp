@@ -1,8 +1,7 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import MenuScreen from '../Screens/MenuScreen';
-// import ProfileScreen from '../Screens/ProfileScreen';
-// import StreamsScreen from '../Screens/StreamsScreen';
+import EmployeeEmails from '../Screens/EmployeeEmails'
 import {getNavigationOptions} from './NavigationOptions';
 // import MySubscriptionScreen from '../Screens/MySubscriptionScreen';
 // import PaymentLogScreen from '../Screens/PaymentLogScreen';
@@ -22,7 +21,7 @@ const MenuStack = () => {
   return (
     <MenuNavigator.Navigator screenOptions={getNavigationOptions}>
       <MenuNavigator.Screen component={MenuScreen} name="MenuScreen" />
-      {/* <MenuNavigator.Screen component={ProfileScreen} name="ProfileScreen" /> */}
+      <MenuNavigator.Screen component={EmployeeEmails} name="EmployeeEmails" />
       {/* <MenuNavigator.Screen component={StreamsScreen} name="StreamsScreen" /> */}
       {/* <MenuNavigator.Screen
         component={MySubscriptionScreen}
