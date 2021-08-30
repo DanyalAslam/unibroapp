@@ -613,25 +613,26 @@ const actions = {
     };
   },
 
-  //getTheNotificationsCount
-  getNotificationsCount: (completed, failed) => {
+  //getAllTheEmployees
+  getEmployeeProfiles: (completed, failed) => {
+    console.log('right action callked')
     return (dispatch) => {
-      // dispatch({type: 'START_LOAD'});
+      dispatch({ type: actionTypes.START_LOADING });
       Api.get(
-        '/user/notificationCount',
+        'epApi.php',
         (success) => {
-          console.log('getNotifications count Success :', success);
+          console.log('getEmployeeProfiles Success :', success);
 
           dispatch({
-            type: actionTypes.GET_NOTIFICATIONs_COUNT,
-            payload: success,
+            type: actionTypes.GET_EMPLOYEES,
+            payload: success.employeeD,
           });
-
+        dispatch({ type: actionTypes.CLOSE_LOADING });
           // return completed(true);
         },
         (error) => {
-          console.log('getNotifications count error :', success);
-          // dispatch({type: 'CLOSE_LOAD'});
+          console.log('getEmployeeProfiles error :', success);
+        dispatch({ type: actionTypes.CLOSE_LOADING });
           return failed(error?.message);
         },
       );

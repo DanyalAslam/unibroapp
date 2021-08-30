@@ -1,9 +1,10 @@
 import React from 'react';
 import { FlatList, View, Text } from 'react-native';
 import styles from './styles';
-// import NotificationsCard from '../../Components/Sections/NotificationsCard';
+import EmployeeCards from '../../Components/Sections/EmployeeCards';
 import { connect } from 'react-redux';
 import actions from './../../redux/actions/index';
+import { vh } from '../../Utils/Units';
 // import PoppinsRegular from '../../Components/Text/PoppinsRegular';
 
 // import ThemeColors from '../../Utils/ThemeColors';
@@ -21,22 +22,15 @@ class EmployeeProfile extends React.Component {
   }
 
   componentDidMount() {
-    this.props.navigation.addListener('focus', this._getNotiData);
+    this.props.navigation.addListener('focus', this._getEmployeeProfiles);
   }
 
   componentWillUnmount() {
     this.props.navigation.removeListener('focus');
   }
 
-  _getNotiData = () => {
-
-    this.props.ReadNotification((success) => console.log(success), (error) => console.log(error))
-
-
-    this.setState({
-      refreshing: true,
-    });
-    this.props.getNotifications(
+  _getEmployeeProfiles = () => {
+    this.props.getEmployeeProfiles(
       (success) => {
         if (success) {
           this.setState({
@@ -52,34 +46,44 @@ class EmployeeProfile extends React.Component {
     );
   };
 
-  renderNotifications = (item) => {
-    return <NotificationsCard
+  _renderEmployeeProfile = (item) => {
+    return <EmployeeCards
 
-      onSuccess={() =>
-        this.props.navigation.navigate('WatchStreanScreen', { item })
-      }
-      notification={item} />;
+
+
+      // onSuccess={() =>
+      //   this.props.navigation.navigate('WatchStreanScreen', { item })
+      // }
+      employee={item} 
+      
+      />;
   };
   render() {
 
     return (
       <View style={styles.container}>
-   <Text>Hello from Employee Screen</Text>
+  <FlatList 
+  showsVerticalScrollIndicator={false}
+  data={this.props.all_employees_profile}
+  renderItem={this._renderEmployeeProfile}
+  contentContainerStyle={{paddingBottom:10*vh}}
+  />
       </View>
     );
   }
 }
 
 const mapStateToProps = (state) => {
+  console.log('Employee state',state)
   return {
-    userNotifications: state.GeneralReducer.userNotifications,
+    all_employees_profile: state.GeneralReducer.all_employees_profile,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getNotifications: (success, error) =>
-      dispatch(actions.getNotifications(success, error)),
+    getEmployeeProfiles: (success, error) =>
+      dispatch(actions.getEmployeeProfiles(success, error)),
 
     ReadNotification: (success, error) =>
       dispatch(actions.ReadNotification(success, error)),

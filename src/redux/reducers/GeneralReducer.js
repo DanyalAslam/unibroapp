@@ -4,22 +4,24 @@ const INITIAL_STATE = {
   userInfo: null, 
   loading: false, //done
   access_token: null, //done
-
-
   session_id:null,
 
   monthly_card_data :[], //done
   table_card_data :[], //done
   made_up_graph_data :[], //done
   gray_fabrics_graph_data :[], //done
+  all_employees_profile: [],//done
 
+
+
+  
   AboutUS: {}, 
   mySubscription: [], 
   searchedProperties: [], 
   userNotifications: [],
   userStreamsData: [],
   user_id: null,
-  notification_count: [],
+
   paymentLogs: [],
   searchModal: false,
   wishList: [],
@@ -35,10 +37,10 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
       };
     }
 
-    case actionTypes.GET_NOTIFICATIONs_COUNT: {
+    case actionTypes.GET_EMPLOYEES: {
       return {
         ...state,
-        notification_count: action.payload
+        all_employees_profile: action.payload
       };
     }
 
