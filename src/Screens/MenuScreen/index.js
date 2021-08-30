@@ -31,7 +31,7 @@ class MenuScreen extends React.Component {
         <MenuButton
           title="Stock In Hand"
           icon={settingIcons.subscription}
-          // onPress={() => this.props.navigation.navigate('MySubscriptionScreen')}
+          onPress={() => this.props.navigation.navigate('StockInHand')}
         />
         <MenuButton
           title="Gray Fibre"

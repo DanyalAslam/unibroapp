@@ -12,6 +12,7 @@ const INITIAL_STATE = {
   gray_fabrics_graph_data :[], //done
   all_employees_profile: [],//done
   all_employees_emails: [],//done
+  stock_in_hand: [],//done
 
 
 
@@ -179,10 +180,10 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
       };
     }
 
-    case actionTypes.USER_STREAM: {
+    case actionTypes.STOCK_IN_HAND: {
       return {
         ...state,
-        userStreamsData: action.payload,
+        stock_in_hand: action.payload,
       };
     }
 

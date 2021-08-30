@@ -668,22 +668,23 @@ const actions = {
 
 
 
-  ReadNotification: (completed, failed) => {
-    const cardDetails = { notification_id: null };
+  getStockInHands: (completed, failed) => {
+
     return (dispatch) => {
-      Api.post(
-        '/user/markAsRead',
-        cardDetails,
+      Api.get(
+        'stockApi.php',
         (success) => {
+          console.log('Stock Api successs',success )
           dispatch({
-            type: actionTypes.GET_NOTIFICATIONs_COUNT,
-            payload: 0,
+            type: actionTypes.STOCK_IN_HAND,
+            payload: success.stockD,
           });
 
-          return completed(true);
+          // return completed(true);
         },
         (error) => {
-          return failed(error?.message);
+          console.log('Stock Api error',error )
+          // return failed(error?.message);
         },
       );
     };
