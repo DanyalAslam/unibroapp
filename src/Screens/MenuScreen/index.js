@@ -3,7 +3,9 @@ import {View} from 'react-native';
 import styles from './styles';
 import {settingIcons} from '../../assets/images';
 import MenuButton from '../../Components/Buttons/MenuButton';
-// import Logout from '../../Components/Popups/LogoutPopup';
+
+import { connect } from 'react-redux';
+import actions from './../../redux/actions/index';
 class MenuScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -11,13 +13,27 @@ class MenuScreen extends React.Component {
       password: '',
     };
   }
+
+
+  _onLogout = () =>{
+    this.props.logOut((success) => {
+      showToast(success)
+      this.close()
+      this.props.onSuccess()
+
+  }, (error) => { 
+
+      showToast(error)
+      this.close()
+  })
+
+  } 
+
+
   render() {
     return (
       <View style={styles.container}>
-        {/* <Logout
-          ref={(ref) => (this.logout = ref)}
-          onSuccess={() => this.props.navigation.navigate('LoginScreen')}
-        /> */}
+      
         <MenuButton
           onPress={() => this.props.navigation.navigate('EmployeeEmails')}
           title="Employee Email"
@@ -55,7 +71,7 @@ class MenuScreen extends React.Component {
           icon={settingIcons.about}
         />
         <MenuButton
-          // onPress={() => this.logout.show()}
+          onPress={() => this._onLogout()}
           title="Logout"
           icon={settingIcons.logout}
         />
@@ -63,4 +79,24 @@ class MenuScreen extends React.Component {
     );
   }
 }
-export default MenuScreen;
+
+const mapStateToProps = state => {
+
+  console.log('State Home:', state);
+  return {
+      data: state.GeneralReducer.homeData,
+
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+      logOut: (success, error) =>
+          dispatch(actions.logOut(success, error)),
+
+  };
+};
+
+
+export default connect(mapStateToProps,
+  mapDispatchToProps)(MenuScreen)

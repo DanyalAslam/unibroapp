@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList, View, Text } from 'react-native';
 import styles from './styles';
-import EmployeeCards from '../../Components/Sections/EmployeeCards';
+import StockCards from '../../Components/Sections/StockCards';
 import { connect } from 'react-redux';
 import actions from './../../redux/actions/index';
 import { vh } from '../../Utils/Units';
@@ -47,14 +47,14 @@ class StockInHand extends React.Component {
   };
 
   _renderStockInHand = (item) => {
-    return <EmployeeCards
+    return <StockCards
 
 
 
       // onSuccess={() =>
       //   this.props.navigation.navigate('WatchStreanScreen', { item })
       // }
-      employee={item} 
+      stock={item} 
       
       />;
   };
@@ -64,7 +64,7 @@ class StockInHand extends React.Component {
       <View style={styles.container}>
   <FlatList 
   showsVerticalScrollIndicator={false}
-  data={this.props.all_employees_profile}
+  data={this.props.stock_in_hand}
   renderItem={this._renderStockInHand}
   contentContainerStyle={{paddingBottom:10*vh}}
   />
