@@ -337,12 +337,12 @@ const actions = {
   },
 
 
-
+//for year graph : yearGraph new hit
   getMonthYearGraphData: (success, error) => {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
       Api.get(
-        'myGraphApi.php',
+        'mnthGraphApi.php',
         (apiSuccess) => {
           console.log('Get Dashboard success:123231', apiSuccess);
 
@@ -367,13 +367,13 @@ const actions = {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
       Api.get(
-        'tableChart.php',
+        'qwTableChart.php',
         (apiSuccess) => {
           console.log('Get getTableGraphData success', apiSuccess);
 
           dispatch({
             type: actionTypes.TABLE_GRAPH_DATA,
-            payload: apiSuccess.tableGraph,
+            payload: apiSuccess.qwtableChart,
           });
           dispatch({ type: actionTypes.CLOSE_LOADING });
           // return success(true);

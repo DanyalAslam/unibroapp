@@ -185,7 +185,7 @@ class AboutUsScreen extends React.Component {
       return (
         <View style={{ flex: 1, alignSelf: 'stretch', flexDirection: 'row', borderBottomColor: 'black', borderBottomWidth: 0.3, height: 50, backgroundColor: '#fff', marginHorizontal: 5 }}>
           <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingLeft: 7 }} >
-            <PoppinsRegular style={{ fontSize: 2 * vw }}>{data[0]}</PoppinsRegular>
+           {data[0] ==="Total"  ?<PoppinsRegular style={{ fontSize: 3 * vw,color:'#012c65', fontWeight: 'bold' }}>{data[0]}</PoppinsRegular> : <PoppinsRegular style={{ fontSize: 2 * vw }}>{data[0]}</PoppinsRegular> } 
           </View>
           <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
             <PoppinsRegular style={{ fontSize: 2 * vw }}>{data[1]}</PoppinsRegular>
