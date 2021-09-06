@@ -188,10 +188,13 @@ class AboutUsScreen extends React.Component {
            {data[0] ==="Total"  ?<PoppinsRegular style={{ fontSize: 3 * vw,color:'#012c65', fontWeight: 'bold' }}>{data[0]}</PoppinsRegular> : <PoppinsRegular style={{ fontSize: 2 * vw }}>{data[0]}</PoppinsRegular> } 
           </View>
           <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
-            <PoppinsRegular style={{ fontSize: 2 * vw }}>{data[1]}</PoppinsRegular>
+          {data[0] ==="Total"  ?<PoppinsRegular style={{ fontSize: 2.5 * vw,color:'black', fontWeight: 'bold' }}>{data[1]}</PoppinsRegular> : <PoppinsRegular style={{ fontSize: 2 * vw }}>{data[1]}</PoppinsRegular> } 
+            {/* <PoppinsRegular style={{ fontSize: 2 * vw }}>{data[1]}</PoppinsRegular> */}
           </View>
           <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
-            <PoppinsRegular style={{ fontSize: 2 * vw }}>{data[2]}</PoppinsRegular>
+           
+          {data[0] ==="Total"  ?<PoppinsRegular style={{ fontSize: 2.5 * vw,color:'black', fontWeight: 'bold' }}>{data[2]}</PoppinsRegular> : <PoppinsRegular style={{ fontSize: 2 * vw }}>{data[2]}</PoppinsRegular> } 
+            {/* <PoppinsRegular style={{ fontSize: 2 * vw }}>{data[2]}</PoppinsRegular> */}
           </View>
 
 
@@ -243,6 +246,7 @@ class AboutUsScreen extends React.Component {
         })
 
         }
+
       </View></>)
   }
 
