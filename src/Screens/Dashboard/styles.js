@@ -31,7 +31,19 @@ elevation: 10,
 
     },
     secondContainer :{
-        backgroundColor: 'white', paddingBottom: 5 * vh, width: 92 * vw, elevation: 3 * vw, marginVertical: 3 * vh
+        backgroundColor: 'white', 
+        paddingBottom: 5 * vh, width: 92 * vw, 
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 5,
+        },
+        shadowOpacity: 0.34,
+        shadowRadius: 6.27,
+        
+        elevation: 10,
+        
+        marginVertical: 3 * vh
 
     },
     title:{ 
