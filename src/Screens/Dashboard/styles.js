@@ -13,7 +13,21 @@ const styles = StyleSheet.create({
         // paddingBottom:20*vh
     },
     firstContainer :{
-        backgroundColor: 'white', width: 92 * vw, elevation: 3 * vw, marginVertical: 3 * vh
+        backgroundColor: 'white', 
+        width: 92 * vw, 
+        
+        shadowColor: "#000",
+shadowOffset: {
+	width: 0,
+	height: 2,
+},
+shadowOpacity: 0.25,
+shadowRadius: 3.84,
+
+elevation: 5,
+        
+        
+        marginVertical: 3 * vh
 
     },
     secondContainer :{
