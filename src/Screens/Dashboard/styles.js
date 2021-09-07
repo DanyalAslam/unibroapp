@@ -19,12 +19,12 @@ const styles = StyleSheet.create({
         shadowColor: "#000",
 shadowOffset: {
 	width: 0,
-	height: 2,
+	height: 5,
 },
-shadowOpacity: 0.25,
-shadowRadius: 3.84,
+shadowOpacity: 0.34,
+shadowRadius: 6.27,
 
-elevation: 5,
+elevation: 10,
         
         
         marginVertical: 3 * vh
