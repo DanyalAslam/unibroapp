@@ -121,7 +121,7 @@ class LoginScreen extends React.Component {
           <MainInput
             placeholder="Enter User Name"
             style={styles.field}
-            keyboardType="user_name-address"
+            // keyboardType="user_name-address"
             value={this.state.user_name}
             onChangeText={(user_name) => this.setState({ user_name })}
           />

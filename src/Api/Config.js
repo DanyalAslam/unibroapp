@@ -1,3 +1,4 @@
+import {Platform } from 'react-native';
 
 
 const config = {
@@ -5,7 +6,7 @@ const config = {
     // url: 'http://dev74.onlinetestingserver.com/estreams/api'
 
     // url:'http://103.25.138.171:4080/UBI-APP/',
-    url :'https://unibro.com.pk/UBI-APP/'
+    url :'http://unibro.com.pk/UBI-APP/'
 }
 
 export default config

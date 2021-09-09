@@ -50,7 +50,7 @@ const Api = {
         "x-rapidapi-host": "quotes15.p.rapidapi.com",
         // "x-rapidapi-key": process.env.REACT_APP_API_KEY
       }, 
-      
+      data: undefined,
 
         "params" :credentials
     

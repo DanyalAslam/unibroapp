@@ -36,11 +36,11 @@ const MainStackNavigator = (props) => {
       // }}
     >
 
-      {!props.props.GeneralReducer.access_token == null && (  <MainStack.Screen component={AuthNavigator} name="AuthNavigator" />)}
+      {props.props.GeneralReducer.access_token == null && (  <MainStack.Screen component={AuthNavigator} name="AuthNavigator" />)}
       {/* <MainStack.Screen component={PaymentDetail} name="PaymentDetail" /> */}
       {/* <MainStack.Screen component={AuthNavigator} name="AuthNavigator" /> */}
       
-    {!props.props.GeneralReducer.access_token && (  <MainStack.Screen component={HomeTabs} name="HomeTabs" />
+    {props.props.GeneralReducer.access_token && (  <MainStack.Screen component={HomeTabs} name="HomeTabs" />
     
     )
     
