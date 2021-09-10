@@ -70,6 +70,7 @@ const actions = {
 
           dispatch({ type: actionTypes.LOG_OUT });
           dispatch({ type: actionTypes.CLOSE_LOADING });
+          return success(true)
     };
   },
 

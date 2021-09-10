@@ -6,6 +6,7 @@ import MenuButton from '../../Components/Buttons/MenuButton';
 
 import { connect } from 'react-redux';
 import actions from './../../redux/actions/index';
+import { showToast } from './../../Utils/index';
 class MenuScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -17,9 +18,8 @@ class MenuScreen extends React.Component {
 
   _onLogout = () =>{
     this.props.logOut((success) => {
-      showToast(success)
-      this.close()
-      this.props.onSuccess()
+      showToast("User Logout Successfully")
+    
 
   }, (error) => { 
 
