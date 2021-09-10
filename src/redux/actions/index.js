@@ -68,25 +68,8 @@ const actions = {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
 
-      Api.post(
-        '/admin/logout',
-        (apiSuccess) => {
-          console.log('logout success :', apiSuccess);
           dispatch({ type: actionTypes.LOG_OUT });
           dispatch({ type: actionTypes.CLOSE_LOADING });
-
-          return success(apiSuccess.message);
-        },
-        (Apierror) => {
-          console.log('logout error :', Apierror);
-          dispatch({ type: actionTypes.LOG_OUT });
-          dispatch({ type: actionTypes.CLOSE_LOADING });
-
-          return error(Apierror.message);
-
-          // return showToast(error);
-        },
-      );
     };
   },
 
@@ -441,9 +424,6 @@ const actions = {
   },
 
 
-
-
-
   //About Us Data
   getAboutUsData: (completed, failed) => {
     return (dispatch) => {
@@ -671,64 +651,27 @@ const actions = {
   getStockInHands: (completed, failed) => {
 
     return (dispatch) => {
+      dispatch({ type: actionTypes.START_LOADING });
       Api.get(
         'stockApi.php',
         (success) => {
-          console.log('Stock Api successs',success )
+         
           dispatch({
             type: actionTypes.STOCK_IN_HAND,
             payload: success.stockD,
           });
 
-          // return completed(true);
+          dispatch({ type: actionTypes.CLOSE_LOADING });
         },
         (error) => {
-          console.log('Stock Api error',error )
-          // return failed(error?.message);
+          
+          dispatch({ type: actionTypes.CLOSE_LOADING });
         },
       );
     };
   },
 
-  getUserStreams: (success, error) => {
-    return (dispatch) => {
-      Api.get(
-        `/user/userstreams`,
-        (apiSuccess) => {
-          console.log('getUserStreams success :', apiSuccess);
-          dispatch({
-            type: actionTypes.USER_STREAM,
-            payload: apiSuccess.data,
-          });
-          return success(apiSuccess.message);
-        },
-        (apiError) => {
-          console.log('getUserStreams error :', apiError);
-          return error(apiError);
-        },
-      );
-    };
-  },
 
-  getSingleStreams: (id, success, error) => {
-    return (dispatch) => {
-      Api.get(
-        `/user/stream/${id}`,
-        (apiSuccess) => {
-          console.log('SingleStream success :', apiSuccess);
-          // dispatch({
-          //   type: actionTypes.USER_STREAM,
-          //   payload: apiSuccess.data.data,
-          // });
-          return success(apiSuccess);
-        },
-        (apiError) => {
-          console.log('SingleStream error :', apiError);
-          return error(apiError);
-        },
-      );
-    };
-  },
 
   //search products
   search: (keyword, success, error) => {

@@ -90,6 +90,18 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
     case actionTypes.LOG_OUT: {
       return {
         ...INITIAL_STATE,
+
+        access_token: null, //done
+        session_id:null,
+      
+        monthly_card_data :[], //done
+        table_card_data :[], //done
+        made_up_graph_data :[], //done
+        gray_fabrics_graph_data :[], //done
+        all_employees_profile: [],//done
+        all_employees_emails: [],//done
+        stock_in_hand: [],//done
+      
       };
 
       // return {

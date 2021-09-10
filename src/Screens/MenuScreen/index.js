@@ -50,7 +50,7 @@ class MenuScreen extends React.Component {
           onPress={() => this.props.navigation.navigate('StockInHand')}
         />
         <MenuButton
-          title="Gray Fibre"
+          title="Grey"
           // onPress={() => this.props.navigation.navigate('PaymentLogScreen')}
           icon={settingIcons.payment}
         />
