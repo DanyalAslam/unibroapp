@@ -326,13 +326,13 @@ const actions = {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
       Api.get(
-        'mnthGraphApi.php',
+        'yearGraphApi.php',
         (apiSuccess) => {
           console.log('Get Dashboard success:123231', apiSuccess);
 
           dispatch({
             type: actionTypes.MONTHLY_GRAPH_DATA,
-            payload: apiSuccess.mWiseShipment,
+            payload: apiSuccess.YWiseShipment,
           });
           dispatch({ type: actionTypes.CLOSE_LOADING });
           // return success(true);

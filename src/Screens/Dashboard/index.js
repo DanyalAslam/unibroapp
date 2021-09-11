@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 import actions from './../../redux/actions/index';
 import { LineChart, PieChart } from 'react-native-chart-kit'
 import { vh, vw } from '../../Utils/Units';
-
-// import PoppinsSemiBold from '../../Components/Text/PoppinsSemiBold';
-// import PoppinsLight from '../../Components/Text/PoppinsLight';
 import PoppinsRegular from '../../Components/Text/PoppinsRegular'
 import PoppinsBold from '../../Components/Text/PoppinsBold'
+import YearGraphDataPopup from '../../Components/Popups/YearGraphDataPopup'
 
 const chartConfig = {
+  propsForVerticalLabels:{fontSize:2*vw},
+  propsForHorizontalLabels:{fontSize:2*vw},
   backgroundGradientFrom: "#fff",
   backgroundGradientFromOpacity: 0,
   backgroundGradientTo: "#fff",
@@ -19,51 +19,12 @@ const chartConfig = {
   decimalPlaces: 2,
   color: (opacity = 1) => `rgba(0, 128, 0, ${opacity})`,
   labelColor: (opacity = 0) => `rgba(0, 0, 0, ${opacity})`,
-  style: {
-    borderRadius: 16,
-  },
   propsForBackgroundLines: {
-    strokeWidth: 0
+    strokeWidth: 0.6,
+    
   }
 };
 
-const data = [
-  {
-    name: "Seoul",
-    population: 21500000,
-    color: "rgba(131, 167, 234, 1)",
-    legendFontColor: "#7F7F7F",
-    legendFontSize: 15
-  },
-  {
-    name: "Toronto",
-    population: 2800000,
-    color: "#F00",
-    legendFontColor: "#7F7F7F",
-    legendFontSize: 15
-  },
-  {
-    name: "Beijing",
-    population: 527612,
-    color: "red",
-    legendFontColor: "#7F7F7F",
-    legendFontSize: 15
-  },
-  {
-    name: "New York",
-    population: 8538000,
-    color: "#ffffff",
-    legendFontColor: "#7F7F7F",
-    legendFontSize: 15
-  },
-  {
-    name: "Moscow",
-    population: 11920000,
-    color: "rgb(0, 0, 255)",
-    legendFontColor: "#7F7F7F",
-    legendFontSize: 15
-  }
-];
 
 
 const chartConfigMadeUp = {
@@ -157,8 +118,6 @@ class AboutUsScreen extends React.Component {
     this.props.navigation.addListener('focus', this._getHomeData);
   }
 
-
-
   renderRow = (data, index) => {
     console.log('getttting dataaa', data)
     console.log('index', index)
@@ -210,27 +169,46 @@ class AboutUsScreen extends React.Component {
     return (<><PoppinsBold style={{ fontSize: 5 * vw }}>Month Year Wise Shipment</PoppinsBold>
       <View style={styles.firstContainer}>
         {this.props.monthly_card_data.length === 0 ? null : <LineChart
-          onDataPointClick={(value, dataset, getColor) => {
-            if (Platform.OS === 'android') {
-              ToastAndroid.showWithGravity(
-                value.value,
-                ToastAndroid.LONG,
-                ToastAndroid.TOP,
-              );
-            } else {
-              AlertIOS.alert(msg);
-            }
-          }
-          }
+          // onDataPointClick={(value, dataset, getColor) => {
+          //   console.log('checkkk',value)
+          //   if (Platform.OS === 'android') {
+          //     ToastAndroid.showWithGravity(
+          //        value.value,
+          //       ToastAndroid.LONG,
+          //       ToastAndroid.TOP,
+          //     );
+          //   } else {
+          //     AlertIOS.alert(msg);
+          //   }
+          // }
+          // }
+
+
+          onDataPointClick={() =>{
+            this.dataShow.show()
+          }}
+
+//           renderDotContent={(x, y, index, indexData) =>{
+// console.log('checkdata',x,y,index,indexData)
+//           }}
+          
+          // yAxisLabel="asdas"
+          // yAxisSuffix="hello"
+          // fromZero={true}
+          // yAxisInterval={1}
+
+          bezier
           data={this?.props?.monthly_card_data}
           width={90 * vw}
           height={40 * vh}
           chartConfig={chartConfig}
-          withVerticalLabels={false}
+     
+       
           style={{
             marginVertical: 8,
             borderRadius: 16,
-            marginHorizontal: 4,
+            // marginHorizontal: 4,
+            width:20*vw
           }}
 
         />}
@@ -292,6 +270,11 @@ class AboutUsScreen extends React.Component {
         contentContainerStyle={{ alignItems: 'center', paddingBottom: 10 * vh }}
         style={styles.container}
       >
+        <YearGraphDataPopup 
+        ref={(r) =>(this.dataShow = r)} //reference daal rha hai
+
+        />
+
         {this._renderFirstGraph()}
         {this._renderSecondGraph()}
         {this._renderThirdGraph()}
