@@ -124,6 +124,8 @@ export const showHeaderLeft = (activeRouteName, navigation, onBackPress) => {
 };
 export const defaultOptions = (activeRouteName, navigation) => {
   return {
+
+    
     ...TransitionPresets.SlideFromRightIOS,
     headerRight: () => showHeaderRight(activeRouteName, navigation),
     headerLeft: () => showHeaderLeft(activeRouteName, navigation),
@@ -133,5 +135,6 @@ export const defaultOptions = (activeRouteName, navigation) => {
     headerRightContainerStyle: styles.defaultHeaderRightContainerStyle,
     headerLeftContainerStyle: styles.defaultHeaderLeftContainerStyle,
     headerStyle: styles.deafultHeaderStyle,
+    
   };
 };

@@ -3,7 +3,7 @@ import { View, Text, ToastAndroid, Platform, ScrollView } from 'react-native';
 import styles from './styles';
 import { connect } from 'react-redux';
 import actions from './../../redux/actions/index';
-import { LineChart, PieChart } from 'react-native-chart-kit'
+import { LineChart, PieChart,BarChart } from 'react-native-chart-kit'
 import { vh, vw } from '../../Utils/Units';
 import PoppinsRegular from '../../Components/Text/PoppinsRegular'
 import PoppinsBold from '../../Components/Text/PoppinsBold'
@@ -45,8 +45,24 @@ class AboutUsScreen extends React.Component {
     };
   }
 
+
   _getMonthYearGraphData = () => {
     this.props.getMonthYearGraphData(
+      (success) => {
+        if (success) {
+          this.setState({
+            sessions: this.props.streamData,
+          });
+        }
+      },
+      (error) => {
+        showToast(error);
+      },
+    );
+  }
+
+  _getShipmentBuyerWise = () => {
+    this.props.getShipmentBuyerWise(
       (success) => {
         if (success) {
           this.setState({
@@ -109,6 +125,7 @@ class AboutUsScreen extends React.Component {
 
   _getHomeData = () => {
     this._getMonthYearGraphData(),
+    this._getShipmentBuyerWise()
       this._getTableGraphData(),
       this._getMadeUpChart(),
       this._getGrayFabrics()
@@ -235,6 +252,44 @@ class AboutUsScreen extends React.Component {
   }
 
 
+  _renderShipmentWiseGraph = () => {
+    return (<><PoppinsBold style={{ fontSize: 5 * vw }}>Month Year Wise Shipment</PoppinsBold>
+      <ScrollView 
+      
+      contentContainerStyle={{flex: 1}}
+      showsHorizontalScrollIndicator={true}
+      horizontal={true}
+      
+      >
+        {this.props?.shipment_buyer_wise?.length === 0 ? null : <BarChart
+       
+        
+          data={this?.props?.shipment_buyer_wise}
+          width={100 * vw}
+          height={40 * vh}
+          chartConfig={{
+            barPercentage: .2,
+            propsForVerticalLabels: { fontSize: 2 * vw },
+            propsForHorizontalLabels: { fontSize: 2 * vw },
+            backgroundGradientFrom: "#fff",
+            backgroundGradientFromOpacity: 0,
+            backgroundGradientTo: "#fff",
+            backgroundGradientToOpacity: 0.5,
+            decimalPlaces: 2,
+            color: (opacity = 1) => `rgba(0, 128, 0, ${opacity})`,
+            labelColor: (opacity = 0) => `rgba(0, 0, 0, ${opacity})`,
+            propsForBackgroundLines: {
+              strokeWidth: 0.6,
+          
+            }
+          }}
+      
+
+        />}
+      </ScrollView></>)
+  }
+
+
   render() {
     return (
       <ScrollView
@@ -246,6 +301,7 @@ class AboutUsScreen extends React.Component {
           ref={(r) => (this.dataShow = r)} //reference daal rha hai
         />
         {this._renderFirstGraph()}
+        {this._renderShipmentWiseGraph()}
         {this._renderSecondGraph()}
         {this._renderThirdGraph()}
         {this._renderFourthGraph()}
@@ -261,6 +317,7 @@ const mapStateToProps = (state) => {
 
   return {
     monthly_card_data: state.GeneralReducer.monthly_card_data,
+    shipment_buyer_wise: state.GeneralReducer.shipment_buyer_wise,
     table_card_data: state.GeneralReducer.table_card_data,
     made_up_graph_data: state.GeneralReducer.made_up_graph_data,
     gray_fabrics_graph_data: state.GeneralReducer.gray_fabrics_graph_data,
@@ -282,6 +339,9 @@ const mapDispatchToProps = (dispatch) => {
 
     getGrayFabrics: (success, error) =>
       dispatch(actions.getGrayFabrics(success, error)),
+
+      getShipmentBuyerWise: (success, error) =>
+      dispatch(actions.getShipmentBuyerWise(success, error)),
 
   };
 };

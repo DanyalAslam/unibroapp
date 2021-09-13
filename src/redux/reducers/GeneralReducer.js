@@ -7,6 +7,8 @@ const INITIAL_STATE = {
   session_id:null,
 
   monthly_card_data :[], //done
+  shipment_buyer_wise:[],//done
+  shipment_buyer_wise :[], //done
   table_card_data :[], //done
   made_up_graph_data :[], //done
   gray_fabrics_graph_data :[], //done
@@ -132,6 +134,15 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
         ...state,
         // StreamData: action.payload,
         monthly_card_data :action.payload
+      };
+    }
+    case actionTypes.SHIPMENT_BUYER_WISE: {
+
+      console.log('action.payload',action.payload)
+      return {
+        ...state,
+        // StreamData: action.payload,
+        shipment_buyer_wise :action.payload
       };
     }
 
