@@ -184,13 +184,12 @@ class AboutUsScreen extends React.Component {
           // }
 
 
-          onDataPointClick={() =>{
-            this.dataShow.show()
+          onDataPointClick={(value,dataset,getColor) =>{
+            console.log('dataset::::',value)
+            this.dataShow.show(value)
           }}
 
-//           renderDotContent={(x, y, index, indexData) =>{
-// console.log('checkdata',x,y,index,indexData)
-//           }}
+
           
           // yAxisLabel="asdas"
           // yAxisSuffix="hello"

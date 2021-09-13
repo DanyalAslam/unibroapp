@@ -1,7 +1,9 @@
 import { BlurView } from '@react-native-community/blur';
 import React from 'react'
 import {Image,View,Text, Modal,TouchableOpacity} from 'react-native'
-
+import PoppinsBold from '../../Text/PoppinsBold';
+import PoppinsRegular from '../../Text/PoppinsRegular';
+import { connect } from 'react-redux';
 import styles from './styles'
 
 class YearGraphDataPopup extends React.Component {
@@ -9,11 +11,22 @@ class YearGraphDataPopup extends React.Component {
     {
         super(props);
         this.state ={
-            visible : false
+            visible : false,
+            value :null,
+            year:null
         }
     }
-    show = () =>{
-        this.setState({visible:true})
+    show = (data) =>{
+        
+       if(data)
+       {
+       
+        this.setState({...this.state,
+            visible:true,
+            value:data.value,
+            year:this.props?.monthly_card_data?.labels[data.index]
+        })
+       }
     }
     close = () => {
       
@@ -22,7 +35,18 @@ class YearGraphDataPopup extends React.Component {
     renderContent = () =>{
         return(
             <View style={styles.contentContainer}>
-               <View style={styles.content}></View>
+               <View style={styles.content}>
+                   <View style={{flexDirection:'row'}}>
+                   <PoppinsRegular>year : </PoppinsRegular>
+                   <PoppinsBold>{this.state.year}</PoppinsBold>
+                   </View>
+                   <View style={{flexDirection:'row'}}>
+                   <PoppinsRegular>fcy : </PoppinsRegular>
+                   <PoppinsBold>{this.state.value}</PoppinsBold>
+                   </View>
+                
+                   
+               </View>
             </View>
         )
     }
@@ -57,5 +81,31 @@ style={styles.blur}
         )
     }
 }
+const mapStateToProps = (state) => {
 
-export default YearGraphDataPopup
+    return {
+      monthly_card_data: state.GeneralReducer.monthly_card_data,
+    
+  
+    };
+  };
+  
+  
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      getMonthYearGraphData: (success, error) =>
+        dispatch(actions.getMonthYearGraphData(success, error)),
+  
+      getTableGraphData: (success, error) =>
+        dispatch(actions.getTableGraphData(success, error)),
+  
+      getMadeUpChart: (success, error) =>
+        dispatch(actions.getMadeUpChart(success, error)),
+  
+      getGrayFabrics: (success, error) =>
+        dispatch(actions.getGrayFabrics(success, error)),
+  
+    };
+  };
+
+export default connect(mapStateToProps, mapDispatchToProps,null,{  forwardRef: true,})(YearGraphDataPopup);

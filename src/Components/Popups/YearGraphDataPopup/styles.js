@@ -21,11 +21,14 @@ contentContainer : {
 
 },
 content:{
-    height:15*vh,
-    width:70*vw,
+    height:10*vh,
+    width:50*vw,
     backgroundColor:'white',
-    borderRadius:5*vw,
-    elevation:10
+    borderRadius:2*vw,
+    elevation:10,
+
+    justifyContent:"center",
+    alignItems:"center"
 
 },
 blur:{
