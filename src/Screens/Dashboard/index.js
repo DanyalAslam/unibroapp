@@ -10,8 +10,8 @@ import PoppinsBold from '../../Components/Text/PoppinsBold'
 import YearGraphDataPopup from '../../Components/Popups/YearGraphDataPopup'
 
 const chartConfig = {
-  propsForVerticalLabels:{fontSize:2*vw},
-  propsForHorizontalLabels:{fontSize:2*vw},
+  propsForVerticalLabels: { fontSize: 2 * vw },
+  propsForHorizontalLabels: { fontSize: 2 * vw },
   backgroundGradientFrom: "#fff",
   backgroundGradientFromOpacity: 0,
   backgroundGradientTo: "#fff",
@@ -21,7 +21,7 @@ const chartConfig = {
   labelColor: (opacity = 0) => `rgba(0, 0, 0, ${opacity})`,
   propsForBackgroundLines: {
     strokeWidth: 0.6,
-    
+
   }
 };
 
@@ -144,15 +144,15 @@ class AboutUsScreen extends React.Component {
       return (
         <View style={{ flex: 1, alignSelf: 'stretch', flexDirection: 'row', borderBottomColor: 'black', borderBottomWidth: 0.3, height: 50, backgroundColor: '#fff', marginHorizontal: 5 }}>
           <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingLeft: 7 }} >
-           {data[0] ==="Total"  ?<PoppinsRegular style={{ fontSize: 3 * vw,color:'#012c65', fontWeight: 'bold' }}>{data[0]}</PoppinsRegular> : <PoppinsRegular style={{ fontSize: 2 * vw }}>{data[0]}</PoppinsRegular> } 
+            {data[0] === "Total" ? <PoppinsRegular style={{ fontSize: 3 * vw, color: '#012c65', fontWeight: 'bold' }}>{data[0]}</PoppinsRegular> : <PoppinsRegular style={{ fontSize: 2 * vw }}>{data[0]}</PoppinsRegular>}
           </View>
           <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
-          {data[0] ==="Total"  ?<PoppinsRegular style={{ fontSize: 2.5 * vw,color:'black', fontWeight: 'bold' }}>{data[1]}</PoppinsRegular> : <PoppinsRegular style={{ fontSize: 2 * vw }}>{data[1]}</PoppinsRegular> } 
+            {data[0] === "Total" ? <PoppinsRegular style={{ fontSize: 2.5 * vw, color: 'black', fontWeight: 'bold' }}>{data[1]}</PoppinsRegular> : <PoppinsRegular style={{ fontSize: 2 * vw }}>{data[1]}</PoppinsRegular>}
             {/* <PoppinsRegular style={{ fontSize: 2 * vw }}>{data[1]}</PoppinsRegular> */}
           </View>
           <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
-           
-          {data[0] ==="Total"  ?<PoppinsRegular style={{ fontSize: 2.5 * vw,color:'black', fontWeight: 'bold' }}>{data[2]}</PoppinsRegular> : <PoppinsRegular style={{ fontSize: 2 * vw }}>{data[2]}</PoppinsRegular> } 
+
+            {data[0] === "Total" ? <PoppinsRegular style={{ fontSize: 2.5 * vw, color: 'black', fontWeight: 'bold' }}>{data[2]}</PoppinsRegular> : <PoppinsRegular style={{ fontSize: 2 * vw }}>{data[2]}</PoppinsRegular>}
             {/* <PoppinsRegular style={{ fontSize: 2 * vw }}>{data[2]}</PoppinsRegular> */}
           </View>
 
@@ -169,45 +169,18 @@ class AboutUsScreen extends React.Component {
     return (<><PoppinsBold style={{ fontSize: 5 * vw }}>Month Year Wise Shipment</PoppinsBold>
       <View style={styles.firstContainer}>
         {this.props.monthly_card_data.length === 0 ? null : <LineChart
-          // onDataPointClick={(value, dataset, getColor) => {
-          //   console.log('checkkk',value)
-          //   if (Platform.OS === 'android') {
-          //     ToastAndroid.showWithGravity(
-          //        value.value,
-          //       ToastAndroid.LONG,
-          //       ToastAndroid.TOP,
-          //     );
-          //   } else {
-          //     AlertIOS.alert(msg);
-          //   }
-          // }
-          // }
-
-
-          onDataPointClick={(value,dataset,getColor) =>{
-            console.log('dataset::::',value)
+          onDataPointClick={(value, dataset, getColor) => {
             this.dataShow.show(value)
           }}
-
-
-          
-          // yAxisLabel="asdas"
-          // yAxisSuffix="hello"
-          // fromZero={true}
-          // yAxisInterval={1}
-
           bezier
           data={this?.props?.monthly_card_data}
           width={90 * vw}
           height={40 * vh}
           chartConfig={chartConfig}
-     
-       
           style={{
             marginVertical: 8,
             borderRadius: 16,
-            // marginHorizontal: 4,
-            width:20*vw
+            width: 20 * vw
           }}
 
         />}
@@ -269,11 +242,9 @@ class AboutUsScreen extends React.Component {
         contentContainerStyle={{ alignItems: 'center', paddingBottom: 10 * vh }}
         style={styles.container}
       >
-        <YearGraphDataPopup 
-        ref={(r) =>(this.dataShow = r)} //reference daal rha hai
-
+        <YearGraphDataPopup
+          ref={(r) => (this.dataShow = r)} //reference daal rha hai
         />
-
         {this._renderFirstGraph()}
         {this._renderSecondGraph()}
         {this._renderThirdGraph()}
