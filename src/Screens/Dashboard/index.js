@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ToastAndroid, Platform, ScrollView } from 'react-native';
+import { View, Text, ToastAndroid, Platform, ScrollView,Image } from 'react-native';
 import styles from './styles';
 import { connect } from 'react-redux';
 import actions from './../../redux/actions/index';
@@ -8,7 +8,9 @@ import { vh, vw } from '../../Utils/Units';
 import PoppinsRegular from '../../Components/Text/PoppinsRegular'
 import PoppinsBold from '../../Components/Text/PoppinsBold'
 import YearGraphDataPopup from '../../Components/Popups/YearGraphDataPopup'
-
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import MainInput from '../../Components/Input/MainInput';
+import {icons} from '../../assets/images'
 const chartConfig = {
   propsForVerticalLabels: { fontSize: 2 * vw },
   propsForHorizontalLabels: { fontSize: 2 * vw },
@@ -254,13 +256,48 @@ class AboutUsScreen extends React.Component {
 
   _renderShipmentWiseGraph = () => {
     return (<><PoppinsBold style={{ fontSize: 5 * vw }}>Month Year Wise Shipment</PoppinsBold>
-      <ScrollView 
-      
-      contentContainerStyle={{flex: 1}}
-      showsHorizontalScrollIndicator={true}
-      horizontal={true}
-      
-      >
+ <View style={styles.firstContainer}>
+
+<View style={{flexDirection:'row',justifyContent:'space-evenly',paddingVertical:2*vh,alignItems:'center'}}>
+
+<TouchableOpacity>
+<MainInput
+ label="Enter Blood Group"
+ required
+ placeholder="Select Company"
+ editable={false}
+ style={{width:30*vw}}
+ fieldStyle ={{width:20*vw,fontSize:2*vw}}
+ rightIcon={icons.downArrow}
+/>
+
+</TouchableOpacity>
+
+<TouchableOpacity>
+<MainInput
+ label="Enter Blood Group"
+ required
+ placeholder="Select year"
+ editable={false}
+ style={{width:30*vw}}
+ fieldStyle ={{width:20*vw,fontSize:2*vw}}
+ rightIcon={icons.downArrow}
+/>
+
+</TouchableOpacity>
+
+<TouchableOpacity>
+<Image 
+source={icons.searchBlue}
+style={{height:4*vh,width:4*vw}}
+resizeMode="contain"
+/>
+
+</TouchableOpacity>
+
+</View>
+
+
         {this.props?.shipment_buyer_wise?.length === 0 ? null : <BarChart
        
         
@@ -286,7 +323,7 @@ class AboutUsScreen extends React.Component {
       
 
         />}
-      </ScrollView></>)
+      </View></>)
   }
 
 

@@ -15,6 +15,7 @@ export const icons = {
   viewsBlack: require('./icons/viewsBlack.png'),
   blurPlay: require('./icons/blurPlay.png'),
   live :require('./icons/live.png'),
+  downArrow : require('./icons/downArrow.png'),
 };
 export const backgrounds = {
   bottomBackBlueArrow: require('./backgrounds/bottomBackBlueArrow.png'),
