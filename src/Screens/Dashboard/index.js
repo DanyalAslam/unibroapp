@@ -266,7 +266,7 @@ class AboutUsScreen extends React.Component {
  required
  placeholder="Select Company"
  editable={false}
- style={{width:30*vw}}
+ style={{width:30*vw,paddingHorizontal:1*vw}}
  fieldStyle ={{width:20*vw,fontSize:2*vw}}
  rightIcon={icons.downArrow}
 />
@@ -279,7 +279,7 @@ class AboutUsScreen extends React.Component {
  required
  placeholder="Select year"
  editable={false}
- style={{width:30*vw}}
+ style={{width:30*vw,paddingHorizontal:1*vw}}
  fieldStyle ={{width:20*vw,fontSize:2*vw}}
  rightIcon={icons.downArrow}
 />

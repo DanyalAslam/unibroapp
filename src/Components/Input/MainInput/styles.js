@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 3 * vw,
     borderRadius: 5,
     height: 5 * vh,
+    
   },
   field: {
     fontFamily: fonts.Poppins.light,
