@@ -11,6 +11,7 @@ import YearGraphDataPopup from '../../Components/Popups/YearGraphDataPopup'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import MainInput from '../../Components/Input/MainInput';
 import {icons} from '../../assets/images'
+import DropDown from '../../Components/DropDown'
 const chartConfig = {
   propsForVerticalLabels: { fontSize: 2 * vw },
   propsForHorizontalLabels: { fontSize: 2 * vw },
@@ -183,6 +184,17 @@ class AboutUsScreen extends React.Component {
 
   }
 
+  onSelectComapny = () =>{
+
+    this.CompanyDropDown.show('titlee',
+    [{title:'1'},{title:'2'}],
+    'bloddd',
+    (data) =>{},null,null
+    
+    )
+
+  }
+
 
   _renderFirstGraph = () => {
     return (<><PoppinsBold style={{ fontSize: 5 * vw }}>Month Year Wise Shipment</PoppinsBold>
@@ -260,7 +272,10 @@ class AboutUsScreen extends React.Component {
 
 <View style={{flexDirection:'row',justifyContent:'space-evenly',paddingVertical:2*vh,alignItems:'center'}}>
 
-<TouchableOpacity>
+<TouchableOpacity
+onPress={this.onSelectComapny}
+
+>
 <MainInput
  label="Enter Blood Group"
  required
@@ -334,6 +349,7 @@ resizeMode="contain"
         contentContainerStyle={{ alignItems: 'center', paddingBottom: 10 * vh }}
         style={styles.container}
       >
+        <DropDown  ref={(e) =>(this.CompanyDropDown = e)}/>
         <YearGraphDataPopup
           ref={(r) => (this.dataShow = r)} //reference daal rha hai
         />
