@@ -186,12 +186,32 @@ class AboutUsScreen extends React.Component {
 
   onSelectComapny = () =>{
 
-    this.CompanyDropDown.show('titlee',
-    [{title:'1'},{title:'2'}],
-    'bloddd',
-    (data) =>{},null,null
+    // this.CompanyDropDown.show('titlee',
+    // [{title:'1'},{title:'2'}],
+    // 'bloddd',
+    // (data) =>{},null,5
     
-    )
+    // )
+
+
+    this.CompanyDropDown.show(
+      'title',
+      [
+        {title: 'A+', index: 0},
+        {title: 'B+', index: 1},
+        {title: '0+', index: 2},
+      ],
+      'Blood Group',
+      (data) =>
+        this.setState({
+          request_data: {
+            ...this.state.request_data,
+            blood_group: data.title,
+          },
+        }),
+      null,
+      null,
+    );
 
   }
 
@@ -267,7 +287,9 @@ class AboutUsScreen extends React.Component {
 
 
   _renderShipmentWiseGraph = () => {
-    return (<><PoppinsBold style={{ fontSize: 5 * vw }}>Month Year Wise Shipment</PoppinsBold>
+    return (<>
+    
+    <PoppinsBold style={{ fontSize: 5 * vw }}>Month Year Wise Shipment</PoppinsBold>
  <View style={styles.firstContainer}>
 
 <View style={{flexDirection:'row',justifyContent:'space-evenly',paddingVertical:2*vh,alignItems:'center'}}>
@@ -344,12 +366,14 @@ resizeMode="contain"
 
   render() {
     return (
+      <View style={{flex:1}}>
+   
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ alignItems: 'center', paddingBottom: 10 * vh }}
         style={styles.container}
       >
-        <DropDown  ref={(e) =>(this.CompanyDropDown = e)}/>
+      
         <YearGraphDataPopup
           ref={(r) => (this.dataShow = r)} //reference daal rha hai
         />
@@ -359,6 +383,8 @@ resizeMode="contain"
         {this._renderThirdGraph()}
         {this._renderFourthGraph()}
       </ScrollView>
+      <DropDown  ref={(e) =>(this.CompanyDropDown = e)}/>
+      </View>
     );
   }
 }
