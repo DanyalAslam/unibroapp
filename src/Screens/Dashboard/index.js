@@ -45,6 +45,8 @@ class AboutUsScreen extends React.Component {
     super(props);
     this.state = {
       password: '',
+      selected_company:'',
+      selected_year:''
     };
   }
 
@@ -76,6 +78,23 @@ class AboutUsScreen extends React.Component {
       (error) => {
         showToast(error);
       },
+    );
+  }
+
+  _getSearchedShipmentBuyerWise = () => {
+    this.props.getSearchedShipmentBuyerWise(
+      (success) => {
+        if (success) {
+          this.setState({
+            sessions: this.props.streamData,
+          });
+        }
+      },
+      (error) => {
+        showToast(error);
+      },
+      this.state.selected_company,
+      this.state.selected_year
     );
   }
   _getTableGraphData = () => {
@@ -135,6 +154,7 @@ class AboutUsScreen extends React.Component {
   };
 
   componentDidMount() {
+
     this.props.navigation.addListener('focus', this._getHomeData);
   }
 
@@ -196,19 +216,44 @@ class AboutUsScreen extends React.Component {
 
     this.CompanyDropDown.show(
       'title',
-      [
-        {title: 'A+', index: 0},
-        {title: 'B+', index: 1},
-        {title: '0+', index: 2},
-      ],
-      'Blood Group',
-      (data) =>
-        this.setState({
-          request_data: {
-            ...this.state.request_data,
-            blood_group: data.title,
-          },
-        }),
+      this.props.shipment_buyer_wise.labels,
+      'Select Company',
+      // (data) =>
+      //   this.setState({
+      //     request_data: {
+      //       ...this.state.request_data,
+      //       blood_group: data.title,
+      //     },
+      //   }),
+      (data) =>  this.setState({selected_company:data}),
+      null,
+      null,
+    );
+
+  }
+
+  onSelectYear = () =>{
+
+    // this.CompanyDropDown.show('titlee',
+    // [{title:'1'},{title:'2'}],
+    // 'bloddd',
+    // (data) =>{},null,5
+    
+    // )
+
+
+    this.CompanyDropDown.show(
+      'title',
+      this.props.shipment_buyer_wise.year,
+      'Select Year',
+      // (data) =>
+      //   this.setState({
+      //     request_data: {
+      //       ...this.state.request_data,
+      //       blood_group: data.title,
+      //     },
+      //   }),
+      (data) =>  this.setState({selected_year:data}),
       null,
       null,
     );
@@ -302,6 +347,7 @@ onPress={this.onSelectComapny}
  label="Enter Blood Group"
  required
  placeholder="Select Company"
+ value={this.state.selected_company}
  editable={false}
  style={{width:30*vw,paddingHorizontal:1*vw}}
  fieldStyle ={{width:20*vw,fontSize:2*vw}}
@@ -310,9 +356,12 @@ onPress={this.onSelectComapny}
 
 </TouchableOpacity>
 
-<TouchableOpacity>
+<TouchableOpacity
+onPress={this.onSelectYear}
+>
 <MainInput
- label="Enter Blood Group"
+ label="Enter Year"
+ value={this.state.selected_year}
  required
  placeholder="Select year"
  editable={false}
@@ -323,7 +372,9 @@ onPress={this.onSelectComapny}
 
 </TouchableOpacity>
 
-<TouchableOpacity>
+<TouchableOpacity
+onPress={this._getSearchedShipmentBuyerWise}
+>
 <Image 
 source={icons.searchBlue}
 style={{height:4*vh,width:4*vw}}
@@ -365,6 +416,8 @@ resizeMode="contain"
 
 
   render() {
+  console.log('shipment_buyer_wise123132',this.props.shipment_buyer_wise)
+
     return (
       <View style={{flex:1}}>
    
@@ -421,6 +474,9 @@ const mapDispatchToProps = (dispatch) => {
 
       getShipmentBuyerWise: (success, error) =>
       dispatch(actions.getShipmentBuyerWise(success, error)),
+
+      getSearchedShipmentBuyerWise: (success, error,name,year) =>
+      dispatch(actions.getSearchedShipmentBuyerWise(success, error,name,year)),
 
   };
 };

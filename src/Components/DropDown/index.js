@@ -59,7 +59,7 @@ console.log('onCancel',onCancel)
 
 console.log('selectedIndex',selectedIndex)
 
-    // alert('ok')
+
      this.onDone = onSelect ? onSelect : null;
      this.onCancel = onCancel ? onCancel : null;
      if (Array.isArray(data)) {
@@ -69,11 +69,13 @@ console.log('selectedIndex',selectedIndex)
           : Math.floor(data.length / 2);
          let dataToShow = [];
         data.forEach((item) => {
-           if (key != null) {
-            dataToShow.push(item[key]);
-           } else {
-             dataToShow.push(item);
-           }
+          console.log('chelkimngitem',item)
+          dataToShow.push(item);
+          //  if (key != null) {
+          //   dataToShow.push(item[key]);
+          //  } else {
+          //    dataToShow.push(item);
+          //  }
          });
 
         this.setState(
@@ -147,6 +149,8 @@ console.log('selectedIndex',selectedIndex)
     });
   };
   renderWheel = () => {
+
+    console.log('checkingggthis.state.dataToShow',this.state.dataToShow)
     if (this.state.dataToShow.length > 0) {
       return (
         <WheelPicker

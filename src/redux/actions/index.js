@@ -373,6 +373,35 @@ const actions = {
   },
 
 
+  //searched Specific company buyer wise
+  getSearchedShipmentBuyerWise: (success, error,name,year ) => {
+
+    console.log('name',name,'year',year)
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_LOADING });
+      Api.get(
+        'singlebuyerGraphApi.php',
+        (apiSuccess) => {
+          console.log('getSearchedShipmentBuyerWise success', apiSuccess);
+
+          dispatch({
+            type: actionTypes.SHIPMENT_BUYER_WISE,
+            payload: apiSuccess.sbwShipment,
+          });
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+          // return success(true);
+        
+        },
+        (apiError) => {
+          console.log('getSearchedShipmentBuyerWise apiError:', apiError);
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+    
+        },
+      );
+    };
+  },
+
+
   getTableGraphData: (success, error) => {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
