@@ -206,17 +206,10 @@ class AboutUsScreen extends React.Component {
 
   onSelectComapny = () =>{
 
-    // this.CompanyDropDown.show('titlee',
-    // [{title:'1'},{title:'2'}],
-    // 'bloddd',
-    // (data) =>{},null,5
-    
-    // )
-
 
     this.CompanyDropDown.show(
       'title',
-      this.props.shipment_buyer_wise.labels,
+      this.props.shipment_buyer_wise_Lists.labels,
       'Select Company',
       // (data) =>
       //   this.setState({
@@ -233,18 +226,9 @@ class AboutUsScreen extends React.Component {
   }
 
   onSelectYear = () =>{
-
-    // this.CompanyDropDown.show('titlee',
-    // [{title:'1'},{title:'2'}],
-    // 'bloddd',
-    // (data) =>{},null,5
-    
-    // )
-
-
     this.CompanyDropDown.show(
       'title',
-      this.props.shipment_buyer_wise.year,
+      this.props.shipment_buyer_wise_Lists.year,
       'Select Year',
       // (data) =>
       //   this.setState({
@@ -262,7 +246,7 @@ class AboutUsScreen extends React.Component {
 
 
   _renderFirstGraph = () => {
-    return (<><PoppinsBold style={{ fontSize: 5 * vw }}>Month Year Wise Shipment</PoppinsBold>
+    return (<><PoppinsBold style={{ fontSize: 5 * vw }}>Year Wise Shipment</PoppinsBold>
       <View style={styles.firstContainer}>
         {this.props.monthly_card_data.length === 0 ? null : <LineChart
           onDataPointClick={(value, dataset, getColor) => {
@@ -334,7 +318,7 @@ class AboutUsScreen extends React.Component {
   _renderShipmentWiseGraph = () => {
     return (<>
     
-    <PoppinsBold style={{ fontSize: 5 * vw }}>Month Year Wise Shipment</PoppinsBold>
+    <PoppinsBold style={{ fontSize: 5 * vw }}>Shipment Buyer Wise</PoppinsBold>
  <View style={styles.firstContainer}>
 
 <View style={{flexDirection:'row',justifyContent:'space-evenly',paddingVertical:2*vh,alignItems:'center'}}>
@@ -386,14 +370,14 @@ resizeMode="contain"
 </View>
 
 
-        {this.props?.shipment_buyer_wise?.length === 0 ? null : <BarChart
+        {this.props?.shipment_buyer_wise_Data?.length === 0 ? null : <BarChart
        
         
-          data={this?.props?.shipment_buyer_wise}
+          data={this?.props?.shipment_buyer_wise_Data}
           width={100 * vw}
           height={40 * vh}
           chartConfig={{
-            barPercentage: .2,
+            barPercentage: 1.5,
             propsForVerticalLabels: { fontSize: 2 * vw },
             propsForHorizontalLabels: { fontSize: 2 * vw },
             backgroundGradientFrom: "#fff",
@@ -411,7 +395,9 @@ resizeMode="contain"
       
 
         />}
-      </View></>)
+
+      </View></>
+      )
   }
 
 
@@ -447,9 +433,12 @@ resizeMode="contain"
 
 const mapStateToProps = (state) => {
 
+  console.log('getting stateee',state)
+
   return {
     monthly_card_data: state.GeneralReducer.monthly_card_data,
-    shipment_buyer_wise: state.GeneralReducer.shipment_buyer_wise,
+    shipment_buyer_wise_Lists: state.GeneralReducer.shipment_buyer_wise_Lists,
+    shipment_buyer_wise_Data: state.GeneralReducer.shipment_buyer_wise_Data,
     table_card_data: state.GeneralReducer.table_card_data,
     made_up_graph_data: state.GeneralReducer.made_up_graph_data,
     gray_fabrics_graph_data: state.GeneralReducer.gray_fabrics_graph_data,

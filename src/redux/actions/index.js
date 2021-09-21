@@ -374,18 +374,18 @@ const actions = {
 
 
   //searched Specific company buyer wise
-  getSearchedShipmentBuyerWise: (success, error,name,year ) => {
+  getSearchedShipmentBuyerWise: (success, error,name=null,year=null) => {
 
     console.log('name',name,'year',year)
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
       Api.get(
-        'singlebuyerGraphApi.php',
+        `singlebuyerGraphApi.php/?short_name=${name}&&year=${year}`,
         (apiSuccess) => {
           console.log('getSearchedShipmentBuyerWise success', apiSuccess);
 
           dispatch({
-            type: actionTypes.SHIPMENT_BUYER_WISE,
+            type: actionTypes.SEARCHED_SHIPMENT_BUYER_WISE,
             payload: apiSuccess.sbwShipment,
           });
           dispatch({ type: actionTypes.CLOSE_LOADING });

@@ -7,8 +7,8 @@ const INITIAL_STATE = {
   session_id:null,
 
   monthly_card_data :[], //done
-  shipment_buyer_wise:[],//done
-  shipment_buyer_wise :[], //done
+  shipment_buyer_wise_Lists:[],//done
+  shipment_buyer_wise_Data:[],//done
   table_card_data :[], //done
   made_up_graph_data :[], //done
   gray_fabrics_graph_data :[], //done
@@ -142,7 +142,17 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         // StreamData: action.payload,
-        shipment_buyer_wise :action.payload
+        shipment_buyer_wise_Lists :action.payload
+      };
+    }
+    
+    case actionTypes.SEARCHED_SHIPMENT_BUYER_WISE: {
+
+      console.log('action.payload',action.payload)
+      return {
+        ...state,
+        // StreamData: action.payload,
+        shipment_buyer_wise_Data :action.payload
       };
     }
 
