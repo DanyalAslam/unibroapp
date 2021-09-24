@@ -9,6 +9,10 @@ const INITIAL_STATE = {
   monthly_card_data :[], //done
   shipment_buyer_wise_Lists:[],//done
   shipment_buyer_wise_Data:[],//done
+
+  shipment_country_wise_Lists:[],//done
+  shipment_country_wise_Data:[],//done
+
   table_card_data :[], //done
   made_up_graph_data :[], //done
   gray_fabrics_graph_data :[], //done
@@ -153,6 +157,30 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
         ...state,
         // StreamData: action.payload,
         shipment_buyer_wise_Data :action.payload
+      };
+    }
+
+
+
+//for all shipment country wise data
+    case actionTypes.SHIPMENT_COUNTRY_WISE: {
+
+      console.log('action.payload',action.payload)
+      return {
+        ...state,
+        // StreamData: action.payload,
+        shipment_country_wise_Lists :action.payload
+      };
+    }
+    
+    //searhced data for shipment  country wise data
+    case actionTypes.SEARCHED_SHIPMENT_COUNTRY_WISE: {
+
+      console.log('action.payload',action.payload)
+      return {
+        ...state,
+        // StreamData: action.payload,
+        shipment_country_wise_Data :action.payload
       };
     }
 

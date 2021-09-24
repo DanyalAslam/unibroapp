@@ -348,6 +348,7 @@ const actions = {
   
 
   //getShipmentBuyerWise
+  //getting all data for Shipment buyer wise
   getShipmentBuyerWise: (success, error) => {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
@@ -372,6 +373,32 @@ const actions = {
     };
   },
 
+  //getting all data for shipment country wise
+  getShipmentCountryWise: (success, error) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_LOADING });
+      Api.get(
+        'scwGraphApi.php',
+        (apiSuccess) => {
+          console.log('getShipmentCountryWise success', apiSuccess);
+
+          dispatch({
+            type: actionTypes.SHIPMENT_COUNTRY_WISE,
+            payload: apiSuccess.scwShipment,
+          });
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+          // return success(true);
+        },
+        (apiError) => {
+          console.log('getShipmentCountryWise apiError:', apiError);
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+    
+        },
+      );
+    };
+  },
+
+
 
   //searched Specific company buyer wise
   getSearchedShipmentBuyerWise: (success, error,name=null,year=null) => {
@@ -394,6 +421,35 @@ const actions = {
         },
         (apiError) => {
           console.log('getSearchedShipmentBuyerWise apiError:', apiError);
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+    
+        },
+      );
+    };
+  },
+
+
+
+  getSearchedShipmentCountryWise: (success, error,name=null,year=null) => {
+
+    console.log('name',name,'year',year)
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_LOADING });
+      Api.get(
+        `singleCountryGraphApi.php/?cont_name=${name}&&year=${year}`,
+        (apiSuccess) => {
+          console.log('getSearchedShipmentCountryWise success', apiSuccess);
+
+          dispatch({
+            type: actionTypes.SEARCHED_SHIPMENT_COUNTRY_WISE,
+            payload: apiSuccess.scwShipment,
+          });
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+          // return success(true);
+        
+        },
+        (apiError) => {
+          console.log('getSearchedShipmentCountryWise apiError:', apiError);
           dispatch({ type: actionTypes.CLOSE_LOADING });
     
         },

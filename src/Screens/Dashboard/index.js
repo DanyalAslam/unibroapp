@@ -45,8 +45,11 @@ class AboutUsScreen extends React.Component {
     super(props);
     this.state = {
       password: '',
-      selected_company:'',
-      selected_year:''
+      selected_buyer_company:'',
+      selected_buyer_year:'',
+
+      selected_country_company:'',
+      selected_country_year:''
     };
   }
 
@@ -81,8 +84,8 @@ class AboutUsScreen extends React.Component {
     );
   }
 
-  _getSearchedShipmentBuyerWise = () => {
-    this.props.getSearchedShipmentBuyerWise(
+  _getShipmentCountryWise = () => {
+    this.props.getShipmentCountryWise(
       (success) => {
         if (success) {
           this.setState({
@@ -93,10 +96,48 @@ class AboutUsScreen extends React.Component {
       (error) => {
         showToast(error);
       },
-      this.state.selected_company,
-      this.state.selected_year
     );
   }
+
+  _getSearchedShipmentBuyerWise = () => {
+
+    
+      this.props.getSearchedShipmentBuyerWise(
+        (success) => {
+          if (success) {
+            this.setState({
+              sessions: this.props.streamData,
+            });
+          }
+        },
+        (error) => {
+          showToast(error);
+        },
+        this.state.selected_buyer_company,
+        this.state.selected_buyer_year
+      );
+
+    
+  
+  }
+
+  _getSearchedShipmentCountryWise = () => {
+    this.props.getSearchedShipmentCountryWise(
+      (success) => {
+        if (success) {
+          this.setState({
+            sessions: this.props.streamData,
+          });
+        }
+      },
+      (error) => {
+        showToast(error);
+      },
+      this.state.selected_country_company,
+      this.state.selected_country_year
+    );
+  }
+
   _getTableGraphData = () => {
     this.props.getTableGraphData(
       (success) => {
@@ -147,7 +188,12 @@ class AboutUsScreen extends React.Component {
 
   _getHomeData = () => {
     this._getMonthYearGraphData(),
+    this._getSearchedShipmentBuyerWise()
+    this._getSearchedShipmentCountryWise()
     this._getShipmentBuyerWise()
+    this._getShipmentCountryWise()
+
+
       this._getTableGraphData(),
       this._getMadeUpChart(),
       this._getGrayFabrics()
@@ -204,43 +250,92 @@ class AboutUsScreen extends React.Component {
 
   }
 
-  onSelectComapny = () =>{
+  onSelectComapny = (Value) =>{
+if(Value === 'buyer')
+{
+  this.CompanyDropDown.show(
+    'title',
+    this?.props?.shipment_buyer_wise_Lists?.labels,
+    'Select Company',
+    // (data) =>
+    //   this.setState({
+    //     request_data: {
+    //       ...this.state.request_data,
+    //       blood_group: data.title,
+    //     },
+    //   }),
+    (data) =>  this.setState({selected_buyer_company:data}),
+    null,
+    null,
+  );
+
+}
+else
+{
+  this.CompanyDropDown.show(
+    'title',
+    this?.props?.shipment_country_wise_Lists?.labels,
+    'Select Company',
+    // (data) =>
+    //   this.setState({
+    //     request_data: {
+    //       ...this.state.request_data,
+    //       blood_group: data.title,
+    //     },
+    //   }),
+    (data) =>  this.setState({selected_country_company:data}),
+    null,
+    null,
+  );
+
+}
 
 
-    this.CompanyDropDown.show(
-      'title',
-      this.props.shipment_buyer_wise_Lists.labels,
-      'Select Company',
-      // (data) =>
-      //   this.setState({
-      //     request_data: {
-      //       ...this.state.request_data,
-      //       blood_group: data.title,
-      //     },
-      //   }),
-      (data) =>  this.setState({selected_company:data}),
-      null,
-      null,
-    );
 
   }
 
-  onSelectYear = () =>{
-    this.CompanyDropDown.show(
-      'title',
-      this.props.shipment_buyer_wise_Lists.year,
-      'Select Year',
-      // (data) =>
-      //   this.setState({
-      //     request_data: {
-      //       ...this.state.request_data,
-      //       blood_group: data.title,
-      //     },
-      //   }),
-      (data) =>  this.setState({selected_year:data}),
-      null,
-      null,
-    );
+  onSelectYear = (Value) =>{
+
+    if(Value === 'buyer')
+    {
+      this.CompanyDropDown.show(
+        'title',
+        this.props.shipment_buyer_wise_Lists.year,
+        'Select Year',
+        // (data) =>
+        //   this.setState({
+        //     request_data: {
+        //       ...this.state.request_data,
+        //       blood_group: data.title,
+        //     },
+        //   }),
+        (data) =>  this.setState({selected_buyer_year:data}),
+        null,
+        null,
+      );
+
+    }
+    else
+    {
+      this.CompanyDropDown.show(
+        'title',
+        this.props.shipment_country_wise_Lists.year,
+        'Select Year',
+        // (data) =>
+        //   this.setState({
+        //     request_data: {
+        //       ...this.state.request_data,
+        //       blood_group: data.title,
+        //     },
+        //   }),
+        (data) =>  this.setState({selected_country_year:data}),
+        null,
+        null,
+      );
+
+
+    }
+
 
   }
 
@@ -315,7 +410,7 @@ class AboutUsScreen extends React.Component {
   }
 
 
-  _renderShipmentWiseGraph = () => {
+  _renderShipmentBuyerWiseGraph = () => {
     return (<>
     
     <PoppinsBold style={{ fontSize: 5 * vw }}>Shipment Buyer Wise</PoppinsBold>
@@ -324,14 +419,14 @@ class AboutUsScreen extends React.Component {
 <View style={{flexDirection:'row',justifyContent:'space-evenly',paddingVertical:2*vh,alignItems:'center'}}>
 
 <TouchableOpacity
-onPress={this.onSelectComapny}
+onPress={() => this.onSelectComapny('buyer')}
 
 >
 <MainInput
  label="Enter Blood Group"
  required
  placeholder="Select Company"
- value={this.state.selected_company}
+ value={this.state.selected_buyer_company}
  editable={false}
  style={{width:30*vw,paddingHorizontal:1*vw}}
  fieldStyle ={{width:20*vw,fontSize:2*vw}}
@@ -341,11 +436,11 @@ onPress={this.onSelectComapny}
 </TouchableOpacity>
 
 <TouchableOpacity
-onPress={this.onSelectYear}
+onPress={() => this.onSelectYear('buyer')}
 >
 <MainInput
  label="Enter Year"
- value={this.state.selected_year}
+ value={this.state.selected_buyer_year}
  required
  placeholder="Select year"
  editable={false}
@@ -357,7 +452,7 @@ onPress={this.onSelectYear}
 </TouchableOpacity>
 
 <TouchableOpacity
-onPress={this._getSearchedShipmentBuyerWise}
+onPress={() =>this._getSearchedShipmentBuyerWise()}
 >
 <Image 
 source={icons.searchBlue}
@@ -401,9 +496,97 @@ resizeMode="contain"
   }
 
 
-  render() {
-  console.log('shipment_buyer_wise123132',this.props.shipment_buyer_wise)
 
+
+
+  _renderShipmentCountryWiseGraph = () => {
+    return (<>
+    
+    <PoppinsBold style={{ fontSize: 5 * vw }}>Shipment Country Wise</PoppinsBold>
+ <View style={styles.firstContainer}>
+
+<View style={{flexDirection:'row',justifyContent:'space-evenly',paddingVertical:2*vh,alignItems:'center'}}>
+
+<TouchableOpacity
+onPress={() => this.onSelectComapny('country')}
+                           
+>
+<MainInput
+ label="Enter Blood Group"
+ required
+ placeholder="Select Company"
+ value={this.state.selected_country_company}
+ editable={false}
+ style={{width:30*vw,paddingHorizontal:1*vw}}
+ fieldStyle ={{width:20*vw,fontSize:2*vw}}
+ rightIcon={icons.downArrow}
+/>
+
+</TouchableOpacity>
+
+<TouchableOpacity
+onPress={() =>this.onSelectYear('country')}
+>
+<MainInput
+ label="Enter Year"
+ value={this.state.selected_country_year}
+ required
+ placeholder="Select year"
+ editable={false}
+ style={{width:30*vw,paddingHorizontal:1*vw}}
+ fieldStyle ={{width:20*vw,fontSize:2*vw}}
+ rightIcon={icons.downArrow}
+/>
+
+</TouchableOpacity>
+
+<TouchableOpacity
+onPress={() =>this._getSearchedShipmentBuyerWise('country')}
+>
+<Image 
+source={icons.searchBlue}
+style={{height:4*vh,width:4*vw}}
+resizeMode="contain"
+/>
+
+</TouchableOpacity>
+
+</View>
+
+
+        {this.props?.shipment_country_wise_Data?.length === 0 ? null : <BarChart
+       
+        
+          data={this?.props?.shipment_country_wise_Data}
+          width={100 * vw}
+          height={40 * vh}
+          chartConfig={{
+            barPercentage: 1.5,
+            propsForVerticalLabels: { fontSize: 2 * vw },
+            propsForHorizontalLabels: { fontSize: 2 * vw },
+            backgroundGradientFrom: "#fff",
+            backgroundGradientFromOpacity: 0,
+            backgroundGradientTo: "#fff",
+            backgroundGradientToOpacity: 0.5,
+            decimalPlaces: 2,
+            color: (opacity = 1) => `rgba(0, 128, 0, ${opacity})`,
+            labelColor: (opacity = 0) => `rgba(0, 0, 0, ${opacity})`,
+            propsForBackgroundLines: {
+              strokeWidth: 0.6,
+          
+            }
+          }}
+      
+
+        />}
+
+      </View></>
+      )
+  }
+
+
+
+  render() {
     return (
       <View style={{flex:1}}>
    
@@ -417,7 +600,8 @@ resizeMode="contain"
           ref={(r) => (this.dataShow = r)} //reference daal rha hai
         />
         {this._renderFirstGraph()}
-        {this._renderShipmentWiseGraph()}
+        {this._renderShipmentBuyerWiseGraph()}
+        {this._renderShipmentCountryWiseGraph()}
         {this._renderSecondGraph()}
         {this._renderThirdGraph()}
         {this._renderFourthGraph()}
@@ -433,11 +617,16 @@ resizeMode="contain"
 
 const mapStateToProps = (state) => {
 
-  console.log('getting stateee',state)
+  console.log('dashbpard states',state)
 
   return {
     monthly_card_data: state.GeneralReducer.monthly_card_data,
     shipment_buyer_wise_Lists: state.GeneralReducer.shipment_buyer_wise_Lists,
+
+
+    shipment_country_wise_Lists : state.GeneralReducer.shipment_country_wise_Lists,
+    shipment_country_wise_Data:state.GeneralReducer.shipment_country_wise_Data,
+
     shipment_buyer_wise_Data: state.GeneralReducer.shipment_buyer_wise_Data,
     table_card_data: state.GeneralReducer.table_card_data,
     made_up_graph_data: state.GeneralReducer.made_up_graph_data,
@@ -461,11 +650,22 @@ const mapDispatchToProps = (dispatch) => {
     getGrayFabrics: (success, error) =>
       dispatch(actions.getGrayFabrics(success, error)),
 
+      //getting all data for shipment buyer wise for search filters
       getShipmentBuyerWise: (success, error) =>
       dispatch(actions.getShipmentBuyerWise(success, error)),
 
+
+      //gettingAll Data for country wise shipment
+      getShipmentCountryWise: (success, error) =>
+      dispatch(actions.getShipmentCountryWise(success, error)),
+
+      getSearchedShipmentCountryWise: (success, error,name,year) =>
+      dispatch(actions.getSearchedShipmentCountryWise(success, error,name,year)),
+
+      //getting specific data according to the passed params
       getSearchedShipmentBuyerWise: (success, error,name,year) =>
       dispatch(actions.getSearchedShipmentBuyerWise(success, error,name,year)),
+
 
   };
 };
