@@ -400,6 +400,35 @@ const actions = {
 
 
 
+//get Booked / Outstanding Orders (Piecegoods cloth)
+  getBookedPieceGoodsOrders: (success, error) => {
+  
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_LOADING });
+      Api.get(
+        'piecegoodsGraphApi.php',
+        (apiSuccess) => {
+          console.log('getBookedPieceGoodsOrders success', apiSuccess);
+
+          dispatch({
+            type: actionTypes.BOOKED_PIECEGOODS_ORDERS,
+            payload: apiSuccess.PieceGoodGraph,
+          });
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+          // return success(true);
+        },
+        (apiError) => {
+          console.log('getBookedPieceGoodsOrders apiError', apiError);
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+    
+        },
+      );
+    };
+  },
+
+
+
+
   //searched Specific company buyer wise
   getSearchedShipmentBuyerWise: (success, error,name=null,year=null) => {
 

@@ -99,6 +99,23 @@ class AboutUsScreen extends React.Component {
     );
   }
 
+
+
+  _getBookedPieceGoodsOrders = () => {
+    this.props.getBookedPieceGoodsOrders(
+      (success) => {
+        if (success) {
+          this.setState({
+            sessions: this.props.streamData,
+          });
+        }
+      },
+      (error) => {
+        showToast(error);
+      },
+    );
+  }
+
   _getSearchedShipmentBuyerWise = () => {
 
     
@@ -193,6 +210,7 @@ class AboutUsScreen extends React.Component {
     this._getShipmentBuyerWise()
     this._getShipmentCountryWise()
 
+this._getBookedPieceGoodsOrders()
 
       this._getTableGraphData(),
       this._getMadeUpChart(),
@@ -362,8 +380,30 @@ else
       </View></>)
   }
 
+  _renderPieceGoodsOrdersGraph = () => {
+    return (<><PoppinsBold style={{ fontSize: 5 * vw }}>Booked Piecegoods Orders</PoppinsBold>
+      <View style={styles.firstContainer}>
+        {this.props.booked_piecegoods_orders_list.length === 0 ? null : <LineChart
+          onDataPointClick={(value, dataset, getColor) => {
+            this.dataShow.show(value)
+          }}
+          bezier
+          data={this?.props?.booked_piecegoods_orders_list}
+          width={90 * vw}
+          height={40 * vh}
+          chartConfig={chartConfig}
+          style={{
+            marginVertical: 8,
+            borderRadius: 16,
+            width: 20 * vw
+          }}
+
+        />}
+      </View></>)
+  }
+
   _renderSecondGraph = () => {
-    return (<><PoppinsBold style={{ fontSize: 5 * vw }}>Table Graph</PoppinsBold>
+    return (<><PoppinsBold style={{ fontSize: 5 * vw }}>Grey Fabric Quality Wise</PoppinsBold>
 
       <View style={styles.secondContainer}>
         {this.props.table_card_data?.length === 0 ? null : this.props.table_card_data.map((datum, index) => { // This will render a row for each data element.
@@ -495,10 +535,6 @@ resizeMode="contain"
       )
   }
 
-
-
-
-
   _renderShipmentCountryWiseGraph = () => {
     return (<>
     
@@ -581,6 +617,8 @@ resizeMode="contain"
         />}
 
       </View></>
+
+
       )
   }
 
@@ -605,6 +643,8 @@ resizeMode="contain"
         {this._renderSecondGraph()}
         {this._renderThirdGraph()}
         {this._renderFourthGraph()}
+        {this._renderPieceGoodsOrdersGraph()}
+        
       </ScrollView>
       <DropDown  ref={(e) =>(this.CompanyDropDown = e)}/>
       </View>
@@ -622,6 +662,8 @@ const mapStateToProps = (state) => {
   return {
     monthly_card_data: state.GeneralReducer.monthly_card_data,
     shipment_buyer_wise_Lists: state.GeneralReducer.shipment_buyer_wise_Lists,
+
+    booked_piecegoods_orders_list:state.GeneralReducer.booked_piecegoods_orders_list,
 
 
     shipment_country_wise_Lists : state.GeneralReducer.shipment_country_wise_Lists,
@@ -653,6 +695,11 @@ const mapDispatchToProps = (dispatch) => {
       //getting all data for shipment buyer wise for search filters
       getShipmentBuyerWise: (success, error) =>
       dispatch(actions.getShipmentBuyerWise(success, error)),
+
+
+
+      getBookedPieceGoodsOrders: (success, error) =>
+      dispatch(actions.getBookedPieceGoodsOrders(success, error)),
 
 
       //gettingAll Data for country wise shipment

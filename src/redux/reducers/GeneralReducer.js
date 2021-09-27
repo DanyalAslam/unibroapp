@@ -20,7 +20,7 @@ const INITIAL_STATE = {
   all_employees_emails: [],//done
   stock_in_hand: [],//done
 
-
+  booked_piecegoods_orders_list:[],//done
 
   
   AboutUS: {}, 
@@ -155,8 +155,21 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
       console.log('action.payload',action.payload)
       return {
         ...state,
-        // StreamData: action.payload,
+ 
         shipment_buyer_wise_Data :action.payload
+      };
+    }
+
+
+
+
+    case actionTypes.BOOKED_PIECEGOODS_ORDERS: {
+
+      console.log('action.payload',action.payload)
+      return {
+        ...state,
+
+        booked_piecegoods_orders_list :action.payload
       };
     }
 
