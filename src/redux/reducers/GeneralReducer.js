@@ -12,7 +12,7 @@ const INITIAL_STATE = {
 
   shipment_country_wise_Lists:[],//done
   shipment_country_wise_Data:[],//done
-
+  table_card_data_supplier_wise :[], //done
   table_card_data :[], //done
   made_up_graph_data :[], //done
   gray_fabrics_graph_data :[], //done
@@ -198,7 +198,7 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
     }
 
 
-        //getting Home data : Streams
+        //getting table data for quality wise
         case actionTypes.TABLE_GRAPH_DATA: {
 
           console.log('action.payload',action.payload)
@@ -206,6 +206,18 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
             ...state,
             // StreamData: action.payload,
             table_card_data :action.payload
+          };
+        }
+
+
+        //getting table data for supplier wise
+        case actionTypes.TABLE_GRAPH_DATA_SUPPLIER_WISE: {
+
+          console.log('action.payload',action.payload)
+          return {
+            ...state,
+            // StreamData: action.payload,
+            table_card_data_supplier_wise :action.payload
           };
         }
 

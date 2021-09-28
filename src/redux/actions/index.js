@@ -486,7 +486,7 @@ const actions = {
     };
   },
 
-
+//getting data for grey fabrics quality wise in table
   getTableGraphData: (success, error) => {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
@@ -504,6 +504,31 @@ const actions = {
         },
         (apiError) => {
           console.log('Get getTableGraphData apiError:', apiError);
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+          // return error(apiError);
+        },
+      );
+    };
+  },
+
+ //getting data for grey fabrics Supplier wise in table
+  getTableGreyGabricSupplierWise: (success, error) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_LOADING });
+      Api.get(
+        'swTableChart.php',
+        (apiSuccess) => {
+          console.log('Get getTableGreyGabricSupplierWise success', apiSuccess);
+
+          dispatch({
+            type: actionTypes.TABLE_GRAPH_DATA_SUPPLIER_WISE,
+            payload: apiSuccess.swtableChart,
+          });
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+          // return success(true);
+        },
+        (apiError) => {
+          console.log('Get getTableGreyGabricSupplierWise apiError:', apiError);
           dispatch({ type: actionTypes.CLOSE_LOADING });
           // return error(apiError);
         },
