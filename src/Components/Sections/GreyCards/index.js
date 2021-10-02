@@ -25,7 +25,7 @@ const GreyCards = (props) => {
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.itemcode}
+         {props.stock.item.contract}
         </PoppinsRegular>
         </View>
       
@@ -39,7 +39,7 @@ const GreyCards = (props) => {
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={2}>
-         {props.stock.item.desc}
+         {props.stock.item.supplier}
         </PoppinsRegular>
         </View>
     
@@ -54,9 +54,28 @@ const GreyCards = (props) => {
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.unit}
+         {props.stock.item.description}
         </PoppinsRegular>
         </View>
+
+
+
+            
+
+        <View style={{flexDirection:'row'}}>
+        <PoppinsRegular
+          numberOfLines={2}
+          style={styles.heading}>
+    Remarks :
+        </PoppinsRegular>
+
+        <PoppinsRegular
+          style={styles.circularBoardStyle}
+          numberOfLines={1}>
+         {props.stock.item.remarks}
+        </PoppinsRegular>
+        </View>
+
 
       </View>
       <View style={styles.container3}>
@@ -70,7 +89,7 @@ const GreyCards = (props) => {
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.optq}
+         {props.stock.item.meters}
         </PoppinsRegular>
         </View>
       
@@ -84,12 +103,12 @@ const GreyCards = (props) => {
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.lastrate}
+         {props.stock.item.rate}
         </PoppinsRegular>
         </View>
 
     
-
+{/* 
         <View style={{flexDirection:'row'}}>
         <PoppinsRegular
           numberOfLines={2}
@@ -103,9 +122,14 @@ const GreyCards = (props) => {
           numberOfLines={1}>
          {props.stock.item.opnamt}
         </PoppinsRegular>
-        </View>
+        </View> */}
+
+
 
       </View>
+    
+    
+    
     </View>
   );
 };

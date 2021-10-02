@@ -43,16 +43,16 @@ class Grey extends React.Component {
   _renderGrey = (item) => {
 
     console.log('gettgtttttt fabricsasad',item)
-    // return <GreyCards
+    return <GreyCards
 
 
 
-    //   // onSuccess={() =>
-    //   //   this.props.navigation.navigate('WatchStreanScreen', { item })
-    //   // }
-    //   stock={item} 
+      // onSuccess={() =>
+      //   this.props.navigation.navigate('WatchStreanScreen', { item })
+      // }
+      stock={item} 
       
-    //   />;
+      />;
   };
   render() {
 

@@ -8,7 +8,11 @@ const MenuButton = (props) => {
     return(
         <TouchableHOC {...props} style={styles.buttonContainer}>
             {/* <Image source={props.icon} style={styles.icon}/> */}
-            <PoppinsRegular style={styles.title}>
+            <PoppinsRegular 
+            
+           
+            style={[styles.title, props.style]}
+            >
                 {props.title}
             </PoppinsRegular>
             <Image source={icons.settingsRightArrow} style={styles.drop}/> 

@@ -7,11 +7,13 @@ import MenuButton from '../../Components/Buttons/MenuButton';
 import { connect } from 'react-redux';
 import actions from './../../redux/actions/index';
 import { showToast } from './../../Utils/index';
+import { vw } from '../../Utils/Units';
 class MenuScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       password: '',
+      showGarmentsPurchaseSubmenus:false
     };
   }
 
@@ -57,8 +59,29 @@ class MenuScreen extends React.Component {
         <MenuButton
           title="Garments Purchase Stock"
           // onPress={() => this.props.navigation.navigate('ContactUsScreen')}
+          onPress={() =>this.setState({showGarmentsPurchaseSubmenus:!this.state.showGarmentsPurchaseSubmenus})}
           icon={settingIcons.contact}
         />
+
+{this.state.showGarmentsPurchaseSubmenus ?
+         <MenuButton
+          title="- Purchasing Order"
+          style={{marginLeft:5*vw, width: 75 * vw,}}
+          // onPress={() => this.props.navigation.navigate('ContactUsScreen')}
+          icon={settingIcons.contact}
+        /> :null }
+
+{this.state.showGarmentsPurchaseSubmenus ?
+         <MenuButton
+          title="- Outstanding PO"
+          style={{marginLeft:5*vw, width: 75 * vw,}}
+          // onPress={() => this.props.navigation.navigate('ContactUsScreen')}
+          icon={settingIcons.contact}
+        /> :null }
+
+
+
+
         <MenuButton
           title="Production Stock"
           // onPress={() => this.props.navigation.navigate('AboutUsScreen')}
