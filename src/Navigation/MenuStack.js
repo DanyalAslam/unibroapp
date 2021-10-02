@@ -4,6 +4,7 @@ import MenuScreen from '../Screens/MenuScreen';
 import EmployeeEmails from '../Screens/EmployeeEmails'
 import StockInHand from '../Screens/StockInHand'
 import {getNavigationOptions} from './NavigationOptions';
+import Grey from '../Screens/Grey';
 // import MySubscriptionScreen from '../Screens/MySubscriptionScreen';
 // import PaymentLogScreen from '../Screens/PaymentLogScreen';
 // import ContactUsScreen from '../Screens/ContactUsScreen';
@@ -24,6 +25,7 @@ const MenuStack = () => {
       <MenuNavigator.Screen component={MenuScreen} name="MenuScreen" />
       <MenuNavigator.Screen component={EmployeeEmails} name="EmployeeEmails" />
       <MenuNavigator.Screen component={StockInHand} name="StockInHand" />
+      <MenuNavigator.Screen component={Grey} name="Grey" />
       {/* <MenuNavigator.Screen component={StreamsScreen} name="StreamsScreen" /> */}
       {/* <MenuNavigator.Screen
         component={MySubscriptionScreen}

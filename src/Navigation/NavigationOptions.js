@@ -4,8 +4,7 @@ import {StatusBar} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from './styles';
 import headerBackground from './headerBackground';
-import {fonts} from '../assets/fonts';
-import {vh} from '../Utils/Units';
+
 import IconButton from '../Components/Buttons/IconButton';
 import {icons} from '../assets/images';
 export const getNavigationOptions = (props) => {
@@ -27,7 +26,6 @@ export const setStatusBar = (activeRouteName, settings) => {
 };
 export const shouldHeaderBeShown = (activeRouteName) => {
 
-  console.log('should header be shown,active route name',activeRouteName)
   setStatusBar(activeRouteName);
   switch (activeRouteName) {
     case 'Dashboard':
@@ -44,14 +42,14 @@ export const shouldHeaderBeShown = (activeRouteName) => {
     case 'StreamDetail':
     case 'StockInHand':
       return true;
+      case 'Grey':
+        return true;
 
     default:
       return false;
   }
 };
 export const getTitle = (activeRouteName) => {
-
-  console.log('Get titleeee',activeRouteName)
   switch (activeRouteName) {
     case 'Dashboard':
       return 'Dashboard';
@@ -78,6 +76,8 @@ export const getTitle = (activeRouteName) => {
       return 'My Subscriptions';
     case 'ChangePasswordScreen':
       return 'Change Password';
+      case 'Grey':
+        return 'Grey'
     default:
       return 'Menu';
   }

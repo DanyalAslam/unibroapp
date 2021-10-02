@@ -838,6 +838,30 @@ const actions = {
   },
 
 
+  //getting Grey Report
+  getGreys: (completed, failed) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_LOADING });
+      Api.get(
+        'greyApi.php',
+        (success) => {
+         console.log('greyApi.php SUCCESSSS',success)
+          dispatch({
+            type: actionTypes.GREY_FABRIC,
+            payload: success.greyFabricD,
+          });
+
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+        },
+        (error) => {
+          console.log('greyApi.php error',error)
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+        },
+      );
+    };
+  },
+
+
 
   //search products
   search: (keyword, success, error) => {

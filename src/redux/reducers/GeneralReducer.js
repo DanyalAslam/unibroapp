@@ -19,6 +19,7 @@ const INITIAL_STATE = {
   all_employees_profile: [],//done
   all_employees_emails: [],//done
   stock_in_hand: [],//done
+  grey_fabric: [],//done
 
   booked_piecegoods_orders_list:[],//done
 
@@ -270,6 +271,14 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         stock_in_hand: action.payload,
+      };
+    }
+
+
+    case actionTypes.GREY_FABRIC: {
+      return {
+        ...state,
+        grey_fabric: action.payload,
       };
     }
 

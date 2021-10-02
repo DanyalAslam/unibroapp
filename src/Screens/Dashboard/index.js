@@ -469,7 +469,7 @@ class AboutUsScreen extends React.Component {
     return (<><PoppinsBold style={{ fontSize: 5 * vw }}>Grey Fabric Quality Wise</PoppinsBold>
 
       <View style={styles.secondContainer}>
-        {this.props.table_card_data?.length === 0 ? null : this.props.table_card_data.map((datum, index) => { // This will render a row for each data element.
+        {this.props?.table_card_data?.length === 0 ? null : this?.props?.table_card_data.map((datum, index) => { // This will render a row for each data element.
           return this.renderRow(datum, index);
         })
 
@@ -483,7 +483,7 @@ class AboutUsScreen extends React.Component {
     return (<><PoppinsBold style={{ fontSize: 5 * vw }}>Grey Fabric Supplier Wise</PoppinsBold>
 
       <View style={styles.secondContainer}>
-        {this.props.table_card_data_supplier_wise?.length === 0 ? null : this.props.table_card_data_supplier_wise.map((datum, index) => { // This will render a row for each data element.
+        {this?.props?.table_card_data_supplier_wise?.length === 0 ? null : this?.props?.table_card_data_supplier_wise.map((datum, index) => { // This will render a row for each data element.
           return this.renderRowSupplierWise(datum, index);
         })
 
@@ -714,14 +714,14 @@ class AboutUsScreen extends React.Component {
           <YearGraphDataPopup
             ref={(r) => (this.dataShow = r)} //reference daal rha hai
           />
-          {this._renderFirstGraph()}
+          {/* {this._renderFirstGraph()}
           {this._renderShipmentBuyerWiseGraph()}
           {this._renderShipmentCountryWiseGraph()}
           {this._renderSecondGraph()}
           {this._renderGreyFabricSupplierWise()}
           {this._renderThirdGraph()}
           {this._renderFourthGraph()}
-          {this._renderPieceGoodsOrdersGraph()}
+          {this._renderPieceGoodsOrdersGraph()} */}
 
         </ScrollView>
         <DropDown ref={(e) => (this.CompanyDropDown = e)} />
