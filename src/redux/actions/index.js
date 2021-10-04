@@ -862,6 +862,54 @@ const actions = {
   },
 
 
+  //Getting Purchasing orders
+  getPurchasingOrders: (completed, failed) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_LOADING });
+      Api.get(
+        'poApi.php',
+        (success) => {
+         console.log('getPurchasingOrders SUCCESSSS',success)
+          dispatch({
+            type: actionTypes.PURCHASING_ORDERS,
+            payload: success.purchaseOrderD,
+          });
+
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+        },
+        (error) => {
+          console.log('getPurchasingOrders error',error)
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+        },
+      );
+    };
+  },
+ 
+//getting Outstanding purchase orders
+getOutstandingPurchasingOrders: (completed, failed) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_LOADING });
+      Api.get(
+        'outstandingPoApi.php',
+        (success) => {
+         console.log('getOutstandingPurchasingOrders SUCCESSSS',success)
+          dispatch({
+            type: actionTypes.OUTSTANDING_PURCHASING_ORDERS,
+            payload: success.outstandingD,
+          });
+
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+        },
+        (error) => {
+          console.log('getOutstandingPurchasingOrders error',error)
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+        },
+      );
+    };
+  },
+
+
+
 
   //search products
   search: (keyword, success, error) => {

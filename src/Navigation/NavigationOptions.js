@@ -41,6 +41,7 @@ export const shouldHeaderBeShown = (activeRouteName) => {
     case 'PaymentDetail':
     case 'StreamDetail':
     case 'StockInHand':
+      case 'PurchasingOrders':
       return true;
       case 'Grey':
         return true;
@@ -77,7 +78,9 @@ export const getTitle = (activeRouteName) => {
     case 'ChangePasswordScreen':
       return 'Change Password';
       case 'Grey':
-        return 'Grey'
+        return 'Grey';
+        case 'PurchasingOrders':
+          return 'Purchasing Orders'
     default:
       return 'Menu';
   }

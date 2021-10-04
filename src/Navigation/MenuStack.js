@@ -5,15 +5,8 @@ import EmployeeEmails from '../Screens/EmployeeEmails'
 import StockInHand from '../Screens/StockInHand'
 import {getNavigationOptions} from './NavigationOptions';
 import Grey from '../Screens/Grey';
-// import MySubscriptionScreen from '../Screens/MySubscriptionScreen';
-// import PaymentLogScreen from '../Screens/PaymentLogScreen';
-// import ContactUsScreen from '../Screens/ContactUsScreen';
-// import AboutUsScreen from '../Screens/AboutUsScreen';
-// import ChangePasswordScreen from '../Screens/ChangePasswordScreen';
-// import PaymentDetail from '../Screens/PaymentDetail';
-// import StreamDetail from '../Screens/StreamDetail';
-// import StreamDetailFilterScreen from '../Screens/StreamDetailFilterScreen';
-// import SubscriptionDetail from '../Screens/SubscriptionDetail';
+import PurchasingOrders from '../Screens/PurchasingOrders'
+import OutstandingPurchasingOrders from '../Screens/OutstandingPurchasingOrders'
 const MenuNavigator = createStackNavigator();
 const Payment = createStackNavigator();
 
@@ -26,6 +19,9 @@ const MenuStack = () => {
       <MenuNavigator.Screen component={EmployeeEmails} name="EmployeeEmails" />
       <MenuNavigator.Screen component={StockInHand} name="StockInHand" />
       <MenuNavigator.Screen component={Grey} name="Grey" />
+      <MenuNavigator.Screen component={PurchasingOrders} name="PurchasingOrders" />
+      
+      <MenuNavigator.Screen component={OutstandingPurchasingOrders} name="OutstandingPurchasingOrders"  />
       {/* <MenuNavigator.Screen component={StreamsScreen} name="StreamsScreen" /> */}
       {/* <MenuNavigator.Screen
         component={MySubscriptionScreen}

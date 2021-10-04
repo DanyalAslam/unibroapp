@@ -67,7 +67,7 @@ class MenuScreen extends React.Component {
          <MenuButton
           title="- Purchasing Order"
           style={{marginLeft:5*vw, width: 75 * vw,}}
-          // onPress={() => this.props.navigation.navigate('ContactUsScreen')}
+          onPress={() => this.props.navigation.navigate('PurchasingOrders')}
           icon={settingIcons.contact}
         /> :null }
 
@@ -75,7 +75,7 @@ class MenuScreen extends React.Component {
          <MenuButton
           title="- Outstanding PO"
           style={{marginLeft:5*vw, width: 75 * vw,}}
-          // onPress={() => this.props.navigation.navigate('ContactUsScreen')}
+          onPress={() => this.props.navigation.navigate('OutstandingPurchasingOrders')}
           icon={settingIcons.contact}
         /> :null }
 
