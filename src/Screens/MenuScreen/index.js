@@ -13,7 +13,8 @@ class MenuScreen extends React.Component {
     super(props);
     this.state = {
       password: '',
-      showGarmentsPurchaseSubmenus:false
+      showGarmentsPurchaseSubmenus:false,
+      showProductionSubmenus:false
     };
   }
 
@@ -84,9 +85,54 @@ class MenuScreen extends React.Component {
 
         <MenuButton
           title="Production Stock"
-          // onPress={() => this.props.navigation.navigate('AboutUsScreen')}
+          onPress={() =>this.setState({showProductionSubmenus:!this.state.showProductionSubmenus})}
           icon={settingIcons.about}
         />
+
+{this.state.showProductionSubmenus ?
+         <MenuButton
+          title="- Daily Production"
+          style={{marginLeft:5*vw, width: 75 * vw,}}
+          onPress={() => this.props.navigation.navigate('PurchasingOrders')}
+          icon={settingIcons.contact}
+        /> :null }
+
+{this.state.showProductionSubmenus ?
+         <MenuButton
+          title="- Production Summary"
+          style={{marginLeft:5*vw, width: 75 * vw,}}
+          onPress={() => this.props.navigation.navigate('OutstandingPurchasingOrders')}
+          icon={settingIcons.contact}
+        /> :null }
+
+        
+{this.state.showProductionSubmenus ?
+         <MenuButton
+          title="- Inspection Report"
+          style={{marginLeft:5*vw, width: 75 * vw,}}
+          onPress={() => this.props.navigation.navigate('PurchasingOrders')}
+          icon={settingIcons.contact}
+        /> :null }
+
+{this.state.showProductionSubmenus ?
+         <MenuButton
+          title="- Inspection Summary"
+          style={{marginLeft:5*vw, width: 75 * vw,}}
+          onPress={() => this.props.navigation.navigate('OutstandingPurchasingOrders')}
+          icon={settingIcons.contact}
+        /> :null }
+
+        
+{this.state.showProductionSubmenus ?
+         <MenuButton
+          title="- Running Orders"
+          style={{marginLeft:5*vw, width: 75 * vw,}}
+          onPress={() => this.props.navigation.navigate('PurchasingOrders')}
+          icon={settingIcons.contact}
+        /> :null }
+
+
+
 
 <MenuButton
           title="Export Stock"
