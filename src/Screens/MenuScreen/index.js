@@ -93,7 +93,7 @@ class MenuScreen extends React.Component {
          <MenuButton
           title="- Daily Production"
           style={{marginLeft:5*vw, width: 75 * vw,}}
-          onPress={() => this.props.navigation.navigate('PurchasingOrders')}
+          onPress={() => this.props.navigation.navigate('DailyProduction')}
           icon={settingIcons.contact}
         /> :null }
 
@@ -101,7 +101,7 @@ class MenuScreen extends React.Component {
          <MenuButton
           title="- Production Summary"
           style={{marginLeft:5*vw, width: 75 * vw,}}
-          onPress={() => this.props.navigation.navigate('OutstandingPurchasingOrders')}
+          onPress={() => this.props.navigation.navigate('ProductionSummary')}
           icon={settingIcons.contact}
         /> :null }
 
@@ -110,7 +110,7 @@ class MenuScreen extends React.Component {
          <MenuButton
           title="- Inspection Report"
           style={{marginLeft:5*vw, width: 75 * vw,}}
-          onPress={() => this.props.navigation.navigate('PurchasingOrders')}
+          onPress={() => this.props.navigation.navigate('InspectionReport')}
           icon={settingIcons.contact}
         /> :null }
 
@@ -118,7 +118,7 @@ class MenuScreen extends React.Component {
          <MenuButton
           title="- Inspection Summary"
           style={{marginLeft:5*vw, width: 75 * vw,}}
-          onPress={() => this.props.navigation.navigate('OutstandingPurchasingOrders')}
+          onPress={() => this.props.navigation.navigate('InspectionSummary')}
           icon={settingIcons.contact}
         /> :null }
 

@@ -1,12 +1,12 @@
 import React from 'react';
-import {TransitionPresets} from '@react-navigation/stack';
-import {StatusBar} from 'react-native';
+import { TransitionPresets } from '@react-navigation/stack';
+import { StatusBar } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from './styles';
 import headerBackground from './headerBackground';
 
 import IconButton from '../Components/Buttons/IconButton';
-import {icons} from '../assets/images';
+import { icons } from '../assets/images';
 export const getNavigationOptions = (props) => {
   var activeRouteName = props.route.state
     ? props.route.state.routes[props.route.state.index].name
@@ -26,6 +26,8 @@ export const setStatusBar = (activeRouteName, settings) => {
 };
 export const shouldHeaderBeShown = (activeRouteName) => {
 
+  console.log('activeRouteName', activeRouteName)
+
   setStatusBar(activeRouteName);
   switch (activeRouteName) {
     case 'Dashboard':
@@ -41,10 +43,13 @@ export const shouldHeaderBeShown = (activeRouteName) => {
     case 'PaymentDetail':
     case 'StreamDetail':
     case 'StockInHand':
-      case 'PurchasingOrders':
+    case 'DailyProduction':
+    case 'PurchasingOrders':
+    case 'ProductionSummary':
+      case 'InspectionReport':
       return true;
-      case 'Grey':
-        return true;
+    case 'Grey':
+      return true;
 
     default:
       return false;
@@ -54,11 +59,20 @@ export const getTitle = (activeRouteName) => {
   switch (activeRouteName) {
     case 'Dashboard':
       return 'Dashboard';
+    case 'DailyProduction':
+      return 'Daily Production';
+    case 'ProductionSummary':
+      return 'Production Summary';
     case 'ContactUsScreen':
       return 'Contact Us';
     case 'PaymentLogScreen':
       return 'Payment Logs';
+case 'InspectionSummary':
+  return 'Inspection Summary'
 
+
+      case 'InspectionReport':
+        return 'Inspection Report';
     case 'PaymentDetail':
       return 'Payment Detail';
 
@@ -68,8 +82,8 @@ export const getTitle = (activeRouteName) => {
     case 'StockInHand':
       return 'Stock In Hand';
 
-      case 'EmployeeProfile':
-        return 'Employee Profile';
+    case 'EmployeeProfile':
+      return 'Employee Profile';
 
     case 'EmployeeEmails':
       return 'Employee Emails';
@@ -77,10 +91,12 @@ export const getTitle = (activeRouteName) => {
       return 'My Subscriptions';
     case 'ChangePasswordScreen':
       return 'Change Password';
-      case 'Grey':
-        return 'Grey';
-        case 'PurchasingOrders':
-          return 'Purchasing Orders'
+      case 'InspectionSummary':
+      return 'Inspection Summary';
+    case 'Grey':
+      return 'Grey';
+    case 'PurchasingOrders':
+      return 'Purchasing Orders'
     default:
       return 'Menu';
   }
@@ -128,7 +144,7 @@ export const showHeaderLeft = (activeRouteName, navigation, onBackPress) => {
 export const defaultOptions = (activeRouteName, navigation) => {
   return {
 
-    
+
     ...TransitionPresets.SlideFromRightIOS,
     headerRight: () => showHeaderRight(activeRouteName, navigation),
     headerLeft: () => showHeaderLeft(activeRouteName, navigation),
@@ -138,6 +154,6 @@ export const defaultOptions = (activeRouteName, navigation) => {
     headerRightContainerStyle: styles.defaultHeaderRightContainerStyle,
     headerLeftContainerStyle: styles.defaultHeaderLeftContainerStyle,
     headerStyle: styles.deafultHeaderStyle,
-    
+
   };
 };

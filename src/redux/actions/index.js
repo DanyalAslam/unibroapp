@@ -862,6 +862,101 @@ const actions = {
   },
 
 
+//get Daily Production for production stock
+  getDailyProduction: (completed, failed) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_LOADING });
+      Api.get(
+        'greyApi.php',
+        (success) => {
+         console.log('greyApi.php SUCCESSSS',success)
+          dispatch({
+            type: actionTypes.GREY_FABRIC,
+            payload: success.greyFabricD,
+          });
+
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+        },
+        (error) => {
+          console.log('greyApi.php error',error)
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+        },
+      );
+    };
+  },
+
+//get getInspectionSummary for production stock
+getInspectionSummary: (completed, failed) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_LOADING });
+      Api.get(
+        'greyApi.php',
+        (success) => {
+         console.log('greyApi.php SUCCESSSS',success)
+          dispatch({
+            type: actionTypes.GREY_FABRIC,
+            payload: success.greyFabricD,
+          });
+
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+        },
+        (error) => {
+          console.log('greyApi.php error',error)
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+        },
+      );
+    };
+  },
+
+
+
+//get production summary for production stock
+  getProductionSummary: (completed, failed) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_LOADING });
+      Api.get(
+        'greyApi.php',
+        (success) => {
+         console.log('greyApi.php SUCCESSSS',success)
+          dispatch({
+            type: actionTypes.GREY_FABRIC,
+            payload: success.greyFabricD,
+          });
+
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+        },
+        (error) => {
+          console.log('greyApi.php error',error)
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+        },
+      );
+    };
+  },
+
+  
+//get Inspection Report for production stock
+getInspectionReport: (completed, failed) => {
+  return (dispatch) => {
+    dispatch({ type: actionTypes.START_LOADING });
+    Api.get(
+      'greyApi.php',
+      (success) => {
+       console.log('greyApi.php SUCCESSSS',success)
+        dispatch({
+          type: actionTypes.GREY_FABRIC,
+          payload: success.greyFabricD,
+        });
+
+        dispatch({ type: actionTypes.CLOSE_LOADING });
+      },
+      (error) => {
+        console.log('greyApi.php error',error)
+        dispatch({ type: actionTypes.CLOSE_LOADING });
+      },
+    );
+  };
+},
+
   //Getting Purchasing orders
   getPurchasingOrders: (completed, failed) => {
     return (dispatch) => {
