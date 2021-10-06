@@ -871,7 +871,7 @@ const actions = {
         (success) => {
          console.log('greyApi.php SUCCESSSS',success)
           dispatch({
-            type: actionTypes.GREY_FABRIC,
+            type: actionTypes.DAILY_PRODUCTION,
             payload: success.greyFabricD,
           });
 
@@ -894,7 +894,7 @@ getInspectionSummary: (completed, failed) => {
         (success) => {
          console.log('greyApi.php SUCCESSSS',success)
           dispatch({
-            type: actionTypes.GREY_FABRIC,
+            type: actionTypes.INSPECTION_SUMMARY,
             payload: success.greyFabricD,
           });
 
@@ -919,7 +919,7 @@ getInspectionSummary: (completed, failed) => {
         (success) => {
          console.log('greyApi.php SUCCESSSS',success)
           dispatch({
-            type: actionTypes.GREY_FABRIC,
+            type: actionTypes.PRODUCTION_SUMMARY,
             payload: success.greyFabricD,
           });
 
@@ -943,7 +943,7 @@ getInspectionReport: (completed, failed) => {
       (success) => {
        console.log('greyApi.php SUCCESSSS',success)
         dispatch({
-          type: actionTypes.GREY_FABRIC,
+          type: actionTypes.INSPECTION_REPORT,
           payload: success.greyFabricD,
         });
 

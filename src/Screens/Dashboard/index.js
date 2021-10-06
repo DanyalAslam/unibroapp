@@ -714,14 +714,14 @@ class AboutUsScreen extends React.Component {
           <YearGraphDataPopup
             ref={(r) => (this.dataShow = r)} //reference daal rha hai
           />
-          {/* {this._renderFirstGraph()}
+          {this._renderFirstGraph()}
           {this._renderShipmentBuyerWiseGraph()}
           {this._renderShipmentCountryWiseGraph()}
           {this._renderSecondGraph()}
           {this._renderGreyFabricSupplierWise()}
           {this._renderThirdGraph()}
           {this._renderFourthGraph()}
-          {this._renderPieceGoodsOrdersGraph()} */}
+          {this._renderPieceGoodsOrdersGraph()} 
 
         </ScrollView>
         <DropDown ref={(e) => (this.CompanyDropDown = e)} />

@@ -22,8 +22,13 @@ const INITIAL_STATE = {
   grey_fabric: [],//done
   purchasing_orders: [],//done,
   outstanding_purchasing_orders: [],//done,
+  booked_piecegoods_orders_list:[],//done,
 
-  booked_piecegoods_orders_list:[],//done
+  daily_production:[],
+  production_summary:[],
+  inspection_report:[],
+  inspection_summary:[],
+  running_orders:[],
 
   
   AboutUS: {}, 
