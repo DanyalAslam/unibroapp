@@ -60,7 +60,7 @@ class DailyProduction extends React.Component {
       <View style={styles.container}>
   <FlatList 
   showsVerticalScrollIndicator={false}
-  data={this.props.purchasing_orders}
+  data={this.props.daily_production}
   renderItem={this._renderDailyProduction}
   contentContainerStyle={{paddingBottom:10*vh}}
   />
@@ -72,7 +72,7 @@ class DailyProduction extends React.Component {
 const mapStateToProps = (state) => {
   console.log('Purchasing orders state',state)
   return {
-    purchasing_orders: state.GeneralReducer.purchasing_orders,
+    daily_production: state.GeneralReducer.daily_production,
   };
 };
 

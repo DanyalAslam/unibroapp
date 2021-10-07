@@ -25,36 +25,24 @@ const DailyProductionCards = (props) => {
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.contract}
+         {props.stock.item.dprno}
         </PoppinsRegular>
         </View>
       
-        <View style={{flexDirection:'row'}}>
-        <PoppinsRegular
-          numberOfLines={2}
-          style={styles.heading}>
-    Supplier :
-        </PoppinsRegular>
-
-        <PoppinsRegular
-          style={styles.circularBoardStyle}
-          numberOfLines={2}>
-         {props.stock.item.supplier}
-        </PoppinsRegular>
-        </View>
+    
     
 
         <View style={{flexDirection:'row'}}>
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Description :
+    Date :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.description}
+         {props.stock.item.date}
         </PoppinsRegular>
         </View>
 
@@ -71,7 +59,7 @@ const DailyProductionCards = (props) => {
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
-          numberOfLines={1}>
+          numberOfLines={3}>
          {props.stock.item.remarks}
         </PoppinsRegular>
         </View>
@@ -83,7 +71,7 @@ const DailyProductionCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Meters :
+    Total Pack :
         </PoppinsRegular>
 
         <PoppinsRegular
@@ -97,13 +85,18 @@ const DailyProductionCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Rates (PKR) :
+   DPR status :
         </PoppinsRegular>
 
         <PoppinsRegular
-          style={styles.circularBoardStyle}
+          style={{ color:'green',
+          fontWeight:'bold',
+            fontSize: 2 * vw,
+            marginBottom: 0.5 * vh,
+            marginLeft:1*vw,
+            width:40*vw}}
           numberOfLines={1}>
-         {props.stock.item.rate}
+         {props.stock.item.status}
         </PoppinsRegular>
         </View>
 

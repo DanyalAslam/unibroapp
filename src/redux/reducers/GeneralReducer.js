@@ -298,12 +298,41 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
       };
     }
 
-    case actionTypes.OUTSTANDING_PURCHASING_ORDERS: {
+    case
+     actionTypes.DAILY_PRODUCTION: {
       return {
         ...state,
-        outstanding_purchasing_orders: action.payload,
+        daily_production: action.payload,
       };
     }
+
+
+
+    
+    case
+     actionTypes.PRODUCTION_SUMMARY: {
+      return {
+        ...state,
+        production_summary: action.payload,
+      };
+    }
+
+    case
+     actionTypes.INSPECTION_REPORT: {
+      return {
+        ...state,
+        inspection_report: action.payload,
+      };
+    }
+
+    case
+     actionTypes.INSPECTION_SUMMARY: {
+      return {
+        ...state,
+        inspection_summary: action.payload,
+      };
+    }
+
 
 
     default:

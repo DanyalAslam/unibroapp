@@ -19,7 +19,7 @@ const ProductionSummaryCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Cont No :
+    Contract :
         </PoppinsRegular>
 
         <PoppinsRegular
@@ -33,13 +33,13 @@ const ProductionSummaryCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Supplier :
+    Buyer :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={2}>
-         {props.stock.item.supplier}
+         {props.stock.item.buyer}
         </PoppinsRegular>
         </View>
     
@@ -62,19 +62,7 @@ const ProductionSummaryCards = (props) => {
 
             
 
-        <View style={{flexDirection:'row'}}>
-        <PoppinsRegular
-          numberOfLines={2}
-          style={styles.heading}>
-    Remarks :
-        </PoppinsRegular>
-
-        <PoppinsRegular
-          style={styles.circularBoardStyle}
-          numberOfLines={1}>
-         {props.stock.item.remarks}
-        </PoppinsRegular>
-        </View>
+      
 
 
       </View>
@@ -83,13 +71,23 @@ const ProductionSummaryCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Meters :
+    Order Qty :
         </PoppinsRegular>
 
         <PoppinsRegular
-          style={styles.circularBoardStyle}
+          style={{
+
+            color: 'green',
+            fontSize: 2 * vw,
+            marginBottom: 0.5 * vh,
+            marginLeft:1*vw,
+            width:40*vw
+
+
+
+          }}
           numberOfLines={1}>
-         {props.stock.item.meters}
+         {props.stock.item.orderqty}
         </PoppinsRegular>
         </View>
       
@@ -97,13 +95,21 @@ const ProductionSummaryCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Rates (PKR) :
+    Packed Qty :
         </PoppinsRegular>
 
         <PoppinsRegular
-          style={styles.circularBoardStyle}
+          style={{
+
+            color: 'green',
+            fontSize: 2 * vw,
+            marginBottom: 0.5 * vh,
+            marginLeft:1*vw,
+            width:40*vw
+
+          }}
           numberOfLines={1}>
-         {props.stock.item.rate}
+         {props.stock.item.packedqty}
         </PoppinsRegular>
         </View>
 

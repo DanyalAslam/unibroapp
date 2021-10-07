@@ -43,16 +43,16 @@ class ProductionSummary extends React.Component {
   _renderProductionSummary = (item) => {
 
     console.log('gettgtttttt fabricsasad',item)
-    // return <ProductionSummaryCards
+    return <ProductionSummaryCards
 
 
 
-    //   // onSuccess={() =>
-    //   //   this.props.navigation.navigate('WatchStreanScreen', { item })
-    //   // }
-    //   stock={item} 
+      // onSuccess={() =>
+      //   this.props.navigation.navigate('WatchStreanScreen', { item })
+      // }
+      stock={item} 
       
-    //   />;
+      />;
   };
   render() {
 
@@ -60,7 +60,7 @@ class ProductionSummary extends React.Component {
       <View style={styles.container}>
   <FlatList 
   showsVerticalScrollIndicator={false}
-  data={this.props.purchasing_orders}
+  data={this.props.production_summary}
   renderItem={this._renderProductionSummary}
   contentContainerStyle={{paddingBottom:10*vh}}
   />
@@ -72,7 +72,7 @@ class ProductionSummary extends React.Component {
 const mapStateToProps = (state) => {
   console.log('Purchasing orders state',state)
   return {
-    purchasing_orders: state.GeneralReducer.purchasing_orders,
+    production_summary: state.GeneralReducer.production_summary,
   };
 };
 

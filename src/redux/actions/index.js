@@ -687,12 +687,12 @@ const actions = {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
       Api.get(
-        'greyApi.php',
+        'dailyproductionApi.php',
         (success) => {
          console.log('greyApi.php SUCCESSSS',success)
           dispatch({
             type: actionTypes.DAILY_PRODUCTION,
-            payload: success.greyFabricD,
+            payload: success.dailyproductionD,
           });
 
           dispatch({ type: actionTypes.CLOSE_LOADING });
@@ -832,18 +832,18 @@ getInspectionSummary: (completed, failed) => {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
       Api.get(
-        'greyApi.php',
+        'productionsummaryApi.php',
         (success) => {
-         console.log('greyApi.php SUCCESSSS',success)
+         console.log('productionsummaryApi SUCCESSSS',success)
           dispatch({
             type: actionTypes.PRODUCTION_SUMMARY,
-            payload: success.greyFabricD,
+            payload: success.productionsummaryD,
           });
 
           dispatch({ type: actionTypes.CLOSE_LOADING });
         },
         (error) => {
-          console.log('greyApi.php error',error)
+          console.log('productionsummaryApi error',error)
           dispatch({ type: actionTypes.CLOSE_LOADING });
         },
       );

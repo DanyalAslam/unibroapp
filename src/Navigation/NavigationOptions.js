@@ -33,17 +33,18 @@ export const shouldHeaderBeShown = (activeRouteName) => {
     case 'Dashboard':
     case 'EmployeeProfile':
     case 'MenuScreen':
-
+    case 'BookedOrders':
     case 'EmployeeEmails':
-  
-  
+    case 'BuyersWiseExport':
     case 'ChangePasswordScreen':
- 
+    case 'CountryWiseExport':
+    case 'ExchangeRates':
     case 'StockInHand':
     case 'DailyProduction':
     case 'PurchasingOrders':
     case 'ProductionSummary':
     case 'InspectionReport':
+    case 'InspectionSummary':
       return true;
     case 'Grey':
       return true;
@@ -57,12 +58,32 @@ export const getTitle = (activeRouteName) => {
   switch (activeRouteName) {
     case 'Dashboard':
       return 'Dashboard';
+
+    case 'BookedOrders':
+      return 'Booked Orders';
+
+
+
+    case 'CountryWiseExport':
+      return 'Country Wise Export';
+
+
+
+    case 'BuyersWiseExport':
+      return 'Buyer Wise Export';
+
+
+
+    case 'ExchangeRates':
+      return 'Exchange Rates';
+
+
     case 'DailyProduction':
       return 'Daily Production';
     case 'ProductionSummary':
       return 'Production Summary';
- 
-  
+
+
     case 'InspectionSummary':
       return 'Inspection Summary'
 
@@ -97,6 +118,8 @@ export const getTitle = (activeRouteName) => {
       return 'Menu';
   }
 };
+
+
 export const showHeaderRight = (activeRouteName, navigation, onBackPress) => {
   switch (activeRouteName) {
     case 'HomeScreen': {
@@ -104,6 +127,7 @@ export const showHeaderRight = (activeRouteName, navigation, onBackPress) => {
     }
   }
 };
+
 const renderBackButton = (activeRouteName, navigation) => {
   return (
     <IconButton
