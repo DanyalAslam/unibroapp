@@ -807,7 +807,7 @@ getInspectionSummary: (completed, failed) => {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
       Api.get(
-        'greyApi.php',
+        'inspsummaryApi.php',
         (success) => {
          console.log('greyApi.php SUCCESSSS',success)
           dispatch({
@@ -856,7 +856,7 @@ getInspectionReport: (completed, failed) => {
   return (dispatch) => {
     dispatch({ type: actionTypes.START_LOADING });
     Api.get(
-      'greyApi.php',
+      'inspreportApi.php',
       (success) => {
        console.log('greyApi.php SUCCESSSS',success)
         dispatch({
