@@ -14,7 +14,8 @@ class MenuScreen extends React.Component {
     this.state = {
       password: '',
       showGarmentsPurchaseSubmenus:false,
-      showProductionSubmenus:false
+      showProductionSubmenus:false,
+      showExportSubmenus:false
     };
   }
 
@@ -136,9 +137,47 @@ class MenuScreen extends React.Component {
 
 <MenuButton
           title="Export Stock"
-          // onPress={() => this.props.navigation.navigate('AboutUsScreen')}
+          onPress={() =>this.setState({showExportSubmenus:!this.state.showExportSubmenus})}
           icon={settingIcons.about}
         />
+
+
+        
+{this.state.showExportSubmenus ?
+         <MenuButton
+          title="- Booked Orders"
+          style={{marginLeft:5*vw, width: 75 * vw,}}
+          onPress={() => this.props.navigation.navigate('BookedOrders')}
+          icon={settingIcons.contact}
+        /> :null }
+
+        
+{this.state.showExportSubmenus ?
+         <MenuButton
+          title="- Buyers wise Export"
+          style={{marginLeft:5*vw, width: 75 * vw,}}
+          onPress={() => this.props.navigation.navigate('BuyersWiseExport')}
+          icon={settingIcons.contact}
+        /> :null }
+
+{this.state.showExportSubmenus ?
+         <MenuButton
+          title="- Country wise Export"
+          style={{marginLeft:5*vw, width: 75 * vw,}}
+          onPress={() => this.props.navigation.navigate('CountryWiseExport')}
+          icon={settingIcons.contact}
+        /> :null }
+
+
+{this.state.showExportSubmenus ?
+         <MenuButton
+          title="- Exchange Rate"
+          style={{marginLeft:5*vw, width: 75 * vw,}}
+          onPress={() => this.props.navigation.navigate('ExchangeRates')}
+          icon={settingIcons.contact}
+        /> :null }
+
+
         <MenuButton
           onPress={() => this._onLogout()}
           title="Logout"

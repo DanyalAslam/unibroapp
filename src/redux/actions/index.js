@@ -74,80 +74,8 @@ const actions = {
     };
   },
 
-  //report the stream
-  Report: (id, success, error) => {
-    const _id = id;
-    return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
 
-      Api.get(
-        `/user/reportStatus/${_id}`,
-        (apiSuccess) => {
-          console.log('Report success :', apiSuccess);
-          // dispatch({type: actionTypes.LOG_OUT});
-          dispatch({ type: actionTypes.CLOSE_LOADING });
 
-          return success(apiSuccess.message);
-        },
-        (Apierror) => {
-          console.log('Report error :', Apierror);
-          // dispatch({type: actionTypes.LOG_OUT});
-          dispatch({ type: actionTypes.CLOSE_LOADING });
-
-          return error(Apierror.message);
-
-          // return showToast(error);
-        },
-      );
-    };
-  },
-
-  //send verification code
-  sendCode: (email, success, error) => {
-    console.log('verification code email :', email);
-    return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
-
-      Api.post(
-        '/user/sendForgotCode',
-        email,
-        (apiSuccess) => {
-          console.log('verification code successs:', apiSuccess);
-          dispatch({ type: actionTypes.CLOSE_LOADING });
-
-          return success(apiSuccess.message);
-        },
-        (apiError) => {
-          dispatch({ type: actionTypes.CLOSE_LOADING });
-
-          return error(apiError);
-        },
-      );
-    };
-  },
-  //code verification
-  verifyCode: (code, success, error) => {
-    console.log('code ', code);
-    return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
-
-      Api.post(
-        `/user/verify`,
-        code,
-        (apiSuccess) => {
-          console.log('code verified:', apiSuccess);
-          dispatch({ type: actionTypes.CLOSE_LOADING });
-
-          return success(apiSuccess.message);
-        },
-        (apiError) => {
-          dispatch({ type: actionTypes.CLOSE_LOADING });
-
-          return error(apiError);
-        },
-      );
-    };
-  },
 
   //reset password
   resetPassword: (credentials, success, error) => {
@@ -214,45 +142,6 @@ const actions = {
     };
   },
 
-  // getProfile: (success, error) => {
-  //   return dispatch => {
-  //     Api.get(
-  //       'account/profile',
-  //       apiSuccess => {
-  //         const userInfo = {
-  //           id: apiSuccess.id,
-  //           first_name: apiSuccess.first_name,
-  //           last_name: apiSuccess.last_name,
-  //           email: apiSuccess.email,
-  //           billing_address: apiSuccess.billing_address,
-  //           billing_city: apiSuccess.billing_city,
-  //           billing_state: apiSuccess.billing_state,
-  //           billing_zip: apiSuccess.billing_zip,
-  //           billing_country: apiSuccess.billing_country,
-  //           shipping_address: apiSuccess.shipping_address,
-  //           shipping_city: apiSuccess.shipping_city,
-  //           shipping_state: apiSuccess.shipping_state,
-  //           shipping_zip: apiSuccess.shipping_zip,
-  //           shipping_country: apiSuccess.shipping_country,
-  //           image: apiSuccess.image,
-  //         };
-
-  //         dispatch({
-  //           type: actionTypes.USER_INFO,
-  //           payload: {
-  //             userInfo,
-  //             access_token: apiSuccess.token,
-  //           },
-  //         });
-
-  //         return success(apiSuccess.message);
-  //       },
-  //       apiError => {
-  //         return error(apiError);
-  //       },
-  //     );
-  //   };
-  // },
 
   contactUs: (credentials, success, error) => {
     console.log('contactUs credentials', credentials);
@@ -278,47 +167,7 @@ const actions = {
     };
   },
 
-  //buyTicket
-  buyTicket: (cardDetails, success, error) => {
-    return (dispatch) => {
-      // dispatch({type: actionTypes.START_LOADING});
-      Api.post(
-        '/user/buyticket',
-        cardDetails,
-        (apiSuccess) => {
-          console.log('apiSuccess ticket', apiSuccess);
-          dispatch({ type: actionTypes.CLOSE_LOADING });
-          return success(apiSuccess.message);
-        },
-        (apiError) => {
-          console.log('apiError ticket', apiError);
-          dispatch({ type: actionTypes.CLOSE_LOADING });
-          return error(apiError);
-        },
-      );
-    };
-  },
 
-  //buy Subscription
-  buySubscription: (Data, success, error) => {
-    return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
-      Api.post(
-        '/user/subscribe',
-        Data,
-        (apiSuccess) => {
-          console.log('apiSuccess subscreipotion', apiSuccess);
-          dispatch({ type: actionTypes.CLOSE_LOADING });
-          return success(apiSuccess.message);
-        },
-        (apiError) => {
-          console.log('apiError subscreipotion', apiError);
-          dispatch({ type: actionTypes.CLOSE_LOADING });
-          return error(apiError);
-        },
-      );
-    };
-  },
 
 
 //for year graph : yearGraph new hit
@@ -677,35 +526,6 @@ const actions = {
     };
   },
 
-  //edit profile
-  editProfile: (credentials, success, error) => {
-    console.log('edit credentials', credentials);
-    return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
-
-      Api.post(
-        '/user/profileUpdate',
-        credentials,
-        (apiSuccess) => {
-          console.log('edit profile apiSuccess', apiSuccess);
-          // dispatch({type: actionTypes.CLOSE_LOADING});
-          dispatch({ type: actionTypes.CLOSE_LOADING });
-          dispatch({
-            type: actionTypes.UPDATE_PROFILE,
-            payload: apiSuccess.data,
-          });
-          return success(apiSuccess.message);
-        },
-        (apiError) => {
-          console.log('apiError pictire', apiError);
-          dispatch({ type: actionTypes.CLOSE_LOADING });
-
-          return error(apiError);
-        },
-        true,
-      );
-    };
-  },
 
   //update password
   UpdatePassword: (credentials, success, error) => {
@@ -885,6 +705,103 @@ const actions = {
     };
   },
 
+
+
+  //get Booked Orders for Export Stock
+  getBookedOrders: (completed, failed) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_LOADING });
+      Api.get(
+        'greyApi.php',
+        (success) => {
+         console.log('greyApi.php SUCCESSSS',success)
+          dispatch({
+            type: actionTypes.DAILY_PRODUCTION,
+            payload: success.greyFabricD,
+          });
+
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+        },
+        (error) => {
+          console.log('greyApi.php error',error)
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+        },
+      );
+    };
+  },
+
+    //get Exchange Rates for Export Stock
+    getExchangeRates: (completed, failed) => {
+      return (dispatch) => {
+        dispatch({ type: actionTypes.START_LOADING });
+        Api.get(
+          'greyApi.php',
+          (success) => {
+           console.log('greyApi.php SUCCESSSS',success)
+            dispatch({
+              type: actionTypes.DAILY_PRODUCTION,
+              payload: success.greyFabricD,
+            });
+  
+            dispatch({ type: actionTypes.CLOSE_LOADING });
+          },
+          (error) => {
+            console.log('greyApi.php error',error)
+            dispatch({ type: actionTypes.CLOSE_LOADING });
+          },
+        );
+      };
+    },
+  
+
+
+    //get Buyer Wise for Export Stock
+    getBuyersWiseExport: (completed, failed) => {
+      return (dispatch) => {
+        dispatch({ type: actionTypes.START_LOADING });
+        Api.get(
+          'greyApi.php',
+          (success) => {
+           console.log('greyApi.php SUCCESSSS',success)
+            dispatch({
+              type: actionTypes.DAILY_PRODUCTION,
+              payload: success.greyFabricD,
+            });
+  
+            dispatch({ type: actionTypes.CLOSE_LOADING });
+          },
+          (error) => {
+            console.log('greyApi.php error',error)
+            dispatch({ type: actionTypes.CLOSE_LOADING });
+          },
+        );
+      };
+    },
+
+
+      //get Country Wise for Export Stock
+      getCountryWiseExport: (completed, failed) => {
+        return (dispatch) => {
+          dispatch({ type: actionTypes.START_LOADING });
+          Api.get(
+            'greyApi.php',
+            (success) => {
+             console.log('greyApi.php SUCCESSSS',success)
+              dispatch({
+                type: actionTypes.DAILY_PRODUCTION,
+                payload: success.greyFabricD,
+              });
+    
+              dispatch({ type: actionTypes.CLOSE_LOADING });
+            },
+            (error) => {
+              console.log('greyApi.php error',error)
+              dispatch({ type: actionTypes.CLOSE_LOADING });
+            },
+          );
+        };
+      },
+
 //get getInspectionSummary for production stock
 getInspectionSummary: (completed, failed) => {
     return (dispatch) => {
@@ -1002,9 +919,6 @@ getOutstandingPurchasingOrders: (completed, failed) => {
       );
     };
   },
-
-
-
 
   //search products
   search: (keyword, success, error) => {

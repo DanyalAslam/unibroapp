@@ -33,20 +33,17 @@ export const shouldHeaderBeShown = (activeRouteName) => {
     case 'Dashboard':
     case 'EmployeeProfile':
     case 'MenuScreen':
-    case 'WatchStreanScreen':
-    case 'StreamsScreen':
+
     case 'EmployeeEmails':
-    case 'PaymentLogScreen':
-    case 'MySubscriptionScreen':
-    case 'AboutUsScreen':
+  
+  
     case 'ChangePasswordScreen':
-    case 'PaymentDetail':
-    case 'StreamDetail':
+ 
     case 'StockInHand':
     case 'DailyProduction':
     case 'PurchasingOrders':
     case 'ProductionSummary':
-      case 'InspectionReport':
+    case 'InspectionReport':
       return true;
     case 'Grey':
       return true;
@@ -56,6 +53,7 @@ export const shouldHeaderBeShown = (activeRouteName) => {
   }
 };
 export const getTitle = (activeRouteName) => {
+
   switch (activeRouteName) {
     case 'Dashboard':
       return 'Dashboard';
@@ -63,16 +61,14 @@ export const getTitle = (activeRouteName) => {
       return 'Daily Production';
     case 'ProductionSummary':
       return 'Production Summary';
-    case 'ContactUsScreen':
-      return 'Contact Us';
-    case 'PaymentLogScreen':
-      return 'Payment Logs';
-case 'InspectionSummary':
-  return 'Inspection Summary'
+ 
+  
+    case 'InspectionSummary':
+      return 'Inspection Summary'
 
 
-      case 'InspectionReport':
-        return 'Inspection Report';
+    case 'InspectionReport':
+      return 'Inspection Report';
     case 'PaymentDetail':
       return 'Payment Detail';
 
@@ -91,7 +87,7 @@ case 'InspectionSummary':
       return 'My Subscriptions';
     case 'ChangePasswordScreen':
       return 'Change Password';
-      case 'InspectionSummary':
+    case 'InspectionSummary':
       return 'Inspection Summary';
     case 'Grey':
       return 'Grey';

@@ -11,6 +11,10 @@ import DailyProduction from '../Screens/DailyProduction';
 import InspectionReport from '../Screens/InspectionReport';
 import ProductionSummary from '../Screens/ProductionSummary'
 import InspectionSummary from '../Screens/InspectionSummary'
+import BookedOrders from '../Screens/BookedOrders'
+import BuyersWiseExport from '../Screens/BuyersWiseExport'
+import CountryWiseExport from '../Screens/CountryWiseExport'
+import ExchangeRates from '../Screens/ExchangeRates'
 const MenuNavigator = createStackNavigator();
 const Payment = createStackNavigator();
 
@@ -31,32 +35,18 @@ const MenuStack = () => {
       <MenuNavigator.Screen component={InspectionReport} name="InspectionReport"  />
       <MenuNavigator.Screen component={InspectionSummary} name="InspectionSummary"  />
       <MenuNavigator.Screen component={ProductionSummary} name="ProductionSummary"  />
-      {/* <MenuNavigator.Screen component={StreamsScreen} name="StreamsScreen" /> */}
-      {/* <MenuNavigator.Screen
-        component={MySubscriptionScreen}
-        name="MySubscriptionScreen"
-      />
 
-      <MenuNavigator.Screen component={PaymentDetail} name="PaymentDetail" />
-      <MenuNavigator.Screen component={StreamDetail} name="StreamDetail" />
-      <MenuNavigator.Screen
-        component={StreamDetailFilterScreen}
-        name="StreamDetailFilterScreen"
-      />
-      <MenuNavigator.Screen
-        component={SubscriptionDetail}
-        name="SubscriptionDetail"
-      />
 
-      <MenuNavigator.Screen
-        component={ContactUsScreen}
-        name="ContactUsScreen"
-      />
-      <MenuNavigator.Screen component={AboutUsScreen} name="AboutUsScreen" />
-      <MenuNavigator.Screen
-        component={ChangePasswordScreen}
-        name="ChangePasswordScreen"
-      /> */}
+
+
+      <MenuNavigator.Screen component={BookedOrders} name="BookedOrders"  />
+      <MenuNavigator.Screen component={BuyersWiseExport} name="BuyersWiseExport"  />
+      <MenuNavigator.Screen component={CountryWiseExport} name="CountryWiseExport"  />
+      <MenuNavigator.Screen component={ExchangeRates} name="ExchangeRates"  />
+    
+
+
+
     </MenuNavigator.Navigator>
   );
 };
