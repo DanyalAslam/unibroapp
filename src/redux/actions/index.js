@@ -716,7 +716,7 @@ const actions = {
         (success) => {
          console.log('greyApi.php SUCCESSSS',success)
           dispatch({
-            type: actionTypes.DAILY_PRODUCTION,
+            type: actionTypes.BOOKED_ORDERS,
             payload: success.greyFabricD,
           });
 
@@ -739,7 +739,7 @@ const actions = {
           (success) => {
            console.log('greyApi.php SUCCESSSS',success)
             dispatch({
-              type: actionTypes.DAILY_PRODUCTION,
+              type: actionTypes.EXCHANGE_RATES,
               payload: success.greyFabricD,
             });
   
@@ -764,7 +764,7 @@ const actions = {
           (success) => {
            console.log('greyApi.php SUCCESSSS',success)
             dispatch({
-              type: actionTypes.DAILY_PRODUCTION,
+              type: actionTypes.COUNTRY_WISE_EXPORT,
               payload: success.greyFabricD,
             });
   
