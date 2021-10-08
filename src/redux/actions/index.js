@@ -712,7 +712,7 @@ const actions = {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
       Api.get(
-        'greyApi.php',
+        'bookedorderApi.php',
         (success) => {
          console.log('greyApi.php SUCCESSSS',success)
           dispatch({
@@ -760,7 +760,7 @@ const actions = {
       return (dispatch) => {
         dispatch({ type: actionTypes.START_LOADING });
         Api.get(
-          'greyApi.php',
+          'bweApi.php',
           (success) => {
            console.log('greyApi.php SUCCESSSS',success)
             dispatch({
@@ -784,7 +784,7 @@ const actions = {
         return (dispatch) => {
           dispatch({ type: actionTypes.START_LOADING });
           Api.get(
-            'greyApi.php',
+            'cweApi.php',
             (success) => {
              console.log('greyApi.php SUCCESSSS',success)
               dispatch({
