@@ -16,6 +16,10 @@ export const icons = {
   blurPlay: require('./icons/blurPlay.png'),
   live :require('./icons/live.png'),
   downArrow : require('./icons/downArrow.png'),
+  right_arrow : require('./icons/right-arrow.png'),
+  arrow_down :  require('./icons/arrow-down-sign-to-navigate.png')
+
+
 };
 export const backgrounds = {
   bottomBackBlueArrow: require('./backgrounds/bottomBackBlueArrow.png'),

@@ -1,7 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import styles from './styles';
-import {settingIcons} from '../../assets/images';
+import {icons} from '../../assets/images';
 import MenuButton from '../../Components/Buttons/MenuButton';
 
 import { connect } from 'react-redux';
@@ -41,28 +41,28 @@ class MenuScreen extends React.Component {
         <MenuButton
           onPress={() => this.props.navigation.navigate('EmployeeEmails')}
           title="Employee Email"
-          icon={settingIcons.profile}
+          icon={icons.right_arrow}
         />
         {/* <MenuButton
           title="Employee Profile"
           // onPress={() => this.props.navigation.navigate('StreamsScreen')}
-          icon={settingIcons.streams}
+          icon={icons.streams}
         /> */}
         <MenuButton
           title="Stock In Hand"
-          icon={settingIcons.subscription}
+          icon={icons.right_arrow}
           onPress={() => this.props.navigation.navigate('StockInHand')}
         />
         <MenuButton
           title="Grey"
           onPress={() => this.props.navigation.navigate('Grey')}
-          icon={settingIcons.payment}
+          icon={icons.right_arrow}
         />
         <MenuButton
           title="Garments Purchase Stock"
           // onPress={() => this.props.navigation.navigate('ContactUsScreen')}
           onPress={() =>this.setState({showGarmentsPurchaseSubmenus:!this.state.showGarmentsPurchaseSubmenus})}
-          icon={settingIcons.contact}
+          icon={this.state.showGarmentsPurchaseSubmenus ? icons.arrow_down :icons.right_arrow}
         />
 
 {this.state.showGarmentsPurchaseSubmenus ?
@@ -70,7 +70,7 @@ class MenuScreen extends React.Component {
           title="- Purchasing Order"
           style={{marginLeft:5*vw, width: 75 * vw,}}
           onPress={() => this.props.navigation.navigate('PurchasingOrders')}
-          icon={settingIcons.contact}
+          icon={icons.right_arrow}
         /> :null }
 
 {this.state.showGarmentsPurchaseSubmenus ?
@@ -78,7 +78,7 @@ class MenuScreen extends React.Component {
           title="- Outstanding PO"
           style={{marginLeft:5*vw, width: 75 * vw,}}
           onPress={() => this.props.navigation.navigate('OutstandingPurchasingOrders')}
-          icon={settingIcons.contact}
+          icon={icons.right_arrow}
         /> :null }
 
 
@@ -87,7 +87,7 @@ class MenuScreen extends React.Component {
         <MenuButton
           title="Production Stock"
           onPress={() =>this.setState({showProductionSubmenus:!this.state.showProductionSubmenus})}
-          icon={settingIcons.about}
+          icon={this.state.showProductionSubmenus ?icons.arrow_down : icons.right_arrow}
         />
 
 {this.state.showProductionSubmenus ?
@@ -95,7 +95,7 @@ class MenuScreen extends React.Component {
           title="- Daily Production"
           style={{marginLeft:5*vw, width: 75 * vw,}}
           onPress={() => this.props.navigation.navigate('DailyProduction')}
-          icon={settingIcons.contact}
+          icon={icons.right_arrow}
         /> :null }
 
 {this.state.showProductionSubmenus ?
@@ -103,7 +103,7 @@ class MenuScreen extends React.Component {
           title="- Production Summary"
           style={{marginLeft:5*vw, width: 75 * vw,}}
           onPress={() => this.props.navigation.navigate('ProductionSummary')}
-          icon={settingIcons.contact}
+          icon={icons.right_arrow}
         /> :null }
 
         
@@ -112,7 +112,7 @@ class MenuScreen extends React.Component {
           title="- Inspection Report"
           style={{marginLeft:5*vw, width: 75 * vw,}}
           onPress={() => this.props.navigation.navigate('InspectionReport')}
-          icon={settingIcons.contact}
+          icon={icons.right_arrow}
         /> :null }
 
 {this.state.showProductionSubmenus ?
@@ -120,7 +120,7 @@ class MenuScreen extends React.Component {
           title="- Inspection Summary"
           style={{marginLeft:5*vw, width: 75 * vw,}}
           onPress={() => this.props.navigation.navigate('InspectionSummary')}
-          icon={settingIcons.contact}
+          icon={icons.right_arrow}
         /> :null }
 
         
@@ -129,7 +129,7 @@ class MenuScreen extends React.Component {
           title="- Running Orders"
           style={{marginLeft:5*vw, width: 75 * vw,}}
           onPress={() => this.props.navigation.navigate('PurchasingOrders')}
-          icon={settingIcons.contact}
+          icon={icons.right_arrow}
         /> :null }
 
 
@@ -138,7 +138,7 @@ class MenuScreen extends React.Component {
 <MenuButton
           title="Export Stock"
           onPress={() =>this.setState({showExportSubmenus:!this.state.showExportSubmenus})}
-          icon={settingIcons.about}
+          icon={this.state.showExportSubmenus ? icons.arrow_down:  icons.right_arrow}
         />
 
 
@@ -148,7 +148,7 @@ class MenuScreen extends React.Component {
           title="- Booked Orders"
           style={{marginLeft:5*vw, width: 75 * vw,}}
           onPress={() => this.props.navigation.navigate('BookedOrders')}
-          icon={settingIcons.contact}
+          icon={icons.right_arrow}
         /> :null }
 
         
@@ -157,7 +157,7 @@ class MenuScreen extends React.Component {
           title="- Buyers wise Export"
           style={{marginLeft:5*vw, width: 75 * vw,}}
           onPress={() => this.props.navigation.navigate('BuyersWiseExport')}
-          icon={settingIcons.contact}
+          icon={icons.right_arrow}
         /> :null }
 
 {this.state.showExportSubmenus ?
@@ -165,7 +165,7 @@ class MenuScreen extends React.Component {
           title="- Country wise Export"
           style={{marginLeft:5*vw, width: 75 * vw,}}
           onPress={() => this.props.navigation.navigate('CountryWiseExport')}
-          icon={settingIcons.contact}
+          icon={icons.right_arrow}
         /> :null }
 
 
@@ -174,14 +174,14 @@ class MenuScreen extends React.Component {
           title="- Exchange Rate"
           style={{marginLeft:5*vw, width: 75 * vw,}}
           onPress={() => this.props.navigation.navigate('ExchangeRates')}
-          icon={settingIcons.contact}
+          icon={icons.right_arrow}
         /> :null }
 
 
         <MenuButton
           onPress={() => this._onLogout()}
           title="Logout"
-          icon={settingIcons.logout}
+          icon={icons.right_arrow}
         />
       </View>
     );
@@ -190,7 +190,7 @@ class MenuScreen extends React.Component {
 
 const mapStateToProps = state => {
 
-  console.log('State Home:', state);
+
   return {
       data: state.GeneralReducer.homeData,
 

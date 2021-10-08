@@ -15,7 +15,7 @@ const MenuButton = (props) => {
             >
                 {props.title}
             </PoppinsRegular>
-            <Image source={icons.settingsRightArrow} style={styles.drop}/> 
+            <Image source={props.icon} style={styles.drop}/> 
         </TouchableHOC>
     )
 }
