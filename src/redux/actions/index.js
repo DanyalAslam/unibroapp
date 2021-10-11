@@ -708,22 +708,23 @@ const actions = {
 
 
   //get Booked Orders for Export Stock
+  //contract
   getBookedOrders: (completed, failed) => {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
       Api.get(
         'bookedorderApi.php',
         (success) => {
-         console.log('greyApi.php SUCCESSSS',success)
+         console.log('bookedorderApi SUCCESSSS',success)
           dispatch({
             type: actionTypes.BOOKED_ORDERS,
-            payload: success.greyFabricD,
+            payload: success.bookedorderD,
           });
 
           dispatch({ type: actionTypes.CLOSE_LOADING });
         },
         (error) => {
-          console.log('greyApi.php error',error)
+          console.log('bookedorderApi error',error)
           dispatch({ type: actionTypes.CLOSE_LOADING });
         },
       );
@@ -756,22 +757,23 @@ const actions = {
 
 
     //get Buyer Wise for Export Stock
+    //invoice=
     getBuyersWiseExport: (completed, failed) => {
       return (dispatch) => {
         dispatch({ type: actionTypes.START_LOADING });
         Api.get(
           'bweApi.php',
           (success) => {
-           console.log('greyApi.php SUCCESSSS',success)
+           console.log('bweAp SUCCESSSS',success)
             dispatch({
-              type: actionTypes.COUNTRY_WISE_EXPORT,
-              payload: success.greyFabricD,
+              type: actionTypes.BUYER_WISE_EXPORT,
+              payload: success.buyerwiseexportD,
             });
   
             dispatch({ type: actionTypes.CLOSE_LOADING });
           },
           (error) => {
-            console.log('greyApi.php error',error)
+            console.log('bweAp error',error)
             dispatch({ type: actionTypes.CLOSE_LOADING });
           },
         );
@@ -780,22 +782,23 @@ const actions = {
 
 
       //get Country Wise for Export Stock
+      //name
       getCountryWiseExport: (completed, failed) => {
         return (dispatch) => {
           dispatch({ type: actionTypes.START_LOADING });
           Api.get(
             'cweApi.php',
             (success) => {
-             console.log('greyApi.php SUCCESSSS',success)
+             console.log('cweApi SUCCESSSS',success)
               dispatch({
-                type: actionTypes.DAILY_PRODUCTION,
-                payload: success.greyFabricD,
+                type: actionTypes.COUNTRY_WISE_EXPORT,
+                payload: success.countrywiseexportD,
               });
     
               dispatch({ type: actionTypes.CLOSE_LOADING });
             },
             (error) => {
-              console.log('greyApi.php error',error)
+              console.log('cweApi error',error)
               dispatch({ type: actionTypes.CLOSE_LOADING });
             },
           );

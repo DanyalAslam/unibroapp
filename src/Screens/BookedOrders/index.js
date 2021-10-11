@@ -60,7 +60,7 @@ class BookedOrders extends React.Component {
       <View style={styles.container}>
   <FlatList 
   showsVerticalScrollIndicator={false}
-  data={this.props.purchasing_orders}
+  data={this.props.booked_order}
   renderItem={this._renderBookedOrders}
   contentContainerStyle={{paddingBottom:10*vh}}
   />
@@ -72,7 +72,7 @@ class BookedOrders extends React.Component {
 const mapStateToProps = (state) => {
   console.log('Purchasing orders state',state)
   return {
-    purchasing_orders: state.GeneralReducer.purchasing_orders,
+    booked_order: state.GeneralReducer.booked_order,
   };
 };
 
@@ -81,7 +81,8 @@ const mapDispatchToProps = (dispatch) => {
     getBookedOrders: (success, error) =>
       dispatch(actions.getBookedOrders(success, error)),
   };
-};
+}; 
+
 
 export default connect(
   mapStateToProps,

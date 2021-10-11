@@ -60,7 +60,7 @@ class CountryWiseExport extends React.Component {
       <View style={styles.container}>
   <FlatList 
   showsVerticalScrollIndicator={false}
-  data={this.props.purchasing_orders}
+  data={this.props.country_wise_export}
   renderItem={this._renderCountryWiseExport}
   contentContainerStyle={{paddingBottom:10*vh}}
   />
@@ -72,7 +72,7 @@ class CountryWiseExport extends React.Component {
 const mapStateToProps = (state) => {
   console.log('Purchasing orders state',state)
   return {
-    purchasing_orders: state.GeneralReducer.purchasing_orders,
+    country_wise_export: state.GeneralReducer.country_wise_export,
   };
 };
 

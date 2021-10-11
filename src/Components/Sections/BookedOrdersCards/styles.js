@@ -30,10 +30,10 @@ flexDirection:"row",
     },
     container2: {
 
-          width: 61 * vw
+          width: 45 * vw
     },
     container3: {
-        width: 21 * vw
+        width: 50 * vw
   },
     circularBoardStyle: {
         color: ThemeColors.primary,

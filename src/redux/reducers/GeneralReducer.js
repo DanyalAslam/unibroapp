@@ -42,6 +42,12 @@ const INITIAL_STATE = {
   searchModal: false,
   wishList: [],
   localWishList: [],
+
+
+  booked_order:[],
+  buyer_wise_export:[],
+  country_wise_export:[],
+  exchange_rates:[],
 };
 
 export default GeneralReducer = (state = INITIAL_STATE, action) => {
@@ -332,6 +338,41 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
         inspection_summary: action.payload,
       };
     }
+
+
+    case
+    actionTypes.BOOKED_ORDERS: {
+     return {
+       ...state,
+       booked_order: action.payload,
+     };
+   }
+
+
+   case
+   actionTypes.BUYER_WISE_EXPORT: {
+    return {
+      ...state,
+      buyer_wise_export: action.payload,
+    };
+  }
+  
+
+  case
+  actionTypes.COUNTRY_WISE_EXPORT: {
+   return {
+     ...state,
+     country_wise_export: action.payload,
+   };
+ }
+ 
+ case
+ actionTypes.EXCHANGE_RATES: {
+  return {
+    ...state,
+    exchange_rates: action.payload,
+  };
+}
 
 
 

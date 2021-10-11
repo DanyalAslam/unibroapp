@@ -42,7 +42,7 @@ class BuyersWiseExport extends React.Component {
 
   _renderBuyersWiseExport = (item) => {
 
-    console.log('gettgtttttt fabricsasad',item)
+    console.log('_renderBuyersWiseExport',item)
     return <BuyersWiseExportCards
 
 
@@ -60,7 +60,7 @@ class BuyersWiseExport extends React.Component {
       <View style={styles.container}>
   <FlatList 
   showsVerticalScrollIndicator={false}
-  data={this.props.purchasing_orders}
+  data={this.props.buyer_wise_export}
   renderItem={this._renderBuyersWiseExport}
   contentContainerStyle={{paddingBottom:10*vh}}
   />
@@ -72,7 +72,7 @@ class BuyersWiseExport extends React.Component {
 const mapStateToProps = (state) => {
   console.log('Purchasing orders state',state)
   return {
-    purchasing_orders: state.GeneralReducer.purchasing_orders,
+    buyer_wise_export: state.GeneralReducer.buyer_wise_export,
   };
 };
 

@@ -19,13 +19,13 @@ const BuyersWiseExportCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Cont No :
+    Invoice No :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.contract}
+         {props.stock.item.invoiceno}
         </PoppinsRegular>
         </View>
       
@@ -33,13 +33,13 @@ const BuyersWiseExportCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Supplier :
+    Invoice Date :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={2}>
-         {props.stock.item.supplier}
+         {props.stock.item.invoicedate}
         </PoppinsRegular>
         </View>
     
@@ -58,21 +58,17 @@ const BuyersWiseExportCards = (props) => {
         </PoppinsRegular>
         </View>
 
-
-
-            
-
         <View style={{flexDirection:'row'}}>
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Remarks :
+    Customer :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.remarks}
+         {props.stock.item.customer}
         </PoppinsRegular>
         </View>
 
@@ -83,13 +79,13 @@ const BuyersWiseExportCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Meters :
+    City :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.meters}
+         {props.stock.item.city}
         </PoppinsRegular>
         </View>
       
@@ -97,32 +93,29 @@ const BuyersWiseExportCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Rates (PKR) :
+    Country :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.rate}
+         {props.stock.item.country}
         </PoppinsRegular>
         </View>
 
-    
-{/* 
         <View style={{flexDirection:'row'}}>
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Amount (PKR)
-     :
+    Fcy :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.opnamt}
+         {props.stock.item.fcy}
         </PoppinsRegular>
-        </View> */}
+        </View>
 
 
 

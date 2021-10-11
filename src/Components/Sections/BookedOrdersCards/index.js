@@ -19,13 +19,13 @@ const BookedOrdersCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Cont No :
+    Contract no :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.contract}
+         {props.stock.item.contractno}
         </PoppinsRegular>
         </View>
       
@@ -33,13 +33,13 @@ const BookedOrdersCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Supplier :
+    Booking Date :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={2}>
-         {props.stock.item.supplier}
+         {props.stock.item.bookingdate}
         </PoppinsRegular>
         </View>
     
@@ -48,13 +48,13 @@ const BookedOrdersCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Description :
+    Buyer :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.description}
+         {props.stock.item.buyer}
         </PoppinsRegular>
         </View>
 
@@ -66,30 +66,31 @@ const BookedOrdersCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Remarks :
+    Article :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.remarks}
+         {props.stock.item.article}
         </PoppinsRegular>
         </View>
 
 
       </View>
+      
       <View style={styles.container3}>
         <View style={{flexDirection:'row'}}>
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Meters :
+    Quality :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.meters}
+         {props.stock.item.quality}
         </PoppinsRegular>
         </View>
       
@@ -97,13 +98,43 @@ const BookedOrdersCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Rates (PKR) :
+    Quantity :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.rate}
+         {props.stock.item.qunatity}
+        </PoppinsRegular>
+        </View>
+
+
+        <View style={{flexDirection:'row'}}>
+        <PoppinsRegular
+          numberOfLines={2}
+          style={styles.heading}>
+    Fcy Value :
+        </PoppinsRegular>
+
+        <PoppinsRegular
+          style={styles.circularBoardStyle}
+          numberOfLines={1}>
+         {props.stock.item.fcy}
+        </PoppinsRegular>
+        </View>
+
+
+        <View style={{flexDirection:'row'}}>
+        <PoppinsRegular
+          numberOfLines={2}
+          style={styles.heading}>
+    Shipment Date :
+        </PoppinsRegular>
+
+        <PoppinsRegular
+          style={styles.circularBoardStyle}
+          numberOfLines={1}>
+         {props.stock.item.shipment}
         </PoppinsRegular>
         </View>
 
