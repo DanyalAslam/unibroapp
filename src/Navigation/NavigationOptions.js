@@ -38,7 +38,7 @@ export const shouldHeaderBeShown = (activeRouteName) => {
     case 'BuyersWiseExport':
     case 'ChangePasswordScreen':
     case 'CountryWiseExport':
-
+case 'OutstandingPurchasingOrders':
     case 'StockInHand':
     case 'DailyProduction':
     case 'PurchasingOrders':
@@ -63,7 +63,8 @@ export const getTitle = (activeRouteName) => {
       return 'Booked Orders';
 
 
-
+case 'OutstandingPurchasingOrders':
+  return 'Outstanding Purchasing Order';
     case 'CountryWiseExport':
       return 'Country Wise Export';
 

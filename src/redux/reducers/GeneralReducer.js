@@ -58,6 +58,13 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
         loading: true,
       };
     }
+ 
+    case actionTypes.OUTSTANDING_PURCHASING_ORDERS: {
+      return {
+        ...state,
+        outstanding_purchasing_orders: action.payload
+      };
+    }
 
     case actionTypes.GET_EMPLOYEES: {
       return {
