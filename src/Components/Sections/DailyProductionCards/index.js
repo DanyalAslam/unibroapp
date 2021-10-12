@@ -19,7 +19,7 @@ const DailyProductionCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Cont No :
+    DPR No :
         </PoppinsRegular>
 
         <PoppinsRegular
@@ -36,7 +36,7 @@ const DailyProductionCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Date :
+    DPR Date :
         </PoppinsRegular>
 
         <PoppinsRegular

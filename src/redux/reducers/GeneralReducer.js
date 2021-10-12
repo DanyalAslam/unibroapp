@@ -47,7 +47,7 @@ const INITIAL_STATE = {
   booked_order:[],
   buyer_wise_export:[],
   country_wise_export:[],
-  exchange_rates:[],
+
 };
 
 export default GeneralReducer = (state = INITIAL_STATE, action) => {
@@ -366,13 +366,6 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
    };
  }
  
- case
- actionTypes.EXCHANGE_RATES: {
-  return {
-    ...state,
-    exchange_rates: action.payload,
-  };
-}
 
 
 

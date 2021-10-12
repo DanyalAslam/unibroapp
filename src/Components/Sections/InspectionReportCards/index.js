@@ -33,13 +33,29 @@ const InspectionReportCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Supplier :
+    Insp No :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={2}>
-         {props.stock.item.supplier}
+         {props.stock.item.inspno}
+        </PoppinsRegular>
+        </View>
+
+
+        <View style={{flexDirection:'row'}}>
+        <PoppinsRegular
+          numberOfLines={2}
+          style={styles.heading}>
+    Insp Date :
+        </PoppinsRegular>
+
+        <PoppinsRegular
+          style={styles.circularBoardStyle}
+          numberOfLines={2}>
+         {props.stock.item.inspdate
+         }
         </PoppinsRegular>
         </View>
     
@@ -53,7 +69,7 @@ const InspectionReportCards = (props) => {
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
-          numberOfLines={1}>
+          numberOfLines={2}>
          {props.stock.item.description}
         </PoppinsRegular>
         </View>
@@ -62,19 +78,7 @@ const InspectionReportCards = (props) => {
 
             
 
-        <View style={{flexDirection:'row'}}>
-        <PoppinsRegular
-          numberOfLines={2}
-          style={styles.heading}>
-    Remarks :
-        </PoppinsRegular>
-
-        <PoppinsRegular
-          style={styles.circularBoardStyle}
-          numberOfLines={1}>
-         {props.stock.item.remarks}
-        </PoppinsRegular>
-        </View>
+   
 
 
       </View>
@@ -83,13 +87,13 @@ const InspectionReportCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Meters :
+    Buyer :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.meters}
+         {props.stock.item.buyer}
         </PoppinsRegular>
         </View>
       
@@ -97,32 +101,30 @@ const InspectionReportCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Rates (PKR) :
+  Insp Type :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.rate}
+         {props.stock.item.insptype}
         </PoppinsRegular>
         </View>
 
     
-{/* 
         <View style={{flexDirection:'row'}}>
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Amount (PKR)
-     :
+  Shipment Date:
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.opnamt}
+         {props.stock.item.shipmentdate}
         </PoppinsRegular>
-        </View> */}
+        </View>
 
 
 

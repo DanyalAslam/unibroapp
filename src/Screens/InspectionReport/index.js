@@ -42,17 +42,17 @@ class InspectionReport extends React.Component {
 
   _renderInspectionReport = (item) => {
 
-    console.log('gettgtttttt fabricsasad',item)
-    // return <InspectionReportCards
+    console.log('_renderInspectionReport success',item)
+    return <InspectionReportCards
 
 
 
-    //   // onSuccess={() =>
-    //   //   this.props.navigation.navigate('WatchStreanScreen', { item })
-    //   // }
-    //   stock={item} 
+      // onSuccess={() =>
+      //   this.props.navigation.navigate('WatchStreanScreen', { item })
+      // }
+      stock={item} 
       
-    //   />;
+      />;
   };
   render() {
 
@@ -60,7 +60,7 @@ class InspectionReport extends React.Component {
       <View style={styles.container}>
   <FlatList 
   showsVerticalScrollIndicator={false}
-  data={this.props.purchasing_orders}
+  data={this.props.inspection_report}
   renderItem={this._renderInspectionReport}
   contentContainerStyle={{paddingBottom:10*vh}}
   />
@@ -72,7 +72,7 @@ class InspectionReport extends React.Component {
 const mapStateToProps = (state) => {
   console.log('Purchasing orders state',state)
   return {
-    purchasing_orders: state.GeneralReducer.purchasing_orders,
+    inspection_report: state.GeneralReducer.inspection_report,
   };
 };
 

@@ -169,13 +169,7 @@ class MenuScreen extends React.Component {
         /> :null }
 
 
-{this.state.showExportSubmenus ?
-         <MenuButton
-          title="- Exchange Rate"
-          style={{marginLeft:5*vw, width: 75 * vw,}}
-          onPress={() => this.props.navigation.navigate('ExchangeRates')}
-          icon={icons.right_arrow}
-        /> :null }
+
 
 
         <MenuButton

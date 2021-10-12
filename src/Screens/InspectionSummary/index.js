@@ -43,16 +43,16 @@ class InspectionSummary extends React.Component {
   _renderInspectionSummary = (item) => {
 
     console.log('gettgtttttt fabricsasad',item)
-    // return <InspectionSummaryCards
+    return <InspectionSummaryCards
 
 
 
-    //   // onSuccess={() =>
-    //   //   this.props.navigation.navigate('WatchStreanScreen', { item })
-    //   // }
-    //   stock={item} 
+      // onSuccess={() =>
+      //   this.props.navigation.navigate('WatchStreanScreen', { item })
+      // }
+      stock={item} 
       
-    //   />;
+      />;
   };
   render() {
 
@@ -60,7 +60,7 @@ class InspectionSummary extends React.Component {
       <View style={styles.container}>
   <FlatList 
   showsVerticalScrollIndicator={false}
-  data={this.props.purchasing_orders}
+  data={this.props.inspection_summary}
   renderItem={this._renderInspectionSummary}
   contentContainerStyle={{paddingBottom:10*vh}}
   />
@@ -72,7 +72,7 @@ class InspectionSummary extends React.Component {
 const mapStateToProps = (state) => {
   console.log('Purchasing orders state',state)
   return {
-    purchasing_orders: state.GeneralReducer.purchasing_orders,
+    inspection_summary: state.GeneralReducer.inspection_summary,
   };
 };
 

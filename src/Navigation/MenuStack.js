@@ -14,7 +14,7 @@ import InspectionSummary from '../Screens/InspectionSummary'
 import BookedOrders from '../Screens/BookedOrders'
 import BuyersWiseExport from '../Screens/BuyersWiseExport'
 import CountryWiseExport from '../Screens/CountryWiseExport'
-import ExchangeRates from '../Screens/ExchangeRates'
+
 const MenuNavigator = createStackNavigator();
 const Payment = createStackNavigator();
 
@@ -37,15 +37,11 @@ const MenuStack = () => {
       <MenuNavigator.Screen component={ProductionSummary} name="ProductionSummary"  />
 
 
-
-
       <MenuNavigator.Screen component={BookedOrders} name="BookedOrders"  />
       <MenuNavigator.Screen component={BuyersWiseExport} name="BuyersWiseExport"  />
       <MenuNavigator.Screen component={CountryWiseExport} name="CountryWiseExport"  />
-      <MenuNavigator.Screen component={ExchangeRates} name="ExchangeRates"  />
-    
-
-
+  
+  
 
     </MenuNavigator.Navigator>
   );

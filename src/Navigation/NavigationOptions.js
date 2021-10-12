@@ -38,7 +38,7 @@ export const shouldHeaderBeShown = (activeRouteName) => {
     case 'BuyersWiseExport':
     case 'ChangePasswordScreen':
     case 'CountryWiseExport':
-    case 'ExchangeRates':
+
     case 'StockInHand':
     case 'DailyProduction':
     case 'PurchasingOrders':
@@ -74,8 +74,6 @@ export const getTitle = (activeRouteName) => {
 
 
 
-    case 'ExchangeRates':
-      return 'Exchange Rates';
 
 
     case 'DailyProduction':

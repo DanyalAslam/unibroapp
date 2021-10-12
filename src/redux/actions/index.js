@@ -731,28 +731,8 @@ const actions = {
     };
   },
 
-    //get Exchange Rates for Export Stock
-    getExchangeRates: (completed, failed) => {
-      return (dispatch) => {
-        dispatch({ type: actionTypes.START_LOADING });
-        Api.get(
-          'greyApi.php',
-          (success) => {
-           console.log('greyApi.php SUCCESSSS',success)
-            dispatch({
-              type: actionTypes.EXCHANGE_RATES,
-              payload: success.greyFabricD,
-            });
-  
-            dispatch({ type: actionTypes.CLOSE_LOADING });
-          },
-          (error) => {
-            console.log('greyApi.php error',error)
-            dispatch({ type: actionTypes.CLOSE_LOADING });
-          },
-        );
-      };
-    },
+    
+    
   
 
 
@@ -812,16 +792,16 @@ getInspectionSummary: (completed, failed) => {
       Api.get(
         'inspsummaryApi.php',
         (success) => {
-         console.log('greyApi.php SUCCESSSS',success)
+         console.log('inspsummaryApi.php SUCCESSSS',success)
           dispatch({
             type: actionTypes.INSPECTION_SUMMARY,
-            payload: success.greyFabricD,
+            payload: success.inspsummaryD,
           });
 
           dispatch({ type: actionTypes.CLOSE_LOADING });
         },
         (error) => {
-          console.log('greyApi.php error',error)
+          console.log('inspsummaryApi.php error',error)
           dispatch({ type: actionTypes.CLOSE_LOADING });
         },
       );
@@ -861,16 +841,16 @@ getInspectionReport: (completed, failed) => {
     Api.get(
       'inspreportApi.php',
       (success) => {
-       console.log('greyApi.php SUCCESSSS',success)
+       console.log('inspreportApi.php SUCCESSSS',success)
         dispatch({
           type: actionTypes.INSPECTION_REPORT,
-          payload: success.greyFabricD,
+          payload: success.inspreportD,
         });
 
         dispatch({ type: actionTypes.CLOSE_LOADING });
       },
       (error) => {
-        console.log('greyApi.php error',error)
+        console.log('inspreportApi.php error',error)
         dispatch({ type: actionTypes.CLOSE_LOADING });
       },
     );

@@ -19,13 +19,13 @@ const InspectionSummaryCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Cont No :
+    Insp Date :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.contract}
+         {props.stock.item.inspdate}
         </PoppinsRegular>
         </View>
       
@@ -33,48 +33,24 @@ const InspectionSummaryCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Supplier :
+    Defects :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={2}>
-         {props.stock.item.supplier}
+         {props.stock.item.defects}
         </PoppinsRegular>
         </View>
     
 
-        <View style={{flexDirection:'row'}}>
-        <PoppinsRegular
-          numberOfLines={2}
-          style={styles.heading}>
-    Description :
-        </PoppinsRegular>
-
-        <PoppinsRegular
-          style={styles.circularBoardStyle}
-          numberOfLines={1}>
-         {props.stock.item.description}
-        </PoppinsRegular>
-        </View>
+        
 
 
 
             
 
-        <View style={{flexDirection:'row'}}>
-        <PoppinsRegular
-          numberOfLines={2}
-          style={styles.heading}>
-    Remarks :
-        </PoppinsRegular>
-
-        <PoppinsRegular
-          style={styles.circularBoardStyle}
-          numberOfLines={1}>
-         {props.stock.item.remarks}
-        </PoppinsRegular>
-        </View>
+    
 
 
       </View>
@@ -83,13 +59,13 @@ const InspectionSummaryCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Meters :
+   Major :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.meters}
+         {props.stock.item.major}
         </PoppinsRegular>
         </View>
       
@@ -97,32 +73,18 @@ const InspectionSummaryCards = (props) => {
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Rates (PKR) :
+    Minor :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.rate}
+         {props.stock.item.minor}
         </PoppinsRegular>
         </View>
 
     
-{/* 
-        <View style={{flexDirection:'row'}}>
-        <PoppinsRegular
-          numberOfLines={2}
-          style={styles.heading}>
-    Amount (PKR)
-     :
-        </PoppinsRegular>
 
-        <PoppinsRegular
-          style={styles.circularBoardStyle}
-          numberOfLines={1}>
-         {props.stock.item.opnamt}
-        </PoppinsRegular>
-        </View> */}
 
 
 
