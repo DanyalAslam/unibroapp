@@ -586,10 +586,10 @@ class AboutUsScreen extends React.Component {
 
 
           data={this?.props?.shipment_buyer_wise_Data}
-          width={100 * vw}
+          width={90 * vw}
           height={40 * vh}
           chartConfig={{
-            barPercentage: 1.5,
+            barPercentage: 0.3,
             propsForVerticalLabels: { fontSize: 2 * vw },
             propsForHorizontalLabels: { fontSize: 2 * vw },
             backgroundGradientFrom: "#fff",
@@ -671,10 +671,10 @@ class AboutUsScreen extends React.Component {
 
 
           data={this?.props?.shipment_country_wise_Data}
-          width={100 * vw}
+          width={90 * vw}
           height={40 * vh}
           chartConfig={{
-            barPercentage: 1.5,
+            barPercentage: 0.3,
             propsForVerticalLabels: { fontSize: 2 * vw },
             propsForHorizontalLabels: { fontSize: 2 * vw },
             backgroundGradientFrom: "#fff",
