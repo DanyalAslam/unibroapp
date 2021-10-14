@@ -654,7 +654,7 @@ class AboutUsScreen extends React.Component {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => this._getSearchedShipmentBuyerWise('country')}
+            onPress={() => this._getSearchedShipmentCountryWise('country')}
           >
             <Image
               source={icons.searchBlue}
