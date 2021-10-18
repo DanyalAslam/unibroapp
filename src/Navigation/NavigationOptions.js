@@ -64,7 +64,7 @@ export const getTitle = (activeRouteName) => {
 
 
 case 'OutstandingPurchasingOrders':
-  return 'Outstanding Purchasing Order';
+  return 'Outstanding Purchase Order';
     case 'CountryWiseExport':
       return 'Country Wise Export';
 
@@ -112,7 +112,7 @@ case 'OutstandingPurchasingOrders':
     case 'Grey':
       return 'Grey';
     case 'PurchasingOrders':
-      return 'Purchasing Orders'
+      return 'Purchase Orders'
     default:
       return 'Menu';
   }

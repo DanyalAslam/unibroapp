@@ -4,8 +4,8 @@ import styles from './styles';
 import PurchasingOrdersCards from '../../Components/Sections/PurchasingOrdersCards';
 import { connect } from 'react-redux';
 import actions from '../../redux/actions/index';
-import { vh } from '../../Utils/Units';
-
+import { vh, vw } from '../../Utils/Units';
+import MainInput from '../../Components/Input/MainInput';
 
 class PurchasingOrders extends React.Component {
   constructor(props) {
@@ -41,8 +41,6 @@ class PurchasingOrders extends React.Component {
   };
 
   _renderPurchasingOrders = (item) => {
-
-    console.log('gettgtttttt fabricsasad',item)
     return <PurchasingOrdersCards
 
 
@@ -50,27 +48,56 @@ class PurchasingOrders extends React.Component {
       // onSuccess={() =>
       //   this.props.navigation.navigate('WatchStreanScreen', { item })
       // }
-      stock={item} 
-      
-      />;
+      stock={item}
+
+    />;
   };
   render() {
 
     return (
       <View style={styles.container}>
-  <FlatList 
-  showsVerticalScrollIndicator={false}
-  data={this.props.purchasing_orders}
-  renderItem={this._renderPurchasingOrders}
-  contentContainerStyle={{paddingBottom:10*vh}}
-  />
+        <View
+          style={{
+            height: 6 * vh,
+            width: 90 * vw,
+            borderRadius: 2 * vw,
+            backgroundColor: '#FFFFFF',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            paddingHorizontal: 5 * vw,
+            alignItems: 'center',
+            elevation: 2 * vw,
+            marginTop: 2 * vh
+          }}>
+
+          <MainInput
+            placeholder=" Search Purchase Order"
+            style={styles.inputField}
+            onChangeText={(keyword) => this.onStateChange('keyword', keyword)}
+          />
+
+          {/* <TouchableOpacity onPress={this._search}>
+            <Image
+              resizeMode="contain"
+              style={{ height: 5 * vh, width: 5 * vw }}
+              source={icons.searchBlue}
+            />
+          </TouchableOpacity> */}
+        </View>
+
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={this.props.purchasing_orders}
+          renderItem={this._renderPurchasingOrders}
+          contentContainerStyle={{ paddingBottom: 10 * vh }}
+        />
       </View>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log('Purchasing orders state',state)
+
   return {
     purchasing_orders: state.GeneralReducer.purchasing_orders,
   };

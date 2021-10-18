@@ -67,7 +67,7 @@ class MenuScreen extends React.Component {
 
 {this.state.showGarmentsPurchaseSubmenus ?
          <MenuButton
-          title="- Purchasing Order"
+          title="- Purchase Order"
           style={{marginLeft:5*vw, width: 75 * vw,}}
           onPress={() => this.props.navigation.navigate('PurchasingOrders')}
           icon={icons.right_arrow}

@@ -1,15 +1,11 @@
 import React from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, Image } from 'react-native';
 import styles from './styles';
 import StockCards from '../../Components/Sections/StockCards';
 import { connect } from 'react-redux';
 import actions from './../../redux/actions/index';
-import { vh } from '../../Utils/Units';
-// import PoppinsRegular from '../../Components/Text/PoppinsRegular';
-
-// import ThemeColors from '../../Utils/ThemeColors';
-// import { vh, vw } from '../../Utils/Units';
-// import reactNativeEasyPushNotifications from 'react-native-easy-push-notifications';
+import { vh, vw } from '../../Utils/Units';
+import MainInput from '../../Components/Input/MainInput';
 
 
 
@@ -54,27 +50,76 @@ class StockInHand extends React.Component {
       // onSuccess={() =>
       //   this.props.navigation.navigate('WatchStreanScreen', { item })
       // }
-      stock={item} 
-      
-      />;
+      stock={item}
+
+    />;
+  };
+
+
+  onStateChange = (type, text) => {
+    this.setState({
+      [type]: text,
+    }, () => this._search());
+  };
+  _search = async () => {
+    try {
+      let data = {
+        keyword: this.state.keyword,
+      };
+
+      const search = await this.props.getStockInHands(data.keyword, success => { }, error => { });
+    } catch (error) {
+      showToast(error);
+    }
   };
   render() {
 
     return (
       <View style={styles.container}>
-  <FlatList 
-  showsVerticalScrollIndicator={false}
-  data={this.props.stock_in_hand}
-  renderItem={this._renderStockInHand}
-  contentContainerStyle={{paddingBottom:10*vh}}
-  />
+
+        <View
+          style={{
+            height: 6 * vh,
+            width: 90 * vw,
+            borderRadius: 2 * vw,
+            backgroundColor: '#FFFFFF',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            paddingHorizontal: 5 * vw,
+            alignItems: 'center',
+            elevation: 2 * vw,
+            marginTop: 2 * vh
+          }}>
+
+          <MainInput
+            placeholder=" Search Stock In Hand"
+            style={styles.inputField}
+            onChangeText={(keyword) => this.onStateChange('keyword', keyword)}
+          />
+
+          {/* <TouchableOpacity onPress={this._search}>
+            <Image
+              resizeMode="contain"
+              style={{ height: 5 * vh, width: 5 * vw }}
+              source={icons.searchBlue}
+            />
+          </TouchableOpacity> */}
+        </View>
+
+
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={this.props.stock_in_hand}
+          renderItem={this._renderStockInHand}
+          contentContainerStyle={{ paddingBottom: 10 * vh }}
+        />
       </View>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log('Employee state',state)
+  console.log('Employee state', state)
   return {
     stock_in_hand: state.GeneralReducer.stock_in_hand,
   };
@@ -85,7 +130,7 @@ const mapDispatchToProps = (dispatch) => {
     getStockInHands: (success, error) =>
       dispatch(actions.getStockInHands(success, error)),
 
-  
+
   };
 };
 
