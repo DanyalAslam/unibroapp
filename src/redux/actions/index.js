@@ -607,12 +607,12 @@ const actions = {
 
 
 
-  getEmployeeEmails: (completed, failed) => {
-    console.log('right action callked')
+  getEmployeeEmails: (keyword,completed, failed) => {
+    console.log('right action callked',keyword)
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
+      // dispatch({ type: actionTypes.START_LOADING });
       Api.get(
-        'ueApi.php',
+        `ueApi.php/?uname=${keyword}`,
         (success) => {
           console.log('getEmployeeProfiles Success :', success);
 
@@ -620,18 +620,17 @@ const actions = {
             type: actionTypes.GET_EMPLOYEES_EMAILS,
             payload: success.userEmailD,
           });
-        dispatch({ type: actionTypes.CLOSE_LOADING });
+        // dispatch({ type: actionTypes.CLOSE_LOADING });
           // return completed(true);
         },
         (error) => {
           console.log('getEmployeeProfiles error :', success);
-        dispatch({ type: actionTypes.CLOSE_LOADING });
+        // dispatch({ type: actionTypes.CLOSE_LOADING });
           return failed(error?.message);
         },
       );
     };
   },
-
 
 
   getStockInHands: (completed, failed) => {
