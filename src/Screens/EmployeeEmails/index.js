@@ -1,13 +1,13 @@
 import React from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, Text,TouchableOpacity,Image } from 'react-native';
 import styles from './styles';
 import EmployeeCards from '../../Components/Sections/EmployeeCards';
 import { connect } from 'react-redux';
 import actions from './../../redux/actions/index';
-import { vh } from '../../Utils/Units';
+import { vh,vw } from '../../Utils/Units';
 import EmployeeEmailsCards from '../../Components/Sections/EmployeeEmailsCards';
-// import PoppinsRegular from '../../Components/Text/PoppinsRegular';
-
+import { icons } from '../../assets/images'
+import MainInput from '../../Components/Input/MainInput';
 // import ThemeColors from '../../Utils/ThemeColors';
 // import { vh, vw } from '../../Utils/Units';
 // import reactNativeEasyPushNotifications from 'react-native-easy-push-notifications';
@@ -63,6 +63,38 @@ class EmployeeEmails extends React.Component {
 
     return (
       <View style={styles.container}>
+
+
+
+<View
+          style={{
+            height: 6 * vh,
+            width: 90 * vw,
+            borderRadius: 2 * vw,
+            backgroundColor: '#FFFFFF',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            paddingHorizontal: 5 * vw,
+            alignItems: 'center',
+            elevation:2*vw,
+            marginTop:2*vh
+          }}>
+   
+          <MainInput
+            placeholder=" Search Podcasts , stories....."
+            style={styles.inputField}
+            onChangeText={(keyword) => this.onStateChange('keyword', keyword)}
+          />
+
+          <TouchableOpacity onPress={this._search}>
+            <Image
+              resizeMode="contain"
+              style={{height: 5 * vh, width: 5 * vw}}
+              source={icons.searchBlue}
+            />
+          </TouchableOpacity>
+        </View>
+
   <FlatList 
   showsVerticalScrollIndicator={false}
   data={this.props.all_employees_emails}
@@ -75,7 +107,7 @@ class EmployeeEmails extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('Employeeemailssss state',state)
+
   return {
     all_employees_emails: state.GeneralReducer.all_employees_emails,
   };
