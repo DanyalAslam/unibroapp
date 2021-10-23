@@ -4,7 +4,8 @@ import styles from './styles';
 import ProductionSummaryCards from '../../Components/Sections/ProductionSummaryCards';
 import { connect } from 'react-redux';
 import actions from '../../redux/actions/index';
-import { vh } from '../../Utils/Units';
+import { vh,vw } from '../../Utils/Units';
+import MainInput from '../../Components/Input/MainInput';
 
 
 class ProductionSummary extends React.Component {
@@ -42,7 +43,6 @@ class ProductionSummary extends React.Component {
 
   _renderProductionSummary = (item) => {
 
-    console.log('gettgtttttt fabricsasad',item)
     return <ProductionSummaryCards
 
 
@@ -58,6 +58,40 @@ class ProductionSummary extends React.Component {
 
     return (
       <View style={styles.container}>
+
+
+<View
+          style={{
+            height: 6 * vh,
+            width: 90 * vw,
+            borderRadius: 2 * vw,
+            backgroundColor: '#FFFFFF',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            paddingHorizontal: 5 * vw,
+            alignItems: 'center',
+            elevation: 2 * vw,
+            marginTop: 2 * vh
+          }}>
+
+          <MainInput
+            placeholder=" Search Purchase Order"
+            style={styles.inputField}
+            onChangeText={(keyword) => this.onStateChange('keyword', keyword)}
+          />
+
+          {/* <TouchableOpacity onPress={this._search}>
+            <Image
+              resizeMode="contain"
+              style={{ height: 5 * vh, width: 5 * vw }}
+              source={icons.searchBlue}
+            />
+          </TouchableOpacity> */}
+        </View>
+
+
+
+
   <FlatList 
   showsVerticalScrollIndicator={false}
   data={this.props.production_summary}
@@ -70,7 +104,7 @@ class ProductionSummary extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('Purchasing orders state',state)
+
   return {
     production_summary: state.GeneralReducer.production_summary,
   };
