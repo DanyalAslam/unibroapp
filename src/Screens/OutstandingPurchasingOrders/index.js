@@ -4,7 +4,7 @@ import styles from './styles';
 import OutstandingPurchasingOrdersCards from '../../Components/Sections/OutstandingPurchasingOrdersCards';
 import { connect } from 'react-redux';
 import actions from '../../redux/actions/index';
-import { vh,vw } from '../../Utils/Units';
+import { vh, vw } from '../../Utils/Units';
 import MainInput from '../../Components/Input/MainInput';
 
 
@@ -13,6 +13,7 @@ class OutstandingPurchasingOrders extends React.Component {
     super(props);
     this.state = {
       password: '',
+      keyword: '',
     };
   }
 
@@ -26,6 +27,7 @@ class OutstandingPurchasingOrders extends React.Component {
 
   _getOutstandingPurchasingOrders = () => {
     this.props.getOutstandingPurchasingOrders(
+      this.state.keyword,
       (success) => {
         if (success) {
           this.setState({
@@ -49,9 +51,9 @@ class OutstandingPurchasingOrders extends React.Component {
       // onSuccess={() =>
       //   this.props.navigation.navigate('WatchStreanScreen', { item })
       // }
-      stock={item} 
-      
-      />;
+      stock={item}
+
+    />;
   };
   render() {
 
@@ -59,7 +61,7 @@ class OutstandingPurchasingOrders extends React.Component {
       <View style={styles.container}>
 
 
-<View
+        <View
           style={{
             height: 6 * vh,
             width: 90 * vw,
@@ -89,12 +91,12 @@ class OutstandingPurchasingOrders extends React.Component {
         </View>
 
 
-  <FlatList 
-  showsVerticalScrollIndicator={false}
-  data={this.props.outstanding_purchasing_orders}
-  renderItem={this._renderOutstandingPurchasingOrders}
-  contentContainerStyle={{paddingBottom:10*vh}}
-  />
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={this.props.outstanding_purchasing_orders}
+          renderItem={this._renderOutstandingPurchasingOrders}
+          contentContainerStyle={{ paddingBottom: 10 * vh }}
+        />
       </View>
     );
   }
@@ -108,8 +110,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getOutstandingPurchasingOrders: (success, error) =>
-      dispatch(actions.getOutstandingPurchasingOrders(success, error)),
+    getOutstandingPurchasingOrders: (keyword, success, error) =>
+      dispatch(actions.getOutstandingPurchasingOrders(keyword, success, error)),
   };
 };
 

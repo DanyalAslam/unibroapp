@@ -4,7 +4,7 @@ import styles from './styles';
 import GreyCards from '../../Components/Sections/GreyCards';
 import { connect } from 'react-redux';
 import actions from '../../redux/actions/index';
-import { vh,vw } from '../../Utils/Units';
+import { vh, vw } from '../../Utils/Units';
 
 import MainInput from '../../Components/Input/MainInput';
 
@@ -13,6 +13,7 @@ class Grey extends React.Component {
     super(props);
     this.state = {
       password: '',
+      keyword: ''
     };
   }
 
@@ -26,6 +27,7 @@ class Grey extends React.Component {
 
   _getGreys = () => {
     this.props.getGreys(
+      this.state.keyword,
       (success) => {
         if (success) {
           this.setState({
@@ -130,8 +132,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getGreys: (success, error) =>
-      dispatch(actions.getGreys(success, error)),
+    getGreys: (keyword, success, error) =>
+      dispatch(actions.getGreys(keyword, success, error)),
   };
 };
 

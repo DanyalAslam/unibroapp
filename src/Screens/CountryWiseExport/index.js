@@ -4,7 +4,7 @@ import styles from './styles';
 import CountryWiseExportCards from '../../Components/Sections/CountryWiseExportCards';
 import { connect } from 'react-redux';
 import actions from '../../redux/actions/index';
-import { vh,vw} from '../../Utils/Units';
+import { vh, vw } from '../../Utils/Units';
 import PoppinsBold from '../../Components/Text/PoppinsBold'
 import PoppinsRegular from '../../Components/Text/PoppinsRegular'
 import MainInput from '../../Components/Input/MainInput';
@@ -14,6 +14,7 @@ class CountryWiseExport extends React.Component {
     super(props);
     this.state = {
       password: '',
+      keyword: ''
     };
   }
 
@@ -22,8 +23,6 @@ class CountryWiseExport extends React.Component {
   }
 
   renderRow = (data, index) => {
-    console.log('getttting dataaa123', data)
-    console.log('index', index)
 
     if (index === 0) {
       return (<View style={{ backgroundColor: '#fff', flex: 1, height: 10 * vh, alignSelf: 'stretch', flexDirection: 'row', marginHorizontal: 5 }}>
@@ -33,7 +32,7 @@ class CountryWiseExport extends React.Component {
         </View>
 
 
-    
+
         <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
           <Text style={{ color: '#012c65', fontWeight: 'bold' }}>Fcy</Text>
         </View>
@@ -45,13 +44,13 @@ class CountryWiseExport extends React.Component {
       return (
         <View style={{ flex: 1, alignSelf: 'stretch', flexDirection: 'row', borderBottomColor: 'black', borderBottomWidth: 0.3, height: 50, backgroundColor: '#fff', marginHorizontal: 5 }}>
           <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingLeft: 7 }} >
-             <PoppinsRegular style={{ fontSize: 2.5 * vw, color: 'black', fontWeight: 'bold' }}>{data.countryname}</PoppinsRegular> 
+            <PoppinsRegular style={{ fontSize: 2.5 * vw, color: 'black', fontWeight: 'bold' }}>{data.countryname}</PoppinsRegular>
           </View>
-     
+
           <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
 
-           <PoppinsRegular style={{ fontSize: 2.5 * vw, color: 'black', fontWeight: 'bold' }}>{data.fcy}</PoppinsRegular> 
-         
+            <PoppinsRegular style={{ fontSize: 2.5 * vw, color: 'black', fontWeight: 'bold' }}>{data.fcy}</PoppinsRegular>
+
           </View>
 
 
@@ -69,6 +68,7 @@ class CountryWiseExport extends React.Component {
 
   _getCountryWiseExport = () => {
     this.props.getCountryWiseExport(
+      this.state.keyword,
       (success) => {
         if (success) {
           this.setState({
@@ -86,8 +86,8 @@ class CountryWiseExport extends React.Component {
 
   _renderCountryWiseExport = (item) => {
 
-    console.log('gettgtttttt fabricsasad',item)
-    return  (<>
+    console.log('gettgtttttt fabricsasad', item)
+    return (<>
 
       <View style={styles.secondContainer}>
         {this.props?.country_wise_export?.length === 0 ? null : this?.props?.country_wise_export.map((datum, index) => { // This will render a row for each data element.
@@ -104,7 +104,7 @@ class CountryWiseExport extends React.Component {
       <View style={styles.container}>
 
 
-<View
+        <View
           style={{
             height: 6 * vh,
             width: 90 * vw,
@@ -116,7 +116,7 @@ class CountryWiseExport extends React.Component {
             alignItems: 'center',
             elevation: 2 * vw,
             marginTop: 2 * vh,
-            alignSelf:'center'
+            alignSelf: 'center'
           }}>
 
           <MainInput
@@ -136,19 +136,19 @@ class CountryWiseExport extends React.Component {
 
 
 
-  <FlatList 
-  showsVerticalScrollIndicator={false}
-  data={this.props.country_wise_export}
-  renderItem={this._renderCountryWiseExport}
-  contentContainerStyle={{paddingBottom:10*vh}}
-  />
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={this.props.country_wise_export}
+          renderItem={this._renderCountryWiseExport}
+          contentContainerStyle={{ paddingBottom: 10 * vh }}
+        />
       </View>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log('Purchasing orders state',state)
+  console.log('Purchasing orders state', state)
   return {
     country_wise_export: state.GeneralReducer.country_wise_export,
   };
@@ -156,8 +156,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getCountryWiseExport: (success, error) =>
-      dispatch(actions.getCountryWiseExport(success, error)),
+    getCountryWiseExport: (keyword, success, error) =>
+      dispatch(actions.getCountryWiseExport(keyword, success, error)),
   };
 };
 

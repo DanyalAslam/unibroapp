@@ -4,7 +4,7 @@ import styles from './styles';
 import ProductionSummaryCards from '../../Components/Sections/ProductionSummaryCards';
 import { connect } from 'react-redux';
 import actions from '../../redux/actions/index';
-import { vh,vw } from '../../Utils/Units';
+import { vh, vw } from '../../Utils/Units';
 import MainInput from '../../Components/Input/MainInput';
 
 
@@ -13,6 +13,7 @@ class ProductionSummary extends React.Component {
     super(props);
     this.state = {
       password: '',
+      keyword: '',
     };
   }
 
@@ -26,6 +27,7 @@ class ProductionSummary extends React.Component {
 
   _getProductionSummary = () => {
     this.props.getProductionSummary(
+      this.state.keyword,
       (success) => {
         if (success) {
           this.setState({
@@ -50,9 +52,9 @@ class ProductionSummary extends React.Component {
       // onSuccess={() =>
       //   this.props.navigation.navigate('WatchStreanScreen', { item })
       // }
-      stock={item} 
-      
-      />;
+      stock={item}
+
+    />;
   };
   render() {
 
@@ -60,7 +62,7 @@ class ProductionSummary extends React.Component {
       <View style={styles.container}>
 
 
-<View
+        <View
           style={{
             height: 6 * vh,
             width: 90 * vw,
@@ -92,12 +94,12 @@ class ProductionSummary extends React.Component {
 
 
 
-  <FlatList 
-  showsVerticalScrollIndicator={false}
-  data={this.props.production_summary}
-  renderItem={this._renderProductionSummary}
-  contentContainerStyle={{paddingBottom:10*vh}}
-  />
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={this.props.production_summary}
+          renderItem={this._renderProductionSummary}
+          contentContainerStyle={{ paddingBottom: 10 * vh }}
+        />
       </View>
     );
   }
@@ -112,8 +114,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getProductionSummary: (success, error) =>
-      dispatch(actions.getProductionSummary(success, error)),
+    getProductionSummary: (keyword, success, error) =>
+      dispatch(actions.getProductionSummary(keyword, success, error)),
   };
 };
 

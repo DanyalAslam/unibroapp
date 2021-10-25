@@ -62,7 +62,7 @@ class EmployeeEmails extends React.Component {
   onStateChange = (type, text) => {
     this.setState({
       [type]: text,
-    },() =>this._search());
+    }, () => this._search());
   };
   _search = async () => {
     try {
@@ -70,7 +70,7 @@ class EmployeeEmails extends React.Component {
         keyword: this.state.keyword,
       };
 
-      const search = await this.props.getEmployeeEmails(data.keyword,success =>{},error =>{});
+      const search = await this.props.getEmployeeEmails(data.keyword, success => { }, error => { });
     } catch (error) {
       showToast(error);
     }
@@ -129,8 +129,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getEmployeeEmails: (keyword,success,error) =>
-      dispatch(actions.getEmployeeEmails(keyword,success, error)),
+    getEmployeeEmails: (keyword, success, error) =>
+      dispatch(actions.getEmployeeEmails(keyword, success, error)),
 
 
 

@@ -14,6 +14,7 @@ class StockInHand extends React.Component {
     super(props);
     this.state = {
       password: '',
+      keyword: '',
     };
   }
 
@@ -27,6 +28,7 @@ class StockInHand extends React.Component {
 
   _getStockInHands = () => {
     this.props.getStockInHands(
+      this.state.keyword,
       (success) => {
         if (success) {
           this.setState({
@@ -127,8 +129,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getStockInHands: (success, error) =>
-      dispatch(actions.getStockInHands(success, error)),
+    getStockInHands: (keyword, success, error) =>
+      dispatch(actions.getStockInHands(keyword, success, error)),
 
 
   };

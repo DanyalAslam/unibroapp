@@ -4,7 +4,7 @@ import styles from './styles';
 import BuyersWiseExportCards from '../../Components/Sections/BuyersWiseExportCards';
 import { connect } from 'react-redux';
 import actions from '../../redux/actions/index';
-import { vh,vw } from '../../Utils/Units';
+import { vh, vw } from '../../Utils/Units';
 import MainInput from '../../Components/Input/MainInput';
 
 
@@ -13,6 +13,7 @@ class BuyersWiseExport extends React.Component {
     super(props);
     this.state = {
       password: '',
+      keyword: ''
     };
   }
 
@@ -26,6 +27,7 @@ class BuyersWiseExport extends React.Component {
 
   _getBuyersWiseExport = () => {
     this.props.getBuyersWiseExport(
+      this.state.keyword,
       (success) => {
         if (success) {
           this.setState({
@@ -43,7 +45,7 @@ class BuyersWiseExport extends React.Component {
 
   _renderBuyersWiseExport = (item) => {
 
-    console.log('_renderBuyersWiseExport',item)
+    console.log('_renderBuyersWiseExport', item)
     return <BuyersWiseExportCards
 
 
@@ -51,9 +53,9 @@ class BuyersWiseExport extends React.Component {
       // onSuccess={() =>
       //   this.props.navigation.navigate('WatchStreanScreen', { item })
       // }
-      stock={item} 
-      
-      />;
+      stock={item}
+
+    />;
   };
   render() {
 
@@ -62,8 +64,8 @@ class BuyersWiseExport extends React.Component {
 
 
 
-        
-<View
+
+        <View
           style={{
             height: 6 * vh,
             width: 90 * vw,
@@ -93,19 +95,19 @@ class BuyersWiseExport extends React.Component {
         </View>
 
 
-  <FlatList 
-  showsVerticalScrollIndicator={false}
-  data={this.props.buyer_wise_export}
-  renderItem={this._renderBuyersWiseExport}
-  contentContainerStyle={{paddingBottom:10*vh}}
-  />
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={this.props.buyer_wise_export}
+          renderItem={this._renderBuyersWiseExport}
+          contentContainerStyle={{ paddingBottom: 10 * vh }}
+        />
       </View>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log('Purchasing orders state',state)
+  console.log('Purchasing orders state', state)
   return {
     buyer_wise_export: state.GeneralReducer.buyer_wise_export,
   };
@@ -113,8 +115,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getBuyersWiseExport: (success, error) =>
-      dispatch(actions.getBuyersWiseExport(success, error)),
+    getBuyersWiseExport: (keyword, keywordsuccess, error) =>
+      dispatch(actions.getBuyersWiseExport(keyword, success, error)),
   };
 };
 

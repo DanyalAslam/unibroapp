@@ -12,6 +12,7 @@ class PurchasingOrders extends React.Component {
     super(props);
     this.state = {
       password: '',
+      keyword: '',
     };
   }
 
@@ -25,6 +26,7 @@ class PurchasingOrders extends React.Component {
 
   _getPurchasingOrders = () => {
     this.props.getPurchasingOrders(
+      this.state.keyword,
       (success) => {
         if (success) {
           this.setState({
@@ -105,8 +107,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getPurchasingOrders: (success, error) =>
-      dispatch(actions.getPurchasingOrders(success, error)),
+    getPurchasingOrders: (keyword, success, error) =>
+      dispatch(actions.getPurchasingOrders(keyword, success, error)),
   };
 };
 

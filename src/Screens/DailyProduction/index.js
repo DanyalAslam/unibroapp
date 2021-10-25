@@ -4,7 +4,7 @@ import styles from './styles';
 import DailyProductionCards from '../../Components/Sections/DailyProductionCards';
 import { connect } from 'react-redux';
 import actions from '../../redux/actions/index';
-import { vh,vw } from '../../Utils/Units';
+import { vh, vw } from '../../Utils/Units';
 import MainInput from '../../Components/Input/MainInput';
 
 
@@ -13,6 +13,7 @@ class DailyProduction extends React.Component {
     super(props);
     this.state = {
       password: '',
+      keyword: '',
     };
   }
 
@@ -26,6 +27,7 @@ class DailyProduction extends React.Component {
 
   _getDailyProduction = () => {
     this.props.getDailyProduction(
+      this.state.keyword,
       (success) => {
         if (success) {
           this.setState({
@@ -43,7 +45,7 @@ class DailyProduction extends React.Component {
 
   _renderDailyProduction = (item) => {
 
-    console.log('gettgtttttt fabricsasad',item)
+    console.log('gettgtttttt fabricsasad', item)
     return <DailyProductionCards
 
 
@@ -51,9 +53,9 @@ class DailyProduction extends React.Component {
       // onSuccess={() =>
       //   this.props.navigation.navigate('WatchStreanScreen', { item })
       // }
-      stock={item} 
-      
-      />;
+      stock={item}
+
+    />;
   };
   render() {
 
@@ -61,7 +63,7 @@ class DailyProduction extends React.Component {
       <View style={styles.container}>
 
 
-<View
+        <View
           style={{
             height: 6 * vh,
             width: 90 * vw,
@@ -92,19 +94,19 @@ class DailyProduction extends React.Component {
 
 
 
-  <FlatList 
-  showsVerticalScrollIndicator={false}
-  data={this.props.daily_production}
-  renderItem={this._renderDailyProduction}
-  contentContainerStyle={{paddingBottom:10*vh}}
-  />
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={this.props.daily_production}
+          renderItem={this._renderDailyProduction}
+          contentContainerStyle={{ paddingBottom: 10 * vh }}
+        />
       </View>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log('Purchasing orders state',state)
+  console.log('Purchasing orders state', state)
   return {
     daily_production: state.GeneralReducer.daily_production,
   };
@@ -112,8 +114,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getDailyProduction: (success, error) =>
-      dispatch(actions.getDailyProduction(success, error)),
+    getDailyProduction: (keyword, success, error) =>
+      dispatch(actions.getDailyProduction(keyword, success, error)),
   };
 };
 

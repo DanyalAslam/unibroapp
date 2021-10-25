@@ -4,7 +4,7 @@ import styles from './styles';
 import BookedOrdersCards from '../../Components/Sections/BookedOrdersCards';
 import { connect } from 'react-redux';
 import actions from '../../redux/actions/index';
-import { vh,vw } from '../../Utils/Units';
+import { vh, vw } from '../../Utils/Units';
 import MainInput from '../../Components/Input/MainInput';
 
 
@@ -13,6 +13,7 @@ class BookedOrders extends React.Component {
     super(props);
     this.state = {
       password: '',
+      keyword:''
     };
   }
 
@@ -26,6 +27,7 @@ class BookedOrders extends React.Component {
 
   _getBookedOrders = () => {
     this.props.getBookedOrders(
+      this.state.keyword,
       (success) => {
         if (success) {
           this.setState({
@@ -43,7 +45,7 @@ class BookedOrders extends React.Component {
 
   _renderBookedOrders = (item) => {
 
-    console.log('gettgtttttt fabricsasad',item)
+    console.log('gettgtttttt fabricsasad', item)
     return <BookedOrdersCards
 
 
@@ -51,9 +53,9 @@ class BookedOrders extends React.Component {
       // onSuccess={() =>
       //   this.props.navigation.navigate('WatchStreanScreen', { item })
       // }
-      stock={item} 
-      
-      />;
+      stock={item}
+
+    />;
   };
   render() {
 
@@ -62,7 +64,7 @@ class BookedOrders extends React.Component {
 
 
 
-<View
+        <View
           style={{
             height: 6 * vh,
             width: 90 * vw,
@@ -93,19 +95,19 @@ class BookedOrders extends React.Component {
 
 
 
-  <FlatList 
-  showsVerticalScrollIndicator={false}
-  data={this.props.booked_order}
-  renderItem={this._renderBookedOrders}
-  contentContainerStyle={{paddingBottom:10*vh}}
-  />
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={this.props.booked_order}
+          renderItem={this._renderBookedOrders}
+          contentContainerStyle={{ paddingBottom: 10 * vh }}
+        />
       </View>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log('Purchasing orders state12',state)
+  console.log('Purchasing orders state12', state)
   return {
     booked_order: state.GeneralReducer.booked_order,
   };
@@ -113,10 +115,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getBookedOrders: (success, error) =>
-      dispatch(actions.getBookedOrders(success, error)),
+    getBookedOrders: (keyword,success, error) =>
+      dispatch(actions.getBookedOrders(keyword,success, error)),
   };
-}; 
+};
 
 
 export default connect(

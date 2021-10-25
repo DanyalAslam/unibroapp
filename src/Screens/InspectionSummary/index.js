@@ -4,7 +4,7 @@ import styles from './styles';
 import InspectionSummaryCards from '../../Components/Sections/InspectionSummaryCards';
 import { connect } from 'react-redux';
 import actions from '../../redux/actions/index';
-import { vh,vw } from '../../Utils/Units';
+import { vh, vw } from '../../Utils/Units';
 
 import MainInput from '../../Components/Input/MainInput';
 
@@ -13,6 +13,7 @@ class InspectionSummary extends React.Component {
     super(props);
     this.state = {
       password: '',
+      keyword: ''
     };
   }
 
@@ -26,6 +27,7 @@ class InspectionSummary extends React.Component {
 
   _getInspectionSummary = () => {
     this.props.getInspectionSummary(
+      this.state.keyword,
       (success) => {
         if (success) {
           this.setState({
@@ -43,7 +45,7 @@ class InspectionSummary extends React.Component {
 
   _renderInspectionSummary = (item) => {
 
-    console.log('gettgtttttt fabricsasad',item)
+    console.log('gettgtttttt fabricsasad', item)
     return <InspectionSummaryCards
 
 
@@ -51,16 +53,16 @@ class InspectionSummary extends React.Component {
       // onSuccess={() =>
       //   this.props.navigation.navigate('WatchStreanScreen', { item })
       // }
-      stock={item} 
-      
-      />;
+      stock={item}
+
+    />;
   };
   render() {
 
     return (
       <View style={styles.container}>
 
-<View
+        <View
           style={{
             height: 6 * vh,
             width: 90 * vw,
@@ -88,19 +90,19 @@ class InspectionSummary extends React.Component {
             />
           </TouchableOpacity> */}
         </View>
-  <FlatList 
-  showsVerticalScrollIndicator={false}
-  data={this.props.inspection_summary}
-  renderItem={this._renderInspectionSummary}
-  contentContainerStyle={{paddingBottom:10*vh}}
-  />
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={this.props.inspection_summary}
+          renderItem={this._renderInspectionSummary}
+          contentContainerStyle={{ paddingBottom: 10 * vh }}
+        />
       </View>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log('Purchasing orders state',state)
+  console.log('Purchasing orders state', state)
   return {
     inspection_summary: state.GeneralReducer.inspection_summary,
   };
@@ -108,8 +110,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getInspectionSummary: (success, error) =>
-      dispatch(actions.getInspectionSummary(success, error)),
+    getInspectionSummary: (keyword, success, error) =>
+      dispatch(actions.getInspectionSummary(keyword, success, error)),
   };
 };
 
