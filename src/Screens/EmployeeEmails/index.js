@@ -8,10 +8,6 @@ import { vh, vw } from '../../Utils/Units';
 import EmployeeEmailsCards from '../../Components/Sections/EmployeeEmailsCards';
 import { icons } from '../../assets/images'
 import MainInput from '../../Components/Input/MainInput';
-// import ThemeColors from '../../Utils/ThemeColors';
-// import { vh, vw } from '../../Utils/Units';
-// import reactNativeEasyPushNotifications from 'react-native-easy-push-notifications';
-
 
 
 class EmployeeEmails extends React.Component {

@@ -4,8 +4,9 @@ import styles from './styles';
 import InspectionReportCards from '../../Components/Sections/InspectionReportCards';
 import { connect } from 'react-redux';
 import actions from '../../redux/actions/index';
-import { vh } from '../../Utils/Units';
+import { vh,vw } from '../../Utils/Units';
 
+import MainInput from '../../Components/Input/MainInput';
 
 class InspectionReport extends React.Component {
   constructor(props) {
