@@ -105,7 +105,7 @@ class BookedOrders extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('Purchasing orders state',state)
+  console.log('Purchasing orders state12',state)
   return {
     booked_order: state.GeneralReducer.booked_order,
   };
