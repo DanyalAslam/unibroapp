@@ -68,9 +68,9 @@ const actions = {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
 
-          dispatch({ type: actionTypes.LOG_OUT });
-          dispatch({ type: actionTypes.CLOSE_LOADING });
-          return success(true)
+      dispatch({ type: actionTypes.LOG_OUT });
+      dispatch({ type: actionTypes.CLOSE_LOADING });
+      return success(true)
     };
   },
 
@@ -170,7 +170,7 @@ const actions = {
 
 
 
-//for year graph : yearGraph new hit
+  //for year graph : yearGraph new hit
   getMonthYearGraphData: (success, error) => {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
@@ -194,7 +194,7 @@ const actions = {
       );
     };
   },
-  
+
 
   //getShipmentBuyerWise
   //getting all data for Shipment buyer wise
@@ -216,7 +216,7 @@ const actions = {
         (apiError) => {
           console.log('getShipmentBuyerWise apiError:', apiError);
           dispatch({ type: actionTypes.CLOSE_LOADING });
-    
+
         },
       );
     };
@@ -241,7 +241,7 @@ const actions = {
         (apiError) => {
           console.log('getShipmentCountryWise apiError:', apiError);
           dispatch({ type: actionTypes.CLOSE_LOADING });
-    
+
         },
       );
     };
@@ -249,9 +249,9 @@ const actions = {
 
 
 
-//get Booked / Outstanding Orders (Piecegoods cloth)
+  //get Booked / Outstanding Orders (Piecegoods cloth)
   getBookedPieceGoodsOrders: (success, error) => {
-  
+
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
       Api.get(
@@ -269,7 +269,7 @@ const actions = {
         (apiError) => {
           console.log('getBookedPieceGoodsOrders apiError', apiError);
           dispatch({ type: actionTypes.CLOSE_LOADING });
-    
+
         },
       );
     };
@@ -279,9 +279,9 @@ const actions = {
 
 
   //searched Specific company buyer wise
-  getSearchedShipmentBuyerWise: (success, error,name=null,year=null) => {
+  getSearchedShipmentBuyerWise: (success, error, name = null, year = null) => {
 
-    console.log('name',name,'year',year)
+    console.log('name', name, 'year', year)
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
       Api.get(
@@ -295,12 +295,12 @@ const actions = {
           });
           dispatch({ type: actionTypes.CLOSE_LOADING });
           // return success(true);
-        
+
         },
         (apiError) => {
           console.log('getSearchedShipmentBuyerWise apiError:', apiError);
           dispatch({ type: actionTypes.CLOSE_LOADING });
-    
+
         },
       );
     };
@@ -308,9 +308,9 @@ const actions = {
 
 
 
-  getSearchedShipmentCountryWise: (success, error,name=null,year=null) => {
+  getSearchedShipmentCountryWise: (success, error, name = null, year = null) => {
 
-    console.log('name',name,'year',year)
+    console.log('name', name, 'year', year)
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
       Api.get(
@@ -324,18 +324,18 @@ const actions = {
           });
           dispatch({ type: actionTypes.CLOSE_LOADING });
           // return success(true);
-        
+
         },
         (apiError) => {
           console.log('getSearchedShipmentCountryWise apiError:', apiError);
           dispatch({ type: actionTypes.CLOSE_LOADING });
-    
+
         },
       );
     };
   },
 
-//getting data for grey fabrics quality wise in table
+  //getting data for grey fabrics quality wise in table
   getTableGraphData: (success, error) => {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
@@ -360,7 +360,7 @@ const actions = {
     };
   },
 
- //getting data for grey fabrics Supplier wise in table
+  //getting data for grey fabrics Supplier wise in table
   getTableGreyGabricSupplierWise: (success, error) => {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
@@ -388,7 +388,7 @@ const actions = {
 
 
   getMadeUpChart: (success, error) => {
-   
+
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
       Api.get(
@@ -593,12 +593,12 @@ const actions = {
             type: actionTypes.GET_EMPLOYEES,
             payload: success.employeeD,
           });
-        dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_LOADING });
           // return completed(true);
         },
         (error) => {
           console.log('getEmployeeProfiles error :', success);
-        dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_LOADING });
           return failed(error?.message);
         },
       );
@@ -607,10 +607,10 @@ const actions = {
 
 
 
-  getEmployeeEmails: (keyword,completed, failed) => {
-    console.log('right action callked',keyword)
+  getEmployeeEmails: (keyword, completed, failed) => {
+    console.log('right action callked', keyword)
     return (dispatch) => {
-      // dispatch({ type: actionTypes.START_LOADING });
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
         `ueApi.php/?uname=${keyword}`,
         (success) => {
@@ -620,12 +620,12 @@ const actions = {
             type: actionTypes.GET_EMPLOYEES_EMAILS,
             payload: success.userEmailD,
           });
-        // dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
           // return completed(true);
         },
         (error) => {
           console.log('getEmployeeProfiles error :', success);
-        // dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
           return failed(error?.message);
         },
       );
@@ -633,24 +633,25 @@ const actions = {
   },
 
 
-  getStockInHands: (completed, failed) => {
+  getStockInHands: (keyword, completed, failed) => {
 
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
-        'stockApi.php',
+        `stockApi.php/?item_desc&&item_code=${keyword}`,
+
         (success) => {
-         
+
           dispatch({
             type: actionTypes.STOCK_IN_HAND,
             payload: success.stockD,
           });
 
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
         },
         (error) => {
-          
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
         },
       );
     };
@@ -658,47 +659,47 @@ const actions = {
 
 
   //getting Grey Report
-  getGreys: (completed, failed) => {
+  getGreys: (keyword, completed, failed) => {
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
-        'greyApi.php',
+        `greyApi.php/?supplier=${keyword}`,
         (success) => {
-         console.log('greyApi.php SUCCESSSS',success)
+          console.log('greyApi.php SUCCESSSS', success)
           dispatch({
             type: actionTypes.GREY_FABRIC,
             payload: success.greyFabricD,
           });
 
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
         },
         (error) => {
-          console.log('greyApi.php error',error)
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          console.log('greyApi.php error', error)
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
         },
       );
     };
   },
 
 
-//get Daily Production for production stock
+  //get Daily Production for production stock
   getDailyProduction: (completed, failed) => {
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
         'dailyproductionApi.php',
         (success) => {
-         console.log('greyApi.php SUCCESSSS',success)
+          console.log('greyApi.php SUCCESSSS', success)
           dispatch({
             type: actionTypes.DAILY_PRODUCTION,
             payload: success.dailyproductionD,
           });
 
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
         },
         (error) => {
-          console.log('greyApi.php error',error)
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          console.log('greyApi.php error', error)
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
         },
       );
     };
@@ -710,98 +711,98 @@ const actions = {
   //contract
   getBookedOrders: (completed, failed) => {
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
         'bookedorderApi.php',
         (success) => {
-         console.log('bookedorderApi SUCCESSSS',success)
+          console.log('bookedorderApi SUCCESSSS', success)
           dispatch({
             type: actionTypes.BOOKED_ORDERS,
             payload: success.bookedorderD,
           });
 
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
         },
         (error) => {
-          console.log('bookedorderApi error',error)
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          console.log('bookedorderApi error', error)
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
         },
       );
     };
   },
 
-    
-    
-  
 
 
-    //get Buyer Wise for Export Stock
-    //invoice=
-    getBuyersWiseExport: (completed, failed) => {
-      return (dispatch) => {
-        dispatch({ type: actionTypes.START_LOADING });
-        Api.get(
-          'bweApi.php',
-          (success) => {
-           console.log('bweAp SUCCESSSS',success)
-            dispatch({
-              type: actionTypes.BUYER_WISE_EXPORT,
-              payload: success.buyerwiseexportD,
-            });
-  
-            dispatch({ type: actionTypes.CLOSE_LOADING });
-          },
-          (error) => {
-            console.log('bweAp error',error)
-            dispatch({ type: actionTypes.CLOSE_LOADING });
-          },
-        );
-      };
-    },
 
 
-      //get Country Wise for Export Stock
-      //name
-      getCountryWiseExport: (completed, failed) => {
-        return (dispatch) => {
-          dispatch({ type: actionTypes.START_LOADING });
-          Api.get(
-            'cweApi.php',
-            (success) => {
-             console.log('cweApi SUCCESSSS',success)
-              dispatch({
-                type: actionTypes.COUNTRY_WISE_EXPORT,
-                payload: success.countrywiseexportD,
-              });
-    
-              dispatch({ type: actionTypes.CLOSE_LOADING });
-            },
-            (error) => {
-              console.log('cweApi error',error)
-              dispatch({ type: actionTypes.CLOSE_LOADING });
-            },
-          );
-        };
-      },
 
-//get getInspectionSummary for production stock
-getInspectionSummary: (completed, failed) => {
+  //get Buyer Wise for Export Stock
+  //invoice=
+  getBuyersWiseExport: (completed, failed) => {
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
+      Api.get(
+        'bweApi.php',
+        (success) => {
+          console.log('bweAp SUCCESSSS', success)
+          dispatch({
+            type: actionTypes.BUYER_WISE_EXPORT,
+            payload: success.buyerwiseexportD,
+          });
+
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+        (error) => {
+          console.log('bweAp error', error)
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+      );
+    };
+  },
+
+
+  //get Country Wise for Export Stock
+  //name
+  getCountryWiseExport: (completed, failed) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
+      Api.get(
+        'cweApi.php',
+        (success) => {
+          console.log('cweApi SUCCESSSS', success)
+          dispatch({
+            type: actionTypes.COUNTRY_WISE_EXPORT,
+            payload: success.countrywiseexportD,
+          });
+
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+        (error) => {
+          console.log('cweApi error', error)
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+      );
+    };
+  },
+
+  //get getInspectionSummary for production stock
+  getInspectionSummary: (completed, failed) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
         'inspsummaryApi.php',
         (success) => {
-         console.log('inspsummaryApi.php SUCCESSSS',success)
+          console.log('inspsummaryApi.php SUCCESSSS', success)
           dispatch({
             type: actionTypes.INSPECTION_SUMMARY,
             payload: success.inspsummaryD,
           });
 
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
         },
         (error) => {
-          console.log('inspsummaryApi.php error',error)
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          console.log('inspsummaryApi.php error', error)
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
         },
       );
     };
@@ -809,94 +810,96 @@ getInspectionSummary: (completed, failed) => {
 
 
 
-//get production summary for production stock
+  //get production summary for production stock
   getProductionSummary: (completed, failed) => {
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
         'productionsummaryApi.php',
         (success) => {
-         console.log('productionsummaryApi SUCCESSSS',success)
+          console.log('productionsummaryApi SUCCESSSS', success)
           dispatch({
             type: actionTypes.PRODUCTION_SUMMARY,
             payload: success.productionsummaryD,
           });
 
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
         },
         (error) => {
-          console.log('productionsummaryApi error',error)
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          console.log('productionsummaryApi error', error)
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
         },
       );
     };
   },
 
-  
-//get Inspection Report for production stock
-getInspectionReport: (completed, failed) => {
-  return (dispatch) => {
-    dispatch({ type: actionTypes.START_LOADING });
-    Api.get(
-      'inspreportApi.php',
-      (success) => {
-       console.log('inspreportApi.php SUCCESSSS',success)
-        dispatch({
-          type: actionTypes.INSPECTION_REPORT,
-          payload: success.inspreportD,
-        });
 
-        dispatch({ type: actionTypes.CLOSE_LOADING });
-      },
-      (error) => {
-        console.log('inspreportApi.php error',error)
-        dispatch({ type: actionTypes.CLOSE_LOADING });
-      },
-    );
-  };
-},
+  //get Inspection Report for production stock
+  getInspectionReport: (completed, failed) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
+      Api.get(
+        'inspreportApi.php',
+        (success) => {
+          console.log('inspreportApi.php SUCCESSSS', success)
+          dispatch({
+            type: actionTypes.INSPECTION_REPORT,
+            payload: success.inspreportD,
+          });
+
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+        (error) => {
+          console.log('inspreportApi.php error', error)
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+      );
+    };
+  },
 
   //Getting Purchasing orders
-  getPurchasingOrders: (completed, failed) => {
+  getPurchasingOrders: (keyword, completed, failed) => {
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
-        'poApi.php',
+        `poApi.php/?podetail=${keyword}`,
+
         (success) => {
-         console.log('getPurchasingOrders SUCCESSSS',success)
+          console.log('getPurchasingOrders SUCCESSSS', success)
           dispatch({
             type: actionTypes.PURCHASING_ORDERS,
             payload: success.purchaseOrderD,
           });
 
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
         },
         (error) => {
-          console.log('getPurchasingOrders error',error)
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          console.log('getPurchasingOrders error', error)
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
         },
       );
     };
   },
- 
-//getting Outstanding purchase orders
-getOutstandingPurchasingOrders: (completed, failed) => {
+
+  //getting Outstanding purchase orders
+  getOutstandingPurchasingOrders: (keyword, completed, failed) => {
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
-        'outstandingPoApi.php',
+        `outstandingPoApi.php/?osdetail=${keyword}`,
+
         (success) => {
-         console.log('getOutstandingPurchasingOrders SUCCESSSS',success)
+          console.log('getOutstandingPurchasingOrders SUCCESSSS', success)
           dispatch({
             type: actionTypes.OUTSTANDING_PURCHASING_ORDERS,
             payload: success.outstandingD,
           });
 
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
         },
         (error) => {
-          console.log('getOutstandingPurchasingOrders error',error)
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          console.log('getOutstandingPurchasingOrders error', error)
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
         },
       );
     };

@@ -3,6 +3,7 @@ import actionTypes from './../actions/ActionTypes';
 const INITIAL_STATE = {
   userInfo: null, 
   loading: false, //done
+  activity_loading: false, //done
   access_token: null, //done
   session_id:null,
 
@@ -56,6 +57,19 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         loading: true,
+      };
+    }
+
+    case actionTypes.START_ACTIVITY_LOADING: {
+      return {
+        ...state,
+        activity_loading: true,
+      };
+    }
+    case actionTypes.CLOSE_ACTIVITY_LOADING: {
+      return {
+        ...state,
+        activity_loading: false,
       };
     }
  

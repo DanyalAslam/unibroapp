@@ -91,7 +91,11 @@ class ProductionSummary extends React.Component {
           </TouchableOpacity> */}
         </View>
 
+        {this.props.activity_loading ? <ActivityIndicator size="small" color="#012c65"
+          style={{ paddingVertical: 3 * vh }}
+        /> : null
 
+        }
 
 
         <FlatList
@@ -108,6 +112,8 @@ class ProductionSummary extends React.Component {
 const mapStateToProps = (state) => {
 
   return {
+    activity_loading: state.GeneralReducer.activity_loading,
+
     production_summary: state.GeneralReducer.production_summary,
   };
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, Image } from 'react-native';
+import { FlatList, View, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
 import styles from './styles';
 import StockCards from '../../Components/Sections/StockCards';
 import { connect } from 'react-redux';
@@ -7,7 +7,7 @@ import actions from './../../redux/actions/index';
 import { vh, vw } from '../../Utils/Units';
 import MainInput from '../../Components/Input/MainInput';
 
-
+import { icons } from '../../assets/images'
 
 class StockInHand extends React.Component {
   constructor(props) {
@@ -99,15 +99,14 @@ class StockInHand extends React.Component {
             onChangeText={(keyword) => this.onStateChange('keyword', keyword)}
           />
 
-          {/* <TouchableOpacity onPress={this._search}>
-            <Image
-              resizeMode="contain"
-              style={{ height: 5 * vh, width: 5 * vw }}
-              source={icons.searchBlue}
-            />
-          </TouchableOpacity> */}
+
         </View>
 
+        {this.props.activity_loading ? <ActivityIndicator size="small" color="#012c65"
+        style={{paddingVertical:3*vh}}
+        /> : null
+
+        }
 
         <FlatList
           showsVerticalScrollIndicator={false}
@@ -123,6 +122,8 @@ class StockInHand extends React.Component {
 const mapStateToProps = (state) => {
   console.log('Employee state', state)
   return {
+    activity_loading: state.GeneralReducer.activity_loading,
+
     stock_in_hand: state.GeneralReducer.stock_in_hand,
   };
 };

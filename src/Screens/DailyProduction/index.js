@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, ActivityIndicator } from 'react-native';
 import styles from './styles';
 import DailyProductionCards from '../../Components/Sections/DailyProductionCards';
 import { connect } from 'react-redux';
@@ -92,7 +92,11 @@ class DailyProduction extends React.Component {
           </TouchableOpacity> */}
         </View>
 
+        {this.props.activity_loading ? <ActivityIndicator size="small" color="#012c65"
+          style={{ paddingVertical: 3 * vh }}
+        /> : null
 
+        }
 
         <FlatList
           showsVerticalScrollIndicator={false}
@@ -108,6 +112,8 @@ class DailyProduction extends React.Component {
 const mapStateToProps = (state) => {
   console.log('Purchasing orders state', state)
   return {
+    activity_loading: state.GeneralReducer.activity_loading,
+
     daily_production: state.GeneralReducer.daily_production,
   };
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, ActivityIndicator } from 'react-native';
 import styles from './styles';
 import OutstandingPurchasingOrdersCards from '../../Components/Sections/OutstandingPurchasingOrdersCards';
 import { connect } from 'react-redux';
@@ -55,6 +55,26 @@ class OutstandingPurchasingOrders extends React.Component {
 
     />;
   };
+
+
+  onStateChange = (type, text) => {
+    this.setState({
+      [type]: text,
+    }, () => this._search());
+  };
+  _search = async () => {
+    try {
+      let data = {
+        keyword: this.state.keyword,
+      };
+
+      const search = await this.props.getOutstandingPurchasingOrders(data.keyword, success => { }, error => { });
+    } catch (error) {
+      showToast(error);
+    }
+  };
+
+
   render() {
 
     return (
@@ -90,7 +110,11 @@ class OutstandingPurchasingOrders extends React.Component {
           </TouchableOpacity> */}
         </View>
 
+        {this.props.activity_loading ? <ActivityIndicator size="small" color="#012c65"
+          style={{ paddingVertical: 3 * vh }}
+        /> : null
 
+        }
         <FlatList
           showsVerticalScrollIndicator={false}
           data={this.props.outstanding_purchasing_orders}
@@ -104,6 +128,8 @@ class OutstandingPurchasingOrders extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    activity_loading: state.GeneralReducer.activity_loading,
+
     outstanding_purchasing_orders: state.GeneralReducer.outstanding_purchasing_orders,
   };
 };

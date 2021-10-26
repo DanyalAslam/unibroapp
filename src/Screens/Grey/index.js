@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, ActivityIndicator } from 'react-native';
 import styles from './styles';
 import GreyCards from '../../Components/Sections/GreyCards';
 import { connect } from 'react-redux';
@@ -42,6 +42,22 @@ class Grey extends React.Component {
       },
     );
   };
+  onStateChange = (type, text) => {
+    this.setState({
+      [type]: text,
+    }, () => this._search());
+  };
+  _search = async () => {
+    try {
+      let data = {
+        keyword: this.state.keyword,
+      };
+
+      const search = await this.props.getGreys(data.keyword, success => { }, error => { });
+    } catch (error) {
+      showToast(error);
+    }
+  };
 
   _renderGrey = (item) => {
 
@@ -59,22 +75,7 @@ class Grey extends React.Component {
   };
 
 
-  onStateChange = (type, text) => {
-    this.setState({
-      [type]: text,
-    }, () => this._search());
-  };
-  _search = async () => {
-    try {
-      let data = {
-        keyword: this.state.keyword,
-      };
 
-      const search = await this.props.getStockInHands(data.keyword, success => { }, error => { });
-    } catch (error) {
-      showToast(error);
-    }
-  };
   render() {
 
     return (
@@ -109,7 +110,11 @@ class Grey extends React.Component {
             />
           </TouchableOpacity> */}
         </View>
+        {this.props.activity_loading ? <ActivityIndicator size="small" color="#012c65"
+          style={{ paddingVertical: 3 * vh }}
+        /> : null
 
+        }
 
 
         <FlatList
@@ -126,6 +131,8 @@ class Grey extends React.Component {
 const mapStateToProps = (state) => {
   console.log('Employee state', state)
   return {
+    activity_loading: state.GeneralReducer.activity_loading,
+
     grey_fabric: state.GeneralReducer.grey_fabric,
   };
 };

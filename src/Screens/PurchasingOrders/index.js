@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, ActivityIndicator } from 'react-native';
 import styles from './styles';
 import PurchasingOrdersCards from '../../Components/Sections/PurchasingOrdersCards';
 import { connect } from 'react-redux';
@@ -54,6 +54,25 @@ class PurchasingOrders extends React.Component {
 
     />;
   };
+
+  onStateChange = (type, text) => {
+    this.setState({
+      [type]: text,
+    }, () => this._search());
+  };
+  _search = async () => {
+    try {
+      let data = {
+        keyword: this.state.keyword,
+      };
+
+      const search = await this.props.getPurchasingOrders(data.keyword, success => { }, error => { });
+    } catch (error) {
+      showToast(error);
+    }
+  };
+
+
   render() {
 
     return (
@@ -86,7 +105,11 @@ class PurchasingOrders extends React.Component {
             />
           </TouchableOpacity> */}
         </View>
+        {this.props.activity_loading ? <ActivityIndicator size="small" color="#012c65"
+          style={{ paddingVertical: 3 * vh }}
+        /> : null
 
+        }
         <FlatList
           showsVerticalScrollIndicator={false}
           data={this.props.purchasing_orders}
@@ -101,6 +124,8 @@ class PurchasingOrders extends React.Component {
 const mapStateToProps = (state) => {
 
   return {
+    activity_loading: state.GeneralReducer.activity_loading,
+
     purchasing_orders: state.GeneralReducer.purchasing_orders,
   };
 };

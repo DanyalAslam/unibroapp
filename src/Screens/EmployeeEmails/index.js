@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, Text, TouchableOpacity, Image } from 'react-native';
+import { FlatList, View, Text, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
 import styles from './styles';
 import EmployeeCards from '../../Components/Sections/EmployeeCards';
 import { connect } from 'react-redux';
@@ -100,15 +100,13 @@ class EmployeeEmails extends React.Component {
             onChangeText={(keyword) => this.onStateChange('keyword', keyword)}
           />
 
-          {/* <TouchableOpacity onPress={this._search}>
-            <Image
-              resizeMode="contain"
-              style={{ height: 5 * vh, width: 5 * vw }}
-              source={icons.searchBlue}
-            />
-          </TouchableOpacity> */}
-        </View>
 
+        </View>
+        {this.props.activity_loading ? <ActivityIndicator size="small" color="#012c65"
+          style={{ paddingVertical: 3 * vh }}
+        /> : null
+
+        }
         <FlatList
           showsVerticalScrollIndicator={false}
           data={this.props.all_employees_emails}
@@ -122,7 +120,10 @@ class EmployeeEmails extends React.Component {
 
 const mapStateToProps = (state) => {
 
+  console.log('checllclcllcllc', state)
+
   return {
+    activity_loading: state.GeneralReducer.activity_loading,
     all_employees_emails: state.GeneralReducer.all_employees_emails,
   };
 };
