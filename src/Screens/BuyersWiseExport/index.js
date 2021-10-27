@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, ActivityIndicator } from 'react-native';
 import styles from './styles';
 import BuyersWiseExportCards from '../../Components/Sections/BuyersWiseExportCards';
 import { connect } from 'react-redux';
@@ -57,6 +57,22 @@ class BuyersWiseExport extends React.Component {
 
     />;
   };
+  onStateChange = (type, text) => {
+    this.setState({
+      [type]: text,
+    }, () => this._search());
+  };
+  _search = async () => {
+    try {
+      let data = {
+        keyword: this.state.keyword,
+      };
+
+      const search = await this.props.getBuyersWiseExport(data.keyword, success => { }, error => { });
+    } catch (error) {
+      showToast(error);
+    }
+  };
   render() {
 
     return (
@@ -85,16 +101,14 @@ class BuyersWiseExport extends React.Component {
             onChangeText={(keyword) => this.onStateChange('keyword', keyword)}
           />
 
-          {/* <TouchableOpacity onPress={this._search}>
-            <Image
-              resizeMode="contain"
-              style={{ height: 5 * vh, width: 5 * vw }}
-              source={icons.searchBlue}
-            />
-          </TouchableOpacity> */}
+
         </View>
 
+        {this.props.activity_loading ? <ActivityIndicator size="small" color="#012c65"
+          style={{ paddingVertical: 3 * vh }}
+        /> : null
 
+        }
         <FlatList
           showsVerticalScrollIndicator={false}
           data={this.props.buyer_wise_export}
@@ -109,13 +123,15 @@ class BuyersWiseExport extends React.Component {
 const mapStateToProps = (state) => {
   console.log('Purchasing orders state', state)
   return {
+    activity_loading: state.GeneralReducer.activity_loading,
+
     buyer_wise_export: state.GeneralReducer.buyer_wise_export,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getBuyersWiseExport: (keyword, keywordsuccess, error) =>
+    getBuyersWiseExport: (keyword, success, error) =>
       dispatch(actions.getBuyersWiseExport(keyword, success, error)),
   };
 };

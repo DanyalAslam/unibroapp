@@ -709,11 +709,12 @@ const actions = {
 
   //get Booked Orders for Export Stock
   //contract
-  getBookedOrders: (completed, failed) => {
+  getBookedOrders: (keyword,completed, failed) => {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
-        'bookedorderApi.php',
+        `bookedorderApi.php/?contract=${keyword}`,
+
         (success) => {
           console.log('bookedorderApi SUCCESSSS', success)
           dispatch({
@@ -738,11 +739,11 @@ const actions = {
 
   //get Buyer Wise for Export Stock
   //invoice=
-  getBuyersWiseExport: (completed, failed) => {
+  getBuyersWiseExport: (keyword,completed, failed) => {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
-        'bweApi.php',
+        `bweApi.php/?invoice=${keyword}`,
         (success) => {
           console.log('bweAp SUCCESSSS', success)
           dispatch({
@@ -763,11 +764,12 @@ const actions = {
 
   //get Country Wise for Export Stock
   //name
-  getCountryWiseExport: (completed, failed) => {
+  getCountryWiseExport: (keyword,completed, failed) => {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
-        'cweApi.php',
+        `cweApi.php/?name=${keyword}`,
+
         (success) => {
           console.log('cweApi SUCCESSSS', success)
           dispatch({

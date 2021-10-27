@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, ActivityIndicator } from 'react-native';
 import styles from './styles';
 import ProductionSummaryCards from '../../Components/Sections/ProductionSummaryCards';
 import { connect } from 'react-redux';
@@ -56,6 +56,27 @@ class ProductionSummary extends React.Component {
 
     />;
   };
+
+
+  onStateChange = (type, text) => {
+    this.setState({
+      [type]: text,
+    }, () => this._search());
+  };
+  _search = async () => {
+    try {
+      let data = {
+        keyword: this.state.keyword,
+      };
+
+      const search = await this.props.getProductionSummary(data.keyword, success => { }, error => { });
+    } catch (error) {
+      showToast(error);
+    }
+  };
+
+
+
   render() {
 
     return (
@@ -82,13 +103,7 @@ class ProductionSummary extends React.Component {
             onChangeText={(keyword) => this.onStateChange('keyword', keyword)}
           />
 
-          {/* <TouchableOpacity onPress={this._search}>
-            <Image
-              resizeMode="contain"
-              style={{ height: 5 * vh, width: 5 * vw }}
-              source={icons.searchBlue}
-            />
-          </TouchableOpacity> */}
+    
         </View>
 
         {this.props.activity_loading ? <ActivityIndicator size="small" color="#012c65"

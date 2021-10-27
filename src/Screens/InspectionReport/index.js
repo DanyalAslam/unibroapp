@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, ActivityIndicator } from 'react-native';
 import styles from './styles';
 import InspectionReportCards from '../../Components/Sections/InspectionReportCards';
 import { connect } from 'react-redux';
@@ -57,6 +57,26 @@ class InspectionReport extends React.Component {
 
     />;
   };
+
+
+  onStateChange = (type, text) => {
+    this.setState({
+      [type]: text,
+    }, () => this._search());
+  };
+  _search = async () => {
+    try {
+      let data = {
+        keyword: this.state.keyword,
+      };
+
+      const search = await this.props.getInspectionReport(data.keyword, success => { }, error => { });
+    } catch (error) {
+      showToast(error);
+    }
+  };
+
+
   render() {
 
     return (
@@ -82,14 +102,12 @@ class InspectionReport extends React.Component {
             onChangeText={(keyword) => this.onStateChange('keyword', keyword)}
           />
 
-          {/* <TouchableOpacity onPress={this._search}>
-            <Image
-              resizeMode="contain"
-              style={{ height: 5 * vh, width: 5 * vw }}
-              source={icons.searchBlue}
-            />
-          </TouchableOpacity> */}
         </View>
+        {this.props.activity_loading ? <ActivityIndicator size="small" color="#012c65"
+          style={{ paddingVertical: 3 * vh }}
+        /> : null
+
+        }
 
         <FlatList
           showsVerticalScrollIndicator={false}
@@ -103,8 +121,10 @@ class InspectionReport extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('Purchasing orders state', state)
+
   return {
+    activity_loading: state.GeneralReducer.activity_loading,
+
     inspection_report: state.GeneralReducer.inspection_report,
   };
 };

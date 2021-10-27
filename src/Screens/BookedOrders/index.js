@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, ActivityIndicator } from 'react-native';
 import styles from './styles';
 import BookedOrdersCards from '../../Components/Sections/BookedOrdersCards';
 import { connect } from 'react-redux';
@@ -57,6 +57,22 @@ class BookedOrders extends React.Component {
 
     />;
   };
+  onStateChange = (type, text) => {
+    this.setState({
+      [type]: text,
+    }, () => this._search());
+  };
+  _search = async () => {
+    try {
+      let data = {
+        keyword: this.state.keyword,
+      };
+
+      const search = await this.props.getBookedOrders(data.keyword, success => { }, error => { });
+    } catch (error) {
+      showToast(error);
+    }
+  };
   render() {
 
     return (
@@ -84,16 +100,14 @@ class BookedOrders extends React.Component {
             onChangeText={(keyword) => this.onStateChange('keyword', keyword)}
           />
 
-          {/* <TouchableOpacity onPress={this._search}>
-            <Image
-              resizeMode="contain"
-              style={{ height: 5 * vh, width: 5 * vw }}
-              source={icons.searchBlue}
-            />
-          </TouchableOpacity> */}
+
         </View>
 
+        {this.props.activity_loading ? <ActivityIndicator size="small" color="#012c65"
+          style={{ paddingVertical: 3 * vh }}
+        /> : null
 
+        }
 
         <FlatList
           showsVerticalScrollIndicator={false}
@@ -109,6 +123,8 @@ class BookedOrders extends React.Component {
 const mapStateToProps = (state) => {
   console.log('Purchasing orders state12', state)
   return {
+    activity_loading: state.GeneralReducer.activity_loading,
+
     booked_order: state.GeneralReducer.booked_order,
   };
 };

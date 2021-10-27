@@ -83,13 +83,7 @@ class DailyProduction extends React.Component {
             onChangeText={(keyword) => this.onStateChange('keyword', keyword)}
           />
 
-          {/* <TouchableOpacity onPress={this._search}>
-            <Image
-              resizeMode="contain"
-              style={{ height: 5 * vh, width: 5 * vw }}
-              source={icons.searchBlue}
-            />
-          </TouchableOpacity> */}
+        
         </View>
 
         {this.props.activity_loading ? <ActivityIndicator size="small" color="#012c65"
