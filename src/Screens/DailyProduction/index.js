@@ -78,7 +78,7 @@ class DailyProduction extends React.Component {
           }}>
 
           <MainInput
-            placeholder=" Search Purchase Order"
+            placeholder=" Search Daily Production"
             style={styles.inputField}
             onChangeText={(keyword) => this.onStateChange('keyword', keyword)}
           />

@@ -98,7 +98,7 @@ class InspectionSummary extends React.Component {
           }}>
 
           <MainInput
-            placeholder=" Search Employee Emails"
+            placeholder=" Search Inspection Summary"
             style={styles.inputField}
             onChangeText={(keyword) => this.onStateChange('keyword', keyword)}
           />

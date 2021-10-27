@@ -96,7 +96,7 @@ class BuyersWiseExport extends React.Component {
           }}>
 
           <MainInput
-            placeholder=" Search Employee Emails"
+            placeholder=" Search Buyerwise Export"
             style={styles.inputField}
             onChangeText={(keyword) => this.onStateChange('keyword', keyword)}
           />

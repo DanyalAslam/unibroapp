@@ -97,7 +97,7 @@ class InspectionReport extends React.Component {
           }}>
 
           <MainInput
-            placeholder=" Search Purchase Order"
+            placeholder=" Search Inspection Report"
             style={styles.inputField}
             onChangeText={(keyword) => this.onStateChange('keyword', keyword)}
           />

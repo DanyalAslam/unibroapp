@@ -95,7 +95,7 @@ class BookedOrders extends React.Component {
           }}>
 
           <MainInput
-            placeholder=" Search Employee Emails"
+            placeholder=" Search Booked Orders"
             style={styles.inputField}
             onChangeText={(keyword) => this.onStateChange('keyword', keyword)}
           />
@@ -121,7 +121,7 @@ class BookedOrders extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('Purchasing orders state12', state)
+
   return {
     activity_loading: state.GeneralReducer.activity_loading,
 

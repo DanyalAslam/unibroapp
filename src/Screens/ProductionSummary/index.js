@@ -98,7 +98,7 @@ class ProductionSummary extends React.Component {
           }}>
 
           <MainInput
-            placeholder=" Search Purchase Order"
+            placeholder=" Search Production Summary"
             style={styles.inputField}
             onChangeText={(keyword) => this.onStateChange('keyword', keyword)}
           />
