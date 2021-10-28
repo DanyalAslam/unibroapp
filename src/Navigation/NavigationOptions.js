@@ -30,6 +30,7 @@ export const shouldHeaderBeShown = (activeRouteName) => {
 
   setStatusBar(activeRouteName);
   switch (activeRouteName) {
+  case 'ApprovedDocuments':
     case 'Dashboard':
     case 'EmployeeProfile':
     case 'MenuScreen':
@@ -56,6 +57,8 @@ case 'OutstandingPurchasingOrders':
 export const getTitle = (activeRouteName) => {
 
   switch (activeRouteName) {
+    case 'ApprovedDocuments':
+    return  'Approved Documents';
     case 'Dashboard':
       return 'Dashboard';
 

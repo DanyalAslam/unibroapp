@@ -194,6 +194,58 @@ const actions = {
       );
     };
   },
+  
+  //getapproveddocumentsoption for dropdown
+  getApprovedDocumentsOptions: (success, error) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_LOADING });
+      Api.get(
+        'assignDocumentApi.php/?user_code=001',
+        (apiSuccess) => {
+          console.log('getApprovedDocumentsOptions success', apiSuccess);
+
+          dispatch({
+            type: actionTypes.APPROVED_DOCUMENTS_OPTIONS,
+            payload: apiSuccess.docRight,
+          });
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+          // return success(true);
+        },
+        (apiError) => {
+          console.log('getApprovedDocumentsOptions apiError:', apiError);
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+          // return error(apiError);
+        },
+      );
+    };
+  },
+
+
+  
+//getting approved and non approved documents details
+  getDocumentDetails: (success, error) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_LOADING });
+      Api.get(
+        'approveDocApi.php/?status=sent&&docnic=PO',
+        (apiSuccess) => {
+          console.log('getDocumentDetails success', apiSuccess);
+
+          dispatch({
+            type: actionTypes.APPROVED_DOCUMENTS_DETAILS,
+            payload: apiSuccess.DocumentData,
+          });
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+          // return success(true);
+        },
+        (apiError) => {
+          console.log('getDocumentDetails apiError:', apiError);
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+          // return error(apiError);
+        },
+      );
+    };
+  },
 
 
   //getShipmentBuyerWise
