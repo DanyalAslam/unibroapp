@@ -6,6 +6,8 @@ const INITIAL_STATE = {
   activity_loading: false, //done
   access_token: null, //done
   session_id: null,
+  user_code:null,
+  apcontrol:null,
 
   monthly_card_data: [], //done
   shipment_buyer_wise_Lists: [],//done
@@ -100,7 +102,10 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         ...(action.payload.access_token != undefined
-          ? { access_token: action.payload.access_token }
+          ? { access_token: action.payload.access_token,
+            user_code: action.payload.user_code,
+            apcontrol: action.payload.apcontrol,
+          }
           : undefined),
         loading: false,
       };

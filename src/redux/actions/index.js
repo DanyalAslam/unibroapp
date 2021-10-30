@@ -22,6 +22,8 @@ const actions = {
             type: actionTypes.USER_INFO,
             payload: {
               access_token: apiSuccess.session_id,
+              user_code: apiSuccess.user_code,
+              apcontrol: apiSuccess.apcontrol,
             },
           });
           return success(apiSuccess.mess)
@@ -194,7 +196,7 @@ const actions = {
       );
     };
   },
-  
+
   //getapproveddocumentsoption for dropdown
   getApprovedDocumentsOptions: (success, error) => {
     return (dispatch) => {
@@ -221,8 +223,8 @@ const actions = {
   },
 
 
-  
-//getting approved and non approved documents details
+
+  //getting approved and non approved documents details
   getDocumentDetails: (success, error) => {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
@@ -761,7 +763,7 @@ const actions = {
 
   //get Booked Orders for Export Stock
   //contract
-  getBookedOrders: (keyword,completed, failed) => {
+  getBookedOrders: (keyword, completed, failed) => {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
@@ -791,7 +793,7 @@ const actions = {
 
   //get Buyer Wise for Export Stock
   //invoice=
-  getBuyersWiseExport: (keyword,completed, failed) => {
+  getBuyersWiseExport: (keyword, completed, failed) => {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
@@ -816,7 +818,7 @@ const actions = {
 
   //get Country Wise for Export Stock
   //name
-  getCountryWiseExport: (keyword,completed, failed) => {
+  getCountryWiseExport: (keyword, completed, failed) => {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(

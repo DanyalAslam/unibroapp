@@ -6,15 +6,18 @@ import ApprovedDocuments from '../Screens/ApprovedDocuments'
 // import WatchStreanScreen from '../Screens/WatchStreanScreen'
 import { getNavigationOptions } from './NavigationOptions';
 const HomeNavigator = createStackNavigator();
-
-const HomeStack = () => {
+import { connect } from 'react-redux';
+const HomeStack = (props) => {
+    console.log('propspropspropsprops',props)
     return (
         <HomeNavigator.Navigator screenOptions={getNavigationOptions}>
-            {/* <HomeNavigator.Screen component={Dashboard} name='Dashboard'/> */}
+
+            {props?.apcontrol == 1 ? <HomeNavigator.Screen component={Dashboard} name='Dashboard' /> : <HomeNavigator.Screen component={ApprovedDocuments} name='ApprovedDocuments' />}
 
 
 
-            <HomeNavigator.Screen component={ApprovedDocuments} name='ApprovedDocuments'/>
+
+
 
 
 
@@ -22,4 +25,14 @@ const HomeStack = () => {
         </HomeNavigator.Navigator>
     )
 }
-export default HomeStack
+const mapState = (state) => {
+
+    console.log('homestaaaak', state);
+    return {
+        apcontrol: state.GeneralReducer.apcontrol,
+    };
+};
+const mapProps = (dispatch) => {
+    return {};
+};
+export default connect(mapState, mapProps)(HomeStack);

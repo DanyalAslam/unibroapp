@@ -26,7 +26,8 @@ class LoginScreen extends React.Component {
       
     };
   }
-
+//kashif
+//gmp2020
   _onLogin = () => {
     if (this.state.user_name.trim() == '') {
       return showToast('Please enter your user name');

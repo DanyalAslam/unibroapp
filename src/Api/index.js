@@ -63,7 +63,9 @@ const Api = {
         const setItm = {
           data:response.data.status,
           mess:response.data.message,
-          session_id:response.data.sessionid
+          session_id:response.data.sessionid,
+          user_code:response.data.user_code,
+          apcontrol:response.data.apcontrol,
         }
         console.log('result:', setItm.data)// is me kuch nh ara
         if(setItm.data === true){
