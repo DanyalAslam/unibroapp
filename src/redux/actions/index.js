@@ -17,7 +17,7 @@ const actions = {
 
 
           console.log('apiSuccess login', apiSuccess);
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+      
           dispatch({
             type: actionTypes.USER_INFO,
             payload: {
@@ -26,6 +26,7 @@ const actions = {
               apcontrol: apiSuccess.apcontrol,
             },
           });
+          dispatch({ type: actionTypes.CLOSE_LOADING });
           return success(apiSuccess.mess)
 
 
@@ -175,7 +176,7 @@ const actions = {
   //for year graph : yearGraph new hit
   getMonthYearGraphData: (success, error) => {
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
         'yearGraphApi.php',
         (apiSuccess) => {
@@ -185,12 +186,12 @@ const actions = {
             type: actionTypes.MONTHLY_GRAPH_DATA,
             payload: apiSuccess.YWiseShipment,
           });
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
           // return success(true);
         },
         (apiError) => {
           console.log('Get Dashboard apiError:', apiError);
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
           // return error(apiError);
         },
       );
@@ -200,7 +201,7 @@ const actions = {
   //getapproveddocumentsoption for dropdown
   getApprovedDocumentsOptions: (success, error) => {
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
         'assignDocumentApi.php/?user_code=001',
         (apiSuccess) => {
@@ -210,12 +211,12 @@ const actions = {
             type: actionTypes.APPROVED_DOCUMENTS_OPTIONS,
             payload: apiSuccess.docRight,
           });
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
           // return success(true);
         },
         (apiError) => {
           console.log('getApprovedDocumentsOptions apiError:', apiError);
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
           // return error(apiError);
         },
       );
@@ -227,7 +228,7 @@ const actions = {
   //getting approved and non approved documents details
   getDocumentDetails: (success, error) => {
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
         'approveDocApi.php/?status=sent&&docnic=PO',
         (apiSuccess) => {
@@ -237,12 +238,12 @@ const actions = {
             type: actionTypes.APPROVED_DOCUMENTS_DETAILS,
             payload: apiSuccess.DocumentData,
           });
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
           // return success(true);
         },
         (apiError) => {
           console.log('getDocumentDetails apiError:', apiError);
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
           // return error(apiError);
         },
       );
@@ -254,7 +255,7 @@ const actions = {
   //getting all data for Shipment buyer wise
   getShipmentBuyerWise: (success, error) => {
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
         'sbwGraphApi.php',
         (apiSuccess) => {
@@ -264,12 +265,12 @@ const actions = {
             type: actionTypes.SHIPMENT_BUYER_WISE,
             payload: apiSuccess.sbwShipment,
           });
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
           // return success(true);
         },
         (apiError) => {
           console.log('getShipmentBuyerWise apiError:', apiError);
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
 
         },
       );
@@ -279,7 +280,7 @@ const actions = {
   //getting all data for shipment country wise
   getShipmentCountryWise: (success, error) => {
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
         'scwGraphApi.php',
         (apiSuccess) => {
@@ -289,12 +290,12 @@ const actions = {
             type: actionTypes.SHIPMENT_COUNTRY_WISE,
             payload: apiSuccess.scwShipment,
           });
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
           // return success(true);
         },
         (apiError) => {
           console.log('getShipmentCountryWise apiError:', apiError);
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
 
         },
       );
@@ -307,7 +308,7 @@ const actions = {
   getBookedPieceGoodsOrders: (success, error) => {
 
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
         'piecegoodsGraphApi.php',
         (apiSuccess) => {
@@ -317,12 +318,12 @@ const actions = {
             type: actionTypes.BOOKED_PIECEGOODS_ORDERS,
             payload: apiSuccess.PieceGoodGraph,
           });
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
           // return success(true);
         },
         (apiError) => {
           console.log('getBookedPieceGoodsOrders apiError', apiError);
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
 
         },
       );
@@ -337,7 +338,7 @@ const actions = {
 
     console.log('name', name, 'year', year)
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
         `singlebuyerGraphApi.php/?short_name=${name}&&year=${year}`,
         (apiSuccess) => {
@@ -347,13 +348,13 @@ const actions = {
             type: actionTypes.SEARCHED_SHIPMENT_BUYER_WISE,
             payload: apiSuccess.sbwShipment,
           });
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
           // return success(true);
 
         },
         (apiError) => {
           console.log('getSearchedShipmentBuyerWise apiError:', apiError);
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
 
         },
       );
@@ -366,7 +367,7 @@ const actions = {
 
     console.log('name', name, 'year', year)
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
         `singleCountryGraphApi.php/?cont_name=${name}&&year=${year}`,
         (apiSuccess) => {
@@ -376,13 +377,13 @@ const actions = {
             type: actionTypes.SEARCHED_SHIPMENT_COUNTRY_WISE,
             payload: apiSuccess.scwShipment,
           });
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
           // return success(true);
 
         },
         (apiError) => {
           console.log('getSearchedShipmentCountryWise apiError:', apiError);
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
 
         },
       );
@@ -392,7 +393,7 @@ const actions = {
   //getting data for grey fabrics quality wise in table
   getTableGraphData: (success, error) => {
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
         'qwTableChart.php',
         (apiSuccess) => {
@@ -402,12 +403,12 @@ const actions = {
             type: actionTypes.TABLE_GRAPH_DATA,
             payload: apiSuccess.qwtableChart,
           });
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
           // return success(true);
         },
         (apiError) => {
           console.log('Get getTableGraphData apiError:', apiError);
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
           // return error(apiError);
         },
       );
@@ -417,7 +418,7 @@ const actions = {
   //getting data for grey fabrics Supplier wise in table
   getTableGreyGabricSupplierWise: (success, error) => {
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
         'swTableChart.php',
         (apiSuccess) => {
@@ -427,12 +428,12 @@ const actions = {
             type: actionTypes.TABLE_GRAPH_DATA_SUPPLIER_WISE,
             payload: apiSuccess.swtableChart,
           });
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
           // return success(true);
         },
         (apiError) => {
           console.log('Get getTableGreyGabricSupplierWise apiError:', apiError);
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
           // return error(apiError);
         },
       );
@@ -444,7 +445,7 @@ const actions = {
   getMadeUpChart: (success, error) => {
 
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
         'mGraphApi.php',
         (apiSuccess) => {
@@ -454,12 +455,12 @@ const actions = {
             type: actionTypes.MADE_UP_GRAPH,
             payload: apiSuccess.madeupGraph,
           });
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
           // return success(true);
         },
         (apiError) => {
           console.log('Get getMadeUpChart apiError:', apiError);
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
           // return error(apiError);
         },
       );
@@ -470,7 +471,7 @@ const actions = {
 
   getGrayFabrics: (success, error) => {
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_LOADING });
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
         'gfGraphApi.php',
         (apiSuccess) => {
@@ -480,12 +481,12 @@ const actions = {
             type: actionTypes.GRAY_FABRICS,
             payload: apiSuccess.greyFabricGraph,
           });
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
           // return success(true);
         },
         (apiError) => {
           console.log('Get getGrayFabrics apiError:', apiError);
-          dispatch({ type: actionTypes.CLOSE_LOADING });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
           // return error(apiError);
         },
       );

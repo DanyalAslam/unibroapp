@@ -93,7 +93,17 @@ class ProductionSummary extends React.Component {
             justifyContent: 'space-between',
             paddingHorizontal: 5 * vw,
             alignItems: 'center',
-            elevation: 2 * vw,
+          
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 5,
+            },
+            shadowOpacity: 0.34,
+            shadowRadius: 6.27,
+            
+            elevation: 10,
+
             marginTop: 2 * vh
           }}>
 

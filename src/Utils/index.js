@@ -1,5 +1,5 @@
 
-import Toast from 'react-native-toast'
+import Toast from 'react-native-simple-toast'
 
 export const showToast = message => {
     if (Platform.OS == 'android') {

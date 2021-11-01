@@ -321,16 +321,28 @@ class ApprovedDocuments extends React.Component {
 
 
   _renderSecondGraph = () => {
-    return (
 
-      <View style={styles.secondContainer}>
-        {this.props?.approved_documents_details?.length === 0 ? null : this?.props?.approved_documents_details.map((datum, index) => { // This will render a row for each data element.
-          return this.renderRow(datum, index);
-        })
 
-        }
+    if (typeof this.props.approved_documents_details !==  'undefined') {
+      return (
 
-      </View>)
+        <View style={styles.secondContainer}>
+          
+          {this.props?.approved_documents_details?.length === 0 ? null : this?.props?.approved_documents_details.map((datum, index) => { // This will render a row for each data element.
+            return this.renderRow(datum, index);
+          })
+  
+          }
+  
+        </View>)
+
+    }
+    else
+{ return null
+
+} 
+  
+
   }
 
 
