@@ -113,7 +113,7 @@ case 'OutstandingPurchasingOrders':
     case 'InspectionSummary':
       return 'Inspection Summary';
     case 'Grey':
-      return 'Grey';
+      return 'Greigh';
     case 'PurchasingOrders':
       return 'Purchase Orders'
     default:
