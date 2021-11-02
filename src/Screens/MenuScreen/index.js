@@ -85,7 +85,7 @@ class MenuScreen extends React.Component {
 
 
         <MenuButton
-          title="Production Stock"
+          title="Production"
           onPress={() =>this.setState({showProductionSubmenus:!this.state.showProductionSubmenus})}
           icon={this.state.showProductionSubmenus ?icons.arrow_down : icons.right_arrow}
         />
@@ -136,7 +136,7 @@ class MenuScreen extends React.Component {
 
 
 <MenuButton
-          title="Export Stock"
+          title="Export"
           onPress={() =>this.setState({showExportSubmenus:!this.state.showExportSubmenus})}
           icon={this.state.showExportSubmenus ? icons.arrow_down:  icons.right_arrow}
         />

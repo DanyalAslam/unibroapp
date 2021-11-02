@@ -24,12 +24,12 @@ const EmployeeEmailsCards = (props) => {
         </CircularBold>
         <PoppinsRegular
           numberOfLines={2}
-          style={{color: ThemeColors.fontDarkGrey, fontSize: 2.5 * vw}}>
+          style={{color: ThemeColors.fontDarkGrey, fontSize: 3 * vw}}>
           {props.employee.item.depart}
         </PoppinsRegular>
 
         <PoppinsRegular
-          style={{color: ThemeColors.fontLightGrey, fontSize: 2 * vw}}>
+          style={{color: ThemeColors.fontLightGrey, fontSize: 2.5 * vw}}>
             {props.employee.item.email}
         </PoppinsRegular>
         {/* 

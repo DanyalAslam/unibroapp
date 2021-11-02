@@ -33,7 +33,7 @@ marginTop:2*vh,
     },
     circularBoardStyle:{
         color: ThemeColors.primary,
-        fontSize: 3 * vw,
+        fontSize: 3.5 * vw,
         marginBottom: 0.5 * vh,
     }
     

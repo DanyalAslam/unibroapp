@@ -94,15 +94,15 @@ class OutstandingPurchasingOrders extends React.Component {
 
 
             shadowColor: "#000",
-shadowOffset: {
-	width: 0,
-	height: 5,
-},
-shadowOpacity: 0.34,
-shadowRadius: 6.27,
+            shadowOffset: {
+              width: 0,
+              height: 5,
+            },
+            shadowOpacity: 0.34,
+            shadowRadius: 6.27,
 
-elevation: 10,
-         
+            elevation: 10,
+
 
 
             marginTop: 2 * vh

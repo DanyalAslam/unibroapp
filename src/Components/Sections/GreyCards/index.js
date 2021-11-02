@@ -15,20 +15,21 @@ const GreyCards = (props) => {
       onPress={() => props.onSuccess()}>
  
       <View style={styles.container2}>
+   
+
         <View style={{flexDirection:'row'}}>
         <PoppinsRegular
           numberOfLines={2}
           style={styles.heading}>
-    Cont No :
+    Quality :
         </PoppinsRegular>
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.contract}
+         {props.stock.item.quality}
         </PoppinsRegular>
         </View>
-      
         <View style={{flexDirection:'row'}}>
         <PoppinsRegular
           numberOfLines={2}
@@ -106,6 +107,21 @@ const GreyCards = (props) => {
          {props.stock.item.rate}
         </PoppinsRegular>
         </View>
+        <View style={{flexDirection:'row'}}>
+        <PoppinsRegular
+          numberOfLines={2}
+          style={styles.heading}>
+    Cont No :
+        </PoppinsRegular>
+
+        <PoppinsRegular
+          style={styles.circularBoardStyle}
+          numberOfLines={1}>
+         {props.stock.item.contract}
+        </PoppinsRegular>
+        </View>
+      
+    
 
     
 {/* 

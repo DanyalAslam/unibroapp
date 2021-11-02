@@ -37,14 +37,14 @@ flexDirection:"row",
   },
     circularBoardStyle: {
         color: ThemeColors.primary,
-        fontSize: 2 * vw,
+        fontSize: 2.5 * vw,
         marginBottom: 0.5 * vh,
         marginLeft:1*vw,
         width:40*vw
     },
     heading: {
         color: ThemeColors.backgroundBlack,
-        fontSize: 2 * vw,
+        fontSize: 2.5 * vw,
         marginBottom: 0.5 * vh,
         fontWeight:"bold"
     }

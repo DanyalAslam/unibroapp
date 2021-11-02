@@ -91,15 +91,15 @@ class StockInHand extends React.Component {
             alignItems: 'center',
 
             shadowColor: "#000",
-shadowOffset: {
-	width: 0,
-	height: 5,
-},
-shadowOpacity: 0.34,
-shadowRadius: 6.27,
+            shadowOffset: {
+              width: 0,
+              height: 5,
+            },
+            shadowOpacity: 0.34,
+            shadowRadius: 6.27,
 
-elevation: 10,
-        
+            elevation: 10,
+
 
 
             marginTop: 2 * vh
@@ -115,7 +115,7 @@ elevation: 10,
         </View>
 
         {this.props.activity_loading ? <ActivityIndicator size="small" color="#012c65"
-        style={{paddingVertical:3*vh}}
+          style={{ paddingVertical: 3 * vh }}
         /> : null
 
         }

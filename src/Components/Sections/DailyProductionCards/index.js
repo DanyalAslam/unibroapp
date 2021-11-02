@@ -77,7 +77,7 @@ const DailyProductionCards = (props) => {
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.meters}
+         {props.stock.item.tpack + ' SETS'}
         </PoppinsRegular>
         </View>
       
