@@ -27,7 +27,7 @@ const GreyCards = (props) => {
         <PoppinsRegular
           style={styles.circularBoardStyle}
           numberOfLines={1}>
-         {props.stock.item.quality}
+         {props.stock.item.quantity}
         </PoppinsRegular>
         </View>
         <View style={{flexDirection:'row'}}>
@@ -53,8 +53,8 @@ const GreyCards = (props) => {
         </PoppinsRegular>
 
         <PoppinsRegular
-          style={styles.circularBoardStyle}
-          numberOfLines={1}>
+          style={styles.circularBoardStyleExtended}
+          numberOfLines={2}>
          {props.stock.item.description}
         </PoppinsRegular>
         </View>
@@ -71,8 +71,8 @@ const GreyCards = (props) => {
         </PoppinsRegular>
 
         <PoppinsRegular
-          style={styles.circularBoardStyle}
-          numberOfLines={1}>
+          style={styles.circularBoardStyleExtended}
+          numberOfLines={2}>
          {props.stock.item.remarks}
         </PoppinsRegular>
         </View>

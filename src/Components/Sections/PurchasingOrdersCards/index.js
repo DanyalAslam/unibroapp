@@ -117,7 +117,7 @@ const PurchasingOrdersCards = (props) => {
           </PoppinsRegular>
 
           <PoppinsRegular
-            style={styles.circularBoardStyle}
+            style={styles.circularBoardStyleExtended}
             numberOfLines={2}>
             {props.stock.item.status}
           </PoppinsRegular>

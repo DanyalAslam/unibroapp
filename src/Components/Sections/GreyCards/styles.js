@@ -42,6 +42,13 @@ flexDirection:"row",
         marginLeft:1*vw,
         width:40*vw
     },
+    circularBoardStyleExtended :{
+        color: ThemeColors.primary,
+        fontSize: 2.5 * vw,
+        marginBottom: 0.5 * vh,
+        marginLeft:1*vw,
+        width:40*vw
+    },
     heading: {
         color: ThemeColors.backgroundBlack,
         fontSize: 2.5 * vw,
