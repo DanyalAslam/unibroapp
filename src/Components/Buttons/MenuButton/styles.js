@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     width: 80 * vw,
     paddingLeft: 5 * vw,
     color: '#15222B',
-    fontSize:3*vw
+    fontSize:4*vw
   },
   drop: {height: 5 * vw, width: 5 * vw, resizeMode: 'contain'},
 });
