@@ -14,7 +14,7 @@ import InspectionSummary from '../Screens/InspectionSummary'
 import BookedOrders from '../Screens/BookedOrders'
 import BuyersWiseExport from '../Screens/BuyersWiseExport'
 import CountryWiseExport from '../Screens/CountryWiseExport'
-
+import ViewReports from '../Screens/ViewReports'
 const MenuNavigator = createStackNavigator();
 const Payment = createStackNavigator();
 
@@ -29,6 +29,7 @@ const MenuStack = () => {
       <MenuNavigator.Screen component={Grey} name="Grey" />
       <MenuNavigator.Screen component={PurchasingOrders} name="PurchasingOrders" />
       
+      <MenuNavigator.Screen component={ViewReports} name="ViewReports"  />
       <MenuNavigator.Screen component={OutstandingPurchasingOrders} name="OutstandingPurchasingOrders"  />
 
       <MenuNavigator.Screen component={DailyProduction} name="DailyProduction"  />

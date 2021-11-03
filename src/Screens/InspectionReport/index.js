@@ -5,6 +5,7 @@ import InspectionReportCards from '../../Components/Sections/InspectionReportCar
 import { connect } from 'react-redux';
 import actions from '../../redux/actions/index';
 import { vh, vw } from '../../Utils/Units';
+import { WebView } from 'react-native-webview';
 
 import MainInput from '../../Components/Input/MainInput';
 
@@ -42,6 +43,7 @@ class InspectionReport extends React.Component {
       },
     );
   };
+ 
 
   _renderInspectionReport = (item) => {
 
@@ -50,9 +52,10 @@ class InspectionReport extends React.Component {
 
 
 
-      // onSuccess={() =>
-      //   this.props.navigation.navigate('WatchStreanScreen', { item })
-      // }
+  
+      onSuccess={() => this.props.navigation.navigate('ViewReports')}
+
+
       stock={item}
 
     />;
@@ -99,7 +102,7 @@ class InspectionReport extends React.Component {
             },
             shadowOpacity: 0.34,
             shadowRadius: 6.27,
-            
+
             elevation: 10,
             marginTop: 2 * vh
           }}>

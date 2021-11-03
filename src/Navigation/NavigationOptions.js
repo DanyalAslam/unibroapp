@@ -46,6 +46,7 @@ case 'OutstandingPurchasingOrders':
     case 'ProductionSummary':
     case 'InspectionReport':
     case 'InspectionSummary':
+      case 'ViewReports':
       return true;
     case 'Grey':
       return true;
@@ -116,6 +117,8 @@ case 'OutstandingPurchasingOrders':
       return 'Greigh';
     case 'PurchasingOrders':
       return 'Purchase Orders'
+      case 'ViewReports':
+        return 'PDF reports'
     default:
       return 'Menu';
   }

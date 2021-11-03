@@ -64,7 +64,7 @@ class MainNavigator extends React.Component {
 }
 const mapState = (state) => {
 
-  console.log('main navigatorrrr',state);
+
   return {
     GeneralReducer: state.GeneralReducer,
   };

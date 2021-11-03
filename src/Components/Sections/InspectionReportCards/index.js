@@ -6,14 +6,14 @@ import TouchableHOC from '../../Buttons/TouchableHOC';
 import CircularBold from '../../Text/CircularBold';
 import PoppinsRegular from '../../Text/PoppinsRegular';
 import styles from './styles'
-import { WebView } from 'react-native-webview';
 import {TouchableOpacity} from 'react-native-gesture-handler'
 const InspectionReportCards = (props) => {
   console.log('InspectionReportCards1233', props)
   return (
     <View
       style={styles.container}
-      onPress={() => props.onSuccess()}>
+    
+      >
 
       <View style={styles.container2}>
         <View style={{ flexDirection: 'row' }}>
@@ -74,7 +74,7 @@ const InspectionReportCards = (props) => {
         </PoppinsRegular>
         </View> */}
         <TouchableOpacity
-        onPress={() =>_viewReports()}
+       onPress={() => props.onSuccess()}
         >
           <Image
             style={{ width: 4 * vw, height: 3 * vh, marginRight: 4 * vw }}
@@ -147,14 +147,5 @@ const InspectionReportCards = (props) => {
     </View>
   );
 };
-const _viewReports = () =>{
-  return (
-    <View style={{height:100*vh,width:100*vw}}>
-    <WebView
-   
-      source={{ uri:'http://github.com/' }}
-    />
-    </View>
-  );
-}
+
 export default InspectionReportCards;
