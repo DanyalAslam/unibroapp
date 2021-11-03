@@ -12,6 +12,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import MainInput from '../../Components/Input/MainInput';
 import { icons } from '../../assets/images'
 import DropDown from '../../Components/DropDown'
+import { WebView } from 'react-native-webview';
+
 const chartConfig = {
   propsForVerticalLabels: { fontSize: 2 * vw },
   propsForHorizontalLabels: { fontSize: 2 * vw },
@@ -704,8 +706,13 @@ class AboutUsScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-
-        <ScrollView
+    <View style={{height:100*vh,width:100*vw}}>
+    <WebView
+   
+      source={{ uri:'https://unibro.com.pk/erpsys/ZDF_2021-11-03-05-33-51_61821f3fd9ce4.pdf' }}
+    />
+    </View>
+        {/* <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ alignItems: 'center', paddingBottom: 10 * vh }}
           style={styles.container}
@@ -723,7 +730,7 @@ class AboutUsScreen extends React.Component {
           {this._renderFourthGraph()}
           {this._renderPieceGoodsOrdersGraph()}
 
-        </ScrollView>
+        </ScrollView> */}
         <DropDown ref={(e) => (this.CompanyDropDown = e)} />
       </View>
     );
