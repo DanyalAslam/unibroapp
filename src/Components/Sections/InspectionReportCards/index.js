@@ -8,7 +8,7 @@ import PoppinsRegular from '../../Text/PoppinsRegular';
 import styles from './styles'
 import {TouchableOpacity} from 'react-native-gesture-handler'
 const InspectionReportCards = (props) => {
-  console.log('InspectionReportCards1233', props)
+  // console.log('InspectionReportCards1233', props)
   return (
     <View
       style={styles.container}
@@ -74,7 +74,7 @@ const InspectionReportCards = (props) => {
         </PoppinsRegular>
         </View> */}
         <TouchableOpacity
-       onPress={() => props.onSuccess()}
+       onPress={() => props.onSuccess(props.stock.item.inspno)}
         >
           <Image
             style={{ width: 4 * vw, height: 3 * vh, marginRight: 4 * vw }}
@@ -132,8 +132,8 @@ const InspectionReportCards = (props) => {
           </PoppinsRegular>
 
           <PoppinsRegular
-            style={styles.circularBoardStyle}
-            numberOfLines={1}>
+            style={styles.circularBoardStyleExtended}
+            numberOfLines={2}>
             {props.stock.item.shipmentdate}
           </PoppinsRegular>
         </View>

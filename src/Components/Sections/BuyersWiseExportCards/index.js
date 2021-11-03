@@ -97,8 +97,8 @@ const BuyersWiseExportCards = (props) => {
         </PoppinsRegular>
 
         <PoppinsRegular
-          style={styles.circularBoardStyle}
-          numberOfLines={1}>
+          style={styles.circularBoardStyleExtended}
+          numberOfLines={2}>
          {props.stock.item.country}
         </PoppinsRegular>
         </View>

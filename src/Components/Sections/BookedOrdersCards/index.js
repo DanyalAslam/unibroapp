@@ -132,8 +132,8 @@ const BookedOrdersCards = (props) => {
         </PoppinsRegular>
 
         <PoppinsRegular
-          style={styles.circularBoardStyle}
-          numberOfLines={1}>
+          style={styles.circularBoardStyleExtended}
+          numberOfLines={2}>
          {props.stock.item.shipment}
         </PoppinsRegular>
         </View>

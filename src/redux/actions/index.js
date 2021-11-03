@@ -793,7 +793,7 @@ const actions = {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.postReport(
-        'erpsys/Frm_Rep_maInspection.php/?docid=000010',
+        `erpsys/Frm_Rep_maInspection.php/?docid=${keyword}`,
 
         (success) => {
           console.log('getViewReports SUCCESSSS', success)

@@ -23,8 +23,9 @@ class ViewReports extends React.Component {
 
 
   _getInspectionReport = () => {
+   
     this.props.getViewReports(
-      this.state.keyword,
+      this?.props?.route?.params?.id,
       (success) => {
         if (success) {
           this.setState({
