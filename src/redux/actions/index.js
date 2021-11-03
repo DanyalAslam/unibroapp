@@ -789,6 +789,31 @@ const actions = {
 
 
 
+  getViewReports: (keyword, completed, failed) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
+      Api.postReport(
+        'erpsys/Frm_Rep_maInspection.php/?docid=000010',
+
+        (success) => {
+          console.log('getViewReports SUCCESSSS', success)
+          dispatch({
+            type: actionTypes.VIEW_REPORTS,
+            payload: success.rows,
+          });
+
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+        (error) => {
+          console.log('getViewReports error', error)
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+      );
+    };
+  },
+
+
+
 
 
 

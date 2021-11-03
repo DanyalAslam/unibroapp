@@ -49,6 +49,7 @@ const INITIAL_STATE = {
 
 
   booked_order: [],
+  viewReportsUrl:null,
   buyer_wise_export: [],
   country_wise_export: [],
 
@@ -372,6 +373,14 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
         return {
           ...state,
           booked_order: action.payload,
+        };
+      }
+
+      case
+      actionTypes.VIEW_REPORTS: {
+        return {
+          ...state,
+          viewReportsUrl: action.payload,
         };
       }
 

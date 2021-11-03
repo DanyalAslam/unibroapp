@@ -178,6 +178,62 @@ const Api = {
 
 
 
+  //new Post method
+  postReport: (endPoint,  success, error, formdata = false) => {
+   
+    getStoredState(persistConfig).then((_state) => {
+      let url = config.ReportUrl + endPoint;
+
+
+      let headers = {
+        "Content-Type" : "application/octet-stream",
+        "x-rapidapi-host":"quotes15.p.rapidapi.com",
+  
+        Accept: 'application/json',
+      };
+  
+     
+  
+  
+  
+
+      let requestConfig = {
+        method: 'POST',
+        headers: new Headers(headers),
+     
+      };
+
+
+
+      console.log('url', url);
+      console.log('requestConfig', requestConfig);
+      fetch(url, requestConfig)
+        .then((response) => {
+
+          console.log('response321',response)
+          response
+          .json()
+          .then((responseJSon) =>{
+
+            return success(responseJSon)
+          })
+          .catch((errorr) =>{
+        return error(errorr)
+
+
+          })
+        }
+      
+        
+        )
+        .catch((err) => {
+          console.log('response err2', err);
+          return error(_getErrorMessage(err));
+        });
+    });
+  },
+
+
 
 
 

@@ -47,7 +47,7 @@ class InspectionReport extends React.Component {
 
   _renderInspectionReport = (item) => {
 
-    console.log('_renderInspectionReport success', item)
+ 
     return <InspectionReportCards
 
 
