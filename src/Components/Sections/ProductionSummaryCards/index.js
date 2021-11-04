@@ -64,7 +64,7 @@ const ProductionSummaryCards = (props) => {
         >
           <Image
             style={{ width: 4 * vw, height: 3 * vh, marginRight: 4 * vw }}
-            source={{ uri: props.stock.item.view }}
+            source={{ uri: props.stock.item.View }}
             resizeMode='contain'
           />
         </TouchableOpacity>

@@ -65,7 +65,7 @@ const DailyProductionCards = (props) => {
         </View>
 
         <TouchableOpacity
-       onPress={() => props.onSuccess(props.stock.item.inspno)}
+       onPress={() => props.onSuccess(props.stock.item.dprno)}
         >
           <Image
             style={{ width: 4 * vw, height: 3 * vh, marginRight: 4 * vw }}
@@ -108,23 +108,6 @@ const DailyProductionCards = (props) => {
          {props.stock.item.status}
         </PoppinsRegular>
         </View>
-
-    
-{/* 
-        <View style={{flexDirection:'row'}}>
-        <PoppinsRegular
-          numberOfLines={2}
-          style={styles.heading}>
-    Amount (PKR)
-     :
-        </PoppinsRegular>
-
-        <PoppinsRegular
-          style={styles.circularBoardStyle}
-          numberOfLines={1}>
-         {props.stock.item.opnamt}
-        </PoppinsRegular>
-        </View> */}
 
 
 
