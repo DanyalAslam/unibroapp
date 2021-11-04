@@ -15,6 +15,8 @@ export const getNavigationOptions = (props) => {
     ...defaultOptions(activeRouteName, props.navigation),
     ...TransitionPresets.SlideFromRightIOS,
     headerShown: shouldHeaderBeShown(activeRouteName),
+
+
     headerTitle: getTitle(activeRouteName),
     headerBackground: headerBackground,
   };
@@ -30,7 +32,7 @@ export const shouldHeaderBeShown = (activeRouteName) => {
 
   setStatusBar(activeRouteName);
   switch (activeRouteName) {
-  case 'ApprovedDocuments':
+    case 'ApprovedDocuments':
     case 'Dashboard':
     case 'EmployeeProfile':
     case 'MenuScreen':
@@ -39,14 +41,14 @@ export const shouldHeaderBeShown = (activeRouteName) => {
     case 'BuyersWiseExport':
     case 'ChangePasswordScreen':
     case 'CountryWiseExport':
-case 'OutstandingPurchasingOrders':
+    case 'OutstandingPurchasingOrders':
     case 'StockInHand':
     case 'DailyProduction':
     case 'PurchasingOrders':
     case 'ProductionSummary':
     case 'InspectionReport':
     case 'InspectionSummary':
-      case 'ViewReports':
+    case 'ViewReports':
       return true;
     case 'Grey':
       return true;
@@ -59,7 +61,7 @@ export const getTitle = (activeRouteName) => {
 
   switch (activeRouteName) {
     case 'ApprovedDocuments':
-    return  'Approved Documents';
+      return 'Approved Documents';
     case 'Dashboard':
       return 'Dashboard';
 
@@ -67,8 +69,8 @@ export const getTitle = (activeRouteName) => {
       return 'Booked Orders';
 
 
-case 'OutstandingPurchasingOrders':
-  return 'Outstanding Purchase Order';
+    case 'OutstandingPurchasingOrders':
+      return 'Outstanding Purchase Order';
     case 'CountryWiseExport':
       return 'Country Wise Export';
 
@@ -117,8 +119,8 @@ case 'OutstandingPurchasingOrders':
       return 'Greigh';
     case 'PurchasingOrders':
       return 'Purchase Orders'
-      case 'ViewReports':
-        return 'PDF reports'
+    case 'ViewReports':
+      return 'PDF reports'
     default:
       return 'Menu';
   }
@@ -148,17 +150,24 @@ const renderMenuButton = (activeRouteName, navigation) => {
 export const showHeaderLeft = (activeRouteName, navigation, onBackPress) => {
   // return renderBackButton(activeRouteName, navigation);
 
+
+  console.log('activeRouteName', activeRouteName)
+
+
   switch (activeRouteName) {
-    case 'WatchStreanScreen':
-    case 'MySubscriptionScreen':
-    case 'StreamsScreen':
-    case 'PaymentLogScreen':
-    case 'AboutUsScreen':
-    case 'ContactUsScreen':
-    case 'ChangePasswordScreen':
-    case 'PaymentDetail':
-    case 'StreamDetail':
-    case 'SubscriptionDetail':
+    case 'EmployeeEmails':
+    case 'StockInHand':
+    case 'Grey':
+    case 'PurchasingOrders':
+    case 'OutstandingPurchasingOrders':
+    case 'DailyProduction':
+    case 'ProductionSummary':
+    case 'InspectionReport':
+    case 'InspectionSummary':
+    case 'BookedOrders':
+
+    case 'BuyersWiseExport':
+    case 'CountryWiseExport':
       return renderBackButton(activeRouteName, navigation);
     default:
       return null;

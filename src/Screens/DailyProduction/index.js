@@ -50,9 +50,8 @@ class DailyProduction extends React.Component {
 
 
 
-      // onSuccess={() =>
-      //   this.props.navigation.navigate('WatchStreanScreen', { item })
-      // }
+
+      onSuccess={(id) => this.props.navigation.navigate('ViewReports', { id: id })}
       stock={item}
 
     />;
@@ -79,7 +78,7 @@ class DailyProduction extends React.Component {
             },
             shadowOpacity: 0.34,
             shadowRadius: 6.27,
-            
+
             elevation: 10,
             marginTop: 2 * vh
           }}>
@@ -90,7 +89,7 @@ class DailyProduction extends React.Component {
             onChangeText={(keyword) => this.onStateChange('keyword', keyword)}
           />
 
-        
+
         </View>
 
         {this.props.activity_loading ? <ActivityIndicator size="small" color="#012c65"

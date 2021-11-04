@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, View} from 'react-native';
+import {Image, View,TouchableOpacity} from 'react-native';
 import ThemeColors from '../../../Utils/ThemeColors';
 import {vh, vw} from '../../../Utils/Units';
 import TouchableHOC from '../../Buttons/TouchableHOC';
@@ -64,6 +64,15 @@ const DailyProductionCards = (props) => {
         </PoppinsRegular>
         </View>
 
+        <TouchableOpacity
+       onPress={() => props.onSuccess(props.stock.item.inspno)}
+        >
+          <Image
+            style={{ width: 4 * vw, height: 3 * vh, marginRight: 4 * vw }}
+            source={{ uri: props.stock.item.view }}
+            resizeMode='contain'
+          />
+        </TouchableOpacity>
 
       </View>
       <View style={styles.container3}>

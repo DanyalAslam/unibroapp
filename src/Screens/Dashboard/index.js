@@ -717,12 +717,13 @@ class AboutUsScreen extends React.Component {
           {this._renderFirstGraph()}
           {this._renderShipmentBuyerWiseGraph()}
           {this._renderShipmentCountryWiseGraph()}
-          {this._renderSecondGraph()}
-          {this._renderGreyFabricSupplierWise()}
+
+
           {this._renderThirdGraph()}
           {this._renderFourthGraph()}
           {this._renderPieceGoodsOrdersGraph()}
-
+          {this._renderGreyFabricSupplierWise()}
+          {this._renderSecondGraph()}
         </ScrollView>
         <DropDown ref={(e) => (this.CompanyDropDown = e)} />
       </View>
