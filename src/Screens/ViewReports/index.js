@@ -23,27 +23,94 @@ class ViewReports extends React.Component {
 
 
   _getInspectionReport = () => {
-   
-    this.props.getViewReports(
-      this?.props?.route?.params?.id,
-      (success) => {
-        if (success) {
+
+
+    if (this?.props?.route?.params?.role == "InspectionReport") {
+      alert('InspectionReport')
+      this.props.getInspectionReportView(
+        this?.props?.route?.params?.id,
+        (success) => {
+          if (success) {
+            this.setState({
+              refreshing: false,
+            });
+          }
+        },
+        (error) => {
           this.setState({
             refreshing: false,
           });
-        }
-      },
-      (error) => {
-        this.setState({
-          refreshing: false,
-        });
-      },
-    );
+        },
+      );
+
+    }
+    if (this?.props?.route?.params?.role == "DailyProduction") {
+      alert('DailyProduction')
+      this.props.getDailyProductionReportsView(
+        this?.props?.route?.params?.id,
+        (success) => {
+          if (success) {
+            this.setState({
+              refreshing: false,
+            });
+          }
+        },
+        (error) => {
+          this.setState({
+            refreshing: false,
+          });
+        },
+      );
+
+    }
+    if (this?.props?.route?.params?.role == "Greish") {
+      alert('Greish')
+      this.props.getInspectionReportView(
+        this?.props?.route?.params?.id,
+        (success) => {
+          if (success) {
+            this.setState({
+              refreshing: false,
+            });
+          }
+        },
+        (error) => {
+          this.setState({
+            refreshing: false,
+          });
+        },
+      );
+
+    }
+    if (this?.props?.route?.params?.role == "ProductionSummary") {
+      alert('ProductionSummary')
+      alert('Greish')
+      this.props.getInspectionReportView(
+        this?.props?.route?.params?.id,
+        (success) => {
+          if (success) {
+            this.setState({
+              refreshing: false,
+            });
+          }
+        },
+        (error) => {
+          this.setState({
+            refreshing: false,
+          });
+        },
+      );
+
+    }
+
+
+
+
   };
 
 
   render() {
-console.log('this.props.viewReportsUrl',this.props.viewReportsUrl)
+    console.log('this.props.viewReportsUrl', this.props.viewReportsUrl)
     return (<View style={{ height: 100 * vh, width: 100 * vw }}>
       <WebView
 
@@ -72,8 +139,19 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getViewReports: (keyword, success, error) =>
-      dispatch(actions.getViewReports(keyword, success, error)),
+    getInspectionReportView: (keyword, success, error) =>
+      dispatch(actions.getInspectionReportView(keyword, success, error)),
+
+
+      getDailyProductionReportsView: (keyword, success, error) =>
+      dispatch(actions.getDailyProductionReportsView(keyword, success, error)),
+
+
+      getProductionSummaryView: (keyword, success, error) =>
+      dispatch(actions.getProductionSummaryView(keyword, success, error)),
+
+      getGreishSummaryView: (keyword, success, error) =>
+      dispatch(actions.getGreishSummaryView(keyword, success, error)),
   };
 };
 

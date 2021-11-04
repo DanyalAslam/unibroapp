@@ -17,7 +17,7 @@ const actions = {
 
 
           console.log('apiSuccess login', apiSuccess);
-      
+
           dispatch({
             type: actionTypes.USER_INFO,
             payload: {
@@ -789,7 +789,7 @@ const actions = {
 
 
 
-  getViewReports: (keyword, completed, failed) => {
+  getInspectionReportView: (keyword, completed, failed) => {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.postReport(
@@ -813,6 +813,80 @@ const actions = {
   },
 
 
+
+  //for daily production reports
+  getDailyProductionReportsView: (keyword, completed, failed) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
+      Api.postReport(
+        `erpsys/Frm_Rep_maInspection.php/?docid=${keyword}`,
+
+        (success) => {
+          console.log('getViewReports SUCCESSSS', success)
+          dispatch({
+            type: actionTypes.VIEW_REPORTS,
+            payload: success.rows,
+          });
+
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+        (error) => {
+          console.log('getViewReports error', error)
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+      );
+    };
+  },
+
+
+  //for production summary view
+  getProductionSummaryView: (keyword, completed, failed) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
+      Api.postReport(
+        `erpsys/Frm_Rep_maInspection.php/?docid=${keyword}`,
+
+        (success) => {
+          console.log('getViewReports SUCCESSSS', success)
+          dispatch({
+            type: actionTypes.VIEW_REPORTS,
+            payload: success.rows,
+          });
+
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+        (error) => {
+          console.log('getViewReports error', error)
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+      );
+    };
+  },
+
+
+  //for grey productionview
+  getGreishSummaryView: (keyword, completed, failed) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
+      Api.postReport(
+        `erpsys/Frm_Rep_maInspection.php/?docid=${keyword}`,
+
+        (success) => {
+          console.log('getViewReports SUCCESSSS', success)
+          dispatch({
+            type: actionTypes.VIEW_REPORTS,
+            payload: success.rows,
+          });
+
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+        (error) => {
+          console.log('getViewReports error', error)
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+      );
+    };
+  },
 
 
 

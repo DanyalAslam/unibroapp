@@ -53,7 +53,7 @@ class InspectionReport extends React.Component {
 
 
 
-      onSuccess={(id) => this.props.navigation.navigate('ViewReports', { id: id })}
+      onSuccess={(id) => this.props.navigation.navigate('ViewReports', { id: id, role: 'InspectionReport' })}
 
 
       stock={item}

@@ -48,7 +48,7 @@ class ProductionSummary extends React.Component {
     return <ProductionSummaryCards
 
 
-    onSuccess={(id) => this.props.navigation.navigate('ViewReports', { id: id })}
+    onSuccess={(id) => this.props.navigation.navigate('ViewReports', { id: id,role:'ProductionSummary' })}
 
       stock={item}
 

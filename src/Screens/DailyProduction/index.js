@@ -51,7 +51,7 @@ class DailyProduction extends React.Component {
 
 
 
-      onSuccess={(id) => this.props.navigation.navigate('ViewReports', { id: id })}
+      onSuccess={(id) => this.props.navigation.navigate('ViewReports', { id: id, role: 'DailyProduction' })}
       stock={item}
 
     />;
