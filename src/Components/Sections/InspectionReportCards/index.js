@@ -6,14 +6,14 @@ import TouchableHOC from '../../Buttons/TouchableHOC';
 import CircularBold from '../../Text/CircularBold';
 import PoppinsRegular from '../../Text/PoppinsRegular';
 import styles from './styles'
-import {TouchableOpacity} from 'react-native-gesture-handler'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 const InspectionReportCards = (props) => {
   // console.log('InspectionReportCards1233', props)
   return (
     <View
       style={styles.container}
-    
-      >
+
+    >
 
       <View style={styles.container2}>
         <View style={{ flexDirection: 'row' }}>
@@ -60,21 +60,9 @@ const InspectionReportCards = (props) => {
         </View>
 
 
-        {/* <View style={{flexDirection:'row'}}>
-        <PoppinsRegular
-          numberOfLines={2}
-          style={styles.heading}>
-    Description :
-        </PoppinsRegular>
 
-        <PoppinsRegular
-          style={styles.circularBoardStyle}
-          numberOfLines={2}>
-         {props.stock.item.description}
-        </PoppinsRegular>
-        </View> */}
         <TouchableOpacity
-       onPress={() => props.onSuccess(props.stock.item.inspno)}
+          onPress={() => props.onSuccess(props.stock.item.inspno)}
         >
           <Image
             style={{ width: 4 * vw, height: 3 * vh, marginRight: 4 * vw }}

@@ -65,10 +65,7 @@ class Grey extends React.Component {
     return <GreyCards
 
 
-
-      // onSuccess={() =>
-      //   this.props.navigation.navigate('WatchStreanScreen', { item })
-      // }
+      onSuccess={(id) => this.props.navigation.navigate('ViewReports', { id: id })}
       stock={item}
 
     />;
@@ -94,15 +91,15 @@ class Grey extends React.Component {
             alignItems: 'center',
 
             shadowColor: "#000",
-shadowOffset: {
-	width: 0,
-	height: 5,
-},
-shadowOpacity: 0.34,
-shadowRadius: 6.27,
+            shadowOffset: {
+              width: 0,
+              height: 5,
+            },
+            shadowOpacity: 0.34,
+            shadowRadius: 6.27,
 
-elevation: 10,
-          
+            elevation: 10,
+
 
 
             marginTop: 2 * vh

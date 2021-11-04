@@ -43,17 +43,17 @@ class InspectionReport extends React.Component {
       },
     );
   };
- 
+
 
   _renderInspectionReport = (item) => {
 
- 
+
     return <InspectionReportCards
 
 
 
-  
-      onSuccess={(id) => this.props.navigation.navigate('ViewReports',{id:id})}
+
+      onSuccess={(id) => this.props.navigation.navigate('ViewReports', { id: id })}
 
 
       stock={item}
