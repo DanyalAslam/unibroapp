@@ -116,13 +116,13 @@ const InspectionReportCards = (props) => {
           <PoppinsRegular
             numberOfLines={2}
             style={styles.heading}>
-            Shipment Date:
+            Status:
           </PoppinsRegular>
 
           <PoppinsRegular
             style={styles.circularBoardStyleExtended}
             numberOfLines={2}>
-            {props.stock.item.shipmentdate}
+            {props.stock.item.status}
           </PoppinsRegular>
         </View>
 
