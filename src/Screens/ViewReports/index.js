@@ -64,7 +64,7 @@ class ViewReports extends React.Component {
 
     }
     if (this?.props?.route?.params?.role == "Greish") {
-      alert('Greish')
+      // alert('Greish')
       this.props.getGreishSummaryView(
         this?.props?.route?.params?.id,
         (success) => {
@@ -83,7 +83,7 @@ class ViewReports extends React.Component {
 
     }
     if (this?.props?.route?.params?.role == "ProductionSummary") {
-      alert('ProductionSummary')
+    
       // alert('Greish')
       this.props.getProductionSummaryView(
         this?.props?.route?.params?.id,

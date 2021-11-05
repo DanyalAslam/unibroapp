@@ -165,7 +165,7 @@ export const showHeaderLeft = (activeRouteName, navigation, onBackPress) => {
     case 'InspectionReport':
     case 'InspectionSummary':
     case 'BookedOrders':
-
+case 'ViewReports':
     case 'BuyersWiseExport':
     case 'CountryWiseExport':
       return renderBackButton(activeRouteName, navigation);
