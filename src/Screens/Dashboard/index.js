@@ -510,7 +510,7 @@ class AboutUsScreen extends React.Component {
   }
 
   _renderFourthGraph = () => {
-    return (<><PoppinsBold style={{ fontSize: 5 * vw }}>Gray Fabrics</PoppinsBold>
+    return (<><PoppinsBold style={{ fontSize: 5 * vw }}>Grey Fabrics</PoppinsBold>
       {this.props.gray_fabrics_graph_data.length === 0 ? null :
         <View style={styles.firstContainer}>
           <PieChart
@@ -715,13 +715,12 @@ class AboutUsScreen extends React.Component {
             ref={(r) => (this.dataShow = r)} //reference daal rha hai
           />
           {this._renderFirstGraph()}
-          {this._renderShipmentBuyerWiseGraph()}
-          {this._renderShipmentCountryWiseGraph()}
-
 
           {this._renderThirdGraph()}
           {this._renderFourthGraph()}
           {this._renderPieceGoodsOrdersGraph()}
+          {this._renderShipmentBuyerWiseGraph()}
+          {this._renderShipmentCountryWiseGraph()}
           {this._renderGreyFabricSupplierWise()}
           {this._renderSecondGraph()}
         </ScrollView>

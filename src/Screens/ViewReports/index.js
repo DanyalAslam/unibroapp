@@ -143,14 +143,14 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.getInspectionReportView(keyword, success, error)),
 
 
-      getDailyProductionReportsView: (keyword, success, error) =>
+    getDailyProductionReportsView: (keyword, success, error) =>
       dispatch(actions.getDailyProductionReportsView(keyword, success, error)),
 
 
-      getProductionSummaryView: (keyword, success, error) =>
+    getProductionSummaryView: (keyword, success, error) =>
       dispatch(actions.getProductionSummaryView(keyword, success, error)),
 
-      getGreishSummaryView: (keyword, success, error) =>
+    getGreishSummaryView: (keyword, success, error) =>
       dispatch(actions.getGreishSummaryView(keyword, success, error)),
   };
 };
