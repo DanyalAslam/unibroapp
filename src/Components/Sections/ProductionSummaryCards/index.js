@@ -23,7 +23,12 @@ const ProductionSummaryCards = (props) => {
         </PoppinsRegular>
 
         <PoppinsRegular
-          style={styles.circularBoardStyle}
+          style={{ color: ThemeColors.primary,
+            fontSize: 3 * vw,
+            fontWeight:'bold',
+            marginBottom: 0.5 * vh,
+            marginLeft:1*vw,
+            width:40*vw}}
           numberOfLines={1}>
          {props.stock.item.contract}
         </PoppinsRegular>

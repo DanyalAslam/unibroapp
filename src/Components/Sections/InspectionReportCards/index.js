@@ -24,7 +24,14 @@ const InspectionReportCards = (props) => {
           </PoppinsRegular>
 
           <PoppinsRegular
-            style={styles.circularBoardStyle}
+            style={{
+              color: ThemeColors.primary,
+              fontSize: 3 * vw,
+              fontWeight: 'bold',
+              marginBottom: 0.5 * vh,
+              marginLeft: 1 * vw,
+              width: 40 * vw
+            }}
             numberOfLines={1}>
             {props.stock.item.contract}
           </PoppinsRegular>
@@ -118,12 +125,30 @@ const InspectionReportCards = (props) => {
             style={styles.heading}>
             Status:
           </PoppinsRegular>
-
-          <PoppinsRegular
-            style={styles.circularBoardStyleExtended}
+          {props.stock.item.status === "FAIL" ? <PoppinsRegular
+            style={{
+              color: 'red',
+              fontSize: 2.5 * vw,
+              fontWeight:'bold',
+              marginBottom: 0.5 * vh,
+              marginLeft: 1 * vw,
+              width: 10 * vw
+            }}
             numberOfLines={2}>
             {props.stock.item.status}
-          </PoppinsRegular>
+          </PoppinsRegular> : <PoppinsRegular
+            style={{
+              color: 'green',
+              fontWeight:'bold',
+              fontSize: 2.5 * vw,
+              marginBottom: 0.5 * vh,
+              marginLeft: 1 * vw,
+              width: 10 * vw
+            }}
+            numberOfLines={2}>
+            {props.stock.item.status}
+          </PoppinsRegular>}
+
         </View>
 
 
