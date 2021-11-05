@@ -117,7 +117,7 @@ class ViewReports extends React.Component {
         // source={{ uri: 'https://unibro.com.pk/erpsys/ZDF_2021-11-03-05-33-51_61821f3fd9ce4.pdf' }}
         // source={{ uri: 'https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwifreLdtvvzAhVgQEEAHSDHB1sQPAgI' }}
         source={{ uri: this.props.viewReportsUrl }}
-
+   
 
       />
     </View>

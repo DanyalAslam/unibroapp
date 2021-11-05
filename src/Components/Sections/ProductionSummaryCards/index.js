@@ -60,7 +60,7 @@ const ProductionSummaryCards = (props) => {
 
 
         <TouchableOpacity
-       onPress={() => props.onSuccess(props.stock.item.inspno)}
+       onPress={() => props.onSuccess(props?.stock?.item?.contract)}
         >
           <Image
             style={{ width: 4 * vw, height: 3 * vh, marginRight: 4 * vw }}

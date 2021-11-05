@@ -65,7 +65,7 @@ class Grey extends React.Component {
     return <GreyCards
 
 
-      onSuccess={(id) => this.props.navigation.navigate('ViewReports', { id: id,role:'Greish' })}
+      onSuccess={(id) => this.props.navigation.navigate('ViewReports', { id: id, role: 'Greish' })}
       stock={item}
 
     />;
