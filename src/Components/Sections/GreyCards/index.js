@@ -8,7 +8,7 @@ import PoppinsRegular from '../../Text/PoppinsRegular';
 import styles from './styles'
 
 const GreyCards = (props) => {
-  console.log('GreyCards1233', props)
+
   return (
     <View
       style={styles.container}
@@ -122,7 +122,7 @@ const GreyCards = (props) => {
         </View>
 
         <TouchableOpacity
-          onPress={() => props.onSuccess(props.stock.item.inspno)}
+          onPress={() => props.onSuccess(props?.stock?.item?.contract)}
         >
           <Image
             style={{ width: 4 * vw, height: 3 * vh, marginRight: 4 * vw }}
