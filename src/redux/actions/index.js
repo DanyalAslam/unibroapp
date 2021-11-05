@@ -819,7 +819,7 @@ const actions = {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.postReport(
-        `erpsys/Frm_Rep_maInspection.php/?docid=${keyword}`,
+        `erpsys/Frm_Rep_maDailyProd4Email.php/?docid=${keyword}`,
 
         (success) => {
           console.log('getViewReports SUCCESSSS', success)
@@ -844,7 +844,7 @@ const actions = {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.postReport(
-        `erpsys/Frm_Rep_maInspection.php/?docid=${keyword}`,
+        `erpsys/Frm_Rep_maDailyProductionSummary.php/?docid=${keyword}`,
 
         (success) => {
           console.log('getViewReports SUCCESSSS', success)
@@ -869,7 +869,7 @@ const actions = {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.postReport(
-        `erpsys/Frm_Rep_maInspection.php/?docid=${keyword}`,
+        `erpsys/Frm_Rep_maGreyContract.php/?docid=${keyword}`,
 
         (success) => {
           console.log('getViewReports SUCCESSSS', success)
