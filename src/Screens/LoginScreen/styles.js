@@ -1,17 +1,17 @@
-const {StyleSheet} = require('react-native');
+const { StyleSheet } = require('react-native');
 import ThemeColors from '../../Utils/ThemeColors';
-import {vh, vw} from '../../Utils/Units';
+import { vh, vw } from '../../Utils/Units';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  
+
   },
   title: {
     width: 80 * vw,
     fontSize: 2.8 * vh,
     color: ThemeColors.primary,
     marginBottom: 6 * vh,
-    marginTop:6*vh
+    marginTop: 6 * vh
   },
   field: {
     marginBottom: 2 * vh,
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   button: {
     marginVertical: 3 * vh,
   },
-  forgotButton: {marginTop: 1 * vh},
+  forgotButton: { marginTop: 1 * vh },
   footerText: {
     color: ThemeColors.fontLightGrey,
     fontSize: 1.5 * vh,

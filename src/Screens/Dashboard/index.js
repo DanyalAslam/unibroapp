@@ -720,7 +720,7 @@ class AboutUsScreen extends React.Component {
 
 
   _renderInformation = () => {
-    return (<View style={{  width: 90 * vw,height:30*vh,justifyContent:'space-around',alignItems:'center' }}>
+    return (<View style={{ width: 90 * vw, height: 30 * vh, justifyContent: 'space-around', alignItems: 'center' }}>
       <PoppinsRegular
         style={{
           fontSize: 4 * vw,
@@ -736,9 +736,9 @@ class AboutUsScreen extends React.Component {
           color: '#008222', textShadowColor: 'rgba(0, 0, 0, 0.75)',
           textShadowOffset: { width: -1, height: 1 },
           textShadowRadius: 5,
- 
+
         }}
-      >Last Shipped : U-7556,06 - 11 -2021 , NARINA, EURO 72, 483.79, MADEUPS</PoppinsRegular>
+      >{`Last Shipped : U-7556,06 - 11 -2021 , NARINA, EURO 72, 483.79, MADEUPS`}</PoppinsRegular>
     </View>)
   }
   render() {

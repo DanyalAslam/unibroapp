@@ -224,11 +224,11 @@ const actions = {
   },
 
   //getapproveddocumentsoption for dropdown
-  getApprovedDocumentsOptions: (success, error) => {
+  getApprovedDocumentsOptions: (keyword, success, error) => {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
-        'assignDocumentApi.php/?user_code=001',
+        `assignDocumentApi.php/?user_code=${keyword}`,
         (apiSuccess) => {
           console.log('getApprovedDocumentsOptions success', apiSuccess);
 
@@ -274,6 +274,37 @@ const actions = {
       );
     };
   },
+
+
+  //searched Specific company buyer wise
+  getSearchedApproveDocuments: (selected_AppDoc, selected_AppRights, success, error) => {
+
+    console.log('status', selected_AppDoc, 'docnic', selected_AppRights)
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
+      Api.get(
+        // 'approveDocApi.php/?status=sent&&docnic=DCR',
+        `approveDocApi.php/?status=${selected_AppDoc}&&docnic=${selected_AppRights}`,
+        (apiSuccess) => {
+          console.log('getSearchedApproveDocuments success', apiSuccess);
+
+          dispatch({
+            type: actionTypes.APPROVED_DOCUMENTS_DETAILS,
+            payload: apiSuccess.DocumentData,
+          });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+          // return success(true);
+
+        },
+        (apiError) => {
+          console.log('getSearchedApproveDocuments apiError:', apiError);
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+
+        },
+      );
+    };
+  },
+
 
 
   //getShipmentBuyerWise

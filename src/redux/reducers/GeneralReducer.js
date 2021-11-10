@@ -6,8 +6,8 @@ const INITIAL_STATE = {
   activity_loading: false, //done
   access_token: null, //done
   session_id: null,
-  user_code:null,
-  apcontrol:null,
+  user_code: null,
+  apcontrol: null,
 
   monthly_card_data: [], //done
   shipment_buyer_wise_Lists: [],//done
@@ -49,10 +49,10 @@ const INITIAL_STATE = {
 
 
   booked_order: [],
-  viewReportsUrl:null,
+  viewReportsUrl: null,
   buyer_wise_export: [],
   country_wise_export: [],
-  order_summary:[]
+  order_summary: []
 };
 
 export default GeneralReducer = (state = INITIAL_STATE, action) => {
@@ -103,7 +103,8 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         ...(action.payload.access_token != undefined
-          ? { access_token: action.payload.access_token,
+          ? {
+            access_token: action.payload.access_token,
             user_code: action.payload.user_code,
             apcontrol: action.payload.apcontrol,
           }
@@ -376,15 +377,15 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
         };
       }
 
-      case
+    case
       actionTypes.VIEW_REPORTS: {
         return {
           ...state,
           viewReportsUrl: action.payload,
         };
       }
-      
-      case
+
+    case
       actionTypes.ORDER_INFORMATION_DATA: {
         return {
           ...state,

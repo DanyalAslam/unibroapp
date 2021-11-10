@@ -22,12 +22,12 @@ class LoginScreen extends React.Component {
     this.state = {
       user_name: '',
       user_hcode: '',
-   
-      
+
+
     };
   }
-//kashif
-//gmp2020
+  //kashif
+  //gmp2020
   _onLogin = () => {
     if (this.state.user_name.trim() == '') {
       return showToast('Please enter your user name');
@@ -41,7 +41,7 @@ class LoginScreen extends React.Component {
     if (this.state.user_hcode.length < 6) {
       return showToast('user_hcode length must be at least 6 characters');
     }
- 
+
 
     console.log('passing value', this.state);
 
@@ -72,7 +72,7 @@ class LoginScreen extends React.Component {
 
   componentDidMount() {
     // AnimatedSplash.hide();
-  
+
 
 
 
@@ -113,8 +113,8 @@ class LoginScreen extends React.Component {
           message={'Sorry! Youve Been Blocked.'}
         /> */}
         <AuthContainer title="Login" footer={this.renderFooter()}
-        
-        
+
+
         >
           <CircularBold style={styles.title}>
             Log in to your account
