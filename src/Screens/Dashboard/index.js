@@ -69,6 +69,25 @@ class AboutUsScreen extends React.Component {
     );
   }
 
+
+  _getHomepageInformation = () => {
+    this.props.getHomepageInformation(
+      (success) => {
+        if (success) {
+          this.setState({
+            sessions: this.props.streamData,
+          });
+        }
+      },
+      (error) => {
+        showToast(error);
+      },
+    );
+  }
+
+
+
+
   _getShipmentBuyerWise = () => {
     this.props.getShipmentBuyerWise(
       (success) => {
@@ -220,7 +239,7 @@ class AboutUsScreen extends React.Component {
 
 
   _getHomeData = () => {
-
+    this._getHomepageInformation()
     this._getMonthYearGraphData(),
       this._getSearchedShipmentBuyerWise()
     this._getSearchedShipmentCountryWise()
@@ -700,7 +719,28 @@ class AboutUsScreen extends React.Component {
   }
 
 
+  _renderInformation = () => {
+    return (<View style={{  width: 90 * vw,height:30*vh,justifyContent:'space-around',alignItems:'center' }}>
+      <PoppinsRegular
+        style={{
+          fontSize: 4 * vw,
+          color: '#122675', textShadowColor: 'rgba(0, 0, 0, 0.75)',
+          textShadowOffset: { width: -1, height: 1 },
+          textShadowRadius: 5
+        }}
+      >Last Shipped : U-7556,06 - 11 -2021 , NARINA, EURO 72, 483.79, MADEUPS</PoppinsRegular>
 
+      <PoppinsRegular
+        style={{
+          fontSize: 4 * vw,
+          color: '#008222', textShadowColor: 'rgba(0, 0, 0, 0.75)',
+          textShadowOffset: { width: -1, height: 1 },
+          textShadowRadius: 5,
+ 
+        }}
+      >Last Shipped : U-7556,06 - 11 -2021 , NARINA, EURO 72, 483.79, MADEUPS</PoppinsRegular>
+    </View>)
+  }
   render() {
     return (
       <View style={{ flex: 1 }}>
@@ -714,6 +754,7 @@ class AboutUsScreen extends React.Component {
           <YearGraphDataPopup
             ref={(r) => (this.dataShow = r)} //reference daal rha hai
           />
+          {this._renderInformation()}
           {this._renderFirstGraph()}
 
           {this._renderThirdGraph()}
@@ -739,7 +780,7 @@ const mapStateToProps = (state) => {
 
   return {
 
-
+    order_summary: state.GeneralReducer.order_summary,
     table_card_data_supplier_wise: state.GeneralReducer.table_card_data_supplier_wise,
 
     monthly_card_data: state.GeneralReducer.monthly_card_data,
@@ -762,6 +803,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+
+    getHomepageInformation: (success, error) =>
+      dispatch(actions.getHomepageInformation(success, error)),
+
+
+
     getMonthYearGraphData: (success, error) =>
       dispatch(actions.getMonthYearGraphData(success, error)),
 

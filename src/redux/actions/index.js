@@ -198,6 +198,31 @@ const actions = {
     };
   },
 
+  //getting all shipment and order details on very first page of an app
+  getHomepageInformation: (success, error) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
+      Api.get(
+        'summaryofgraphApi.php',
+        (apiSuccess) => {
+          console.log('summaryofgraphApi success:123231', apiSuccess);
+
+          dispatch({
+            type: actionTypes.ORDER_INFORMATION_DATA,
+            payload: apiSuccess.Summary,
+          });
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+          // return success(true);
+        },
+        (apiError) => {
+          console.log('summaryofgraphApi apiError:', apiError);
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+          // return error(apiError);
+        },
+      );
+    };
+  },
+
   //getapproveddocumentsoption for dropdown
   getApprovedDocumentsOptions: (success, error) => {
     return (dispatch) => {
