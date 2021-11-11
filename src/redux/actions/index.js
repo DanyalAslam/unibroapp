@@ -293,12 +293,13 @@ const actions = {
             payload: apiSuccess.DocumentData,
           });
           dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
-          // return success(true);
+          return success(true);
 
         },
         (apiError) => {
           console.log('getSearchedApproveDocuments apiError:', apiError);
           dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+          return error(true);
 
         },
       );

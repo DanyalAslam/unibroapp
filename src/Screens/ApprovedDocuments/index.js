@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ToastAndroid, Platform, ScrollView, Image, Linking } from 'react-native';
+import { View, Text, ToastAndroid, Platform, ScrollView, Image, Linking, ActivityIndicator } from 'react-native';
 import styles from './styles';
 import { connect } from 'react-redux';
 import actions from '../../redux/actions/index';
@@ -12,6 +12,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import MainInput from '../../Components/Input/MainInput';
 import { icons } from '../../assets/images'
 import DropDown from '../../Components/DropDown'
+import { showToast } from '../../Utils';
 
 
 
@@ -28,7 +29,8 @@ class ApprovedDocuments extends React.Component {
             selected_country_year: '',
 
             selected_AppDoc: '',
-            selected_AppRights: ''
+            selected_AppRights: '',
+            showloading: ''
         };
     }
 
@@ -115,7 +117,18 @@ class ApprovedDocuments extends React.Component {
     }
     _getSearchedApproveDocuments = () => {
 
+        if (this.state.selected_AppRights == '' && this.state.selected_AppDoc == '') {
+            return showToast('Please select option 1 and option 2')
+        }
+        if (this.state.selected_AppRights == '' && this.state.selected_AppDoc != '') {
+            return showToast('Please select option 2')
+        }
+        if (this.state.selected_AppDoc == '' && this.state.selected_AppRights != '') {
+            return showToast('Please select option 1')
+        }
 
+
+        this.setState({ showloading: true })
         this.props.getSearchedApproveDocuments(
             this.state.selected_AppDoc,
             this.state.selected_AppRights,
@@ -123,11 +136,16 @@ class ApprovedDocuments extends React.Component {
                 if (success) {
                     this.setState({
                         sessions: this.props.streamData,
+                        showloading: false
                     });
                 }
             },
             (error) => {
                 showToast(error);
+                this.setState({
+                    sessions: this.props.streamData,
+                    showloading: false
+                });
             },
         );
     }
@@ -878,7 +896,7 @@ class ApprovedDocuments extends React.Component {
                         <MainInput
                             label="Enter Blood Group"
                             required
-                            placeholder="Select an option"
+                            placeholder="Select option 1"
                             value={this.state.selected_AppDoc}
                             editable={false}
                             style={{ width: 30 * vw, paddingHorizontal: 1 * vw }}
@@ -895,7 +913,7 @@ class ApprovedDocuments extends React.Component {
                             label="Enter Year"
                             value={this.state.selected_AppRights}
                             required
-                            placeholder="Select an option"
+                            placeholder="Select option 2"
                             editable={false}
                             style={{ width: 30 * vw, paddingHorizontal: 1 * vw }}
                             fieldStyle={{ width: 20 * vw, fontSize: 2.5 * vw }}
@@ -916,7 +934,11 @@ class ApprovedDocuments extends React.Component {
                     </TouchableOpacity>
 
                 </View>
+                {this.state.showloading ? <ActivityIndicator size="small" color="#012c65"
+                    style={{ paddingVertical: 3 * vh }}
+                /> : null
 
+                }
                 <ScrollView
                     showsVerticalScrollIndicator={false}
                     contentContainerStyle={{ alignItems: 'center', paddingBottom: 10 * vh }}
