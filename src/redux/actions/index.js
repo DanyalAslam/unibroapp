@@ -873,6 +873,7 @@ const actions = {
 
   //for daily production reports
   getDailyProductionReportsView: (keyword, completed, failed) => {
+    console.log('keywordkeyword',keyword)
     return (dispatch) => {
       dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.postReport(
@@ -900,7 +901,7 @@ const actions = {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.postReport(
-        `erpsys/Frm_Rep_Po.php/?${keyword}`,
+        `erpsys/Frm_Rep_maPo.php/?docid=${keyword}`,
 
         (success) => {
           console.log('getPOReports SUCCESSSS', success)

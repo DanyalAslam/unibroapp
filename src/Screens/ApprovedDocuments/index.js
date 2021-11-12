@@ -34,6 +34,10 @@ class ApprovedDocuments extends React.Component {
         };
     }
 
+    _ApprovedDocuments = (doc_id,doc_no,user_code) =>{
+        console.log('doc_id',doc_id,'doc_no',doc_no,'user_code',user_code)
+    }
+
 
     _getDocumentDetails = () => {
         this.props.getDocumentDetails(
@@ -344,11 +348,19 @@ class ApprovedDocuments extends React.Component {
                                     resizeMode='contain'
                                 />
                             </TouchableOpacity>
+                          
+                            <TouchableOpacity
+
+// onPress={() => Linking.openURL(`http://103.25.138.171/:4080/erpsys/Frm_Rep_Po.php/${data.poNo}`)}
+onPress={() => this._ApprovedDocuments(data?.poNo,'02',this?.props?.user_code)}
+
+>
                             <Image
                                 style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
                                 source={{ uri: data.Approve }}
                                 resizeMode='contain'
                             />
+                            </TouchableOpacity>
                             <Image
                                 style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
                                 source={{ uri: data.Delete }}
@@ -424,7 +436,7 @@ class ApprovedDocuments extends React.Component {
                 return (<View style={{ backgroundColor: '#fff', flex: 1, height: 10 * vh, alignSelf: 'stretch', flexDirection: 'row', marginHorizontal: 5 }}>
 
                     <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
-                        <Text style={{ color: '#012c65', fontWeight: 'bold' }}>Date</Text>
+                        <Text style={{ color: '#012c65', fontWeight: 'bold' }}>Dcr no</Text>
                     </View>
 
 
@@ -443,7 +455,7 @@ class ApprovedDocuments extends React.Component {
                     <View style={{ flex: 1, alignSelf: 'stretch', borderBottomColor: 'black', borderBottomWidth: 0.3, height: 10 * vh, backgroundColor: '#fff', marginHorizontal: 5, backgroundColor: '#ffF' }}>
                         <View style={{ flexDirection: 'row', height: 4 * vh, backgroundColor: '#fff' }}>
                             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingLeft: 7 }} >
-                                <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.Date}</PoppinsRegular></View>
+                                <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.dcrno}</PoppinsRegular></View>
                             <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
                                 <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.Description}</PoppinsRegular>
                             </View>
@@ -486,7 +498,7 @@ class ApprovedDocuments extends React.Component {
                 return (<View style={{ backgroundColor: '#fff', flex: 1, height: 10 * vh, alignSelf: 'stretch', flexDirection: 'row', marginHorizontal: 5 }}>
 
                     <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
-                        <Text style={{ color: '#012c65', fontWeight: 'bold' }}>Date</Text>
+                        <Text style={{ color: '#012c65', fontWeight: 'bold' }}>Dpr no</Text>
                     </View>
 
 
@@ -505,7 +517,7 @@ class ApprovedDocuments extends React.Component {
                     <View style={{ flex: 1, alignSelf: 'stretch', borderBottomColor: 'black', borderBottomWidth: 0.3, height: 10 * vh, backgroundColor: '#fff', marginHorizontal: 5, backgroundColor: '#ffF' }}>
                         <View style={{ flexDirection: 'row', height: 4 * vh, backgroundColor: '#fff' }}>
                             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingLeft: 7 }} >
-                                <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.Date}</PoppinsRegular></View>
+                                <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.dprno}</PoppinsRegular></View>
                             <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
                                 <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.Description}</PoppinsRegular>
                             </View>
@@ -525,11 +537,18 @@ class ApprovedDocuments extends React.Component {
                                     resizeMode='contain'
                                 />
                             </TouchableOpacity>
+                            <TouchableOpacity
+
+// onPress={() => Linking.openURL(`http://103.25.138.171/:4080/erpsys/Frm_Rep_Po.php/${data.poNo}`)}
+onPress={() => this._ApprovedDocuments(data?.dprno,'12',this?.props?.user_code)}
+
+>
                             <Image
                                 style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
                                 source={{ uri: data.Approve }}
                                 resizeMode='contain'
                             />
+                            </TouchableOpacity>
                             <Image
                                 style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
                                 source={{ uri: data.Delete }}
@@ -658,11 +677,19 @@ class ApprovedDocuments extends React.Component {
                                     resizeMode='contain'
                                 />
                             </TouchableOpacity>
+                           
+                            <TouchableOpacity
+
+// onPress={() => Linking.openURL(`http://103.25.138.171/:4080/erpsys/Frm_Rep_Po.php/${data.poNo}`)}
+onPress={() => this._ApprovedDocuments(data?.InspNo,'14',this?.props?.user_code)}
+
+>
                             <Image
                                 style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
                                 source={{ uri: data.Approved }}
                                 resizeMode='contain'
                             />
+                            </TouchableOpacity>
                             <Image
                                 style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
                                 source={{ uri: data.Delete }}
