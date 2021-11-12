@@ -332,7 +332,12 @@ class ApprovedDocuments extends React.Component {
                         </View>
 
                         <View style={{ height: 6 * vh, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
-                            <TouchableOpacity onPress={() => Linking.openURL(`http://103.25.138.171/:4080/erpsys/Frm_Rep_Po.php/${data.poNo}`)}>
+                            <TouchableOpacity
+
+                                // onPress={() => Linking.openURL(`http://103.25.138.171/:4080/erpsys/Frm_Rep_Po.php/${data.poNo}`)}
+                                onPress={() => this.props.navigation.navigate('ViewReports', { id: data.poNo, role: 'PO' })}
+
+                            >
                                 <Image
                                     style={{ width: 4 * vw, height: 3 * vh, marginRight: 4 * vw }}
                                     source={{ uri: data.View }}
@@ -448,11 +453,16 @@ class ApprovedDocuments extends React.Component {
                         </View>
 
                         <View style={{ height: 6 * vh, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
-                            <Image
-                                style={{ width: 4 * vw, height: 3 * vh, marginRight: 4 * vw }}
-                                source={{ uri: data.View }}
-                                resizeMode='contain'
-                            />
+
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate('ViewReports', { id: data.dcrno, role: 'DailyProduction' })}
+
+                            >
+                                <Image
+                                    style={{ width: 4 * vw, height: 3 * vh, marginRight: 4 * vw }}
+                                    source={{ uri: data.View }}
+                                    resizeMode='contain'
+                                /></TouchableOpacity>
                             <Image
                                 style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
                                 source={{ uri: data.Approve }}
@@ -505,11 +515,16 @@ class ApprovedDocuments extends React.Component {
                         </View>
 
                         <View style={{ height: 6 * vh, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
-                            <Image
-                                style={{ width: 4 * vw, height: 3 * vh, marginRight: 4 * vw }}
-                                source={{ uri: data.View }}
-                                resizeMode='contain'
-                            />
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate('ViewReports', { id: data.dprno, role: 'DailyProduction' })}
+
+                            >
+                                <Image
+                                    style={{ width: 4 * vw, height: 3 * vh, marginRight: 4 * vw }}
+                                    source={{ uri: data.View }}
+                                    resizeMode='contain'
+                                />
+                            </TouchableOpacity>
                             <Image
                                 style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
                                 source={{ uri: data.Approve }}
@@ -630,11 +645,19 @@ class ApprovedDocuments extends React.Component {
                         </View>
 
                         <View style={{ height: 6 * vh, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
-                            <Image
-                                style={{ width: 4 * vw, height: 3 * vh, marginRight: 4 * vw }}
-                                source={{ uri: data.View }}
-                                resizeMode='contain'
-                            />
+
+                            <TouchableOpacity
+
+                                // onPress={() => Linking.openURL(`http://103.25.138.171/:4080/erpsys/Frm_Rep_Po.php/${data.poNo}`)}
+                                onPress={() => this.props.navigation.navigate('ViewReports', { id: data?.InspNo, role: 'InspectionReport' })}
+
+                            >
+                                <Image
+                                    style={{ width: 4 * vw, height: 3 * vh, marginRight: 4 * vw }}
+                                    source={{ uri: data.View }}
+                                    resizeMode='contain'
+                                />
+                            </TouchableOpacity>
                             <Image
                                 style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
                                 source={{ uri: data.Approved }}

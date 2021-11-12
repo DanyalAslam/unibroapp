@@ -25,6 +25,27 @@ class ViewReports extends React.Component {
   _getInspectionReport = () => {
 
 
+    if (this?.props?.route?.params?.role == "PO") {
+      // alert('InspectionReport')
+      this.props.getPOReports(
+        this?.props?.route?.params?.id,
+        (success) => {
+          if (success) {
+            this.setState({
+              refreshing: false,
+            });
+          }
+        },
+        (error) => {
+          this.setState({
+            refreshing: false,
+          });
+        },
+      );
+
+    }
+
+
     if (this?.props?.route?.params?.role == "InspectionReport") {
       // alert('InspectionReport')
       this.props.getInspectionReportView(
@@ -45,7 +66,8 @@ class ViewReports extends React.Component {
 
     }
     if (this?.props?.route?.params?.role == "DailyProduction") {
-      // alert('DailyProduction')
+      console.log('this?.props?.route?.params?.id,', this?.props?.route?.params?.id,)
+
       this.props.getDailyProductionReportsView(
         this?.props?.route?.params?.id,
         (success) => {
@@ -83,7 +105,7 @@ class ViewReports extends React.Component {
 
     }
     if (this?.props?.route?.params?.role == "ProductionSummary") {
-    
+
       // alert('Greish')
       this.props.getProductionSummaryView(
         this?.props?.route?.params?.id,
@@ -117,7 +139,7 @@ class ViewReports extends React.Component {
         // source={{ uri: 'https://unibro.com.pk/erpsys/ZDF_2021-11-03-05-33-51_61821f3fd9ce4.pdf' }}
         // source={{ uri: 'https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwifreLdtvvzAhVgQEEAHSDHB1sQPAgI' }}
         source={{ uri: this.props.viewReportsUrl }}
-   
+
 
       />
     </View>
@@ -141,6 +163,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getInspectionReportView: (keyword, success, error) =>
       dispatch(actions.getInspectionReportView(keyword, success, error)),
+
+
+    getPOReports: (keyword, success, error) =>
+      dispatch(actions.getPOReports(keyword, success, error)),
 
 
     getDailyProductionReportsView: (keyword, success, error) =>

@@ -895,6 +895,29 @@ const actions = {
     };
   },
 
+  //get PO reports
+  getPOReports: (keyword, completed, failed) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
+      Api.postReport(
+        `erpsys/Frm_Rep_Po.php/?${keyword}`,
+
+        (success) => {
+          console.log('getPOReports SUCCESSSS', success)
+          dispatch({
+            type: actionTypes.VIEW_REPORTS,
+            payload: success.rows,
+          });
+
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+        (error) => {
+          console.log('getPOReports error', error)
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+      );
+    };
+  },
 
   //for production summary view
   getProductionSummaryView: (keyword, completed, failed) => {
