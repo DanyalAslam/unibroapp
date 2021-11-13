@@ -333,7 +333,7 @@ class ApprovedDocuments extends React.Component {
                         <Text style={{ color: '#012c65', fontWeight: 'bold' }}>Supplier</Text>
                     </View>
                     <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
-                        <Text style={{ color: '#012c65', fontWeight: 'bold' }}>Prepared By</Text>
+                        <Text style={{ color: '#012c65', fontWeight: 'bold' }}>Amount</Text>
                     </View>
                 </View>
                 );
@@ -344,12 +344,12 @@ class ApprovedDocuments extends React.Component {
                     <View style={{ flex: 1, alignSelf: 'stretch', borderBottomColor: 'black', borderBottomWidth: 0.3, height: 10 * vh, backgroundColor: '#fff', marginHorizontal: 5, backgroundColor: '#ffF' }}>
                         <View style={{ flexDirection: 'row', height: 4 * vh, backgroundColor: '#fff' }}>
                             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingLeft: 7 }} >
-                                <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.poNo}</PoppinsRegular></View>
+                                <PoppinsRegular style={{ fontSize: 3 * vw }}>{data.poNo}</PoppinsRegular></View>
                             <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
-                                <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.Supplier}</PoppinsRegular>
+                                <PoppinsRegular style={{ fontSize: 3 * vw }}>{data.Supplier}</PoppinsRegular>
                             </View>
                             <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
-                                <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.Amount}</PoppinsRegular>
+                                <PoppinsRegular style={{ fontSize: 3 * vw }}>{data.Amount}</PoppinsRegular>
                             </View>
                         </View>
 
@@ -416,12 +416,12 @@ class ApprovedDocuments extends React.Component {
                     <View style={{ flex: 1, alignSelf: 'stretch', borderBottomColor: 'black', borderBottomWidth: 0.3, height: 10 * vh, backgroundColor: '#fff', marginHorizontal: 5, backgroundColor: '#ffF' }}>
                         <View style={{ flexDirection: 'row', height: 4 * vh, backgroundColor: '#fff' }}>
                             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingLeft: 7 }} >
-                                <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.demandNo}</PoppinsRegular></View>
+                                <PoppinsRegular style={{ fontSize: 3 * vw }}>{data.demandNo}</PoppinsRegular></View>
                             <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
-                                <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.Date}</PoppinsRegular>
+                                <PoppinsRegular style={{ fontSize: 3 * vw }}>{data.Date}</PoppinsRegular>
                             </View>
                             <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
-                                <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.CreatedBy}</PoppinsRegular>
+                                <PoppinsRegular style={{ fontSize: 3 * vw }}>{data.CreatedBy}</PoppinsRegular>
                             </View>
                         </View>
 
@@ -472,14 +472,14 @@ class ApprovedDocuments extends React.Component {
             else {
                 return (
                     <View style={{ flex: 1, alignSelf: 'stretch', borderBottomColor: 'black', borderBottomWidth: 0.3, height: 10 * vh, backgroundColor: '#fff', marginHorizontal: 5, backgroundColor: '#ffF' }}>
-                        <View style={{ flexDirection: 'row', height: 4 * vh, backgroundColor: '#fff' }}>
+                        <View style={{ flexDirection: 'row', height: 5 * vh, backgroundColor: '#fff' }}>
                             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingLeft: 7 }} >
-                                <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.dcrno}</PoppinsRegular></View>
+                                <PoppinsRegular style={{ fontSize: 3 * vw }}>{data.dcrno}</PoppinsRegular></View>
                             <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
-                                <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.Description}</PoppinsRegular>
+                                <PoppinsRegular style={{ fontSize: 3 * vw }}>{data.Description}</PoppinsRegular>
                             </View>
                             <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
-                                <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.PreparedBy}</PoppinsRegular>
+                                <PoppinsRegular style={{ fontSize: 3 * vw }}>{data.PreparedBy}</PoppinsRegular>
                             </View>
                         </View>
 
@@ -534,14 +534,14 @@ class ApprovedDocuments extends React.Component {
             else {
                 return (
                     <View style={{ flex: 1, alignSelf: 'stretch', borderBottomColor: 'black', borderBottomWidth: 0.3, height: 10 * vh, backgroundColor: '#fff', marginHorizontal: 5, backgroundColor: '#ffF' }}>
-                        <View style={{ flexDirection: 'row', height: 4 * vh, backgroundColor: '#fff' }}>
+                        <View style={{ flexDirection: 'row', height: 5 * vh, backgroundColor: '#fff' }}>
                             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingLeft: 7 }} >
-                                <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.dprno}</PoppinsRegular></View>
+                                <PoppinsRegular style={{ fontSize: 3 * vw }}>{data.dprno}</PoppinsRegular></View>
                             <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
-                                <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.Description}</PoppinsRegular>
+                                <PoppinsRegular style={{ fontSize: 3 * vw }}>{data.Description}</PoppinsRegular>
                             </View>
                             <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
-                                <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.PreparedBy}</PoppinsRegular>
+                                <PoppinsRegular style={{ fontSize: 3 * vw }}>{data.PreparedBy}</PoppinsRegular>
                             </View>
                         </View>
 
@@ -670,15 +670,15 @@ class ApprovedDocuments extends React.Component {
                     <View style={{ flex: 1, alignSelf: 'stretch', borderBottomColor: 'black', borderBottomWidth: 0.3, height: 10 * vh, backgroundColor: '#fff', marginHorizontal: 5, backgroundColor: '#ffF' }}>
                         <View style={{ flexDirection: 'row', height: 4 * vh, backgroundColor: '#fff' }}>
                             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingLeft: 7 }} >
-                                <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.InspNo}</PoppinsRegular></View>
+                                <PoppinsRegular style={{ fontSize: 3 * vw }}>{data.InspNo}</PoppinsRegular></View>
                             <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
-                                <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.Date}</PoppinsRegular>
+                                <PoppinsRegular style={{ fontSize: 3 * vw }}>{data.Date}</PoppinsRegular>
                             </View>
                             <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
-                                <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.UbiNo}</PoppinsRegular>
+                                <PoppinsRegular style={{ fontSize: 3 * vw }}>{data.UbiNo}</PoppinsRegular>
                             </View>
                             <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
-                                <PoppinsRegular style={{ fontSize: 2 * vw }}>{data.Status}</PoppinsRegular>
+                                <PoppinsRegular style={{ fontSize: 3 * vw }}>{data.Status}</PoppinsRegular>
                             </View>
                         </View>
 
