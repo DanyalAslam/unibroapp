@@ -34,8 +34,24 @@ class ApprovedDocuments extends React.Component {
         };
     }
 
-    _ApprovedDocuments = (doc_id,doc_no,user_code) =>{
-        console.log('doc_id',doc_id,'doc_no',doc_no,'user_code',user_code)
+    _ApprovedDocuments = (doc_id, doc_no, user_code) => {
+        console.log('doc_id', doc_id, 'doc_no', doc_no, 'user_code', user_code)
+
+        this.props.getApprovedDocumentsResponse(
+            doc_id,
+            doc_no,
+            user_code,
+            (success) => {
+                if (success) {
+                    this._getSearchedApproveDocuments()
+                }
+            },
+            (error) => {
+                alert('error', error)
+            },
+        );
+
+
     }
 
 
@@ -348,18 +364,18 @@ class ApprovedDocuments extends React.Component {
                                     resizeMode='contain'
                                 />
                             </TouchableOpacity>
-                          
+
                             <TouchableOpacity
 
-// onPress={() => Linking.openURL(`http://103.25.138.171/:4080/erpsys/Frm_Rep_Po.php/${data.poNo}`)}
-onPress={() => this._ApprovedDocuments(data?.poNo,'02',this?.props?.user_code)}
+                                // onPress={() => Linking.openURL(`http://103.25.138.171/:4080/erpsys/Frm_Rep_Po.php/${data.poNo}`)}
+                                onPress={() => this._ApprovedDocuments(data?.poNo, '02', this?.props?.user_code)}
 
->
-                            <Image
-                                style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
-                                source={{ uri: data.Approve }}
-                                resizeMode='contain'
-                            />
+                            >
+                                <Image
+                                    style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
+                                    source={{ uri: data.Approve }}
+                                    resizeMode='contain'
+                                />
                             </TouchableOpacity>
                             <Image
                                 style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
@@ -413,11 +429,12 @@ onPress={() => this._ApprovedDocuments(data?.poNo,'02',this?.props?.user_code)}
                                 source={{ uri: data.View }}
                                 resizeMode='contain'
                             />
-                            <Image
-                                style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
-                                source={{ uri: data.Approve }}
-                                resizeMode='contain'
-                            />
+                            <TouchableOpacity
+                                onPress={() => this._ApprovedDocuments(data?.demandNo, '01', this?.props?.user_code)}><Image
+                                    style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
+                                    source={{ uri: data.Approve }}
+                                    resizeMode='contain'
+                                /></TouchableOpacity>
                             <Image
                                 style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
                                 source={{ uri: data.Delete }}
@@ -539,15 +556,15 @@ onPress={() => this._ApprovedDocuments(data?.poNo,'02',this?.props?.user_code)}
                             </TouchableOpacity>
                             <TouchableOpacity
 
-// onPress={() => Linking.openURL(`http://103.25.138.171/:4080/erpsys/Frm_Rep_Po.php/${data.poNo}`)}
-onPress={() => this._ApprovedDocuments(data?.dprno,'12',this?.props?.user_code)}
+                                // onPress={() => Linking.openURL(`http://103.25.138.171/:4080/erpsys/Frm_Rep_Po.php/${data.poNo}`)}
+                                onPress={() => this._ApprovedDocuments(data?.dprno, '12', this?.props?.user_code)}
 
->
-                            <Image
-                                style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
-                                source={{ uri: data.Approve }}
-                                resizeMode='contain'
-                            />
+                            >
+                                <Image
+                                    style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
+                                    source={{ uri: data.Approve }}
+                                    resizeMode='contain'
+                                />
                             </TouchableOpacity>
                             <Image
                                 style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
@@ -677,18 +694,18 @@ onPress={() => this._ApprovedDocuments(data?.dprno,'12',this?.props?.user_code)}
                                     resizeMode='contain'
                                 />
                             </TouchableOpacity>
-                           
+
                             <TouchableOpacity
 
-// onPress={() => Linking.openURL(`http://103.25.138.171/:4080/erpsys/Frm_Rep_Po.php/${data.poNo}`)}
-onPress={() => this._ApprovedDocuments(data?.InspNo,'14',this?.props?.user_code)}
+                                // onPress={() => Linking.openURL(`http://103.25.138.171/:4080/erpsys/Frm_Rep_Po.php/${data.poNo}`)}
+                                onPress={() => this._ApprovedDocuments(data?.InspNo, '14', this?.props?.user_code)}
 
->
-                            <Image
-                                style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
-                                source={{ uri: data.Approved }}
-                                resizeMode='contain'
-                            />
+                            >
+                                <Image
+                                    style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
+                                    source={{ uri: data.Approved }}
+                                    resizeMode='contain'
+                                />
                             </TouchableOpacity>
                             <Image
                                 style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
@@ -1029,6 +1046,10 @@ const mapDispatchToProps = (dispatch) => {
 
         getSearchedApproveDocuments: (selected_AppDoc, selected_AppRights, success, error) =>
             dispatch(actions.getSearchedApproveDocuments(selected_AppDoc, selected_AppRights, success, error)),
+
+
+        getApprovedDocumentsResponse: (docid, docno, usercode, success, error) =>
+            dispatch(actions.getApprovedDocumentsResponse(docid, docno, usercode, success, error)),
 
     };
 };

@@ -307,6 +307,38 @@ const actions = {
   },
 
 
+//approve documnt submission 
+  getApprovedDocumentsResponse: (docid, docno, usercode, success, error) => {
+
+    console.log('docid', docid, 'docno', docno,'usercode',usercode)
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_LOADING });
+      Api.get(
+        // 'approveDocApi.php/?status=sent&&docnic=DCR',
+        `sentDocumentsApi.php/?docid=${docid}&&docno=${docno}&&usercode=${usercode}`,
+        (apiSuccess) => {
+          console.log('getApprovedDocumentsResponse success', apiSuccess);
+
+          // dispatch({
+          //   type: actionTypes.APPROVED_DOCUMENTS_DETAILS,
+          //   payload: apiSuccess.DocumentData,
+          // });
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+          return success(true);
+
+        },
+        (apiError) => {
+          console.log('getApprovedDocumentsResponse apiError:', apiError);
+          dispatch({ type: actionTypes.CLOSE_LOADING });
+          return error(false);
+
+        },
+      );
+    };
+  },
+
+
+
 
   //getShipmentBuyerWise
   //getting all data for Shipment buyer wise
