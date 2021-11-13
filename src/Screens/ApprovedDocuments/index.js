@@ -42,11 +42,13 @@ class ApprovedDocuments extends React.Component {
             doc_no,
             user_code,
             (success) => {
+                showToast('Report Approved successfully')
                 if (success) {
                     this._getSearchedApproveDocuments()
                 }
             },
             (error) => {
+                showToast('Internal Server Error')
                 alert('error', error)
             },
         );
