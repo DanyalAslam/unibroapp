@@ -741,6 +741,34 @@ class AboutUsScreen extends React.Component {
       >{`Last Shipped : U-7556,06 - 11 -2021 , NARINA, EURO 72, 483.79, MADEUPS`}</PoppinsRegular>
     </View>)
   }
+  _renderAdmin = () => {
+    return (<View>
+      {this._renderInformation()}
+      {this._renderFirstGraph()}
+      {this._renderThirdGraph()}
+      {this._renderFourthGraph()}
+      {this._renderPieceGoodsOrdersGraph()}
+      {this._renderShipmentBuyerWiseGraph()}
+      {this._renderShipmentCountryWiseGraph()}
+      {this._renderGreyFabricSupplierWise()}
+      {this._renderSecondGraph()}
+
+    </View>)
+  }
+  _renderUsers = () => {
+    return (<View>
+      {this._renderInformation()}
+
+
+
+      {this._renderThirdGraph()}
+      {this._renderFourthGraph()}
+
+    </View>)
+
+
+
+  }
   render() {
     return (
       <View style={{ flex: 1 }}>
@@ -754,16 +782,10 @@ class AboutUsScreen extends React.Component {
           <YearGraphDataPopup
             ref={(r) => (this.dataShow = r)} //reference daal rha hai
           />
-          {this._renderInformation()}
-          {this._renderFirstGraph()}
 
-          {this._renderThirdGraph()}
-          {this._renderFourthGraph()}
-          {this._renderPieceGoodsOrdersGraph()}
-          {this._renderShipmentBuyerWiseGraph()}
-          {this._renderShipmentCountryWiseGraph()}
-          {this._renderGreyFabricSupplierWise()}
-          {this._renderSecondGraph()}
+          {this.props.apcontrol == 1 ? this._renderAdmin() : this._renderUsers()}
+
+
         </ScrollView>
         <DropDown ref={(e) => (this.CompanyDropDown = e)} />
       </View>
@@ -775,9 +797,6 @@ class AboutUsScreen extends React.Component {
 
 
 const mapStateToProps = (state) => {
-
-  console.log('dashbpard states', state)
-
   return {
 
     order_summary: state.GeneralReducer.order_summary,
@@ -796,6 +815,7 @@ const mapStateToProps = (state) => {
     table_card_data: state.GeneralReducer.table_card_data,
     made_up_graph_data: state.GeneralReducer.made_up_graph_data,
     gray_fabrics_graph_data: state.GeneralReducer.gray_fabrics_graph_data,
+    apcontrol: state.GeneralReducer.apcontrol,
 
   };
 };

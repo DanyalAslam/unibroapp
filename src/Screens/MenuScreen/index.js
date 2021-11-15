@@ -37,7 +37,11 @@ class MenuScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      
+         {this.props.apcontrol != 1 ?  <MenuButton
+          onPress={() => this.props.navigation.navigate('ApprovedDocuments')}
+          title="ApprovedDocuments"
+          icon={icons.right_arrow}
+        /> : null}
         <MenuButton
           onPress={() => this.props.navigation.navigate('EmployeeEmails')}
           title="Employee Email"
@@ -187,6 +191,7 @@ const mapStateToProps = state => {
 
   return {
       data: state.GeneralReducer.homeData,
+      apcontrol: state.GeneralReducer.apcontrol,
 
   };
 };

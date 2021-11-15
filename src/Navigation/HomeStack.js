@@ -12,16 +12,10 @@ const HomeStack = (props) => {
     return (
         <HomeNavigator.Navigator screenOptions={getNavigationOptions}>
 
-            {props?.apcontrol == 1 ? <HomeNavigator.Screen component={Dashboard} name='Dashboard' /> : <HomeNavigator.Screen component={ApprovedDocuments} name='ApprovedDocuments' />}
+            {/* {props?.apcontrol == 1 ? <HomeNavigator.Screen component={Dashboard} name='Dashboard' /> : <HomeNavigator.Screen component={ApprovedDocuments} name='ApprovedDocuments' />} */}
 
-
-
-
-
-
-
-
-
+          <HomeNavigator.Screen component={Dashboard} name='Dashboard' /> 
+         
         </HomeNavigator.Navigator>
     )
 }

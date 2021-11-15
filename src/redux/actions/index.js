@@ -1002,6 +1002,31 @@ const actions = {
   },
 
 
+  //get OGP summary view
+  getOgpSummaryView: (keyword, completed, failed) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
+      Api.postReport(
+        `erpsys/Frm_Rep_maGreyContract.php/?docid=${keyword}`,
+
+        (success) => {
+          console.log('getViewReports SUCCESSSS', success)
+          dispatch({
+            type: actionTypes.VIEW_REPORTS,
+            payload: success.rows,
+          });
+
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+        (error) => {
+          console.log('getViewReports error', error)
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+      );
+    };
+  },
+
+
 
 
   //get Buyer Wise for Export Stock

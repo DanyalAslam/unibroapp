@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   tabIcon: {
-    height: 2 * vh,
+    height: 3 * vh,
     width: 15 * vw,
     alignItems: 'center',
     justifyContent: 'center',

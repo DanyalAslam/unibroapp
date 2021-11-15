@@ -158,6 +158,7 @@ export const showHeaderLeft = (activeRouteName, navigation, onBackPress) => {
     case 'EmployeeEmails':
     case 'StockInHand':
     case 'Grey':
+      case 'ApprovedDocuments':
     case 'PurchasingOrders':
     case 'OutstandingPurchasingOrders':
     case 'DailyProduction':

@@ -14,7 +14,7 @@ import {
   View,
 } from 'react-native';
 
-import {Provider} from 'react-redux'
+import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from './src/redux'
 import Loader from './src/Components/Loader';
@@ -39,22 +39,21 @@ class App extends React.Component {
 
 
 
-  ShowSplash = () =>{
+  ShowSplash = () => {
     setTimeout(() => {
-      this.setState({loadingSplash:false})
+      this.setState({ loadingSplash: false })
     }, 4000);
   }
-  render()
-  {
+  render() {
     return (
       <View style={styles.container}>
-   <Provider store={store}>
-   <PersistGate persistor={persistor}>
-     {this.state.loadingSplash ? <SplashScreen/>: null}
-   <Loader />
+        <Provider store={store}>
+          <PersistGate persistor={persistor}>
+            {this.state.loadingSplash ? <SplashScreen /> : null}
+            <Loader />
             <Navigation />
           </PersistGate>
-   </Provider>
+        </Provider>
       </View>
     )
 

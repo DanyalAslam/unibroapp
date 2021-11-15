@@ -127,6 +127,51 @@ class ViewReports extends React.Component {
 
 
 
+    if (this?.props?.route?.params?.role == "GRN") {
+
+      // alert('Greish')
+      this.props.getGreishSummaryView(
+        this?.props?.route?.params?.id,
+        (success) => {
+          if (success) {
+            this.setState({
+              refreshing: false,
+            });
+          }
+        },
+        (error) => {
+          this.setState({
+            refreshing: false,
+          });
+        },
+      );
+
+    }
+
+
+    if (this?.props?.route?.params?.role == "OGP") {
+
+      // alert('Greish')
+      this.props.getGreishSummaryView(
+        this?.props?.route?.params?.id,
+        (success) => {
+          if (success) {
+            this.setState({
+              refreshing: false,
+            });
+          }
+        },
+        (error) => {
+          this.setState({
+            refreshing: false,
+          });
+        },
+      );
+
+    }
+
+
+
 
   };
 
@@ -138,8 +183,8 @@ class ViewReports extends React.Component {
 
         // source={{ uri: 'https://unibro.com.pk/erpsys/ZDF_2021-11-03-05-33-51_61821f3fd9ce4.pdf' }}
         // source={{ uri: 'https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwifreLdtvvzAhVgQEEAHSDHB1sQPAgI' }}
-        source={{ uri: this.props.viewReportsUrl }}
-
+        // source={{ uri: this.props.viewReportsUrl }}
+        source={{ uri:  `http://docs.google.com/gview?embedded=true&url=${this.props.viewReportsUrl}` }}
 
       />
     </View>
@@ -178,6 +223,10 @@ const mapDispatchToProps = (dispatch) => {
 
     getGreishSummaryView: (keyword, success, error) =>
       dispatch(actions.getGreishSummaryView(keyword, success, error)),
+
+
+      getOgpSummaryView: (keyword, success, error) =>
+      dispatch(actions.getOgpSummaryView(keyword, success, error)),
   };
 };
 

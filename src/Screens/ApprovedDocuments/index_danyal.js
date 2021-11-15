@@ -213,7 +213,7 @@ class ApprovedDocuments extends React.Component {
     this.CompanyDropDown.show(
       'title',
       ["Apprpved", "DisApproved"],
-      'Select Company',
+      'Select Option 1',
       // (data) =>
       //   this.setState({
       //     request_data: {
@@ -238,7 +238,7 @@ class ApprovedDocuments extends React.Component {
     this.CompanyDropDown.show(
       'title',
       this.props.approved_documents_options,
-      'Select Year',
+      'Select Option 2',
       // (data) =>
       //   this.setState({
       //     request_data: {
