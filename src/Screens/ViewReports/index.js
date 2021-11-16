@@ -13,7 +13,7 @@ class ViewReports extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      password: '',
+      showLoader: false,
       keyword: ''
     };
   }
@@ -181,12 +181,29 @@ class ViewReports extends React.Component {
     return (<View style={{ height: 100 * vh, width: 100 * vw }}>
       <WebView
 
+        onLoadStart={(syntheticEvent) => {
+          this.setState({ showLoader: true });
+        }}
+        onLoadEnd={(syntheticEvent) => {
+          this.setState({ showLoader: false });
+        }}
+
         // source={{ uri: 'https://unibro.com.pk/erpsys/ZDF_2021-11-03-05-33-51_61821f3fd9ce4.pdf' }}
         // source={{ uri: 'https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwifreLdtvvzAhVgQEEAHSDHB1sQPAgI' }}
         // source={{ uri: this.props.viewReportsUrl }}
-        source={{ uri:  `http://docs.google.com/gview?embedded=true&url=${this.props.viewReportsUrl}` }}
+        source={{ uri: `http://docs.google.com/gview?embedded=true&url=${this.props.viewReportsUrl}` }}
 
       />
+
+      {this.state.showLoader && (
+        <View style={{ flex: 10, backgroundColor: 'white' }}>
+          <ActivityIndicator
+            color="#009688"
+            size="large"
+          //   style={{position: 'absolute', left: 200, top: 300}}
+          />
+        </View>
+      )}
     </View>
 
 
@@ -225,7 +242,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.getGreishSummaryView(keyword, success, error)),
 
 
-      getOgpSummaryView: (keyword, success, error) =>
+    getOgpSummaryView: (keyword, success, error) =>
       dispatch(actions.getOgpSummaryView(keyword, success, error)),
   };
 };
