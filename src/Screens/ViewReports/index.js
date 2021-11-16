@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, ActivityIndicator } from 'react-native';
+import { FlatList, View, ActivityIndicator, Platform } from 'react-native';
 import styles from './styles';
 import { WebView } from 'react-native-webview';
 
@@ -179,7 +179,22 @@ class ViewReports extends React.Component {
   render() {
     console.log('this.props.viewReportsUrl', this.props.viewReportsUrl)
     return (<View style={{ height: 100 * vh, width: 100 * vw }}>
-      <WebView
+
+      {Platform.OS === 'ios' ? <WebView
+
+        onLoadStart={(syntheticEvent) => {
+          this.setState({ showLoader: true });
+        }}
+        onLoadEnd={(syntheticEvent) => {
+          this.setState({ showLoader: false });
+        }}
+
+        // source={{ uri: 'https://unibro.com.pk/erpsys/ZDF_2021-11-03-05-33-51_61821f3fd9ce4.pdf' }}
+        // source={{ uri: 'https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwifreLdtvvzAhVgQEEAHSDHB1sQPAgI' }}
+        // source={{ uri: this.props.viewReportsUrl }}
+        source={{ uri: this.props.viewReportsUrl }}
+
+      /> : <WebView
 
         onLoadStart={(syntheticEvent) => {
           this.setState({ showLoader: true });
@@ -193,7 +208,8 @@ class ViewReports extends React.Component {
         // source={{ uri: this.props.viewReportsUrl }}
         source={{ uri: `http://docs.google.com/gview?embedded=true&url=${this.props.viewReportsUrl}` }}
 
-      />
+      />}
+
 
       {this.state.showLoader && (
         <View style={{ flex: 10, backgroundColor: 'white' }}>
