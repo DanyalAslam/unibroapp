@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ToastAndroid, Platform, ScrollView, Image } from 'react-native';
+import { View, Text, ToastAndroid, FlatList, ScrollView, Image, ImageBackground } from 'react-native';
 import styles from './styles';
 import { connect } from 'react-redux';
 import actions from './../../redux/actions/index';
@@ -12,6 +12,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import MainInput from '../../Components/Input/MainInput';
 import { icons } from '../../assets/images'
 import DropDown from '../../Components/DropDown'
+import Carousel, { Pagination } from 'react-native-snap-carousel';
+
 const chartConfig = {
   propsForVerticalLabels: { fontSize: 2 * vw },
   propsForHorizontalLabels: { fontSize: 2 * vw },
@@ -40,6 +42,38 @@ const chartConfigMadeUp = {
   barPercentage: 0.5,
   useShadowColorFromDataset: false
 };
+export const ENTRIES1 = [
+  {
+    title: 'Beautiful and dramatic Antelope Canyon',
+    subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
+    illustration: 'https://i.imgur.com/UYiroysl.jpg'
+  },
+  {
+    title: 'Earlier this morning, NYC',
+    subtitle: 'Lorem ipsum dolor sit amet',
+    illustration: 'https://i.imgur.com/UPrs1EWl.jpg'
+  },
+  {
+    title: 'White Pocket Sunset',
+    subtitle: 'Lorem ipsum dolor sit amet et nuncat ',
+    illustration: 'https://i.imgur.com/MABUbpDl.jpg'
+  },
+  {
+    title: 'Acrocorinth, Greece',
+    subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
+    illustration: 'https://i.imgur.com/KZsmUi2l.jpg'
+  },
+  {
+    title: 'The lone tree, majestic landscape of New Zealand',
+    subtitle: 'Lorem ipsum dolor sit amet',
+    illustration: 'https://i.imgur.com/2nCt3Sbl.jpg'
+  },
+  {
+    title: 'Middle Earth, Germany',
+    subtitle: 'Lorem ipsum dolor sit amet',
+    illustration: 'https://i.imgur.com/lceHsT6l.jpg'
+  }
+];
 class AboutUsScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -49,9 +83,37 @@ class AboutUsScreen extends React.Component {
       selected_buyer_year: '',
 
       selected_country_company: '',
-      selected_country_year: ''
+      selected_country_year: '',
+      activeSlide: 0,
     };
   }
+
+  _renderItem = ({ item, index }) => {
+    console.log('The Item of carousel:', item);
+    return (
+      <View
+
+        style={{
+          width: vw * 25,
+          height: vh * 20,
+
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: 'yellow',
+          elevation: 2 * vw,
+          borderRadius: 2 * vw,
+          backgroundColor: '#fff',
+          margin: 2 * vw
+
+        }}
+      >
+
+        <PoppinsBold style={{color:'#012c65'}}>{item.title}</PoppinsBold>
+        <PoppinsRegular style={{fontSize:3*vw}}>{item.value}</PoppinsRegular>
+
+      </View>
+    );
+  };
 
 
   _getMonthYearGraphData = () => {
@@ -720,8 +782,8 @@ class AboutUsScreen extends React.Component {
 
 
   _renderInformation = () => {
-    return (<View style={{ width: 90 * vw, height: 30 * vh, justifyContent: 'space-around', alignItems: 'center' }}>
-      <PoppinsRegular
+    return (<View style={{ width: 90 * vw, height: 90 * vh, justifyContent: 'space-around', alignItems: 'center' }}>
+      {/* <PoppinsRegular
         style={{
           fontSize: 4 * vw,
           color: '#122675', textShadowColor: 'rgba(0, 0, 0, 0.75)',
@@ -738,7 +800,19 @@ class AboutUsScreen extends React.Component {
           textShadowRadius: 5,
 
         }}
-      >{`Last Shipped : U-7556,06 - 11 -2021 , NARINA, EURO 72, 483.79, MADEUPS`}</PoppinsRegular>
+      >{`Last Shipped : U-7556,06 - 11 -2021 , NARINA, EURO 72, 483.79, MADEUPS`}</PoppinsRegular> */}
+      <FlatList
+      showsVerticalScrollIndicator={false}
+        nestedScrollEnabled={true}
+        scrollEnabled={false}
+        // columnWrapperStyle={{flex:1,justifyContent: "space-around"}}
+        columnWrapperStyle={{ justifyContent: 'space-between', }}
+        data={this.props.order_summary}
+        keyExtractor={item => item.itemId}
+        horizontal={false}
+        numColumns={3}
+        renderItem={this._renderItem}
+      />
     </View>)
   }
   _renderAdmin = () => {
@@ -797,6 +871,7 @@ class AboutUsScreen extends React.Component {
 
 
 const mapStateToProps = (state) => {
+  console.log('state.GeneralReducer.order_summary', state.GeneralReducer.order_summary)
   return {
 
     order_summary: state.GeneralReducer.order_summary,

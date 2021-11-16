@@ -214,7 +214,7 @@ class ViewReports extends React.Component {
       {this.state.showLoader && (
         <View style={{ flex: 10, backgroundColor: 'white' }}>
           <ActivityIndicator
-            color="#009688"
+            color="#012c65"
             size="large"
           //   style={{position: 'absolute', left: 200, top: 300}}
           />

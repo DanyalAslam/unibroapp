@@ -200,6 +200,7 @@ const actions = {
 
   //getting all shipment and order details on very first page of an app
   getHomepageInformation: (success, error) => {
+   
     return (dispatch) => {
       dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.get(
