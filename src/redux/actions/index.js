@@ -202,7 +202,7 @@ const actions = {
   getHomepageInformation: (success, error) => {
    
     return (dispatch) => {
-      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
+      dispatch({ type: actionTypes.START_LOADING });
       Api.get(
         'summaryofgraphApi.php',
         (apiSuccess) => {
@@ -212,12 +212,12 @@ const actions = {
             type: actionTypes.ORDER_INFORMATION_DATA,
             payload: apiSuccess.Summary,
           });
-          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+          dispatch({ type: actionTypes.CLOSE_LOADING });
           // return success(true);
         },
         (apiError) => {
           console.log('summaryofgraphApi apiError:', apiError);
-          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+          dispatch({ type: actionTypes.CLOSE_LOADING });
           // return error(apiError);
         },
       );

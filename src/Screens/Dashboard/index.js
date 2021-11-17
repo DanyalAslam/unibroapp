@@ -11,6 +11,7 @@ import YearGraphDataPopup from '../../Components/Popups/YearGraphDataPopup'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import MainInput from '../../Components/Input/MainInput';
 import { icons } from '../../assets/images'
+import { splashBackground } from '../../assets/images/backgrounds/splashBackground.jpeg'
 import DropDown from '../../Components/DropDown'
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 
@@ -91,27 +92,34 @@ class AboutUsScreen extends React.Component {
   _renderItem = ({ item, index }) => {
     console.log('The Item of carousel:', item);
     return (
-      <View
-
+      <ImageBackground
+        imageStyle={{
+          width: vw * 25,
+          height: vh * 20,
+          borderRadius: 2 * vw,
+          opacity: 0.3
+        }}
+        source={require('../../assets/images/backgrounds/splashBackground.jpeg')}
         style={{
           width: vw * 25,
           height: vh * 20,
 
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: 'yellow',
+
           elevation: 2 * vw,
-          borderRadius: 2 * vw,
-          backgroundColor: '#fff',
-          margin: 2 * vw
+
+
+          margin: 2 * vw, paddingHorizontal: 1 * vw
+
 
         }}
       >
 
-        <PoppinsBold style={{color:'#012c65'}}>{item.title}</PoppinsBold>
-        <PoppinsRegular style={{fontSize:3*vw}}>{item.value}</PoppinsRegular>
+        <PoppinsBold style={{ color: '#012c65',fontSize: 4 * vw, }}>{item.title}</PoppinsBold>
+        <PoppinsRegular style={{ fontSize: 2.8 * vw, fontStyle: 'italic',fontWeight:'bold' }}>{item.value}</PoppinsRegular>
 
-      </View>
+      </ImageBackground>
     );
   };
 
@@ -782,7 +790,7 @@ class AboutUsScreen extends React.Component {
 
 
   _renderInformation = () => {
-    return (<View style={{ width: 90 * vw, height: 90 * vh, justifyContent: 'space-around', alignItems: 'center' }}>
+    return (<View style={{ width: 90 * vw,  justifyContent: 'space-around', alignItems: 'center' }}>
       {/* <PoppinsRegular
         style={{
           fontSize: 4 * vw,
@@ -802,7 +810,7 @@ class AboutUsScreen extends React.Component {
         }}
       >{`Last Shipped : U-7556,06 - 11 -2021 , NARINA, EURO 72, 483.79, MADEUPS`}</PoppinsRegular> */}
       <FlatList
-      showsVerticalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         nestedScrollEnabled={true}
         scrollEnabled={false}
         // columnWrapperStyle={{flex:1,justifyContent: "space-around"}}
