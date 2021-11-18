@@ -116,8 +116,8 @@ class AboutUsScreen extends React.Component {
         }}
       >
 
-        <PoppinsBold style={{ color: '#012c65',fontSize: 4 * vw, }}>{item.title}</PoppinsBold>
-        <PoppinsRegular style={{ fontSize: 2.8 * vw, fontStyle: 'italic',fontWeight:'bold' }}>{item.value}</PoppinsRegular>
+        <PoppinsBold style={{ color: '#012c65',fontSize: 4 * vw,marginBottom:1*vh }}>{item.title}</PoppinsBold>
+        <PoppinsRegular style={{ fontSize: 3 * vw,fontWeight:'bold',color:'black' }}>{item.value}</PoppinsRegular>
 
       </ImageBackground>
     );
