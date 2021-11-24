@@ -47,7 +47,7 @@ flexDirection:"row",
         fontSize: 2.5 * vw,
         marginBottom: 0.5 * vh,
         marginLeft:1*vw,
-        width:20*vw
+        width:30*vw
     },
     heading: {
         color: ThemeColors.backgroundBlack,

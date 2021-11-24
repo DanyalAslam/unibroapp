@@ -92,26 +92,29 @@ class AboutUsScreen extends React.Component {
   _renderItem = ({ item, index }) => {
     console.log('The Item of carousel:', item);
     return (
-      <ImageBackground
-        imageStyle={{
-          width: vw * 25,
-          height: vh * 20,
-          borderRadius: 2 * vw,
-          opacity: 0.3
-        }}
-        source={require('../../assets/images/backgrounds/splashBackground.jpeg')}
+      <View
+       
         style={{
+          borderRadius:3*vw,
           width: vw * 25,
-          height: vh * 20,
-
+          height: vh * 18,
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 4,
+          },
+          shadowOpacity: 0.32,
+          shadowRadius: 5.46,
+          
+          elevation: 9,
           justifyContent: 'center',
           alignItems: 'center',
 
           elevation: 2 * vw,
 
 
-          margin: 2 * vw, paddingHorizontal: 1 * vw
-
+          margin: 2 * vw, paddingHorizontal: 1 * vw,
+backgroundColor:'#fff'
 
         }}
       >
@@ -119,7 +122,7 @@ class AboutUsScreen extends React.Component {
         <PoppinsBold style={{ color: '#012c65',fontSize: 4 * vw,marginBottom:1*vh }}>{item.title}</PoppinsBold>
         <PoppinsRegular style={{ fontSize: 3 * vw,fontWeight:'bold',color:'black' }}>{item.value}</PoppinsRegular>
 
-      </ImageBackground>
+      </View>
     );
   };
 
@@ -788,39 +791,137 @@ class AboutUsScreen extends React.Component {
     )
   }
 
+  _renderLastShipped = () =>{
+    return(
+      <>
+    <PoppinsBold
+    
+    style={{backgroundColor:'#012c65',color:'#fff',padding:2*vw}}
+    >Last Shipped</PoppinsBold>
+
+    <FlatList
+      showsVerticalScrollIndicator={false}
+      nestedScrollEnabled={true}
+      scrollEnabled={false}
+      // columnWrapperStyle={{flex:1,justifyContent: "space-around"}}
+      columnWrapperStyle={{ justifyContent: 'space-between', }}
+      data={this?.props?.Last_Shipped}
+      keyExtractor={item => item.itemId}
+      horizontal={false}
+      numColumns={3}
+      renderItem={this._renderItem}
+    /></>)
+
+  }
+
+
+  _renderLastBookedOrders = () =>{
+    return(<><PoppinsBold
+      style={{backgroundColor:'#012c65',color:'#fff',padding:2*vw}}
+      >Last Booked Orders</PoppinsBold>
+      <FlatList
+      showsVerticalScrollIndicator={false}
+      nestedScrollEnabled={true}
+      scrollEnabled={false}
+      // columnWrapperStyle={{flex:1,justifyContent: "space-around"}}
+      columnWrapperStyle={{ justifyContent: 'space-between', }}
+      data={this?.props?.Last_Booked_Order}
+      keyExtractor={item => item.itemId}
+      horizontal={false}
+      numColumns={3}
+      renderItem={this._renderItem}
+    /></>)
+
+  }
+
+  _renderMadeupsToBeShipped = () =>{
+    return(<><PoppinsBold
+      style={{backgroundColor:'#012c65',color:'#fff',padding:2*vw}}
+      >Madeups To Be shipped</PoppinsBold>
+      <FlatList
+      showsVerticalScrollIndicator={false}
+      nestedScrollEnabled={true}
+      scrollEnabled={false}
+      // columnWrapperStyle={{flex:1,justifyContent: "space-around"}}
+      columnWrapperStyle={{ justifyContent: 'space-between', }}
+      data={this?.props?.Madeups_To_Be_Shipped}
+      keyExtractor={item => item.itemId}
+      horizontal={false}
+      numColumns={3}
+      renderItem={this._renderItem}
+    /></>)
+
+  }
+
+
+  _renderPieceGoods = () =>{
+    return(<><PoppinsBold
+      style={{backgroundColor:'#012c65',color:'#fff',padding:2*vw}}
+      >Piece Goods</PoppinsBold>
+      <FlatList
+      showsVerticalScrollIndicator={false}
+      nestedScrollEnabled={true}
+      scrollEnabled={false}
+      // columnWrapperStyle={{flex:1,justifyContent: "space-around"}}
+      columnWrapperStyle={{ justifyContent: 'space-between', }}
+      data={this?.props?.Piece_Goods}
+      keyExtractor={item => item.itemId}
+      horizontal={false}
+      numColumns={3}
+      renderItem={this._renderItem}
+    /></>)
+
+  }
+
+  _renderBookedGreyCloth = () =>{
+    return(<><PoppinsBold
+      style={{backgroundColor:'#012c65',color:'#fff',padding:2*vw}}
+      >Booked Grey Cloths</PoppinsBold>
+      <FlatList
+      showsVerticalScrollIndicator={false}
+      nestedScrollEnabled={true}
+      scrollEnabled={false}
+      // columnWrapperStyle={{flex:1,justifyContent: "space-around"}}
+      columnWrapperStyle={{ justifyContent: 'space-between', }}
+      data={this?.props?.Booked_Grey_Cloth}
+      keyExtractor={item => item.itemId}
+      horizontal={false}
+      numColumns={3}
+      renderItem={this._renderItem}
+    /></>)
+
+  }
+
+  _renderRunningOrders = () =>{
+    return(<><PoppinsBold
+      style={{backgroundColor:'#012c65',color:'#fff',padding:2*vw}}
+      >Running Orders</PoppinsBold>
+      <FlatList
+      showsVerticalScrollIndicator={false}
+      nestedScrollEnabled={true}
+      scrollEnabled={false}
+      // columnWrapperStyle={{flex:1,justifyContent: "space-around"}}
+      columnWrapperStyle={{ justifyContent: 'space-between', }}
+      data={this?.props?.Running_Orders}
+      keyExtractor={item => item.itemId}
+      horizontal={false}
+      numColumns={3}
+      renderItem={this._renderItem}
+    /></>)
+
+  }
+
+
 
   _renderInformation = () => {
-    return (<View style={{ width: 90 * vw,  justifyContent: 'space-around', alignItems: 'center' }}>
-      {/* <PoppinsRegular
-        style={{
-          fontSize: 4 * vw,
-          color: '#122675', textShadowColor: 'rgba(0, 0, 0, 0.75)',
-          textShadowOffset: { width: -1, height: 1 },
-          textShadowRadius: 5
-        }}
-      >Last Shipped : U-7556,06 - 11 -2021 , NARINA, EURO 72, 483.79, MADEUPS</PoppinsRegular>
+    return (<View style={{ width: 90 * vw,marginTop:2*vh}}>
 
-      <PoppinsRegular
-        style={{
-          fontSize: 4 * vw,
-          color: '#008222', textShadowColor: 'rgba(0, 0, 0, 0.75)',
-          textShadowOffset: { width: -1, height: 1 },
-          textShadowRadius: 5,
-
-        }}
-      >{`Last Shipped : U-7556,06 - 11 -2021 , NARINA, EURO 72, 483.79, MADEUPS`}</PoppinsRegular> */}
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        nestedScrollEnabled={true}
-        scrollEnabled={false}
-        // columnWrapperStyle={{flex:1,justifyContent: "space-around"}}
-        columnWrapperStyle={{ justifyContent: 'space-between', }}
-        data={this.props.order_summary}
-        keyExtractor={item => item.itemId}
-        horizontal={false}
-        numColumns={3}
-        renderItem={this._renderItem}
-      />
+   {this._renderLastShipped()}
+   {this._renderLastBookedOrders()}
+   {this._renderRunningOrders()}
+   {this._renderMadeupsToBeShipped()}
+   {this._renderPieceGoods()}
+   {this._renderBookedGreyCloth()}
     </View>)
   }
   _renderAdmin = () => {
@@ -852,6 +953,7 @@ class AboutUsScreen extends React.Component {
 
   }
   render() {
+    console.log('Last_Shipped',this.props.Last_Shipped)
     return (
       <View style={{ flex: 1 }}>
 
@@ -879,10 +981,20 @@ class AboutUsScreen extends React.Component {
 
 
 const mapStateToProps = (state) => {
-  console.log('state.GeneralReducer.order_summary', state.GeneralReducer.order_summary)
+  console.log('state.GeneralReducer.order_summary', state.GeneralReducer)
   return {
 
-    order_summary: state.GeneralReducer.order_summary,
+    Booked_Grey_Cloth: state.GeneralReducer.order_summary.Booked_Grey_Cloth,
+    Last_Booked_Order: state.GeneralReducer.order_summary.Last_Booked_Order,
+    Last_Shipped: state?.GeneralReducer?.order_summary?.Last_Shipped,
+    Madeups_To_Be_Shipped: state.GeneralReducer.order_summary.Madeups_To_Be_Shipped,
+    Piece_Goods: state.GeneralReducer.order_summary.Piece_Goods,
+    Running_Orders: state.GeneralReducer.order_summary.Running_Orders,
+
+
+
+
+
     table_card_data_supplier_wise: state.GeneralReducer.table_card_data_supplier_wise,
 
     monthly_card_data: state.GeneralReducer.monthly_card_data,
@@ -891,7 +1003,7 @@ const mapStateToProps = (state) => {
     booked_piecegoods_orders_list: state.GeneralReducer.booked_piecegoods_orders_list,
 
 
-    shipment_country_wise_Lists: state.GeneralReducer.shipment_country_wise_Lists,
+    shipment_country_wise_Lists: state.GeneralReducer.shipment_country_wise_Lists.labels,
     shipment_country_wise_Data: state.GeneralReducer.shipment_country_wise_Data,
 
     shipment_buyer_wise_Data: state.GeneralReducer.shipment_buyer_wise_Data,

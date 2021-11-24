@@ -82,14 +82,14 @@ const BookedOrdersCards = (props) => {
       <View style={styles.container3}>
         <View style={{flexDirection:'row'}}>
         <PoppinsRegular
-          numberOfLines={2}
+          numberOfLines={3}
           style={styles.heading}>
     Quality :
         </PoppinsRegular>
 
         <PoppinsRegular
-          style={styles.circularBoardStyle}
-          numberOfLines={1}>
+          style={styles.circularBoardStyleExtended}
+          numberOfLines={4}>
          {props.stock.item.quality}
         </PoppinsRegular>
         </View>
@@ -103,7 +103,7 @@ const BookedOrdersCards = (props) => {
 
         <PoppinsRegular
           style={styles.circularBoardStyle}
-          numberOfLines={1}>
+          numberOfLines={2}>
          {props.stock.item.qunatity}
         </PoppinsRegular>
         </View>

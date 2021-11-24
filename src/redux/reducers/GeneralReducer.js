@@ -52,7 +52,7 @@ const INITIAL_STATE = {
   viewReportsUrl: null,
   buyer_wise_export: [],
   country_wise_export: [],
-  order_summary: []
+  order_summary: {}
 };
 
 export default GeneralReducer = (state = INITIAL_STATE, action) => {
@@ -387,6 +387,7 @@ export default GeneralReducer = (state = INITIAL_STATE, action) => {
 
     case
       actionTypes.ORDER_INFORMATION_DATA: {
+        console.log('chinnnnnn',action.payload)
         return {
           ...state,
           order_summary: action.payload,

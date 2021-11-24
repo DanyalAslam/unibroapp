@@ -210,7 +210,7 @@ const actions = {
 
           dispatch({
             type: actionTypes.ORDER_INFORMATION_DATA,
-            payload: apiSuccess.Summary,
+            payload: apiSuccess,
           });
           dispatch({ type: actionTypes.CLOSE_LOADING });
           // return success(true);
