@@ -48,7 +48,7 @@ const PurchasingOrdersCards = (props) => {
           <PoppinsRegular
             numberOfLines={2}
             style={styles.heading}>
-            Po_Date :
+            Description :
           </PoppinsRegular>
 
           <PoppinsRegular

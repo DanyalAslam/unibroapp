@@ -15,7 +15,9 @@ overlayContainer:{
     top:0
 },
 contentContainer : {
-    flex:1,
+
+    marginTop:20*vh, //new
+    // flex:1,//old,
    alignItems:"center",
    justifyContent:"center",
 
