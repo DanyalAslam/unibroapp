@@ -23,7 +23,7 @@ const chartConfig = {
   backgroundGradientTo: "#fff",
   backgroundGradientToOpacity: 0.5,
   decimalPlaces: 2,
-  color: (opacity = 1) => `rgba(0, 128, 0, ${opacity})`,
+  color: (opacity = 1) => `rgba(1,44, 101, ${opacity})`,
   labelColor: (opacity = 0) => `rgba(0, 0, 0, ${opacity})`,
   propsForBackgroundLines: {
     strokeWidth: 0.6,
@@ -547,10 +547,12 @@ backgroundColor:'#fff'
           width={90 * vw}
           height={40 * vh}
           chartConfig={chartConfig}
+          
           style={{
             marginVertical: 8,
             borderRadius: 16,
-            width: 20 * vw
+            width: 20 * vw,
+       
           }}
 
         />}
@@ -774,7 +776,7 @@ backgroundColor:'#fff'
             backgroundGradientTo: "#fff",
             backgroundGradientToOpacity: 0.5,
             decimalPlaces: 2,
-            color: (opacity = 1) => `rgba(0, 128, 0, ${opacity})`,
+            color: (opacity = 1) => `rgba(1,44, 101, ${opacity})`,
             labelColor: (opacity = 0) => `rgba(0, 0, 0, ${opacity})`,
             propsForBackgroundLines: {
               strokeWidth: 0.6,
