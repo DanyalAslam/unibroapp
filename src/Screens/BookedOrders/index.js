@@ -50,9 +50,9 @@ class BookedOrders extends React.Component {
 
 
 
-      // onSuccess={() =>
-      //   this.props.navigation.navigate('WatchStreanScreen', { item })
-      // }
+    
+    onSuccess={(id) => this.props.navigation.navigate('ViewReports', { id: id, role: 'BOOKEDORDERS' })}
+
       stock={item}
 
     />;

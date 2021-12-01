@@ -170,6 +170,26 @@ class ViewReports extends React.Component {
 
     }
 
+    if (this?.props?.route?.params?.role == "BOOKEDORDERS") {
+
+      // alert('Greish')
+      this.props.getBookedOrdersSummary(
+        this?.props?.route?.params?.id,
+        (success) => {
+          if (success) {
+            this.setState({
+              refreshing: false,
+            });
+          }
+        },
+        (error) => {
+          this.setState({
+            refreshing: false,
+          });
+        },
+      );
+
+    }
 
 
 
@@ -256,6 +276,9 @@ const mapDispatchToProps = (dispatch) => {
 
     getGreishSummaryView: (keyword, success, error) =>
       dispatch(actions.getGreishSummaryView(keyword, success, error)),
+
+      getBookedOrdersSummary: (keyword, success, error) =>
+      dispatch(actions.getBookedOrdersSummary(keyword, success, error)),
 
 
     getOgpSummaryView: (keyword, success, error) =>
