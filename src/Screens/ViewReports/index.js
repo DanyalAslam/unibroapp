@@ -124,9 +124,6 @@ class ViewReports extends React.Component {
       );
 
     }
-
-
-
     if (this?.props?.route?.params?.role == "GRN") {
 
       // alert('Greish')
@@ -148,7 +145,6 @@ class ViewReports extends React.Component {
 
     }
 
-
     if (this?.props?.route?.params?.role == "OGP") {
 
       // alert('Greish')
@@ -169,7 +165,6 @@ class ViewReports extends React.Component {
       );
 
     }
-
     if (this?.props?.route?.params?.role == "BOOKEDORDERS") {
 
       // alert('Greish')
@@ -190,7 +185,46 @@ class ViewReports extends React.Component {
       );
 
     }
+    if (this?.props?.route?.params?.role == "I-RETURN") {
 
+      // alert('Greish')
+      this.props.getIReturnSummary(
+        this?.props?.route?.params?.id,
+        (success) => {
+          if (success) {
+            this.setState({
+              refreshing: false,
+            });
+          }
+        },
+        (error) => {
+          this.setState({
+            refreshing: false,
+          });
+        },
+      );
+
+    }
+    if (this?.props?.route?.params?.role == "IGP") {
+
+      // alert('Greish')
+      this.props.getIGPSummary(
+        this?.props?.route?.params?.id,
+        (success) => {
+          if (success) {
+            this.setState({
+              refreshing: false,
+            });
+          }
+        },
+        (error) => {
+          this.setState({
+            refreshing: false,
+          });
+        },
+      );
+
+    }
 
 
   };
@@ -279,6 +313,12 @@ const mapDispatchToProps = (dispatch) => {
 
       getBookedOrdersSummary: (keyword, success, error) =>
       dispatch(actions.getBookedOrdersSummary(keyword, success, error)),
+
+      getIReturnSummary: (keyword, success, error) =>
+      dispatch(actions.getIReturnSummary(keyword, success, error)),
+
+      getIGPSummary: (keyword, success, error) =>
+      dispatch(actions.getIGPSummary(keyword, success, error)),
 
 
     getOgpSummaryView: (keyword, success, error) =>

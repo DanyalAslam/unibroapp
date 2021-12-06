@@ -200,7 +200,7 @@ const actions = {
 
   //getting all shipment and order details on very first page of an app
   getHomepageInformation: (success, error) => {
-   
+
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
       Api.get(
@@ -308,10 +308,10 @@ const actions = {
   },
 
 
-//approve documnt submission 
+  //approve documnt submission 
   getApprovedDocumentsResponse: (docid, docno, usercode, success, error) => {
 
-    console.log('docid', docid, 'docno', docno,'usercode',usercode)
+    console.log('docid', docid, 'docno', docno, 'usercode', usercode)
     return (dispatch) => {
       dispatch({ type: actionTypes.START_LOADING });
       Api.get(
@@ -906,7 +906,7 @@ const actions = {
 
   //for daily production reports
   getDailyProductionReportsView: (keyword, completed, failed) => {
-    console.log('keywordkeyword',keyword)
+    console.log('keywordkeyword', keyword)
     return (dispatch) => {
       dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.postReport(
@@ -1002,13 +1002,61 @@ const actions = {
     };
   },
 
-//get Booked Orders Summary
-getBookedOrdersSummary: (keyword, completed, failed) => {
+  //get Booked Orders Summary
+  getBookedOrdersSummary: (keyword, completed, failed) => {
     return (dispatch) => {
       dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
       Api.postReport(
         `erpsys/Frm_Rep_maExportContract.php/?docid=${keyword}`,
 
+        (success) => {
+          console.log('getViewReports SUCCESSSS', success)
+          dispatch({
+            type: actionTypes.VIEW_REPORTS,
+            payload: success.rows,
+          });
+
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+        (error) => {
+          console.log('getViewReports error', error)
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+      );
+    };
+  },
+
+
+  //get I return summary
+  getIReturnSummary: (keyword, completed, failed) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
+      Api.postReport(
+        `erpsys/Frm_Rep_maPrn/?docid=${keyword}`,
+
+        (success) => {
+          console.log('getViewReports SUCCESSSS', success)
+          dispatch({
+            type: actionTypes.VIEW_REPORTS,
+            payload: success.rows,
+          });
+
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+        (error) => {
+          console.log('getViewReports error', error)
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+      );
+    };
+  },
+
+  //get IGP summary
+  getIGPSummary: (keyword, completed, failed) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
+      Api.postReport(
+        `erpsys/Frm_Rep_maInwordGatePass/?docid=${keyword}`,
         (success) => {
           console.log('getViewReports SUCCESSSS', success)
           dispatch({

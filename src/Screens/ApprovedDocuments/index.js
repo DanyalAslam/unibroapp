@@ -620,11 +620,19 @@ class ApprovedDocuments extends React.Component {
                         </View>
 
                         <View style={{ height: 6 * vh, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
-                            <Image
-                                style={{ width: 4 * vw, height: 3 * vh, marginRight: 4 * vw }}
-                                source={{ uri: data.View }}
-                                resizeMode='contain'
-                            />
+
+                            <TouchableOpacity
+
+                                // onPress={() => Linking.openURL(`http://103.25.138.171/:4080/erpsys/Frm_Rep_Po.php/${data.poNo}`)}
+                                onPress={() => this.props.navigation.navigate('ViewReports', { id: data?.IgpNo, role: 'IGP' })}
+
+                            >
+                                <Image
+                                    style={{ width: 4 * vw, height: 3 * vh, marginRight: 4 * vw }}
+                                    source={{ uri: data.View }}
+                                    resizeMode='contain'
+                                />
+                            </TouchableOpacity>
                             <Image
                                 style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
                                 source={{ uri: data.Approved }}
@@ -880,6 +888,88 @@ class ApprovedDocuments extends React.Component {
 
             }
         }
+
+
+
+        if (data.DocumentName === 'I-RETURN') {
+            if (index === 0) {
+                return (<View style={{ backgroundColor: '#fff', flex: 1, height: 10 * vh, alignSelf: 'stretch', flexDirection: 'row', marginHorizontal: 5 }}>
+
+                    <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
+                        <Text style={{ color: '#012c65', fontWeight: 'bold' }}>OGP No</Text>
+                    </View>
+
+                    <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
+                        <Text style={{ color: '#012c65', fontWeight: 'bold' }}>Description</Text>
+                    </View>
+                    <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
+                        <Text style={{ color: '#012c65', fontWeight: 'bold' }}>Remarks</Text>
+                    </View>
+                    <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
+                        <Text style={{ color: '#012c65', fontWeight: 'bold' }}>Prepared By</Text>
+                    </View>
+                </View>
+                );
+
+            }
+            else {
+                return (
+                    <View style={{ flex: 1, alignSelf: 'stretch', borderBottomColor: 'black', borderBottomWidth: 0.3, height: 10 * vh, backgroundColor: '#fff', marginHorizontal: 5, backgroundColor: '#ffF' }}>
+                        <View style={{ flexDirection: 'row', height: 5 * vh, backgroundColor: '#fff' }}>
+                            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingLeft: 7 }} >
+                                <PoppinsRegular style={{ fontSize: 3 * vw }}>{data.OGPNo}</PoppinsRegular></View>
+                            <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
+                                <PoppinsRegular style={{ fontSize: 3 * vw }}>{data.Description}</PoppinsRegular>
+                            </View>
+                            <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
+                                <PoppinsRegular style={{ fontSize: 3 * vw }}>{data.Remarks}</PoppinsRegular>
+                            </View>
+                            <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }} >
+                                <PoppinsRegular style={{ fontSize: 3 * vw }}>{data.PreparedBy}</PoppinsRegular>
+                            </View>
+                        </View>
+
+                        <View style={{ height: 6 * vh, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
+
+                            <TouchableOpacity
+
+                                // onPress={() => Linking.openURL(`http://103.25.138.171/:4080/erpsys/Frm_Rep_Po.php/${data.poNo}`)}
+                                onPress={() => this.props.navigation.navigate('ViewReports', { id: data?.IReturnNo, role: 'I-RETURN' })}
+
+                            >
+                                <Image
+                                    style={{ width: 4 * vw, height: 3 * vh, marginRight: 4 * vw }}
+                                    source={{ uri: data.View }}
+                                    resizeMode='contain'
+                                />
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+
+                                // onPress={() => Linking.openURL(`http://103.25.138.171/:4080/erpsys/Frm_Rep_Po.php/${data.poNo}`)}
+                                onPress={() => this._ApprovedDocuments(data?.OGPNo, '10', this?.props?.user_code)}
+
+                            >
+                                <Image
+                                    style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
+                                    source={{ uri: data.Approve }}
+                                    resizeMode='contain'
+                                />
+                            </TouchableOpacity>
+                            <Image
+                                style={{ width: 4 * vw, height: 4 * vh, marginRight: 4 * vw }}
+                                source={{ uri: data.Delete }}
+                                resizeMode='contain'
+                            />
+                        </View>
+
+
+                    </View>
+                );
+
+            }
+        }
+
     }
 
 
