@@ -827,6 +827,30 @@ const actions = {
   },
 
 
+   //getting Grey fabric in process
+   getGreyFabricInProcess: (keyword, completed, failed) => {
+    return (dispatch) => {
+      dispatch({ type: actionTypes.START_ACTIVITY_LOADING });
+      Api.get(
+        `fabricInProcess.php/?supplier=${keyword}`,
+        (success) => {
+          console.log('fabricInProcess.php SUCCESSSS', success)
+          dispatch({
+            type: actionTypes.GREY_FABRIC_IN_PROCESS,
+            payload: success.fabInProcess,
+          });
+
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+        (error) => {
+          console.log('greyApi.php error', error)
+          dispatch({ type: actionTypes.CLOSE_ACTIVITY_LOADING });
+        },
+      );
+    };
+  },
+
+
   //get Daily Production for production stock
   getDailyProduction: (completed, failed) => {
     return (dispatch) => {

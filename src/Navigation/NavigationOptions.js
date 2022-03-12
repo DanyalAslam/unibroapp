@@ -49,6 +49,7 @@ export const shouldHeaderBeShown = (activeRouteName) => {
     case 'InspectionReport':
     case 'InspectionSummary':
     case 'ViewReports':
+      case 'GreyFabricInProcess':
       return true;
     case 'Grey':
       return true;
@@ -117,6 +118,8 @@ export const getTitle = (activeRouteName) => {
       return 'Inspection Summary';
     case 'Grey':
       return 'Greigh';
+      case 'GreyFabricInProcess':
+        return 'Grey Fabric In Process';
     case 'PurchasingOrders':
       return 'Purchase Orders'
     case 'ViewReports':
@@ -158,6 +161,7 @@ export const showHeaderLeft = (activeRouteName, navigation, onBackPress) => {
     case 'EmployeeEmails':
     case 'StockInHand':
     case 'Grey':
+      case 'GreyFabricInProcess':
       case 'ApprovedDocuments':
     case 'PurchasingOrders':
     case 'OutstandingPurchasingOrders':

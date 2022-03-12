@@ -5,6 +5,8 @@ import EmployeeEmails from '../Screens/EmployeeEmails'
 import StockInHand from '../Screens/StockInHand'
 import { getNavigationOptions } from './NavigationOptions';
 import Grey from '../Screens/Grey';
+import GreyFabricInProcess from '../Screens/GreyFabricInProcess';
+
 import PurchasingOrders from '../Screens/PurchasingOrders'
 import OutstandingPurchasingOrders from '../Screens/OutstandingPurchasingOrders'
 import DailyProduction from '../Screens/DailyProduction';
@@ -31,6 +33,8 @@ const MenuStack = () => {
       <MenuNavigator.Screen component={EmployeeEmails} name="EmployeeEmails" />
       <MenuNavigator.Screen component={StockInHand} name="StockInHand" />
       <MenuNavigator.Screen component={Grey} name="Grey" />
+      <MenuNavigator.Screen component={GreyFabricInProcess} name="GreyFabricInProcess" />
+      {/* <MenuNavigator.Screen component={Grey} name="Grey" /> */}
       <MenuNavigator.Screen component={ApprovedDocuments} name="ApprovedDocuments" />
       <MenuNavigator.Screen component={PurchasingOrders} name="PurchasingOrders" />
 

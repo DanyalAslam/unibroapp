@@ -62,6 +62,16 @@ class MenuScreen extends React.Component {
           onPress={() => this.props.navigation.navigate('Grey')}
           icon={icons.right_arrow}
         />
+          <MenuButton
+          title="Fabric in Process"
+          onPress={() => this.props.navigation.navigate('GreyFabricInProcess')}
+          icon={icons.right_arrow}
+        />
+          <MenuButton
+          title="GreyFabric Stock In Hand"
+          onPress={() => this.props.navigation.navigate('Grey')}
+          icon={icons.right_arrow}
+        />
         <MenuButton
           title="Garments Purchase Stock"
           // onPress={() => this.props.navigation.navigate('ContactUsScreen')}
